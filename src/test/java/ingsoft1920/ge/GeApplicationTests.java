@@ -17,9 +17,9 @@ class GeApplicationTests {
 		assertEquals(1, 1);
 	}
 	
-	@Test
+	/*@Test
 	void testEjemploIncorrecto() {
 		assertEquals(0, 1);
-	}
+	}*/
 
 }

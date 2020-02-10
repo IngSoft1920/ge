@@ -18,6 +18,7 @@ public class GeApplication {
 		SpringApplication.run(GeApplication.class, args);
 	}
 
+	//Esto es una prueba para hacer commit
 	@ResponseBody
 	@GetMapping("/helloWorld")
 	public String helloWorldController() {

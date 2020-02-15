@@ -62,7 +62,10 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
 		<!-- Exclude Spring Boot's Default Logging -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

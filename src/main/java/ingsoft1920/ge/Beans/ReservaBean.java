@@ -37,6 +37,6 @@ public class ReservaBean {
 	}
 
 	public boolean checkCamposValidos() {
-		return false;
+		return true;
 	}
 }

@@ -19,10 +19,9 @@ import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.ReservaBean;
 
 public class ReservaController {
-	final static Logger logger = LogManager.getLogger(ReservaController.class.getName());
 
 	@Autowired
-	ServiceMBean sesionBean;
+	ReservaBean reservaBean;
 
 	@GetMapping("/reservar")
 	public String buscarGet(Model model) {
@@ -31,18 +30,8 @@ public class ReservaController {
 		model.addAttribute("reservaBean", reservaBean);
 		model.addAttribute("mensajeError", "");
 
-		return "reservar";
+		return "reserva";
 	}
 
-	@PostMapping("/reservar")
-	public String buscarPost(@Valid @ModelAttribute("reservaBean") ReservaBean reservaBean, Model model) {
-
-		if (reservaBean.checkCamposValidos()) {
-			logger.info("Reserva recibida correctamente");
-
-		}
-
-		return "reservar";
-	}
 
 }

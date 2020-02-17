@@ -3,7 +3,6 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 
-
 <!DOCTYPE html>
 <html lang="en">
 

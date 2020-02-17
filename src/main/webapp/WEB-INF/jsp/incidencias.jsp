@@ -3,7 +3,6 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -44,7 +43,7 @@
     <input type="text" id="name" name="user_name">
   </li>
   <li>
-    <label for="mail">Correo electrónico:</label>
+    <label for="mail">Correo electrï¿½nico:</label>
     <input type="email" id="mail" name="user_mail">
   </li>
   <li><label for="asunto">Asunto:</label>

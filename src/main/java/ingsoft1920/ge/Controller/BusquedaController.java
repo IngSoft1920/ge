@@ -31,12 +31,14 @@ public class BusquedaController {
 		return "buscador";
 	}
 	
-	@PostMapping("/buscar2")
+	@PostMapping("/buscar")
 	public String buscarPost(@Valid @ModelAttribute("busquedaBean") BusquedaBean busquedaBean,
 			Model model) {
 		
 		if(busquedaBean.checkCamposValidos()) {
 			logger.info("Busqueda recibida correctamente");
+			
+			// Consulta a la base de datos
 			
 			/*
 			//La clase UsuarioModel representa el modelo de datos que vamos a manejar en la aplicacion

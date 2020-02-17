@@ -21,8 +21,7 @@
 	<div
 		style="margin-top: 40px; background-color: lightsalmon; opacity: 30%;">
 		<h1
-			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios
-			e Incidencias</h1>
+			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios</h1>
 	</div>
 	<!-- Parte de servicios y reserva -->
 	<div class="aspecto">
@@ -47,24 +46,6 @@
 			<!-- Boton de reservar -->
 			<button type="submit">Reservar</button>
 		</div>
-	</div>
-	<!-- Parte de incidencias -->
-	<div class="aspecto">
-		<h3>Incidencias</h3>
-		<form action="/my-handling-form-page" method="post">
-			<!-- FORMULARIO DE ENVIO DE INCIDENCIAS -->
-			<ul style="list-style-type: none;">
-				<li><label for="name">Nombre:</label> <input type="text"
-					id="name" name="user_name"></li>
-				<li><label for="mail">Correo electrónico:</label> <input
-					type="email" id="mail" name="user_mail"></li>
-				<li><label for="msg">Mensaje:</label> <textarea id="msg"
-						name="user_message"></textarea></li>
-				<li>
-					<button type="submit">Envíar incidencia</button>
-				</li>
-			</ul>
-		</form>
 	</div>
 </body>
 </html>

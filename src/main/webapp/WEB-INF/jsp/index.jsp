@@ -57,9 +57,9 @@
        </div> 
 
        <div class="grid-container">
-       <div class="card" onclick="document.location = 'reservas.html'">
-        <div class="container", style="padding-top:20px">
-          <a href="/reservas"><b>Reservas</b></a> 
+       <div class="card" onclick="document.location = '/reservas'">
+        <div class="container">
+          <a style="font-family: fantasy;font-size: 20px;text-align: center;", href="/reservas"><b>Reservas</b></a> 
           <p style="font-family: cursive;text-align: center;">¡Acceda para gestionar su reserva!</p> 
         </div>
       </div>

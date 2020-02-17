@@ -17,6 +17,4 @@ public class GeApplication {
 		logger.warn("Aplicacion iniciada");
 		SpringApplication.run(GeApplication.class, args);
 	}
-
-	
 }

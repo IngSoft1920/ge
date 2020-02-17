@@ -24,16 +24,8 @@
 	<div
 		style="margin-top: 40px; background-color: lightsalmon; opacity: 30%;">
 		<h1
-			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios
-			e Incidencias</h1>
-	</div>
-
-	<!-- Parte de servicios y reserva -->
-
-	<div class="aspecto">
-		<div class="parte1">
-			<h3>Servicios</h3>
-		</div>
+			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times,
+			 'Times New Roman', serif;">Incidencias</h1>
 	</div>
 
 	<!-- Parte de incidencias -->
@@ -53,6 +45,8 @@
     <label for="msg">Mensaje:</label>
     <textarea id="msg" name="user_message"></textarea>
   </li>
+  <li><input type=button value="Enviar"></button>
+   </li>
  </ul>
 </form>
 	</div>

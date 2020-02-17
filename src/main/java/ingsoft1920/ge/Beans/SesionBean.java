@@ -1,3 +1,4 @@
+import ingsoft1920.ejemplo.Model.UsuarioModel;
 package ingsoft1920.ge.Beans;
 
 import org.springframework.stereotype.Component;

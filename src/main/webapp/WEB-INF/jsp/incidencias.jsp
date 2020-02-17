@@ -41,6 +41,12 @@
     <label for="mail">Correo electrónico:</label>
     <input type="email" id="mail" name="user_mail">
   </li>
+  <li><label for="asunto">Asunto:</label>
+  <select>
+  <option> Habitacion</option>
+  <option> Restaurante - comida</option>
+  </select>
+   </li>
   <li>
     <label for="msg">Mensaje:</label>
     <textarea id="msg" name="user_message"></textarea>

@@ -39,8 +39,9 @@
             <br><br>
             <label for="checkout"> Check out </label>
             <input id="checkout" type="button" value="check-out">
-            <br><br>                                   <label for="factura"> Tu factura</label>           
-            <input id= factura type="button" value="factura">
+            <br><br>                                   
+            <label for="factura"> Tu factura</label>           
+            <input id= factura type="button" value="factura" onclick="window.location.href='/incidencias'">
         </div>
         </div>
    

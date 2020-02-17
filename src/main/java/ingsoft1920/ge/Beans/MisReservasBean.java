@@ -4,12 +4,30 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ReservaBean {
+public class MisReservasBean {
 	private Date fechaEntrada;
 	private Date fechaSalida;
 	private String Hotel;
+	private String habitacion;
+	private String tarifa;
 
-	public ReservaBean() {
+	public String getHabitacion() {
+		return habitacion;
+	}
+
+	public void setHabitacion(String habitacion) {
+		this.habitacion = habitacion;
+	}
+
+	public String getTarifa() {
+		return tarifa;
+	}
+
+	public void setTarifa(String tarifa) {
+		this.tarifa = tarifa;
+	}
+
+	public MisReservasBean() {
 	}
 
 	public Date getFechaEntrada() {

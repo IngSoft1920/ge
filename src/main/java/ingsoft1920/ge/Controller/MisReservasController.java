@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.ge.Beans.BusquedaBean;
-import ingsoft1920.ge.Beans.ReservaBean;
+import ingsoft1920.ge.Beans.MisReservasBean;
 
-public class ReservaController {
+public class MisReservasController {
 
 	@Autowired
-	ReservaBean reservaBean;
+	MisReservasBean misReservasBean;
 
 	@GetMapping("/reservar")
 	public String buscarGet(Model model) {
 
-		ReservaBean reservaBean = new ReservaBean();
-		model.addAttribute("reservaBean", reservaBean);
+		MisReservasBean misReservasBean = new MisReservasBean();
+		model.addAttribute("misReservasBean", misReservasBean);
 		model.addAttribute("mensajeError", "");
 
 		return "reserva";

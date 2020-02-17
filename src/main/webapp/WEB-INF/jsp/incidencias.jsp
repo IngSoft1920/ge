@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body style="background: radial-gradient(beige, transparent);">
-<style>
+	<style>
 .aspecto {
 	margin: 20px;
 	padding: 10px;
@@ -30,37 +30,25 @@
 	<div
 		style="margin-top: 40px; background-color: lightsalmon; opacity: 30%;">
 		<h1
-			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times,
-			 'Times New Roman', serif;">Incidencias</h1>
+			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Incidencias</h1>
 	</div>
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto">
 		<h3>Incidencias</h3>
-		<form action="/my-handling-form-page" method="post">
- <ul>
-  <li>
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="user_name">
-  </li>
-  <li>
-    <label for="mail">Correo electrónico:</label>
-    <input type="email" id="mail" name="user_mail">
-  </li>
-  <li><label for="asunto">Asunto:</label>
-  <select>
-  <option> Habitacion</option>
-  <option> Restaurante - comida</option>
-  </select>
-   </li>
-  <li>
-    <label for="msg">Mensaje:</label>
-    <textarea id="msg" name="user_message"></textarea>
-  </li>
-  <li><input type=button value="Enviar"></button>
-   </li>
- </ul>
-</form>
+		<form action="/procesarIncidencias" method="get">
+			<ul>
+				<li><label>Nombre:</label> <input type="text" name="nombre"></li>
+				<li><label>Correo electrónico:</label> <input type="email"
+					name="email"></li>
+				<li><label>Asunto:</label> <select>
+						<option>Habitacion</option>
+						<option>Restaurante - comida</option>
+				</select></li>
+				<li><label>Mensaje:</label> <textarea name="message"></textarea></li>
+				<li><input type="submit" value="Enviar"></li>
+			</ul>
+		</form>
 	</div>
 
 </body>

@@ -39,6 +39,12 @@ public class ge_Controller {
 	public String incidencias() {
 		return "incidencias";
 	}
+	
+	@GetMapping("/procesarIncidencias")
+	public String ProcesarIncidencias() {
+		return "procesarIncidencias";
+	}
+	
 	@GetMapping("/checkin")
 	public String checkin() {
 		return "checkin";

@@ -28,7 +28,7 @@ public class BusquedaController {
 		model.addAttribute("busquedaBean",busquedaBean);
 		model.addAttribute("mensajeError","");
 		
-		return "buscar";
+		return "buscador";
 	}
 	
 	@PostMapping("/buscar2")

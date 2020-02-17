@@ -74,7 +74,7 @@
       
         <div class="card">
         <div class="container", style="padding-top:20px">
-          <a href="/restauracion"><b>Incidencias</b></a> 
+          <a href="/incidencias"><b>Incidencias</b></a> 
           <p style="font-family: cursive;text-align: center;">¡Acceda para gestionar y reportar los servicios solicitados!</p> 
         </div>
       </div>

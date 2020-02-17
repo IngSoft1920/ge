@@ -45,6 +45,8 @@
     <label for="msg">Mensaje:</label>
     <textarea id="msg" name="user_message"></textarea>
   </li>
+  <li><input type=button value="Enviar"></button>
+   </li>
  </ul>
 </form>
 	</div>

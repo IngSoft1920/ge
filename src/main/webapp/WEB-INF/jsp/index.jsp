@@ -21,6 +21,8 @@
     grid-template-columns: auto auto auto;
     padding: 10px;
     justify-content: center;
+    width:100%;
+    text-align: center;
     }
     .card {
     background-color: lightsalmon;
@@ -28,10 +30,19 @@
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
-    margin-top: 30px;
+    margin-top: 90px;
     margin-left: 60px;
     margin-right: 60px;
+    height: 70%;
     }
+    
+    a{
+    font-family: times new roman;
+    font-size: 25px;
+    text-align: center;
+    color:grey;
+    }
+   
     </style>
 
     <head charset="UTF-8">
@@ -47,23 +58,23 @@
 
        <div class="grid-container">
        <div class="card" onclick="document.location = 'reservas.html'">
-        <div class="container">
-          <a style="font-family: fantasy;font-size: 20px;text-align: center;", href="/reservas"><b>Reservas</b></a> 
+        <div class="container", style="padding-top:20px">
+          <a href="/reservas"><b>Reservas</b></a> 
           <p style="font-family: cursive;text-align: center;">¡Acceda para gestionar su reserva!</p> 
         </div>
       </div>
       
 
       <div class="card">
-        <div class="container">
-          <a style="font-family: fantasy;font-size: 20px;text-align: center;", href="/servicios"><b>Servicios</b></a> 
+        <div class="container", style="padding-top:20px">
+          <a href="/servicios"><b>Servicios</b></a> 
           <p style="font-family: cursive;text-align: center;">¡Acceda para gestionar y reportar los servicios solicitados!</p> 
         </div>
       </div>
       
         <div class="card">
-        <div class="container">
-          <a style="font-family: fantasy;font-size: 20px;text-align: center;", href="/restauracion"><b>Servicios e incidencias</b></a> 
+        <div class="container", style="padding-top:20px">
+          <a href="/restauracion"><b>Incidencias</b></a> 
           <p style="font-family: cursive;text-align: center;">¡Acceda para gestionar y reportar los servicios solicitados!</p> 
         </div>
       </div>

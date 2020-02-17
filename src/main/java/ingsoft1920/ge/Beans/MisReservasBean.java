@@ -55,6 +55,8 @@ public class MisReservasBean {
 	}
 
 	public boolean checkCamposValidos() {
-		return true;
+		return false;
 	}
+
+
 }

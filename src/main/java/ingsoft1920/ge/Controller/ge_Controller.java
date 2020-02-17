@@ -39,4 +39,16 @@ public class ge_Controller {
 	public String incidencias() {
 		return "incidencias";
 	}
+	@GetMapping("/checkin")
+	public String checkin() {
+		return "checkin";
+	}
+	@GetMapping("/checkout")
+	public String checkout() {
+		return "checkout";
+	}
+	@GetMapping("/facturacion")
+	public String facturacion() {
+		return "facturacion";
+	}
 }

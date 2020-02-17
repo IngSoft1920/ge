@@ -28,5 +28,14 @@ public class ge_Controller {
 	public String reservas() {
 		return "reservas";
 	}
-
+	
+	@GetMapping("/servicios")
+	public String servicios() {
+		return "servicios";
+	}	
+	
+	@GetMapping("/incidencias")
+	public String incidencias() {
+		return "incidencias";
+	}
 }

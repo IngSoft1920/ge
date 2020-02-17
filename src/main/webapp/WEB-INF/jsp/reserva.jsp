@@ -37,73 +37,116 @@
  }
   a:visited{
   color: white;
-  text-decoration: none;
- }
-  a:active{
-  color: red;
- text-decoration: none;
- }
-  .titulo {
-  padding: 1px;
-  text-align: center;
-  background: #FA8072;
-  color: white;
-  font-size: 30px;
-}
-.hoteles {
-   background: transparent;
-   padding: 5px;
-   font-size: 25px;
-}
+    text-decoration: none;
+   }
+    a:active{
+    color: red;
+   text-decoration: none;
+   }
+  
+  .hotel {
+    font-family: Helvetica;
+    padding:5px;
+  }
+  
+  .fecha {
+    font-family: Helvetica;
+    margin-left:50px;
+    padding:5px;
+  }
+  
+    .habitacion {
+    font-family: Helvetica;
+    padding:5px;
+  }
+  
+  .tarifa {
+    font-family: Helvetica;
+    margin-left:50px;
+    padding:5px;
+  }
+  
   .reserva {
-    border: 1px solid #FA8072;
+    background-color:#A8F4EA;
+    border: 1px solid black;
+    margin-top:5px;
+    overflow:hidden
   }
-  .fechas{
-    font-size: 25px;
-    padding: 5px;
-    background: transparent;
+  
+  .cancelar {
+    float:right;
+    color:red;
+    border:1px solid #FA220C;
+    padding:5px;
+    margin-right:10px;
+    background-color:FFA79B
   }
-  .button {
-    font-size:25px;
-    background: transparent;
-    padding: 5px ;
-    margin-left: 300px;
+  
+  .titulo_historial {
+    margin-top:30px;
+    text-align:center;
+    font-family: 'Open Sans Condensed',sans-serif; 
+    font-size: 40px;
+    text-decoration:underline;
   }
-</style>
-</head>
-<body>
-	<ul id="button">
- <li><a href="#"><img src="icon.png"></li>
- <li id="menu"><a href="#">Log in</a></li>
- <li id="menu"><a href="#">Buscar</a></li>
- <li id="menu"><a href="#">Reservas</a></li>
- </ul>
-	<div class="titulo">
-  		<h1>Haz tu reserva</h1>
-  	</div>
-   <div class="reserva">
-  <div class="hoteles">
-  	<label for="Hoteles">Escoge un hotel:</label>
-		<select id="Hoteles">
-          	<div class="opciones">
-  			<option value="Hotel 1">Hotel 1</option>
-  			<option value="Hotel 2">Hotel 2</option>
-  			<option value="Hotel 3">Hotel 3</option>
-  			<option value="Hotel 4">Hotel 4</option>
-          </div>
-		</select>
-  </div>
-  <div class ="fechas">
-    <p>
-      <label>Fecha de entrada:</label>
-          <input type = "text" id = "myText" value = "Introduce fecha de entrada"/>
-    </p>
-     <p>
-      <label>Fecha de salida:</label>
-          <input type = "text" id = "myText" value = "Introduce fecha de salida"/>
-    </p>
-  </div>
-  <button class="button">Buscar disponibilidad</button>
-  </div>
-</body>
+  
+  .historial {
+    background-color:#A8F4EA;
+    border: 1px solid black;
+    overflow:hidden
+  }
+  
+  .fondo {
+    background-color:D1F0EC;
+  }
+  
+  .valoranos {
+    float:right;
+    margin-right:20px;
+    display: block;
+    rows:2;
+  }
+  
+  .enviar {
+    float:right;
+    margin-right:30px
+  }
+  
+    </style>
+ </head>
+ <body>
+    <div class ="fondo">
+   <ul id="button">
+   <li><a href="#"><img src="icon.png"></li>
+   <li id="menu"><a href="#">Log in</a></li>
+   <li id="menu"><a href="#">Buscar</a></li>
+   <li id="menu"><a href="#">Mis Reservas</a></li>
+  </ul>
+
+ <div class="reserva">
+   <p class ="hotel">Hotel _____ en ______ 
+   	<span class ="fecha">De dd/mm/aaaa a dd/mm/aaaa</span>
+   </p>
+   <p class="habitacion">Habitación:______
+   	<span class="tarifa">Tarifa:______</span>
+    <span class ="cancelar">Cancelar reserva</span>
+   </p>
+ </div>
+  
+    <h2 class="titulo_historial">Historial</h2>
+ <div class="historial">
+   <p>Hotel _____ en ______
+      <span class ="valoranos">
+          <textarea name="Text1" cols="40" rows="3">Cuentanos tu experiencia</textarea>
+    </span>  
+   </p>
+   <p>De dd/mm/aaaa a dd/mm/aaaa</p>
+   <p>Habitación:______
+    <span>
+     <button class="enviar">Enviar</button>
+   </span>
+   </p>
+ </div>
+ </div>
+ </body>
 </html>

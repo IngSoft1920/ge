@@ -17,10 +17,4 @@ public class GeApplication {
 		logger.warn("Aplicacion casi iniciada");
 		SpringApplication.run(GeApplication.class, args);
 	}
-
-	@ResponseBody
-	@GetMapping("/helloWorld")
-	public String helloWorldController() {
-		return "Hello world!";
-	}
 }

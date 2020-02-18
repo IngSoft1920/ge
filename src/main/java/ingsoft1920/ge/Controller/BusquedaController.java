@@ -23,19 +23,19 @@ import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
 public class BusquedaController {
 	final static Logger logger = LogManager.getLogger(BusquedaController.class.getName());
 
-	@GetMapping("/buscar")
+	@GetMapping("/buscador")
 	public String buscarGet(Model model) {
 		
 		BusquedaBean busquedaBean = new BusquedaBean();
 		busquedaBean.getCiudades().add("Zaragoza");
-		busquedaBean.getHoteles().add("Hotel 1");
+		busquedaBean.getHoteles().add("Ritz");
 		model.addAttribute("busquedaBean",busquedaBean);
 		model.addAttribute("mensajeError","");
 		
 		return "buscador";
 	}
 	
-	@PostMapping("/buscar")
+	@PostMapping("/buscador")
 	public String buscarPost(@Valid @ModelAttribute("busquedaBean") BusquedaBean busquedaBean,
 			Model model) {
 		
@@ -46,7 +46,7 @@ public class BusquedaController {
 		// Consulta a la base de datos
 		
 		HotelesDisponiblesBean hotelesDisponibles = new HotelesDisponiblesBean();
-		HotelBean hotel = new HotelBean("Hotel 1", "Zaragoza");
+		HotelBean hotel = new HotelBean("Ritz", "Zaragoza");
 		List<HabitacionBean> listaHabitaciones = new ArrayList<HabitacionBean>();
 		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0"));
 		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0"));
@@ -56,6 +56,6 @@ public class BusquedaController {
 		
 		model.addAttribute("hotelesDisponiblesBean", hotelesDisponibles);
 		
-		return "buscar";
+		return "buscador";
 	}
 }

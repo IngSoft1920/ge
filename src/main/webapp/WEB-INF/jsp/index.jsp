@@ -8,6 +8,7 @@
 <html lang="en">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://kit.fontawesome.com/4a78b6bb03.js" crossorigin="anonymous"></script>    
     <style>
     .card {
       box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
@@ -29,8 +30,8 @@
     text-align: center;
     }
     .card {
-    background-color: lightsalmon;
-    opacity: 60%;
+    background-color: black;
+    opacity: 40%;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
@@ -44,27 +45,38 @@
     font-family: times new roman;
     font-size: 25px;
     text-align: center;
-    color:grey;
+    color:white;
     }
-   
+    
+    p{
+    font-family: times new roman;
+    text-align: center;
+    color:white;
+    font-size: 20px;
+    }
     </style>
+    
+   
 
     <head charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cliente</title>
+        
     </head>
 
+ 
     <body style="background: radial-gradient(beige, transparent);">
-       <div style="margin-top:40px; background-color: lightsalmon; opacity: 30%;">
-        <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Welcome App</h1>
-       </div> 
+
 
        <div class="grid-container">
        <div class="card" onclick="document.location = '/reservas'">
-        <div class="container">
-          <a style="font-family: fantasy;font-size: 20px;text-align: center;", href="/reservas"><b>Reservas</b></a> 
-          <p style="font-family: cursive;text-align: center;">¡Acceda para gestionar su reserva!</p> 
+        <div class="container", style="padding-top:20px">
+          <a href="/reservaServicios"><b>Reservas</b></a> 
+          <p>¡Acceda para gestionar su reserva!</p> 
+<i class="far fa-address-card" style="color:white; size:20px;"></i>
+
+          
         </div>
       </div>
       
@@ -72,14 +84,17 @@
       <div class="card">
         <div class="container", style="padding-top:20px">
           <a href="/servicios"><b>Servicios</b></a> 
-          <p style="font-family: cursive;text-align: center;">¡Acceda para gestionar y reportar los servicios solicitados!</p> 
+          <p>¡Acceda para gestionar y reportar los servicios solicitados!</p> 
         </div>
       </div>
       
         <div class="card">
         <div class="container", style="padding-top:20px">
           <a href="/incidencias"><b>Incidencias</b></a> 
-          <p style="font-family: cursive;text-align: center;">¡Acceda para gestionar y reportar los servicios solicitados!</p> 
+          <p>¡Acceda para gestionar y reportar los servicios solicitados!</p>
+          <i class="far fa-edit"></i>
+
+           
         </div>
       </div>
       

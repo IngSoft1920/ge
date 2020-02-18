@@ -21,6 +21,10 @@ public class BusquedaBean {
 		this.ciudades = new ArrayList<String>();
 	}
 	
+	public boolean checkCamposValidos() {
+		return true;
+	}
+	
 	public List<String> getHoteles() {
 		return hoteles;
 	}
@@ -35,10 +39,6 @@ public class BusquedaBean {
 
 	public void setCiudades(List<String> ciudades) {
 		this.ciudades = ciudades;
-	}
-
-	public boolean checkCamposValidos() {
-		return true;
 	}
 
 	public String getFechaInicio() {

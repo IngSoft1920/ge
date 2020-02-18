@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
 import ingsoft1920.ge.Model.UsuarioModel;
+import net.minidev.json.JSONUtil;
 
 
 @Controller
@@ -34,17 +36,30 @@ public class ge_Controller {
 	}
 	
 	@GetMapping("/servicios")
-	public String servicios(Model model) {
+	public String servicios() {
 		
-		UsuarioModel usuario= new UsuarioModel();
-		model.addAttribute("Usuario", usuario);
-		model.addAttribute("MensajeError", "Usuario invalido?");
 		return "servicios";
 	}	
+	@PostMapping("/serviciosAlEnviar")
+	public String postservicios(String body) throws Exception {
+		HttpClient client= new HttpClient("localhost:7004/¿que se pone?", "POST");
+		
+		client.setRequestBody(body);
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();}
+		
+		return resp;
+		
+	}
+	
 	
 	@GetMapping("/incidencias")
 	public String incidencias() {
-		System.out.print("hola estoy funcionandp");
+		
 		return "incidencias";
 	}
 	
@@ -65,4 +80,5 @@ public class ge_Controller {
 	public String facturacion() {
 		return "facturacion";
 	}
+	
 }

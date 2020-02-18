@@ -196,7 +196,7 @@ li {
 					<h3>Hotel</h3>
 
 					<select name="hotel">
-						<c:forEach items="${busquedaBean.listaHoteles}" var="listaHoteles">
+						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
 
 							<option value="${hotel}">${hotel}</option>
 						</c:forEach>
@@ -208,8 +208,8 @@ li {
 					<h3>Ciudad</h3>
 
 					<select name="ciudad">
-						<c:forEach items="${busquedaBean.listaCiudades}"
-							var="listaCiudades">
+						<c:forEach items="${busquedaBean.ciudades}"
+							var="ciudad">
 							<option value="${ciudad}">${ciudad}</option>
 						</c:forEach>
 					</select>
@@ -245,27 +245,27 @@ li {
 
 <ul id="list">
 
-	<c:forEach items="${BusquedaBean.listaHoteles}" var="listaHoteles">
+	<c:forEach items="${hotelesDisponiblesBean.hoteles}" var="hotel">
 		<div class="rehabitacion">
 			<li>
 				<div class="encabecadohotel">
-					<h2 style="display: inline">Hotel</h2>${BusquedaBean.hotel}
-					<h2 style="display: inline"> en </h2>${BusquedaBean.ciudad}
+					<h2 style="display: inline">Hotel</h2>${hotel.nombre}
+					<h2 style="display: inline"> en </h2>${hotel.ciudad}
 				</div>
 
 				<div class="habitacion">
-					<c:forEach items="${BusquedaBean.listaHabitaciones}"
-						var="Habitaciones">
+					<c:forEach items="${hotel.habitaciones}"
+						var="habitacion">
 
 
 						<div class="columnaHabitacion">
 							<h3>Habitaciones: </h3>
-							${Habitaciones}
+							${habitacion.tipo}
 						</div>
 					</c:forEach>
 
 					<div class="columnaHabitacion">
-						<h3>Tarifa</h3>${BusquedaBean.tarifa}
+						<h3>Tarifa</h3>${habitacion.tarifa}
 					</div>
 
 					<div class="columnaHabitacion">

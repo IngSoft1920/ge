@@ -3,7 +3,7 @@ package ingsoft1920.ge.Beans;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
-import ingsoft1920.ejemplo.Model.UsuarioModel;
+import ingsoft1920.ge.Model.UsuarioModel;
 
 @Component
 //Esta etiqueta permite que el Bean se mantenga en memoria del servidor

@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<jsp:include page="cabecera.jsp"></jsp:include>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,13 +40,17 @@
         <div class="parte 2">
             <h3> Accedede a</h3>
             <label for="checkin"> Check in</label>
-            <input id=checkin type="button" value="check-in">
+            <input id=checkin type="button" value="check-in" onclick="window.location.href='/checkin'">
             <br><br>
             <label for="checkout"> Check out </label>
-            <input id="checkout" type="button" value="check-out">
+            <input id="checkout" type="button" value="check-out" onclick="window.location.href='/checkout'">
+
             <br><br>                                   
             <label for="factura"> Tu factura</label>           
-            <input id= factura type="button" value="factura" onclick="window.location.href='/incidencias'">
+            <input id= factura type="button" value="factura" onclick="window.location.href='/facturacion'">
+
+            
+
         </div>
         </div>
    

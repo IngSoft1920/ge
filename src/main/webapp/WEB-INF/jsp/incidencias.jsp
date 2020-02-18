@@ -38,7 +38,7 @@
 		<form action="/procesarIncidencias" method="get">
 			<ul>
 				<li><label>Nombre:</label> <input type="text" name="nombre"></li>
-				<li><label>Correo electrï¿½nico:</label> <input type="email"
+				<li><label>Correo electrónico:</label> <input type="email"
 					name="email"></li>
 				<li><label>Asunto:</label> <select>
 						<option>Habitacion</option>

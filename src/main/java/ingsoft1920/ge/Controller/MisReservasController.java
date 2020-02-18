@@ -1,80 +1,44 @@
 package ingsoft1920.ge.Controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.MisReservasBean;
+import ingsoft1920.ge.Beans.ReservaBean;
 
 
 @Controller
 public class MisReservasController {
 	final static Logger logger = LogManager.getLogger(MisReservasController.class.getName());
 
-	@GetMapping("/reservar")
+	@GetMapping("/reservas")
 	public String buscarGet(Model model) {
 		
-		MisReservasBean misReservasBean = new MisReservasBean();
-		model.addAttribute("misReservasBean",misReservasBean);
+		// Consulta a la base de datos
+		MisReservasBean misReservasPendientes = new MisReservasBean();
+		misReservasPendientes.getReservas().add(new ReservaBean("Hotel 1", "Zaragoza", "28/4/2020", "30/4/2020", "Suit", "300.0", ""));
+		
+		MisReservasBean misReservasPasadas = new MisReservasBean();
+		misReservasPasadas.getReservas().add(new ReservaBean("Hotel 2", "Madrid", "12/1/2020", "14/1/2020", "Suit", "300.0", ""));
+		
+		
+		model.addAttribute("misReservasPendientes", misReservasPendientes);
+		model.addAttribute("misReservasPasadas", misReservasPasadas);
 		model.addAttribute("mensajeError","");
 		
 		return "reserva";
 	}
 	
-	@PostMapping("/reservar2")
+	@PostMapping("/reservar")
 	public String buscarPost(@Valid @ModelAttribute("misReservasBean") MisReservasBean misReservasBean,
 			Model model) {
-		
-		if(misReservasBean.checkCamposValidos()) {
-			logger.info("Busqueda recibida correctamente");
-			
-			/*
-			//La clase UsuarioModel representa el modelo de datos que vamos a manejar en la aplicacion
-			UsuarioModel usuarioModel = new UsuarioModel(signupBean);
-			
-			//La clase UsuarioDAO es el "punto de conexion" entre nuestro modelo de datos (UsuarioModel) y la base de datos
-			//con sus tablas correspondientes. Sera la encargada de "traducir" peticiones en forma de metodos Java en
-			//SELECT, INSERT, UPDATE, DELETE... de la base de datos. Por lo tanto, en las clases DAO reside TODA la logica 
-			//de base de datos, y no puede haber ninguna consulta SQL fuera de dichas clases
-			UsuarioModel respuesta = UsuarioDAO.signup(usuarioModel);
-			if(respuesta!=null) {
-				//Puedo publicar un objeto, y dentro del jsp acceder a sus propiedades
-				SesionBean sesionBean = new SesionBean(respuesta);
-				model.addAttribute(sesionBean);
-				
-				//Tambien puedo publicar listas, e iterar por ellas en el jsp
-				List<String> listaStrings = new ArrayList<String>();
-				listaStrings.add("string1");
-				listaStrings.add("string2");
-				listaStrings.add("string3");
-				model.addAttribute("listaStrings",listaStrings);
-				
-				//Devolvemos el nombre de la vista que corresponde (welcome.jsp)
-				return "welcome";
-			}else {
-				model.addAttribute("signupBean",signupBean);
-				
-				//Esta linea publica el String "Usuario ya existe!" con el nombre mensajeError
-				//en el model respuesta
-				model.addAttribute("mensajeError","Usuario ya existe!");
-				return "signup";
-			}
-			*/
-			
-		}
-		
-		
 		
 		return "reserva";
 	}

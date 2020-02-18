@@ -44,6 +44,7 @@ public class ge_Controller {
 	
 	@GetMapping("/incidencias")
 	public String incidencias() {
+		System.out.print("hola estoy funcionandp");
 		return "incidencias";
 	}
 	

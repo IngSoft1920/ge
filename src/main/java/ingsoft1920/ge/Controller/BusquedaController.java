@@ -54,6 +54,14 @@ public class BusquedaController {
 		hotel.setHabitaciones(listaHabitaciones);
 		hotelesDisponibles.getHoteles().add(hotel);
 		
+		hotel = new HotelBean("Hotel 2", "Madrid");
+		listaHabitaciones = new ArrayList<HabitacionBean>();
+		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0"));
+		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0"));
+		listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0"));
+		hotel.setHabitaciones(listaHabitaciones);
+		hotelesDisponibles.getHoteles().add(hotel);
+		
 		model.addAttribute("hotelesDisponiblesBean", hotelesDisponibles);
 		
 		return "buscador";

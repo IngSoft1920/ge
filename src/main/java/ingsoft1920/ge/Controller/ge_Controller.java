@@ -30,9 +30,9 @@ public class ge_Controller {
 	public String index(Model model) {
 		return "index";
 	}
-	@GetMapping("/reservas")
-	public String reservas(Model model) {
-		return "reservas";
+	@GetMapping("/reservaServicios")
+	public String reservaServicios(Model model) {
+		return "reservaServicios";
 	}
 	
 	@GetMapping("/servicios")
@@ -63,6 +63,7 @@ public class ge_Controller {
 		return "incidencias";
 	}
 	
+
 	@GetMapping("/procesarIncidencias")
 	public String ProcesarIncidencias() {
 		return "procesarIncidencias";
@@ -81,4 +82,8 @@ public class ge_Controller {
 		return "facturacion";
 	}
 	
+	@GetMapping("/cabecera")
+	public String cabecera() {
+		return "cabecera";
+	}
 }

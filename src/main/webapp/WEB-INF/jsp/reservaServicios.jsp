@@ -13,8 +13,8 @@
             .aspecto {
                 margin: 20px;
                 padding: 10px;
-                background-color: lightsalmon;
-                opacity: 30%;
+                background-color: orange;
+                opacity: 50%;
             }
 
             .parte1 {
@@ -22,7 +22,7 @@
                 grid-column-end: 5;
             }
             </style>
-    <div style="margin-top:40px; background-color: lightsalmon; opacity: 30%;">
+    <div style="margin-top:40px; background-color: orange; opacity: 30%;">
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
     </div> 
     <div class="aspecto">

@@ -1,11 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<jsp:include page="cabecera.jsp"></jsp:include>
-
 <html>
 <head>
-	Signup
+	Login
 </head>
 <body>
 	<div>
@@ -14,23 +12,19 @@
 			${mensajeError}
 		</h1>
 	</div>
-	<form:form method="POST" action="signup"
-		modelAttribute="signupBean">
+	<form:form method="POST" action="login"
+		modelAttribute="loginBean">
 		<label>Nombre de usuario</label>
 		<form:input type="text" name="usuario" path="usuario" />
 		<br>
 		<label>Contraseña</label>
 		<form:input type="password" name="password" path="password" />
-		<br>
-		<label>Correo electrónico</label>
-		<form:input type="text" name="email" path="email" />
-		<br>
-		<label>ID estudiante</label>
-		<form:input type="text" name="idEstudiante" path="idEstudiante" />
-		<br>
-		<input type="submit" value="Registro">
+		<input type="submit" value="Entrar">
 		<br>
 	</form:form>
-	<a href="/buscar"><button>Volver</button></a>
+
+	<!-- <input type="submit" value="SignUp" <a href="/signup"/> >-->
+	<a href="/signup"><button>Signup</button></a>
+
 </body>
 </html>

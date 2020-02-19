@@ -13,144 +13,173 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 #button {
-	margin: 0;
-	padding: 20;
-	overflow: hidden;
-	background-color: #333;
-}
-
+  margin: 0;
+  padding: 20;
+  overflow: hidden;
+  background-color: #333;
+ }
 #button li {
-	display: inline;
+ display: inline;
+ }
+#button li img{
+  display: inline-block;
+ float: left;
+ padding: 0px;
+ border: 1px;
+ height: 40;
+ width: 40;
+}
+#menu{
+  display: inline-block;
+ font-family: Arial;
+ font-size: 15px;
+ float: right;
+ padding: 10px;
+ }
+ a:link{
+  color: white;
+  text-decoration: none;
+ }
+  a:visited{
+  color: white;
+    text-decoration: none;
+   }
+    a:active{
+    color: red;
+   text-decoration: none;
+   }
+  
+  .hotel {
+    font-family: Helvetica;
+    padding:5px;
+  }
+  
+  .fecha {
+    font-family: Helvetica;
+    margin-left:50px;
+    padding:5px;
+  }
+  
+    .habitacion {
+    font-family: Helvetica;
+    padding:5px;
+  }
+  
+  .tarifa {
+    font-family: Helvetica;
+    margin-left:50px;
+    padding:5px;
+  }
+  
+  .reserva {
+    background-color:#A8F4EA;
+    border: 1px solid black;
+    margin-top:5px;
+    overflow:hidden
+  }
+  
+  .cancelar {
+    float:right;
+    color:red;
+    border:1px solid #FA220C;
+    padding:5px;
+    margin-right:10px;
+    background-color:FFA79B
+  }
+  
+  .titulo_historial {
+    margin-top:30px;
+    text-align:center;
+    font-family: 'Open Sans Condensed',sans-serif; 
+    font-size: 40px;
+    text-decoration:underline;
+  }
+  
+  .historial {
+    background-color:#A8F4EA;
+    border: 1px solid black;
+    overflow:hidden
+  }
+  
+  .fondo {
+    background-color:D1F0EC;
+  }
+  
+  .clasificacion {
+    float:right;
+    margin-bottom: px;
+    margin-right:20px;
+    font-size: 25px;
+  }
+  
+  .enviar {
+    float:right;
+    margin-top: 7px;
+    margin-right:40px
+  }
+  input[type="radio"] {
+  display: none;
 }
 
-#button li img {
-	display: inline-block;
-	float: left;
-	padding: 0px;
-	border: 1px;
-	height: 40;
-	width: 40;
+label {
+  color: black;
 }
 
-#menu {
-	display: inline-block;
-	font-family: Arial;
-	font-size: 15px;
-	float: right;
-	padding: 10px;
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
 }
 
-a:link {
-	color: white;
-	text-decoration: none;
+label:hover,
+label:hover ~ label {
+  color: red;
 }
 
-a:visited {
-	color: white;
-	text-decoration: none;
+input[type="radio"]:checked ~ label {
+  color: red;
 }
+      direction: rtl;
+      unicode-bidi: bidi-override;
+  }
+    </style>
+  
+ </head>
+ <body>
 
-a:active {
-	color: red;
-	text-decoration: none;
-}
-
-.hotel {
-	font-family: Helvetica;
-	padding: 5px;
-}
-
-.fecha {
-	font-family: Helvetica;
-	margin-left: 50px;
-	padding: 5px;
-}
-
-.habitacion {
-	font-family: Helvetica;
-	padding: 5px;
-}
-
-.tarifa {
-	font-family: Helvetica;
-	margin-left: 50px;
-	padding: 5px;
-}
-
-.reserva {
-	background-color: #A8F4EA;
-	border: 1px solid black;
-	margin-top: 5px;
-	overflow: hidden
-}
-
-.cancelar {
-	float: right;
-	color: red;
-	border: 1px solid #FA220C;
-	padding: 5px;
-	margin-right: 10px;
-	background-color: FFA79B
-}
-
-.titulo_historial {
-	margin-top: 30px;
-	text-align: center;
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 40px;
-	text-decoration: underline;
-}
-
-.historial {
-	background-color: #A8F4EA;
-	border: 1px solid black;
-	overflow: hidden
-}
-
-.fondo {
-	background-color: D1F0EC;
-}
-
-.valoranos {
-	float: right;
-	margin-right: 20px;
-	display: block;
-	rows: 2;
-}
-
-.enviar {
-	float: right;
-	margin-right: 30px
-}
-</style>
-</head>
-<body>
-
-
-	<div class="reserva">
-		<p class="hotel">
-			Hotel _____ en ______ <span class="fecha">De dd/mm/aaaa a
-				dd/mm/aaaa</span>
-		</p>
-		<p class="habitacion">
-			Habitación:______ <span class="tarifa">Tarifa:______</span> <span
-				class="cancelar">Cancelar reserva</span>
-		</p>
-	</div>
-
-	<h2 class="titulo_historial">Historial</h2>
-	<div class="historial">
-		<p>
-			Hotel _____ en ______ <span class="valoranos"> <textarea
-					name="Text1" cols="40" rows="3">Cuentanos tu experiencia</textarea>
-			</span>
-		</p>
-		<p>De dd/mm/aaaa a dd/mm/aaaa</p>
-		<p>
-			Habitación:______ <span>
-				<button class="enviar">Enviar</button>
-			</span>
-		</p>
-	</div>
-</body>
+ <div class="reserva">
+   <p class ="hotel">Hotel _____ en ______ 
+   	<span class ="fecha">De dd/mm/aaaa a dd/mm/aaaa</span>
+   </p>
+   <p class="habitacion">HabitaciÃ³n:______
+   	<span class="tarifa">Tarifa:______</span>
+    <span class ="cancelar">Cancelar reserva</span>
+     <span class ="cancelar">Cambiar reserva</span>
+   </p>
+ </div>
+  
+    <h2 class="titulo_historial">Historial</h2>
+ <div class="historial">
+   <p>Hotel _____ en ______
+      <form>
+  <div class="clasificacion">
+    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+    --><label for="radio1">&#9733</label><!--
+    --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+    --><label for="radio2">&#9733</label><!--
+    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+    --><label for="radio3">&#9733</label><!--
+    --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+    --><label for="radio4">&#9733</label><!--
+    --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+    --><label for="radio5">&#9733</label>
+  </div>
+</form>
+   <p>De dd/mm/aaaa a dd/mm/aaaa</p>
+   <p>HabitaciÃ³n:______
+    <span>
+     <button class="enviar">Enviar</button>
+   </span>
+   </p>
+ </div>
+ </body>
 </html>

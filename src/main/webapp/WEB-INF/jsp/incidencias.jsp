@@ -41,7 +41,7 @@
 	<!-- Parte de incidencias -->
 	<div class="aspecto">
 		<h3>Incidencias</h3>
-		<form action="/procesarIncidencias" method="get">
+		<form action="/procesarIncidencias" method="POST" modelAttribute="IncidenciasBean">
 				<!-- Se supone que el nombre de usuario y el email ya esta metido (ya esta logeado el user) -->
 				<label>Asunto:</label> <select>
 						<option id="habitacion">Habitacion</option>

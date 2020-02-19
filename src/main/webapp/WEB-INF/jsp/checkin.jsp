@@ -54,9 +54,11 @@ div.center {
     <div style="margin-top:60px; background-color: lightsalmon; opacity: 30%;">
     <h1 style="text-align: left;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check in</h1>
    </div> 
-   <input type="text" size="15"   id="reserva" style="margin-top:30px;">   Identificador de Reserva
+   <form:form method="POST" action="checkin"
+		modelAttribute="CheckInBean">
+   <input type="text" size="15"   id="reserva" name="reserva"  style="margin-top:30px;">   Identificador de Reserva
     </input></br>
-    <input type="text" size="15"  id="entrada" style="margin-top:30px;">   Hora de Llegada
+    <input type="text" size="15"  id="entrada" name="entrada" style="margin-top:30px;">   Hora de Llegada
     </input></br>
     <textarea rows="5" size="15" maxlength="100" name="comentario" style="margin-top:30px">Escribe aqui tu comentario:
     </textarea>
@@ -64,9 +66,10 @@ div.center {
     
        <div class="w-33">
         <div class="center">
-          <button type="reset" onclick="submitCheckIn()">
+          <button type="submit" onclick="submitCheckIn()">
             Enviar
           </button>
+          </form:form>
         </div>
       </div></br>
 

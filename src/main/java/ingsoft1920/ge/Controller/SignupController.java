@@ -98,6 +98,6 @@ public class SignupController {
 		
 		
 		
-		return "signup";
+		return "redirect:buscador";
 	}
 }

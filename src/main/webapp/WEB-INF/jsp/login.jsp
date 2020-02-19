@@ -21,8 +21,5 @@
 		<br>
 	</form:form>
 
-	<!-- <input type="submit" value="SignUp" <a href="/signup"/> >-->
-	<a href="/signup"><button>Signup</button></a>
-
 </body>
 </html>

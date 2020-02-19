@@ -1,4 +1,4 @@
-package ingsoft1920.ge.Controller;
+package ingsoft1920.ge.ControllerGE1;
 
 import org.apache.logging.log4j.LogManager;
 

@@ -1,6 +1,6 @@
 package ingsoft1920.ge.Model;
 
-import ingsoft1920.ge.Controller.ge_Controller;
+import ingsoft1920.ge.ControllerGE1.ge_Controller;
 
 public class UsuarioModel {
 	int usuarioID;

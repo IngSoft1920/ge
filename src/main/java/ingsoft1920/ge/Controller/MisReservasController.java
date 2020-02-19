@@ -21,6 +21,10 @@ public class MisReservasController {
 	public String buscarGet(Model model) {
 
 		MisReservasBean misReservasBean = new MisReservasBean();
+		
+		ReservaBean reservaBean = new ReservaBean ("Rich", "Guadalajara", "10/12/2020", "15/12/2020", "Suit", "300.0", "");
+		misReservasBean.getReservas().add(reservaBean);
+		
 		model.addAttribute("misReservasBean", misReservasBean);
 		model.addAttribute("mensajeError", "");
 

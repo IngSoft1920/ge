@@ -145,19 +145,21 @@ input[type="radio"]:checked ~ label {
   
  </head>
  <body>
+	<c:forEach items="${misReservasBean.reservas}" var="reserva">
+		<div class="reserva">
+			<p class="hotel">
+				Hotel ${reserva.hotel} en ${reserva.ciudad} <span class="fecha">De ${reserva.fechaInicio} a
+					${reserva.fechaFin} </span>
+			</p>
+			<p class="habitacion">
+				Habitación: ${reserva.habitacion} <span class="tarifa">Tarifa:${reserva.tarifa}</span> <span
+					class="cancelar">Cancelar reserva</span> <span class="cancelar">Cambiar
+					reserva</span>
+			</p>
+		</div>
+	</c:forEach>
 
- <div class="reserva">
-   <p class ="hotel">Hotel _____ en ______ 
-   	<span class ="fecha">De dd/mm/aaaa a dd/mm/aaaa</span>
-   </p>
-   <p class="habitacion">Habitación:______
-   	<span class="tarifa">Tarifa:______</span>
-    <span class ="cancelar">Cancelar reserva</span>
-     <span class ="cancelar">Cambiar reserva</span>
-   </p>
- </div>
-  
-    <h2 class="titulo_historial">Historial</h2>
+	<h2 class="titulo_historial">Historial</h2>
  <div class="historial">
    <p>Hotel _____ en ______
       <form>

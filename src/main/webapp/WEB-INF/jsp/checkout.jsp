@@ -1,3 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<jsp:include page="cabecera.jsp"></jsp:include>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,20 +47,11 @@ div.center {
     </style>
     <body style="background: radial-gradient(beige, transparent);">
        
-    <div style="margin-top:40px; background-color: lightsalmon; opacity: 30%;">
-     <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check in</h1>
+      <div style="margin-top:60px; background-color: lightsalmon; opacity: 30%;">
+        <h1 style="text-align: left;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check out</h1>
     </div> 
-    
-    <div style="margin-top:60px; background-color: lightsalmon; opacity: 30%;">
-    <h1 style="text-align: left;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check in</h1>
-   </div> 
-   <input type="text" size="15" maxlength="9" value="Ej.:ABC123456" name="reserva" style="margin-top:30px;">   Identificador de Reserva
+    <input type="text" size="15" maxlength="9" value="Ej.:14:00" name="reserva" style="margin-top:30px;">   Hora de Salida
     </input></br>
-    <input type="text" size="15" maxlength="9" value="Ej.:14:00" name="entrada" style="margin-top:30px;">   Hora de Llegada
-    </input></br>
-    <textarea rows="5" size="15" maxlength="100" name="comentario" style="margin-top:30px">Escribe aqui tu comentario:
-    </textarea>
-
     
        <div class="w-33">
         <div class="center">

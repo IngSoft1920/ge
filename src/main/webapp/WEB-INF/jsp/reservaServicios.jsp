@@ -13,8 +13,8 @@
             .aspecto {
                 margin: 20px;
                 padding: 10px;
-                background-color: lightsalmon;
-                opacity: 30%;
+                background-color: orange;
+                opacity: 50%;
             }
 
             .parte1 {
@@ -22,7 +22,7 @@
                 grid-column-end: 5;
             }
             </style>
-    <div style="margin-top:40px; background-color: lightsalmon; opacity: 30%;">
+    <div style="margin-top:40px; background-color: orange; opacity: 30%;">
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
     </div> 
     <div class="aspecto">
@@ -40,12 +40,17 @@
         <div class="parte 2">
             <h3> Accedede a</h3>
             <label for="checkin"> Check in</label>
-            <input id=checkin type="button" value="check-in">
+            <input id=checkin type="button" value="check-in" onclick="window.location.href='/checkin'">
             <br><br>
             <label for="checkout"> Check out </label>
-            <input id="checkout" type="button" value="check-out">
-            <br><br>                                   <label for="factura"> Tu factura</label>           
-            <input id= factura type="button" value="factura">
+            <input id="checkout" type="button" value="check-out" onclick="window.location.href='/checkout'">
+
+            <br><br>                                   
+            <label for="factura"> Tu factura</label>           
+            <input id= factura type="button" value="factura" onclick="window.location.href='/facturacion'">
+
+            
+
         </div>
         </div>
    

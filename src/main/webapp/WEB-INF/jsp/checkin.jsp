@@ -19,10 +19,7 @@
     .card:hover {
       box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
     }
-    div.w-33 {
-  width: 100%;
-  background-color: white;
-}
+
 div.center {
   text-align: center;
 }
@@ -35,8 +32,8 @@ div.center {
     justify-content: center;
     }
     .card {
-    background-color: lightsalmon;
-    opacity: 60%;
+    background-color: orange;
+    opacity: 50%;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
@@ -47,13 +44,10 @@ div.center {
     </style>
     <body style="background: radial-gradient(beige, transparent);">
        
-    <div style="margin-top:40px; background-color: lightsalmon; opacity: 30%;">
+    <div style="margin-top:40px; background-color: orange; opacity: 30%;">
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check in</h1>
     </div> 
     
-    <div style="margin-top:60px; background-color: lightsalmon; opacity: 30%;">
-    <h1 style="text-align: left;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check in</h1>
-   </div> 
    <input type="text" size="15"   id="reserva" style="margin-top:30px;">   Identificador de Reserva
     </input></br>
     <input type="text" size="15"  id="entrada" style="margin-top:30px;">   Hora de Llegada
@@ -62,12 +56,10 @@ div.center {
     </textarea>
 
     
-       <div class="w-33">
         <div class="center">
           <button type="reset" onclick="submitCheckIn()">
             Enviar
           </button>
-        </div>
       </div></br>
 
 <script>
@@ -79,7 +71,7 @@ function submitCheckIn(){
     var myJSON = { "reserva": reserva, "entrada": entrada };
     console.log(myJSON)
 
-    return myJSON;
+    postcheckin(myJSON);
     
 }
 

@@ -25,6 +25,10 @@ public class ge_Controller {
 	@Autowired
 	SesionBean sesionBean;
 	
+	@GetMapping("/home")
+	public String home(Model model) {
+		return "home";
+	}
 	
 	@GetMapping("/index")
 	public String index(Model model) {
@@ -85,6 +89,21 @@ public class ge_Controller {
 		
 	}
 	
+	@PostMapping("/checkInAlEnviar")
+	public String postcheckin(String body) throws Exception {
+		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");
+		
+		client.setRequestBody(body);
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();}
+		
+		return resp;
+		
+	}
 	@PostMapping("/checkOutAlEnviar")
 	public String postcheckout(String body) throws Exception {
 		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");

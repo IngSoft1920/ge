@@ -33,8 +33,8 @@ div.center {
    justify-content: center;
    }
    .card {
-   background-color: lightsalmon;
-   opacity: 60%;
+   background-color: orange;
+   opacity: 50%;
    border: 1px solid rgba(0, 0, 0, 0.8);
    padding: 30px;
    width: 250px;
@@ -47,7 +47,7 @@ div.center {
 </style>
     <body style="background: radial-gradient(beige, transparent);">
        
-    <div style="margin-top:40px; background-color: lightsalmon; opacity: 30%;">
+    <div style="margin-top:40px; background-color: orange; opacity: 30%;">
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Facturacion</h1>
     </div> 
 

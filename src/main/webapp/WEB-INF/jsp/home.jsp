@@ -61,7 +61,7 @@
     <head charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Cliente</title>
+        <title>Home</title>
         
     </head>
 
@@ -70,31 +70,22 @@
 
 
        <div class="grid-container">
-       <div class="card" onclick="document.location = '/reservaServicios'">
+       <div class="card" onclick="document.location = '/buscador'">
         <div class="container", style="padding-top:20px">
-          <a><b>Reservas</b></a> 
-          <p>¡Acceda para gestionar su reserva!</p> 
-<i class="far fa-address-card" style="color:white; size:20px;"></i>
-
-          
+          <a><b>Crear nueva reserva</b></a> 
         </div>
       </div>
       
 
-      <div class="card" onclick="document.location = '/servicios'">
+      <div class="card" onclick="document.location = '/misReservas'">
         <div class="container", style="padding-top:20px">
-          <a><b>Servicios</b></a> 
-          <p>¡Acceda para gestionar y reportar los servicios solicitados!</p> 
+          <a><b>Consultar reservas</b></a> 
         </div>
       </div>
       
-        <div class="card" onclick="document.location = '/incidencias'">
+        <div class="card" onclick="document.location = '/index'">
         <div class="container", style="padding-top:20px">
-          <a href="/incidencias"><b>Incidencias</b></a> 
-          <p>¡Acceda para gestionar y reportar los servicios solicitados!</p>
-          <i class="far fa-edit"></i>
-
-           
+          <a><b>Gestionar mi estancia</b></a> 
         </div>
       </div>
       

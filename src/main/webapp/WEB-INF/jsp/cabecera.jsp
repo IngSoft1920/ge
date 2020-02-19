@@ -58,9 +58,9 @@
 </head>
 <body>
 	<ul id="button">
- <li><a href="#"><img src="icon.png"></li>
+ <li><a href="#"><img src="/imagenes/icon.png"></li>
  <li id="menu"><a href="/login">Log in</a></li> 
- <li id="menu"><a href="/buscar">Buscar</a></li>
+ <li id="menu"><a href="/buscador">Buscar</a></li>
  </ul>
 
 </body>

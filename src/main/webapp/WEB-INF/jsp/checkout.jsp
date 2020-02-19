@@ -41,20 +41,33 @@ div.center {
     margin-left: 60px;
     margin-right: 60px;
     }
+ .aspecto{
+    text-align:center;
+    margin-top:60px;
+    	margin: 20px;
+	padding: 10px;
+	background-color: orange;
+	opacity: 50%;
+    }
+        label{
+    font-size:20px
+    }
     </style>
     <body style="background: radial-gradient(beige, transparent);">
        
-      <div style="margin-top:60px; background-color: orange; opacity: 30%;">
-        <h1 style="text-align: left;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check out</h1>
-    </div> 
-    <input type="text" size="15" maxlength="9" value="Ej.:14:00" name="reserva" style="margin-top:30px;">   Hora de Salida
-    </input></br>
-    
-        <div class="center">
-          <button type="reset">
-            Enviar
-          </button>
-      </div></br>
 
+        <div style="margin-top:40px; background-color: orange; opacity: 30%;">
+     <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check Out</h1>
+    </div> 
+    
+    
+    <div class="aspecto">
+		<form  method="get" style="width:100%;">
+				<label>Hora de salida</label><br>
+				<input type="text"  style="margin-top:5px; margin-bottom:10px" size="20" maxlength="9" value="Ej.:14:00" name="reserva" ></input>
+    			<br><br>
+				<input type="submit" value="Enviar">
+		</form>
+	</div>
     </body>
 </html>

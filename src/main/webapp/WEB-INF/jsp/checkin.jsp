@@ -10,6 +10,15 @@
     <script src="/ge/src/main/java/ingsoft1920/ge/Controller/ge_Controller.java"></script>
     
     <style>
+ .aspecto{
+    text-align:center;
+    margin-top:60px;
+    	margin: 20px;
+	padding: 10px;
+	background-color: orange;
+	opacity: 50%;
+    }
+    
          .card {
       box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
       transition: 0.3s;
@@ -41,27 +50,30 @@ div.center {
     margin-left: 60px;
     margin-right: 60px;
     }
+    label{
+    font-size:20px
+    }
     </style>
     <body style="background: radial-gradient(beige, transparent);">
        
     <div style="margin-top:40px; background-color: orange; opacity: 30%;">
-     <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check in</h1>
+     <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check In</h1>
     </div> 
     
-   <input type="text" size="15"   id="reserva" style="margin-top:30px;">   Identificador de Reserva
-    </input></br>
-    <input type="text" size="15"  id="entrada" style="margin-top:30px;">   Hora de Llegada
-    </input></br>
-    <textarea rows="5" size="15" maxlength="100" name="comentario" style="margin-top:30px">Escribe aqui tu comentario:
-    </textarea>
 
-    
-        <div class="center">
-          <button type="reset" onclick="submitCheckIn()">
-            Enviar
-          </button>
-      </div></br>
-
+<div class="aspecto">
+		<form  method="get" style="width:100%;">
+				<label>Identificador de reserva</label><br>
+				<input type="text" size="20"  id="reserva" style="margin-top:5px; margin-bottom:10px"></input><br>
+				<label>Hora de llegada</label><br>
+				<input type="text" size="20"  id="entrada" style="margin-top:5px; margin-bottom:10px"></input><br>
+     			<label>Déjenos su comentario!</label><br>
+     			<textarea rows="5" size="20" maxlength="100" id="comentario" style="margin-top:5px; margin-bottom:10px"></textarea>
+				<br><br>
+				<input type="submit" value="Enviar">
+		</form>
+	</div>
+	
 <script>
 
 function submitCheckIn(){

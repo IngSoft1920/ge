@@ -25,7 +25,17 @@
 	text-align: center;
 	margin-top: 0px;
 }
-
+ .aspecto2{
+    text-align:center;
+    margin-top:60px;
+    	margin: 20px;
+	padding: 10px;
+	background-color: orange;
+	opacity: 50%;
+    }
+        label{
+    font-size:20px
+    }
 .parte1 {
 	grid-column-start: 1;
 	grid-column-end: 5;
@@ -39,17 +49,19 @@
 	</div>
 
 	<!-- Parte de incidencias -->
-	<div class="aspecto">
-		<h3>Incidencias</h3>
+	<div class="aspecto2">
 		<form action="/procesarIncidencias" method="get">
 				<!-- Se supone que el nombre de usuario y el email ya esta metido (ya esta logeado el user) -->
-				<label>Asunto:</label> <select>
+				<label>Asunto</label> <br>
+				<select style="margin-top:5px; margin-bottom:10px">
 						<option id="habitacion">Habitacion</option>
 						<option id="restaurante">Restaurante - comida</option>
 						<option id="servicio">Servicio</option>
 				</select>
 				<br><br>
-				<label>Mensaje:</label> <textarea name="message"></textarea>
+				<label>Mensaje</label><br>
+				<textarea name="message" rows="5" size="20" maxlength="100" style="margin-top:5px; margin-bottom:10px">
+				</textarea> 
 				<br><br>
 				<input type="submit" value="Enviar">
 		</form>

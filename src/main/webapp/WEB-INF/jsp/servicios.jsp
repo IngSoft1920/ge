@@ -10,16 +10,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body style="background: radial-gradient(beige, transparent);">
 	<style>
-.aspecto {
-	margin: 20px;
+
+ .aspecto{
+    text-align:center;
+    margin-top:60px;
+    	margin: 20px;
 	padding: 10px;
 	background-color: orange;
 	opacity: 50%;
-}
-.parte1 {
-	grid-column-start: 1;
-	grid-column-end: 5;
-}
+    }
+        label{
+    font-size:20px
+    }
         #myInput {
   background-image: url('/css/searchicon.png'); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
@@ -81,8 +83,10 @@ function myFunction() {
 			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios</h1>
 	</div>
 	<!-- Parte de servicios y reserva -->
-	<div class="aspecto">
-		<div class="parte1">
+	
+		<div class="aspecto">
+		<form  method="get" style="width:100%;">
+	
 			<h3>Servicios</h3>
 			<!-- Lista de servicios -->
 			<select>
@@ -155,31 +159,32 @@ function myFunction() {
             <br/><br/>
 			<!-- Boton de reservar -->
 			<button type="submit">Reservar</button>
+			</form>
 		</div>
         
-	</div>
-    <div class="aspecto">
-        <div></div> 
+	
+		<div class="aspecto">
+		<form  method="get" style="width:100%;">
 			<h3>Encargar comida </h3>
 			
-      <input placeholder="Número de habitación" type="text" size="22" maxlength="9" value="" name="habitación" style="margin-top:30px;">   
-        <div class="w-33">
-        <div class="center">
-        <textarea placeholder="Descripción del pedido" rows="5" size="15" maxlength="100" name="comentario" style="margin-top:30px"></textarea>
+      <input placeholder="Número de habitación" type="text" size="22" maxlength="9" value="" name="habitación" >  <br> 
+
+        <textarea placeholder="Descripción del pedido" rows="5" size="15" maxlength="100" name="comentario" style="margin-top:20px"></textarea>
             
           <br/><br/>
             <button type="reset">
             Encargar
           </button>
-        </div>
-      </div></br>
+</br>
     </input></br>
+    </form>
 		</div>
+		
+		
 <div class="aspecto">
-		<div class="parte1">
+		<form  method="get" style="width:100%;">
 			<h3>Reserva de mesa</h3>
 			<!-- Lista de servicios -->
-			<div class="custom-select" style="width:400px;">
   <select>
     <option value="0">Número de personas:</option>
     <option value="1">1</option>
@@ -262,13 +267,15 @@ function myFunction() {
                 
 			<!-- Boton de reservar -->
 			<button type="submit">Reservar</button>
-                </div>
+                
+                </form>
     </div>
-    </div>
+
+
     <div class="aspecto">
         <div></div> 
 			<h3>Servicios reservados </h3>
-		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscador">
+		<input type="text" id="myInput" placeholder="Buscador">
 ​
 <ul id="myUL">
   <li><a href="#">Spa[10:00]</a></li>

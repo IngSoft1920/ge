@@ -120,13 +120,7 @@
     </style>
  </head>
  <body>
-    <div class ="fondo">
-   <ul id="button">
-   <li><a href="#"><img src="icon.png"></li>
-   <li id="menu"><a href="#">Log in</a></li>
-   <li id="menu"><a href="#">Buscar</a></li>
-   <li id="menu"><a href="#">Mis Reservas</a></li>
-  </ul>
+
 
  <div class="reserva">
    <p class ="hotel">Hotel _____ en ______ 
@@ -151,7 +145,6 @@
      <button class="enviar">Enviar</button>
    </span>
    </p>
- </div>
  </div>
  </body>
 </html>

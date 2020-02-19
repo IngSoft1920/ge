@@ -15,8 +15,8 @@
 .aspecto {
 	margin: 20px;
 	padding: 10px;
-	background-color: lightsalmon;
-	opacity: 30%;
+	background-color: orange;
+	opacity: 50%;
 }
 
 .parte1 {
@@ -27,7 +27,7 @@
 
 	<!-- Cabecera de la pagina -->
 	<div
-		style="margin-top: 40px; background-color: lightsalmon; opacity: 30%;">
+		style="margin-top: 40px; background-color: orange; opacity: 30%;">
 		<h1
 			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Incidencias</h1>
 	</div>
@@ -38,7 +38,7 @@
 		<form action="/procesarIncidencias" method="get">
 			<ul>
 				<li><label>Nombre:</label> <input type="text" name="nombre"></li>
-				<li><label>Correo electrï¿½nico:</label> <input type="email"
+				<li><label>Correo electrónico:</label> <input type="email"
 					name="email"></li>
 				<li><label>Asunto:</label> <select>
 						<option>Habitacion</option>

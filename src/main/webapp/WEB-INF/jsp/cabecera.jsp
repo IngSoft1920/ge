@@ -58,9 +58,13 @@
 </head>
 <body>
 	<ul id="button">
+<<<<<<< HEAD
  <li><a href="#"><img src="images/icon.png"></li>
+=======
+ <li><a href="#"><img src="/imagenes/icon.png"></li>
+>>>>>>> develop
  <li id="menu"><a href="/login">Log in</a></li> 
- <li id="menu"><a href="/buscar">Buscar</a></li>
+ <li id="menu"><a href="/buscador">Buscar</a></li>
  </ul>
 
 </body>

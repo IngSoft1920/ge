@@ -31,5 +31,6 @@
 		<input type="submit" value="Registro">
 		<br>
 	</form:form>
+	<a href="/buscar"><button>Volver</button></a>
 </body>
 </html>

@@ -61,9 +61,28 @@
 <body>
 	<ul id="button">
  <li><a href="#"><img src="/images/icon.jpg"/></li>
- <li id="menu"><a href="#">Log in</a></li> 
+ 
+ 
+ <li id="menu"> 
+ 
+ 
+ <% if(request.getSession(false)==null){ %>
+ ${sesionBean.usuarioID}
+ 
+ <%}else{ %> 
+ <a href="signup.jsp" > Log in</a> 
+  
+ <% } %>
+
+ 
+ </li>
+ 
+
+
  <li id="menu"><a href="#">Buscar</a></li>
  </ul>
+ 
+
 
 </body>
 </html>

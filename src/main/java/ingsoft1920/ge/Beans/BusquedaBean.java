@@ -2,36 +2,58 @@ package ingsoft1920.ge.Beans;
 
 
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class BusquedaBean {
-	private Date fechaInicio;
-	private Date fechaFin;
+	private String fechaInicio;
+	private String fechaFin;
 	private String hotel;
 	private String ciudad;
+	private List<String> hoteles;
+	private List<String> ciudades;
 	
-	public BusquedaBean() {}
+	public BusquedaBean() {
+		this.hoteles = new ArrayList<String>();
+		this.ciudades = new ArrayList<String>();
+	}
 	
 	public boolean checkCamposValidos() {
 		return true;
 	}
+	
+	public List<String> getHoteles() {
+		return hoteles;
+	}
 
-	public Date getFechaInicio() {
+	public void setHoteles(List<String> hoteles) {
+		this.hoteles = hoteles;
+	}
+
+	public List<String> getCiudades() {
+		return ciudades;
+	}
+
+	public void setCiudades(List<String> ciudades) {
+		this.ciudades = ciudades;
+	}
+
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+	public String getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 

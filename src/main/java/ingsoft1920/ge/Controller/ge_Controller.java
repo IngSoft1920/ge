@@ -31,7 +31,7 @@ public class ge_Controller {
 		return "index";
 	}
 	@GetMapping("/reservaServicios")
-	public String reservaServicios(Model model) {
+	public String reservaServicios() {
 		return "reservaServicios";
 	}
 	
@@ -40,23 +40,6 @@ public class ge_Controller {
 		
 		return "servicios";
 	}	
-	@PostMapping("/serviciosAlEnviar")
-	public String postservicios(String body) throws Exception {
-		HttpClient client= new HttpClient("localhost:7004/¿que se pone?", "POST");
-		
-		client.setRequestBody(body);
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();}
-		
-		return resp;
-		
-	}
-	
-	
 	@GetMapping("/incidencias")
 	public String incidencias() {
 		
@@ -85,5 +68,51 @@ public class ge_Controller {
 	@GetMapping("/cabecera")
 	public String cabecera() {
 		return "cabecera";
+	}
+	@PostMapping("/serviciosAlEnviar")
+	public String postservicios(String body) throws Exception {
+		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");
+		
+		client.setRequestBody(body);
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();}
+		
+		return resp;
+		
+	}
+	
+	@PostMapping("/checkInAlEnviar")
+	public String postcheckin(String body) throws Exception {
+		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");
+		
+		client.setRequestBody(body);
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();}
+		
+		return resp;
+		
+	}
+	@PostMapping("/checkOutAlEnviar")
+	public String postcheckout(String body) throws Exception {
+		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");
+		
+		client.setRequestBody(body);
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();}
+		
+		return resp;
+		
 	}
 }

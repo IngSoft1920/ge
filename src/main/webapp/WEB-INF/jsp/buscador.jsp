@@ -162,7 +162,6 @@ li {
 	color: white;
 	margin: auto;
 	border-color: black;
-<<<<<<< HEAD
 }
 
 #panel {
@@ -176,20 +175,6 @@ li {
 	line-height: 50pt;
 }
 
-=======
-}
-
-#panel {
-	display: none;
-}
-
-
-.habitacionTipo{
-	font-family: Oldtown, fantasy;
-	font-size: 15px;
-}
-
->>>>>>> develop
 ul.habitacion{
 
 margin: 15px 15px;
@@ -231,7 +216,6 @@ margin-top: -40px;
 					<form:input type="date" name="fechaFin" path="fechaFin" />
 				</div>
 
-<<<<<<< HEAD
 
 				<div class="columna">
 
@@ -251,26 +235,6 @@ margin-top: -40px;
 						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
 
 							<option value="${hotel}">${hotel}</option>
-=======
-				<div class="columna">
-					<h3>Hotel</h3>
-
-					<select name="hotel">
-						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
-
-							<option value="${hotel}">${hotel}</option>
-						</c:forEach>
-					</select>
-				</div>
-
-				<div class="columna">
-
-					<h3>Ciudad</h3>
-
-					<select name="ciudad">
-						<c:forEach items="${busquedaBean.ciudades}" var="ciudad">
-							<option value="${ciudad}">${ciudad}</option>
->>>>>>> develop
 						</c:forEach>
 					</select>
 				</div>
@@ -358,7 +322,6 @@ margin-top: -40px;
 
 
 	<div class="columnaHabitacion">
-<<<<<<< HEAD
 		
 			<c:forEach items="${hotel.habitaciones}" var="habitacion">
 		<div class="habitacionTipo">
@@ -369,9 +332,6 @@ margin-top: -40px;
 		</div>
 				
 	</c:forEach>
-=======
-		<input type="button" onclick="location.href=" #";" value="Reservar" />
->>>>>>> develop
 	</div>
 	</div>
 

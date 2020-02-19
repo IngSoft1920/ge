@@ -1,5 +1,9 @@
 package ingsoft1920.ge.BeansGE1;
 
+import org.springframework.stereotype.Component;
+
+@Component
+
 public class EcargarComidaBean {
 	private  int numHabitacion;
 	private String pedido;

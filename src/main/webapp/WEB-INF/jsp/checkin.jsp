@@ -3,11 +3,11 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/ge/src/main/java/ingsoft1920/ge/Controller/ge_Controller.java"></script>
     
     <style>
          .card {
@@ -54,9 +54,9 @@ div.center {
     <div style="margin-top:60px; background-color: lightsalmon; opacity: 30%;">
     <h1 style="text-align: left;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check in</h1>
    </div> 
-   <input type="text" size="15" maxlength="9" value="Ej.:ABC123456" name="reserva" style="margin-top:30px;">   Identificador de Reserva
+   <input type="text" size="15"   id="reserva" style="margin-top:30px;">   Identificador de Reserva
     </input></br>
-    <input type="text" size="15" maxlength="9" value="Ej.:14:00" name="entrada" style="margin-top:30px;">   Hora de Llegada
+    <input type="text" size="15"  id="entrada" style="margin-top:30px;">   Hora de Llegada
     </input></br>
     <textarea rows="5" size="15" maxlength="100" name="comentario" style="margin-top:30px">Escribe aqui tu comentario:
     </textarea>
@@ -64,11 +64,25 @@ div.center {
     
        <div class="w-33">
         <div class="center">
-          <button type="reset">
+          <button type="reset" onclick="submitCheckIn()">
             Enviar
           </button>
         </div>
       </div></br>
 
+<script>
+
+function submitCheckIn(){
+    var reserva = document.getElementById("reserva").value;
+    var entrada = document.getElementById("entrada").value;
+    
+    var myJSON = { "reserva": reserva, "entrada": entrada };
+    console.log(myJSON)
+
+    return myJSON;
+    
+}
+
+</script>
     </body>
 </html>

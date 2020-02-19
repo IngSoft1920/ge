@@ -51,20 +51,18 @@
   color: red;
  text-decoration: none;
  }
- 
+ img {
+  display: inline-block;
+}
 
 
 </style>
 </head>
 <body>
 	<ul id="button">
-<<<<<<< HEAD
- <li><a href="#"><img src="images/icon.png"></li>
-=======
- <li><a href="#"><img src="/imagenes/icon.png"></li>
->>>>>>> develop
- <li id="menu"><a href="/login">Log in</a></li> 
- <li id="menu"><a href="/buscador">Buscar</a></li>
+ <li><a href="#"><img src="/images/icon.jpg"/></li>
+ <li id="menu"><a href="#">Log in</a></li> 
+ <li id="menu"><a href="#">Buscar</a></li>
  </ul>
 
 </body>

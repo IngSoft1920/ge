@@ -10,6 +10,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<%
+	String mensaje = request.getParameter("message");
+	String asunto;
+%>
+
 <body style="background: radial-gradient(beige, transparent);">
 	<style>
 .aspecto {
@@ -17,6 +22,8 @@
 	padding: 10px;
 	background-color: orange;
 	opacity: 50%;
+	text-align: center;
+	margin-top: 0px;
 }
 
 .parte1 {
@@ -26,8 +33,7 @@
 </style>
 
 	<!-- Cabecera de la pagina -->
-	<div
-		style="margin-top: 40px; background-color: orange; opacity: 30%;">
+	<div style="margin-top: 40px; background-color: orange; opacity: 30%;" >
 		<h1
 			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Incidencias</h1>
 	</div>
@@ -36,17 +42,16 @@
 	<div class="aspecto">
 		<h3>Incidencias</h3>
 		<form action="/procesarIncidencias" method="get">
-			<ul>
-				<li><label>Nombre:</label> <input type="text" name="nombre"></li>
-				<li><label>Correo electrónico:</label> <input type="email"
-					name="email"></li>
-				<li><label>Asunto:</label> <select>
-						<option>Habitacion</option>
-						<option>Restaurante - comida</option>
-				</select></li>
-				<li><label>Mensaje:</label> <textarea name="message"></textarea></li>
-				<li><input type="submit" value="Enviar"></li>
-			</ul>
+				<!-- Se supone que el nombre de usuario y el email ya esta metido (ya esta logeado el user) -->
+				<label>Asunto:</label> <select>
+						<option id="habitacion">Habitacion</option>
+						<option id="restaurante">Restaurante - comida</option>
+						<option id="servicio">Servicio</option>
+				</select>
+				<br><br>
+				<label>Mensaje:</label> <textarea name="message"></textarea>
+				<br><br>
+				<input type="submit" value="Enviar">
 		</form>
 	</div>
 

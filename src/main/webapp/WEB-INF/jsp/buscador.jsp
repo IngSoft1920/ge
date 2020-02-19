@@ -171,7 +171,8 @@ li {
 
 .habitacionTipo{
 	font-family: Oldtown, fantasy;
-	font-size: 15px;
+	font-size: 25px;
+	line-height: 50pt;
 }
 
 ul.habitacion{
@@ -215,16 +216,6 @@ margin-top: -40px;
 					<form:input type="date" name="fechaFin" path="fechaFin" />
 				</div>
 
-				<div class="columna">
-					<h3>Hotel</h3>
-
-					<select name="hotel">
-						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
-
-							<option value="${hotel}">${hotel}</option>
-						</c:forEach>
-					</select>
-				</div>
 
 				<div class="columna">
 
@@ -233,6 +224,17 @@ margin-top: -40px;
 					<select name="ciudad">
 						<c:forEach items="${busquedaBean.ciudades}" var="ciudad">
 							<option value="${ciudad}">${ciudad}</option>
+						</c:forEach>
+					</select>
+				</div>
+				
+				<div class="columna">
+					<h3>Hotel</h3>
+
+					<select name="hotel">
+						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
+
+							<option value="${hotel}">${hotel}</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -320,7 +322,16 @@ margin-top: -40px;
 
 
 	<div class="columnaHabitacion">
+		
+			<c:forEach items="${hotel.habitaciones}" var="habitacion">
+		<div class="habitacionTipo">
+			<ul class="habitacion">							
+							
 		<input type="button" onclick="location.href=" #";" value="Reservar" />
+			</ul>
+		</div>
+				
+	</c:forEach>
 	</div>
 	</div>
 

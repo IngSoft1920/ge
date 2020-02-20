@@ -60,7 +60,7 @@
 </head>
 <body>
 	<ul id="button">
- <li><a href="#"><img src="/images/icon.jpg"/></li>
+ <li><a href="#"><img src="/imagenes/icon.jpg"/></li>
  
  
  <li id="menu"> 

@@ -80,7 +80,7 @@ padding-top: 50px;
 <header>
 <div class="top">
 	<ul id="button">
- <li><a href="#"><img src="/imagenes/icon.jpg"/></li>
+ <li><a href="/buscador"><img src="/imagenes/icon.jpg"/></li>
  
  
  <li id="menu"> 
@@ -90,7 +90,7 @@ padding-top: 50px;
  ${sesionBean.usuarioID}
  
  <%}else{ %> 
- <a href="signup.jsp" > Log in</a> 
+ <a href="/login" > Log in</a> 
   
  <% } %>
 
@@ -99,7 +99,7 @@ padding-top: 50px;
  
 
 
- <li id="menu"><a href="#">Buscar</a></li>
+ <li id="menu"><a href="/buscador">Buscar</a></li>
  </ul>
  
 </div>

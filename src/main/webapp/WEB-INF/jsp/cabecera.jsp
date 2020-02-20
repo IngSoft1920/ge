@@ -14,7 +14,8 @@
   margin: 0;
   padding: 20;
   overflow: hidden;
-  background-color: #333;
+  background-color: #333;  
+
  }
  
 #button li {
@@ -55,10 +56,29 @@
   display: inline-block;
 }
 
+.top{
+ 
+    position: fixed;
+    
+    background-color: #222;
+    opacity: 1;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    
+}
+
+body{
+width: 100%;
+padding-top: 50px;
+}
+
+
 
 </style>
 </head>
-<body>
+<header>
+<div class="top">
 	<ul id="button">
  <li><a href="#"><img src="/imagenes/icon.jpg"/></li>
  
@@ -82,7 +102,10 @@
  <li id="menu"><a href="#">Buscar</a></li>
  </ul>
  
+</div>
+</header>
 
+<body>
 
 </body>
 </html>

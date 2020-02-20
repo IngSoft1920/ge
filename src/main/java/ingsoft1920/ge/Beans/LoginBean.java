@@ -12,7 +12,13 @@ public class LoginBean {
 	public LoginBean() {}
 	
 	public boolean checkCamposValidos() {
-		return true;
+		boolean resultado = true;
+		if (usuario.isEmpty()) {
+			resultado = false;
+		} else if (password.isEmpty()) {
+			resultado = false;
+		}
+		return resultado;
 	}
 
 	public String getUsuario() {

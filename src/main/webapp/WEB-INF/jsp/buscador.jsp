@@ -168,26 +168,19 @@ li {
 	display: none;
 }
 
-
-.habitacionTipo{
+.habitacionTipo {
 	font-family: Oldtown, fantasy;
 	font-size: 25px;
 	line-height: 50pt;
 }
 
-ul.habitacion{
-
-margin: 15px 15px;
-
+ul.habitacion {
+	margin: 15px 15px;
 }
 
-tarifas{
-margin-top: -40px;
-
+tarifas {
+	margin-top: -40px;
 }
-
-
-
 </style>
 </head>
 
@@ -227,7 +220,7 @@ margin-top: -40px;
 						</c:forEach>
 					</select>
 				</div>
-				
+
 				<div class="columna">
 					<h3>Hotel</h3>
 
@@ -277,66 +270,69 @@ margin-top: -40px;
 				</div>
 
 				<div class="habitacion">
-				<div class="columnaHabitacion">
-					<h3>Habitaciones:</h3>
-					
+					<div class="columnaHabitacion">
+						<h3>Habitaciones:</h3>
+
 						<c:forEach items="${hotel.habitaciones}" var="habitacion">
 
 							<div class="habitacionTipo">
-							<ul class="habitacion">
-							
-							
-							<li class="habitacionLI">${habitacion.tipo}</li>
-							</ul>
+								<ul class="habitacion">
+
+
+									<li class="habitacionLI">${habitacion.tipo}</li>
+								</ul>
 							</div>
-				
-					</c:forEach>
+
+						</c:forEach>
 					</div>
 
-	<div class="columnaHabitacion">
-	
-	<h3>Tarifas: </h3>
-	<c:forEach items="${hotel.habitaciones}" var="habitacion">
-		<div class="habitacionTipo">
-			<ul class="habitacion">							
-							
-				<li class="habitacionLI">${habitacion.tarifa}</li>
-			</ul>
+					<div class="columnaHabitacion">
+
+						<h3>Tarifas:</h3>
+						<c:forEach items="${hotel.habitaciones}" var="habitacion">
+							<div class="habitacionTipo">
+								<ul class="habitacion">
+
+									<li class="habitacionLI">${habitacion.tarifa}</li>
+								</ul>
+							</div>
+
+						</c:forEach>
+
+					</div>
+
+					<div class="columnaHabitacion">
+						<br>
+						<button type="button" onclick="showMore()">+ info</button>
+					</div>
+
+					<div class="columnaHabitacion">
+						<div id="panel">
+							<p>..extra</p>
+							<button type="button" onclick="showLess()">- info</button>
+						</div>
+					</div>
+
+
+					<div class="columnaHabitacion">
+
+						<c:forEach items="${hotel.habitaciones}" var="habitacion">
+							<div class="habitacionTipo">
+								<ul class="habitacion">
+									<form:form method="POST" action="reservar">
+										<input type="hidden" name="habitacionId"
+											value="${habitacion.getId()}" /> 
+										<input type="submit" value="Reservar"/>
+									</form:form>
+								</ul>
+							</div>
+
+						</c:forEach>
+					</div>
+				</div>
+
+			</li>
 		</div>
-				
-	</c:forEach>
-		
-	</div>
-
-	<div class="columnaHabitacion">
-	<br>
-		<button type="button" onclick="showMore()">+ info</button>
-	</div>
-
-	<div class="columnaHabitacion">
-		<div id="panel">
-			<p>..extra</p>
-			<button type="button" onclick="showLess()">- info</button>
-		</div>
-	</div>
-
-
-	<div class="columnaHabitacion">
-		
-			<c:forEach items="${hotel.habitaciones}" var="habitacion">
-		<div class="habitacionTipo">
-			<ul class="habitacion">							
-							
-		<input type="button" onclick="location.href=" #";" value="Reservar" />
-			</ul>
-		</div>
-				
-	</c:forEach>
-	</div>
-	</div>
-
-	</li>
-	</div>
 	</c:forEach>
 </ul>
 

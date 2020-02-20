@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
 public class BusquedaController {
 	final static Logger logger = LogManager.getLogger(BusquedaController.class.getName());
 
+	@Autowired
+	HotelesDisponiblesBean hotelesDisponibles;
+	
 	@GetMapping("/buscador")
 	public String buscarGet(Model model) {
 		
@@ -45,25 +49,34 @@ public class BusquedaController {
 		
 		// Consulta a la base de datos
 		
-		HotelesDisponiblesBean hotelesDisponibles = new HotelesDisponiblesBean();
+		hotelesDisponibles = new HotelesDisponiblesBean();
 		HotelBean hotel = new HotelBean("Ritz", "Zaragoza");
 		List<HabitacionBean> listaHabitaciones = new ArrayList<HabitacionBean>();
-		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0"));
-		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0"));
-		listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0"));
+		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 0));
+		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 1));
+		listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0", 2));
 		hotel.setHabitaciones(listaHabitaciones);
 		hotelesDisponibles.getHoteles().add(hotel);
 		
 		hotel = new HotelBean("Hotel 2", "Madrid");
 		listaHabitaciones = new ArrayList<HabitacionBean>();
-		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0"));
-		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0"));
-		listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0"));
+		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 3));
+		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 4));
+		listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0", 5));
 		hotel.setHabitaciones(listaHabitaciones);
 		hotelesDisponibles.getHoteles().add(hotel);
 		
 		model.addAttribute("hotelesDisponiblesBean", hotelesDisponibles);
 		
 		return "buscador";
+	}
+	
+	@PostMapping("/reservar")
+	public String reservarPost(@Valid @ModelAttribute("habitacionId") int habitacionId,
+			Model model) {
+		
+		logger.info("Reserva recibida correctamente." + habitacionId);
+		
+		return "redirect:buscador";
 	}
 }

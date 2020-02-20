@@ -6,7 +6,7 @@
 <html>
 <head>Signup
 </head>
-<body>
+<body style="text-align: center; background-color: skyblue">
 	<div>
 		<!-- Podemos acceder a tipos basicos (String, int...) mediante esta etiqueta -->
 		<h1>${mensajeError}</h1>
@@ -15,10 +15,12 @@
 		<label>Nombre de usuario</label>
 		<form:input type="text" name="usuario" path="usuario" />
 		<br>
-		<label>Contraseña</label>
+		<br>
+		<label>Contrasena</label>
 		<form:input type="password" name="password" path="password" />
 		<br>
-		<label>Correo electrónico</label>
+		<br>
+		<label>Correo electronico</label>
 		<form:input type="text" name="email" path="email" />
 		<br>
 	</form:form>

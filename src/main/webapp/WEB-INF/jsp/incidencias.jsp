@@ -46,7 +46,7 @@
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
-		<form action="/procesarIncidencias" method="get">
+		<form action="/procesarIncidencias" method="post">
 				<!-- Se supone que el nombre de usuario y el email ya esta metido (ya esta logeado el user) -->
 				<label>Asunto</label> <br>
 				<select style="margin-top:5px; margin-bottom:10px">

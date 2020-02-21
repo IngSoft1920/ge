@@ -8,8 +8,8 @@ import org.springframework.web.context.annotation.SessionScope;
 public class IncidenciasBean {
 	private String asunto;
 	private String mensaje;
-	
-	
+
+
 	public String getAsunto() {
 		return asunto;
 	}
@@ -27,16 +27,21 @@ public class IncidenciasBean {
 		this.asunto = asunto;
 		this.mensaje = mensaje;
 	}
-	
+
 	public boolean checkCamposValidos() {
+		/*if(!mensaje.isEmpty()) {
+			return true;
+		}
+		else 
+			return false;*/
 		return true;
 	}
-	
+
 	public IncidenciasBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
+
 
 }

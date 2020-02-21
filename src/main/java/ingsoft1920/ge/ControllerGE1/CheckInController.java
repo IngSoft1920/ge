@@ -27,7 +27,7 @@ public class CheckInController {
 	public static String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
 			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");
+		HttpClient client= new HttpClient("localhost:7004/checkInEnviar", "POST");
 		
 		client.setRequestBody("");
 		
@@ -37,10 +37,11 @@ public class CheckInController {
 		if(respCode==200) {
 			  resp=client.getResponseBody();}
 		
+		
 		return resp;
 		
 	}
-	@GetMapping("/checkInEnviar")
+	@GetMapping("/checkIn")
 	public static String checkInEnviar(Model model) {
 		return "";
 	}

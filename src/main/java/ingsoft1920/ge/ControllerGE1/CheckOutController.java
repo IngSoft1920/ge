@@ -46,7 +46,7 @@ public class CheckOutController {
 		return resp;
 		
 	}
-	@GetMapping("/checkInEnviar")
+	@GetMapping("/checkOutEnviar")
 	public static String checkInEnviar(Model model) {
 		return "";
 	}

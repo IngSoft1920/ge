@@ -22,8 +22,7 @@ public class ge_Controller {
 	
 	final static Logger logger = LogManager.getLogger(ge_Controller.class.getName());
 	
-	@Autowired
-	SesionBean sesionBean;
+	
 	
 	@GetMapping("/home")
 	public String home(Model model) {
@@ -56,7 +55,7 @@ public class ge_Controller {
 		return "procesarIncidencias";
 	}
 	
-	@GetMapping("/checkin")
+	@GetMapping("/checkinfalso")
 	public String checkin() {
 		return "checkin";
 	}

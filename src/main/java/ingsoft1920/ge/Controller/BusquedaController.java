@@ -50,7 +50,7 @@ public class BusquedaController {
 		// Consulta a la base de datos
 		
 		hotelesDisponibles = new HotelesDisponiblesBean();
-		HotelBean hotel = new HotelBean("Ritz", "Zaragoza");
+		HotelBean hotel = new HotelBean("Ritz", "Zaragoza", 15, 30);
 		List<HabitacionBean> listaHabitaciones = new ArrayList<HabitacionBean>();
 		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 0));
 		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 1));
@@ -58,7 +58,7 @@ public class BusquedaController {
 		hotel.setHabitaciones(listaHabitaciones);
 		hotelesDisponibles.getHoteles().add(hotel);
 		
-		hotel = new HotelBean("Hotel 2", "Madrid");
+		hotel = new HotelBean("Hotel 2", "Madrid", 15, 30);
 		listaHabitaciones = new ArrayList<HabitacionBean>();
 		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 3));
 		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 4));

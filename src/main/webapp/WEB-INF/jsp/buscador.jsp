@@ -66,6 +66,7 @@ h3 {
 	font-family: Oldtown, fantasy;
 	Line-Height: 5px;
 	font-size: 25px;
+	
 }
 
 input[type=date] {
@@ -302,16 +303,20 @@ tarifas {
 					</div>
 
 					<div class="columnaHabitacion">
-						<br>
-						<button type="button" onclick="showMore()">+ info</button>
-					</div>
+											
+						<h3>¿Comida?</h3>
+						<form:form method="POST" action="reservar">
+							<select name="tarifas">
+								<option value="0">+ 0:  alojamiento</option>
+								<option value="${HotelBean.desayuno}">+ ${hotel.desayuno}: alojamiento + desayuno</option>
+								<option value="${HotelBean.pensionCompleta}">+ ${hotel.pensionCompleta}: pension completa</option>
 
-					<div class="columnaHabitacion">
-						<div id="panel">
-							<p>..extra</p>
-							<button type="button" onclick="showLess()">- info</button>
-						</div>
+							</select>
+							<input type="hidden" name="habitacionId" value="${habitacion.getId()}" />							
+							<input type="hidden" name="optionComida" value= " <%request.getParameter("tarifas");%>"/>
+						</form:form>
 					</div>
+				
 
 
 					<div class="columnaHabitacion">
@@ -351,4 +356,21 @@ function showLess() {
 
 </body>
 </html>
+
+<!-- 
+
+<div class="columnaHabitacion">
+	<br>
+	<button type="button" onclick="showMore()">+ info</button>
+	</div>
+
+<div class="columnaHabitacion">
+		<div id="panel">
+		<p>..extra</p>
+	<button type="button" onclick="showLess()">- info</button>
+</div>
+</div>
+
+ -->
+
 

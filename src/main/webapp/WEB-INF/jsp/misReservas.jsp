@@ -152,16 +152,16 @@ input[type="radio"]:checked ~ label {
 					${reserva.fechaFin} </span>
 			</p>
 			<p class="habitacion">
-				HabitaciÃ³n: ${reserva.habitacion} <span class="tarifa">Tarifa:${reserva.tarifa}</span> <span
+				Habitación: ${reserva.habitacion} <span class="tarifa">Tarifa:${reserva.tarifa}</span> <span
 					class="cancelar">Cancelar reserva</span> <span class="cancelar">Cambiar
 					reserva</span>
 			</p>
 		</div>
-	</c:forEach>
+	
 
 	<h2 class="titulo_historial">Historial</h2>
  <div class="historial">
-   <p>Hotel _____ en ______
+   <p> Hotel ${reserva.hotel} en ${reserva.ciudad}
       <form>
   <div class="clasificacion">
     <input id="radio1" type="radio" name="estrellas" value="5"><!--
@@ -176,12 +176,13 @@ input[type="radio"]:checked ~ label {
     --><label for="radio5">&#9733</label>
   </div>
 </form>
-   <p>De dd/mm/aaaa a dd/mm/aaaa</p>
-   <p>HabitaciÃ³n:______
+   <p>De ${reserva.fechaInicio} a ${reserva.fechaFin}</p>
+   <p>Habitación: ${reserva.habitacion}
     <span>
      <button class="enviar">Enviar</button>
    </span>
    </p>
  </div>
+ </c:forEach>
  </body>
 </html>

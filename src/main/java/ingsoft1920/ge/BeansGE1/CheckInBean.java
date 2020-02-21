@@ -40,6 +40,12 @@ public class CheckInBean {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
+	@Override
+	public String toString() {
+		return "CheckInBean [idReserva=" + idReserva + ", horaLlegada=" + horaLlegada + ", comentario=" + comentario
+				+ "]";
+	}
+	
 	
 
 }

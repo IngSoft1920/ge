@@ -55,19 +55,12 @@ public class ge_Controller {
 		return "procesarIncidencias";
 	}
 	
-	@GetMapping("/checkinfalso")
-	public String checkin() {
-		return "checkin";
-	}
+	
 	@GetMapping("/checkout")
 	public String checkout() {
 		return "checkout";
 	}
-	@GetMapping("/facturacion")
-	public String facturacion() {
-		return "facturacion";
-	}
-	
+
 	@GetMapping("/cabecera")
 	public String cabecera() {
 		return "cabecera";

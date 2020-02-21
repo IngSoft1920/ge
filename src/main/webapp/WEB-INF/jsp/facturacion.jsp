@@ -8,6 +8,15 @@
 <html lang="en">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+    
+    .aspecto{
+    text-align:center;
+    margin-top:60px;
+    	margin: 20px;
+	padding: 10px;
+	background-color: orange;
+	opacity: 50%;
+    }
         .card {
      box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
      transition: 0.3s;
@@ -51,11 +60,14 @@ div.center {
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Facturacion</h1>
     </div> 
 
-    <h1 style="margin-top: 30px;">Identificador de Reserva</h1>
-    <h1 style="margin-top: 30px;">Servicios Contratados 
-
-    </h1>
-    <h1 style="margin-top: 30px;">Precio Total</h1>
+  <div class="aspecto">
+		<form  method="GET" style="width:100%;" action="factura" modelAttribute="facturaBean">
+				<label>Factura PDF</label><br>
+				<input type="text" size="20" value="hola" readonly  name="facturaPdf" style="margin-top:5px; margin-bottom:10px"></input><br>
+				<br><br>
+				<input type="submit" value="Enviar">
+		</form>
+	</div>
     </body>
     </html>
 

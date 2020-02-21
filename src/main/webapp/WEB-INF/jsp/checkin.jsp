@@ -62,13 +62,13 @@ div.center {
     
 
 <div class="aspecto">
-		<form  method="get" style="width:100%;">
+		<form  method="POST" style="width:100%;" action="checkinEnviar" modelAttribute="checkInBean">
 				<label>Identificador de reserva</label><br>
-				<input type="text" size="20"  id="reserva" style="margin-top:5px; margin-bottom:10px"></input><br>
+				<input type="text" size="20"  name="idReserva" style="margin-top:5px; margin-bottom:10px"></input><br>
 				<label>Hora de llegada</label><br>
-				<input type="text" size="20"  id="entrada" style="margin-top:5px; margin-bottom:10px"></input><br>
-     			<label>Déjenos su comentario!</label><br>
-     			<textarea rows="5" size="20" maxlength="100" id="comentario" style="margin-top:5px; margin-bottom:10px"></textarea>
+				<input type="text" size="20"  name="horaLlegada" style="margin-top:5px; margin-bottom:10px"></input><br>
+     			<label>Dï¿½jenos su comentario!</label><br>
+     			<textarea rows="5" size="20" maxlength="100" name="comentario" style="margin-top:5px; margin-bottom:10px"></textarea>
 				<br><br>
 				<input type="submit" value="Enviar">
 		</form>

@@ -10,10 +10,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<%
-	String mensaje = request.getParameter("message");
-	String asunto;
-%>
 
 <body style="background: radial-gradient(beige, transparent);">
 	<style>

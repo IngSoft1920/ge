@@ -26,6 +26,11 @@ public class IncidenciasBean {
 		this.asunto = asunto;
 		this.mensaje = mensaje;
 	}
+	
+	public boolean checkCamposValidos() {
+		return true;
+	}
+	
 	public IncidenciasBean() {
 		super();
 		// TODO Auto-generated constructor stub

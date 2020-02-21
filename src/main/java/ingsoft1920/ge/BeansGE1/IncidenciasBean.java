@@ -1,9 +1,10 @@
 package ingsoft1920.ge.BeansGE1;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 @Component
-
+@SessionScope
 public class IncidenciasBean {
 	private String asunto;
 	private String mensaje;

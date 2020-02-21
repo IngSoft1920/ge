@@ -1,10 +1,12 @@
 package ingsoft1920.ge.BeansGE1;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 @Component
+@SessionScope
 
-public class EcargarComidaBean {
+public class EncargarComidaBean {
 	private  int numHabitacion;
 	private String pedido;
 	
@@ -21,12 +23,12 @@ public class EcargarComidaBean {
 	public void setPedido(String pedido) {
 		this.pedido = pedido;
 	}
-	public EcargarComidaBean(int numHabitacion, String pedido) {
+	public EncargarComidaBean(int numHabitacion, String pedido) {
 		super();
 		this.numHabitacion = numHabitacion;
 		this.pedido = pedido;
 	}
-	public EcargarComidaBean() {
+	public EncargarComidaBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

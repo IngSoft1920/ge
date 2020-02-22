@@ -25,26 +25,28 @@ public class IncidenciasController {
 	@PostMapping("/incidencias")
 	public String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
 			Model model) throws Exception {
-		
-		System.out.print(incidenciasBean.toString());
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/apiUsuarios", "POST");
-		
-		client.setRequestBody(incidenciasBean.toString());
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();
-			  }
-		
-		return "incidencias";
-		
+		if(incidenciasBean.checkCamposValidos()) {
+			System.out.print(incidenciasBean.toString());
+			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/apiUsuarios", "POST");
+			
+			client.setRequestBody(incidenciasBean.toString());
 
+			int respCode = client.getResponseCode();
+
+			String resp="";
+			if(respCode==200) {
+				resp=client.getResponseBody();
+			}
+			
+			return "procesarIncidencias";
 		}
-	
+		else {
+			return "incidencias";
+		}
+	}
+
 	@GetMapping("/incidencias")
 	public String Incidencias(Model model) {
 		return "incidencias";
 	}
-	}
+}

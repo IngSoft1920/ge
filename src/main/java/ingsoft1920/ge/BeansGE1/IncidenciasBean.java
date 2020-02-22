@@ -6,9 +6,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @Component
 @SessionScope
 public class IncidenciasBean {
-	private String habitacion;
-	private String restaurante;
-	private String servicio;
+	private String Asunto;
 	private String mensaje;
 
 
@@ -20,48 +18,34 @@ public class IncidenciasBean {
 		this.mensaje = mensaje;
 	}
 
-	public IncidenciasBean(String habitacion, String restaurante, String servicio, String mensaje) {
-		super();
-		this.habitacion = habitacion;
-		this.restaurante = restaurante;
-		this.servicio = servicio;
-		this.mensaje = mensaje;
+	
+	public String getAsunto() {
+		return Asunto;
 	}
-	public String getHabitacion() {
-		return habitacion;
-	}
-	public void setHabitacion(String habitacion) {
-		this.habitacion = habitacion;
-	}
-	@Override
-	public String toString() {
-		return "IncidenciasBean [habitacion=" + habitacion + ", restaurante=" + restaurante + ", servicio=" + servicio
-				+ ", mensaje=" + mensaje + "]";
-	}
-	public String getRestaurante() {
-		return restaurante;
-	}
-	public void setRestaurante(String restaurante) {
-		this.restaurante = restaurante;
-	}
-	public String getServicio() {
-		return servicio;
-	}
-	public void setServicio(String servicio) {
-		this.servicio = servicio;
+	public void setAsunto(String asunto) {
+		Asunto = asunto;
 	}
 	public boolean checkCamposValidos() {
-		/*if(!mensaje.isEmpty()) {
-			return true;
+		if(mensaje.equals("				")) {
+			return false;
 		}
 		else 
-			return false;*/
-		return true;
+			return true; 
+		
 	}
 
 	public IncidenciasBean() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public IncidenciasBean(String asunto, String mensaje) {
+		super();
+		Asunto = asunto;
+		this.mensaje = mensaje;
+	}
+	@Override
+	public String toString() {
+		return "IncidenciasBean [Asunto=" + Asunto + ", mensaje=" + mensaje + "]";
 	}
 
 

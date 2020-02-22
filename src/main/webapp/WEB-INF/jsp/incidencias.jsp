@@ -49,14 +49,14 @@
 		<form action="/incidencias" method="post">
 				<!-- Se supone que el nombre de usuario y el email ya esta metido (ya esta logeado el user) -->
 				<label>Asunto</label> <br>
-				<select style="margin-top:5px; margin-bottom:10px">
-						<option name="habitacion">Habitacion</option>
-						<option name="restaurante">Restaurante - comida</option>
-						<option name="servicio">Servicio</option>
+				<select name="Asunto" style="margin-top:5px; margin-bottom:10px">
+						<option id="habitacion">Habitacion</option>
+						<option id="restaurante">Restaurante - comida</option>
+						<option id="servicio">Servicio</option>
 				</select>
 				<br><br>
 				<label>Mensaje</label><br>
-				<textarea name="mensaje" rows="5" size="20" maxlength="100" style="margin-top:5px; margin-bottom:10px">
+				<textarea name="mensaje" placeholder="Escriba su mensaje" style="margin-top:5px; margin-bottom:10px">
 				</textarea> 
 				<br><br>
 				<input type="submit" value="Enviar">

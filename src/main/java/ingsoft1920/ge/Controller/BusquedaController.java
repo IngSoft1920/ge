@@ -18,6 +18,7 @@ import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
+import ingsoft1920.ge.Beans.SesionBean;
 
 
 @Controller
@@ -26,15 +27,27 @@ public class BusquedaController {
 
 	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
+	@Autowired 
+	BusquedaBean busquedaBean;
+	@Autowired
+	SesionBean sesionBean;
 	
 	@GetMapping("/buscador")
 	public String buscarGet(Model model) {
 		
-		BusquedaBean busquedaBean = new BusquedaBean();
+		busquedaBean = new BusquedaBean();
 		busquedaBean.getCiudades().add("Zaragoza");
+		busquedaBean.getCiudades().add("Barcelona");
 		busquedaBean.getHoteles().add("Ritz");
+		
+		try {
+			//HttpClient servidor = new HttpClient(HttpClient.urlCM, "getHoteles");
+			//servidor.getResposeBody();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		model.addAttribute("busquedaBean",busquedaBean);
-		model.addAttribute("mensajeError","");
 		
 		return "buscador";
 	}
@@ -45,7 +58,7 @@ public class BusquedaController {
 		
 		logger.info("Busqueda recibida correctamente");
 		
-		
+		logger.info(busquedaBean.getFechaInicio());
 		
 		// Consulta a la base de datos
 		
@@ -75,7 +88,30 @@ public class BusquedaController {
 	public String reservarPost(@Valid @ModelAttribute("habitacionId") int habitacionId,
 			Model model) {
 		
+		if (sesionBean.getUsuarioID() == 0) {
+			return "redirect:login";
+		}
+		
 		logger.info("Reserva recibida correctamente." + habitacionId);
+		String reserva = "";
+		boolean encontrado = false;
+		for (HotelBean hotel: hotelesDisponibles.getHoteles()) {
+			
+			for (HabitacionBean habitacion: hotel.getHabitaciones()) {
+				if (habitacion.getId() == habitacionId) {
+					encontrado = true;
+					reserva += "\nTipo: " + habitacion.getTipo();
+					reserva += "\nTarifa: " + habitacion.getTarifa();
+					break;
+				}
+			}
+			if (encontrado) {
+				reserva = "\nCiudad: " + hotel.getCiudad() + reserva;
+				reserva = "Hotel: " + hotel.getNombre() + reserva;
+				break;
+			}
+		}
+		logger.info(reserva);
 		
 		return "redirect:buscador";
 	}
@@ -87,7 +123,7 @@ public class BusquedaController {
 		System.out.print("nos metemos");
 		logger.info("ReservaTarifa recibida correctamente con opcion la opcion de comida:"+optionComida+"y en la habitacion:"+habitacionId);
 		
-		return "redirect:buscador";
+		return "buscador";
 	}
 	
 }

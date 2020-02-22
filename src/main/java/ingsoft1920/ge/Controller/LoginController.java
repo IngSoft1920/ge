@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.Beans.SignupBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
+import ingsoft1920.ge.Model.UsuarioModel;
 
 
 @Controller
@@ -34,46 +38,57 @@ public class LoginController {
 		return "login";
 	}
 	
+	
 	@PostMapping("/login")
 	public String loginPost(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-			Model model) {
+			Model model) throws Exception{
+
 		if(loginBean.checkCamposValidos()) {
 			logger.info("Peticion de Signup recibida correctamente y con campos validos");
-			/*
-			//La clase UsuarioModel representa el modelo de datos que vamos a manejar en la aplicacion
-			UsuarioModel usuarioModel = new UsuarioModel(signupBean);
 			
-			//La clase UsuarioDAO es el "punto de conexion" entre nuestro modelo de datos (UsuarioModel) y la base de datos
-			//con sus tablas correspondientes. Sera la encargada de "traducir" peticiones en forma de metodos Java en
-			//SELECT, INSERT, UPDATE, DELETE... de la base de datos. Por lo tanto, en las clases DAO reside TODA la logica 
-			//de base de datos, y no puede haber ninguna consulta SQL fuera de dichas clases
-			UsuarioModel respuesta = UsuarioDAO.signup(usuarioModel);
-			if(respuesta!=null) {
-				//Puedo publicar un objeto, y dentro del jsp acceder a sus propiedades
-				SesionBean sesionBean = new SesionBean(respuesta);
-				model.addAttribute(sesionBean);
+			// Se comprueba que el usuario existe y que la contraseña es correcta.
+			JsonObject obj = new JsonObject();
+			obj.addProperty("email", loginBean.getUsuario());
+			obj.addProperty("password", loginBean.getPassword());
+			String response = "";
+			
+			/*
+			HttpClient server = new HttpClient(HttpClient.urlCM, "datoUsuario1");
+			server.setRequestBody(obj.getAsString());
+			if (server.getResponseCode() != 404) {// Si encuentra el servidor
+				response = server.getResponseBody();
+				obj = new Gson().fromJson(response, JsonObject.class);
+				int id = obj.get("id_cliente").getAsInt();
 				
-				//Tambien puedo publicar listas, e iterar por ellas en el jsp
-				List<String> listaStrings = new ArrayList<String>();
-				listaStrings.add("string1");
-				listaStrings.add("string2");
-				listaStrings.add("string3");
-				model.addAttribute("listaStrings",listaStrings);
-				
-				//Devolvemos el nombre de la vista que corresponde (welcome.jsp)
-				 
-				return "buscador";
-			}else {
-				model.addAttribute("signupBean",signupBean);
-				
-				//Esta linea publica el String "Usuario ya existe!" con el nombre mensajeError
-				//en el model respuesta
-				model.addAttribute("mensajeError","Usuario ya existe!");
-				return "signup";
+				if (id == -1) {
+					
+					model.addAttribute("loginBean", loginBean);
+					model.addAttribute("mensajeError","El usuario no existe");
+					
+					return "login";
+				}
+				else {
+					loginBean.setId(id);
+					
+					// Guarda el email del usuario en el sesion bean
+					sesionBean = new SesionBean(new UsuarioModel(loginBean));
+					
+					return "redirect:buscador";
+				}
 			}
 			*/
+			// Pruebas de SessionScope sin conexión al servidor
+			loginBean.setId(0);
+
+			// Guarda el email del usuario en el sesion bean
+			sesionBean = new SesionBean(new UsuarioModel(loginBean));
+
+			return "redirect:buscador";
 		}
 		
-		return "redirect:buscador";
+		model.addAttribute("loginBean", loginBean);
+		model.addAttribute("mensajeError","Email o password no existe");
+		
+		return "login";
 	}
 }

@@ -10,6 +10,9 @@ import org.apache.logging.log4j.Logger;
 
 public class HttpClient {
 	
+	public final static String urlCM = "http://piedrafita.ls.fi.upm.es:7000/";
+	public final static String urlDHO = "http://piedrafita.ls.fi.upm.es:7001/";
+	
 	final static Logger logger = LogManager.getLogger(HttpClient.class.getName());
 	URL url;
 	HttpURLConnection con;

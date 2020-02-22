@@ -229,7 +229,6 @@ tarifas {
 
 					<select name="hotel">
 						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
-
 							<option value="${hotel}">${hotel}</option>
 						</c:forEach>
 					</select>

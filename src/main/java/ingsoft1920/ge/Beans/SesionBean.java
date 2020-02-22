@@ -8,16 +8,21 @@ import ingsoft1920.ge.Model.UsuarioModel;
 
 
 @Component
-//Esta etiqueta permite que el Bean se mantenga en memoria del servidor
-//y vaya pasando de clase en clase con la etiqueta @Autowire
 @SessionScope 
 public class SesionBean {
-	int usuarioID;
+	int usuarioID = -1;
+	
+	public SesionBean () {}
+	
 	public SesionBean(UsuarioModel usuarioModel) {
 		this.usuarioID=usuarioModel.getUsuarioID();
 	}
 	
 	public int getUsuarioID() {
 		return this.usuarioID;
+	}
+	
+	public void setUsuarioID(int usuarioID) {
+		this.usuarioID = usuarioID;
 	}
 }

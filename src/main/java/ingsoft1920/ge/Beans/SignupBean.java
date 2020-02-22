@@ -35,7 +35,7 @@ public class SignupBean {
 				resultado = false;
 			}
 			String temporal = email.substring(email.indexOf('@') + 1, email.length());
-			if (!temporal.contains(".")) {
+			if (!temporal.contains(".") || email.charAt(email.indexOf('@') + 1) == '.') {
 				resultado = false;
 			} else {
 				for (int j = 0; j < temporal.length(); j++) {
@@ -47,8 +47,6 @@ public class SignupBean {
 				}
 				
 			}
-			
-			
 		} else if (dni.isEmpty()) {
 			resultado = false;
 		}

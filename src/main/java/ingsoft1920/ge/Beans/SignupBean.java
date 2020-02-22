@@ -10,6 +10,7 @@ public class SignupBean {
 	String email;
 	String dni;
 	String verificacionPassword;
+	int id;
 	
 	//En un bean siempre es necesario el constructor vacio
 	public SignupBean() {}
@@ -92,4 +93,17 @@ public class SignupBean {
 	public void setVerficicacionPassword(String verificacionPassword) {
 		this.verificacionPassword = verificacionPassword;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setVerificacionPassword(String verificacionPassword) {
+		this.verificacionPassword = verificacionPassword;
+	}
+	
 }

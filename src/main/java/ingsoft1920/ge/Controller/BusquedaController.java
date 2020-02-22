@@ -18,6 +18,7 @@ import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
+import ingsoft1920.ge.Beans.SesionBean;
 
 
 @Controller
@@ -26,15 +27,27 @@ public class BusquedaController {
 
 	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
+	@Autowired 
+	BusquedaBean busquedaBean;
+	@Autowired
+	SesionBean sesionBean;
 	
 	@GetMapping("/buscador")
 	public String buscarGet(Model model) {
 		
-		BusquedaBean busquedaBean = new BusquedaBean();
+		busquedaBean = new BusquedaBean();
 		busquedaBean.getCiudades().add("Zaragoza");
+		busquedaBean.getCiudades().add("Barcelona");
 		busquedaBean.getHoteles().add("Ritz");
+		
+		try {
+			//HttpClient servidor = new HttpClient(HttpClient.urlCM, "getHoteles");
+			//servidor.getResposeBody();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		model.addAttribute("busquedaBean",busquedaBean);
-		model.addAttribute("mensajeError","");
 		
 		return "buscador";
 	}
@@ -45,12 +58,12 @@ public class BusquedaController {
 		
 		logger.info("Busqueda recibida correctamente");
 		
-		
+		logger.info(busquedaBean.getFechaInicio());
 		
 		// Consulta a la base de datos
 		
 		hotelesDisponibles = new HotelesDisponiblesBean();
-		HotelBean hotel = new HotelBean("Ritz", "Zaragoza");
+		HotelBean hotel = new HotelBean("Ritz", "Zaragoza", 15, 30);
 		List<HabitacionBean> listaHabitaciones = new ArrayList<HabitacionBean>();
 		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 0));
 		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 1));
@@ -58,7 +71,7 @@ public class BusquedaController {
 		hotel.setHabitaciones(listaHabitaciones);
 		hotelesDisponibles.getHoteles().add(hotel);
 		
-		hotel = new HotelBean("Hotel 2", "Madrid");
+		hotel = new HotelBean("Hotel 2", "Madrid", 15, 30);
 		listaHabitaciones = new ArrayList<HabitacionBean>();
 		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 3));
 		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 4));
@@ -73,10 +86,46 @@ public class BusquedaController {
 	
 	@PostMapping("/reservar")
 	public String reservarPost(@Valid @ModelAttribute("habitacionId") int habitacionId,
+			@Valid @ModelAttribute("comidas") String comidas,
 			Model model) {
 		
+		if (sesionBean.getUsuarioID() == -1) {
+			return "redirect:login";
+		}
+		
 		logger.info("Reserva recibida correctamente." + habitacionId);
+		String reserva = "";
+		boolean encontrado = false;
+		for (HotelBean hotel: hotelesDisponibles.getHoteles()) {
+			
+			for (HabitacionBean habitacion: hotel.getHabitaciones()) {
+				if (habitacion.getId() == habitacionId) {
+					encontrado = true;
+					reserva += "\nTipo: " + habitacion.getTipo();
+					reserva += "\nTarifa: " + habitacion.getTarifa();
+					break;
+				}
+			}
+			if (encontrado) {
+				reserva += "\nComidas: " + comidas;
+				reserva = "\nCiudad: " + hotel.getCiudad() + reserva;
+				reserva = "Hotel: " + hotel.getNombre() + reserva;
+				break;
+			}
+		}
+		logger.info(reserva);
 		
 		return "redirect:buscador";
 	}
+	
+	
+	@PostMapping("/reservarTarifa")
+	public String reservarTarifaPost(@Valid @ModelAttribute("habitacionId") int habitacionId, @Valid @ModelAttribute("optionComida") String optionComida,
+			Model model) {
+		System.out.print("nos metemos");
+		logger.info("ReservaTarifa recibida correctamente con opcion la opcion de comida:"+optionComida+"y en la habitacion:"+habitacionId);
+		
+		return "redirect:buscador";
+	}
+	
 }

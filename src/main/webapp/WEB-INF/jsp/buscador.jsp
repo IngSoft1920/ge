@@ -7,7 +7,10 @@
 <html>
 <head>
 
+
 <title>Buscador</title>
+
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -151,9 +154,9 @@ li {
 	text-align: center;
 }
 
-#panel, button {
+button {
 	font-family: Oldtown, fantasy;
-	font-size: 25px;
+	font-size: 15px;
 	width: 100%;
 	padding: 15px 22px;
 	margin: 10px 5px;
@@ -226,7 +229,6 @@ tarifas {
 
 					<select name="hotel">
 						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
-
 							<option value="${hotel}">${hotel}</option>
 						</c:forEach>
 					</select>
@@ -300,55 +302,141 @@ tarifas {
 						</c:forEach>
 
 					</div>
-
+					<!--  
 					<div class="columnaHabitacion">
-						<br>
-						<button type="button" onclick="showMore()">+ info</button>
-					</div>
 
-					<div class="columnaHabitacion">
-						<div id="panel">
-							<p>..extra</p>
-							<button type="button" onclick="showLess()">- info</button>
+						<h3>¿Comida?</h3>
+
+						
+
+						<div class="tarifas">
+
+
+							<ul>
+								<li>
+
+									<form method="POST" action="reservarTarifa">
+
+										<button value="cero">+0 extra: alojamiento</button>
+
+										<input type="hidden" name="optionComida" value=" 0 " />
+
+
+										<c:forEach items="${hotel.habitaciones}" var="habitacion">
+											<input type="hidden" name="habitacionId"
+												value="${habitacion.getId()}" />
+
+										</c:forEach>
+
+									</form>
+								</li>
+
+								<li>
+
+									<form method="POST" action="reservarTarifa">
+
+										<button value="desayuno">+ ${hotel.desayuno} extra:
+											alojamiento + desayuno</button>
+
+										<input type="hidden" name="optionComida"
+											value="${hotel.getDesayuno()}" />
+
+										<c:forEach items="${hotel.habitaciones}" var="habitacion">
+											<input type="hidden" name="habitacionId"
+												value="${habitacion.getId()}" />
+										</c:forEach>
+
+									</form>
+								</li>
+
+
+								<li>
+									<form method="POST" action="reservarTarifa">
+
+										<button value="pensionCompleta">+
+											${hotel.pensionCompleta} extra: pension completa</button>
+
+										<input type="hidden" name="optionComida"
+											value="${hotel.getPensionCompleta()}" />
+
+										<c:forEach items="${hotel.habitaciones}" var="habitacion">
+											<input type="hidden" name="habitacionId"
+												value="${habitacion.getId()}" />
+										</c:forEach>
+									</form>
+
+								</li>
+							</ul>
+
 						</div>
-					</div>
 
-
+						
+				</div>
 					<div class="columnaHabitacion">
-
-						<c:forEach items="${hotel.habitaciones}" var="habitacion">
-							<div class="habitacionTipo">
-								<ul class="habitacion">
-									<form:form method="POST" action="reservar">
-										<input type="hidden" name="habitacionId"
-											value="${habitacion.getId()}" /> 
-										<input type="submit" value="Reservar"/>
-									</form:form>
-								</ul>
+						<h3>Régimen de Comidas:</h3>
+					</div>
+					<div class="columnaHabitacion">
+						<h3>Reservar:</h3>
+					</div>-->
+					<c:forEach items="${hotel.habitaciones}" var="habitacion">
+						<form:form method="POST" action="reservar">
+							<div class="columnaHabitacion">
+									<select name="comidas">
+										<option value="+0, sólo alojamiento">+0, sólo
+											alojamiento</option>
+										<option value="+${hotel.desayuno}, alojamiento y desayuno">+${hotel.desayuno},
+											alojamiento y desayuno</option>
+										<option value="+${hotel.pensionCompleta}, pensión completa">+${hotel.pensionCompleta},
+											pensión completa</option>
+									</select>
 							</div>
 
-						</c:forEach>
-					</div>
+							<div class="columnaHabitacion">
+								<div class="habitacionTipo">
+									<ul class="habitacion">
+										<input type="hidden" name="habitacionId"
+											value="${habitacion.getId()}" />
+										<input type="submit" value="Reservar" />
+									</ul>
+								</div>
+							</div>
+						</form:form>
+					</c:forEach>
 				</div>
-
 			</li>
 		</div>
 	</c:forEach>
 </ul>
 
 
-
 <script>
-function showMore() {
-  document.getElementById("panel").style.display = "block";
-}
+	function showMore() {
+		document.getElementById("panel").style.display = "block";
+	}
 
-function showLess() {
-  document.getElementById("panel").style.display = "none";
-}
+	function showLess() {
+		document.getElementById("panel").style.display = "none";
+	}
 </script>
 
 
 </body>
 </html>
+
+<!-- 
+
+<div class="columnaHabitacion">
+	<br>
+	<button type="button" onclick="showMore()">+ info</button>
+	</div>
+
+<div class="columnaHabitacion">
+		<div id="panel">
+		<p>..extra</p>
+	<button type="button" onclick="showLess()">- info</button>
+</div>
+</div>
+
+ -->
+
 

@@ -11,13 +11,19 @@ public class HotelBean {
 	private String nombre;
 	private String ciudad;
 	private List<HabitacionBean> habitaciones;
+	private int desayuno;
+	private int pensionCompleta;
+	private String comidas;
 	
 	public HotelBean () {}
 	
-	public HotelBean (String nombre, String ciudad) {
+	public HotelBean (String nombre, String ciudad, int desayuno, int pensionCompleta) {
 		this.nombre = nombre;
 		this.ciudad = ciudad;
 		this.habitaciones = new ArrayList<HabitacionBean>();
+		this.desayuno = desayuno;
+		this.pensionCompleta = pensionCompleta;
+		this.comidas = "";
 	}
 
 	public String getNombre() {
@@ -44,6 +50,29 @@ public class HotelBean {
 		this.habitaciones = habitaciones;
 	}
 
+	public int getDesayuno() {
+		return desayuno;
+	}
+
+	public void setDesayuno(int desayuno) {
+		this.desayuno = desayuno;
+	}
+
+	public int getPensionCompleta() {
+		return pensionCompleta;
+	}
+
+	public void setPensionCompleta(int pensionCompleta) {
+		this.pensionCompleta = pensionCompleta;
+	}
+
+	public String getComidas() {
+		return comidas;
+	}
+
+	public void setComidas(String comidas) {
+		this.comidas = comidas;
+	}
 	
 	
 }

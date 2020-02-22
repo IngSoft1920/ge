@@ -9,6 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.google.gson.Gson;
+
+import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -21,15 +25,19 @@ public class IncidenciasController {
 
 	@Autowired
 	IncidenciasBean incidenciasBean;
+	
+	@Autowired
+	static
+	LoginBean usuarioLogin;
 
 	@PostMapping("/incidencias")
 	public String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
 			Model model) throws Exception {
 		if(incidenciasBean.checkCamposValidos()) {
 			System.out.print(incidenciasBean.toString());
-			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/apiUsuarios", "POST");
+			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+usuarioLogin.getId(), "POST");
 			
-			client.setRequestBody(incidenciasBean.toString());
+			client.setRequestBody(""+beanToJson(incidenciasBean));
 
 			int respCode = client.getResponseCode();
 
@@ -48,5 +56,10 @@ public class IncidenciasController {
 	@GetMapping("/incidencias")
 	public String Incidencias(Model model) {
 		return "incidencias";
+	}
+	public static Object beanToJson(Object bean) {
+		Gson gson = new Gson();
+		String JSON = gson.toJson(bean);	
+		return JSON;
 	}
 }

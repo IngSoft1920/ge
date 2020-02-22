@@ -2,10 +2,12 @@ package ingsoft1920.ge.ControllerGE1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
@@ -14,12 +16,16 @@ public class ReservasController {
 final static Logger logger = LogManager.getLogger(ReservasController.class.getName());
 	
 	
+@Autowired
+static
+LoginBean usuarioLogin;
+
 	@GetMapping("/reservas")
 	public static String checkinEnviar(Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.fi.upm:700*/apiUsuarios", "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+usuarioLogin.getId(), "POST");
 		
-		client.setRequestBody("dadnos las facturas cabrones");
+		client.setRequestBody("dadnos las facturas");
 		
 		int respCode = client.getResponseCode();
 		

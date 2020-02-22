@@ -27,9 +27,9 @@ public class FacturaController {
 	@GetMapping("/factura")
 	public static String checkinEnviar(Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.fi.upm:700*/apiUsuarios", "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios", "POST");
 		
-		client.setRequestBody("dadnos las facturas cabrones");
+		client.setRequestBody("dadnos las facturas");
 		
 		int respCode = client.getResponseCode();
 		

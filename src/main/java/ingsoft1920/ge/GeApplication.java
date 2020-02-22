@@ -1,12 +1,16 @@
 package ingsoft1920.ge;
 
 import org.apache.logging.log4j.LogManager;
+
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+
+
+
 
 @Controller
 @SpringBootApplication
@@ -16,5 +20,10 @@ public class GeApplication {
 	public static void main(String[] args) {
 		logger.warn("Aplicacion iniciada");
 		SpringApplication.run(GeApplication.class, args);
+		
+		
+		
 	}
+
+
 }

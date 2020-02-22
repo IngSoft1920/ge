@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.google.gson.Gson;
+
+import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckOutBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -29,13 +32,17 @@ public class CheckOutController {
 	@Autowired
 	CheckOutBean checkout;
 	
+	@Autowired
+	static
+	LoginBean usuarioLogin;
+	
 	@PostMapping("/checkoutEnviar")
 	public static String checkinEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
 			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/apiUsuarios", "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+usuarioLogin.getId(), "POST");
 		
-		client.setRequestBody(checkoutBean.toString());
+		client.setRequestBody(""+beanToJson(checkoutBean));
 		
 		int respCode = client.getResponseCode();
 		
@@ -50,6 +57,12 @@ public class CheckOutController {
 	@GetMapping("/checkout")
 	public static String checkInEnviar(Model model) {
 		return "checkout";
+	}
+	
+	public static Object beanToJson(Object bean) {
+		Gson gson = new Gson();
+		String JSON = gson.toJson(bean);	
+		return JSON;
 	}
 
 }

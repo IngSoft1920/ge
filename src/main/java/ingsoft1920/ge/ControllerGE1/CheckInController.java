@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.google.gson.Gson;
+
+import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -23,15 +28,19 @@ public class CheckInController {
 	@Autowired
 	CheckInBean checkin;
 	
+	@Autowired
+	static
+	LoginBean usuarioLogin;
+	
 	
 	@PostMapping("/checkinEnviar")
 	public static String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
 			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/loquesea", "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/getHbaitacion/"+usuarioLogin.getId(), "POST");
 		
 		
-		client.setRequestBody(checkInBean.toString());
+		client.setRequestBody(""+beanToJson(checkInBean));
 		
 		int respCode = client.getResponseCode();
 		
@@ -48,6 +57,12 @@ public class CheckInController {
 		return "checkin";
 	}
 	
+	public static Object beanToJson(Object bean) {
+		Gson gson = new Gson();
+		String JSON = gson.toJson(bean);	
+		return JSON;
+	}
+
 	
 
 }

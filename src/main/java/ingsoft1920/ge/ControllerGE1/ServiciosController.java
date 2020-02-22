@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.google.gson.Gson;
+
+import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckOutBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
@@ -28,13 +31,17 @@ public class ServiciosController {
 	@Autowired
 	ServiciosBean servicios;
 	
+	@Autowired
+	static
+	LoginBean usuarioLogin;
+	
 	@PostMapping("/serviciosEnviar")
 	public static String checkinEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
 			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+usuarioLogin.getId(), "POST");
 		
-		client.setRequestBody("");
+		client.setRequestBody(""+ beanToJson(servicios));
 		
 		int respCode = client.getResponseCode();
 		
@@ -49,6 +56,11 @@ public class ServiciosController {
 	@GetMapping("/servicios")
 	public static String checkInEnviar(Model model) {
 		return "servicios";
+	}
+	public static Object beanToJson(Object bean) {
+		Gson gson = new Gson();
+		String JSON = gson.toJson(bean);	
+		return JSON;
 	}
 
 }

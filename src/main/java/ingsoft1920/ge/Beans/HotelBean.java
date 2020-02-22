@@ -13,6 +13,7 @@ public class HotelBean {
 	private List<HabitacionBean> habitaciones;
 	private int desayuno;
 	private int pensionCompleta;
+	private String comidas;
 	
 	public HotelBean () {}
 	
@@ -22,6 +23,7 @@ public class HotelBean {
 		this.habitaciones = new ArrayList<HabitacionBean>();
 		this.desayuno = desayuno;
 		this.pensionCompleta = pensionCompleta;
+		this.comidas = "";
 	}
 
 	public String getNombre() {
@@ -63,5 +65,14 @@ public class HotelBean {
 	public void setPensionCompleta(int pensionCompleta) {
 		this.pensionCompleta = pensionCompleta;
 	}
+
+	public String getComidas() {
+		return comidas;
+	}
+
+	public void setComidas(String comidas) {
+		this.comidas = comidas;
+	}
+	
 	
 }

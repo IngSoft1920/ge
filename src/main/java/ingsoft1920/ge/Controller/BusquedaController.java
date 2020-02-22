@@ -86,9 +86,10 @@ public class BusquedaController {
 	
 	@PostMapping("/reservar")
 	public String reservarPost(@Valid @ModelAttribute("habitacionId") int habitacionId,
+			@Valid @ModelAttribute("comidas") String comidas,
 			Model model) {
 		
-		if (sesionBean.getUsuarioID() == 0) {
+		if (sesionBean.getUsuarioID() == -1) {
 			return "redirect:login";
 		}
 		
@@ -106,6 +107,7 @@ public class BusquedaController {
 				}
 			}
 			if (encontrado) {
+				reserva += "\nComidas: " + comidas;
 				reserva = "\nCiudad: " + hotel.getCiudad() + reserva;
 				reserva = "Hotel: " + hotel.getNombre() + reserva;
 				break;
@@ -123,7 +125,7 @@ public class BusquedaController {
 		System.out.print("nos metemos");
 		logger.info("ReservaTarifa recibida correctamente con opcion la opcion de comida:"+optionComida+"y en la habitacion:"+habitacionId);
 		
-		return "buscador";
+		return "redirect:buscador";
 	}
 	
 }

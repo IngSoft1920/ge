@@ -78,11 +78,12 @@ public class LoginController {
 			}
 			*/
 			// Pruebas de SessionScope sin conexión al servidor
-			loginBean.setId(0);
+			loginBean.setId(1);
 
 			// Guarda el email del usuario en el sesion bean
-			sesionBean = new SesionBean(new UsuarioModel(loginBean));
-
+			//sesionBean = new SesionBean(new UsuarioModel(loginBean));
+			sesionBean.setUsuarioID(1);
+			
 			return "redirect:buscador";
 		}
 		

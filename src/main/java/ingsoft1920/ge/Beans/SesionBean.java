@@ -15,7 +15,7 @@ public class SesionBean {
 	public SesionBean () {}
 	
 	public SesionBean(UsuarioModel usuarioModel) {
-		this.usuarioID=usuarioModel.getUsuarioID();
+		this.usuarioID = usuarioModel.getUsuarioID();
 	}
 	
 	public int getUsuarioID() {

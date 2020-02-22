@@ -55,12 +55,6 @@ public class ge_Controller {
 		return "procesarIncidencias";
 	}
 	
-	
-	@GetMapping("/checkout")
-	public String checkout() {
-		return "checkout";
-	}
-
 	@GetMapping("/cabecera")
 	public String cabecera() {
 		return "cabecera";

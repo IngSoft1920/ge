@@ -35,20 +35,21 @@ public class CheckOutController {
 		
 		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");
 		
-		client.setRequestBody("");
+		client.setRequestBody(checkoutBean.toString());
 		
 		int respCode = client.getResponseCode();
 		
 		String resp="";
 		if(respCode==200) {
-			  resp=client.getResponseBody();}
+			  resp=client.getResponseBody();
+			  }
 		
 		return resp;
 		
 	}
-	@GetMapping("/checkOutEnviar")
+	@GetMapping("/checkout")
 	public static String checkInEnviar(Model model) {
-		return "";
+		return "checkout";
 	}
 
 }

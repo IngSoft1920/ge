@@ -45,9 +45,6 @@ public class EncargarComidaController {
 		return resp;
 		
 	}
-	@GetMapping("/encargarComidaEnviar")
-	public static String checkInEnviar(Model model) {
-		return "";
-	}
+
 
 }

@@ -31,7 +31,7 @@ public class CheckInController {
 		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/loquesea", "POST");
 		
 		
-		client.setRequestBody("");
+		client.setRequestBody(checkInBean.toString());
 		
 		int respCode = client.getResponseCode();
 		
@@ -43,7 +43,7 @@ public class CheckInController {
 		return "checkin";
 		
 	}
-	@GetMapping("/checkIn")
+	@GetMapping("/checkin")
 	public static String checkInEnviar() {
 		return "checkin";
 	}

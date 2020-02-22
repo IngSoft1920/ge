@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import ingsoft1920.ge.BeansGE1.FacturaBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
 
 
 @Controller
@@ -30,10 +31,19 @@ public class FacturaController {
 	@GetMapping("/factura")
 	public static String checkinEnviar(Model model) throws Exception {
 		
-		FacturaBean factura= new FacturaBean("pdf de factura");
-		model.addAttribute("prueba",factura.toString());
-		System.out.print(model.toString());
+		HttpClient client= new HttpClient("piedrafita.fi.upm:700*/apiUsuarios", "POST");
 		
+		client.setRequestBody("dadnos las facturas cabrones");
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();
+			  }
+		else {
+			resp="ERROR:Formato invalido";
+		}
 		
 		return "facturacion";
 		

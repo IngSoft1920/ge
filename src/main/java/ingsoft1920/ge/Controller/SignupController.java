@@ -14,52 +14,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.Beans.SignupBean;
 
-//Especificamos que la clase tiene métodos controladores
 @Controller
 public class SignupController {
-	//Este campo estatico tiene que estar en TODAS las clases, adaptado al nombre de clase ue corresponda
-	//final static Logger logger = LogManager.getLogger(NombreDeLaClase.class.getName());
 	final static Logger logger = LogManager.getLogger(SignupController.class.getName());
 	
-	
-	//Si tenemos un Bean con un scope de Session, automaticamente aparecera en este campo
-	//sin necesidad de tener que hacer un set, y estara disponible siempre que no se salga de
-	//la sesion (se cierre el navegador) y en cualquier metodo de esta clase
 	@Autowired
 	SesionBean sesionBean;
 	
-	
-	//Esta etiqueta nos permite especificar que este metodo va a rsolver las peticiones
-	//que lleguen a la ruta /signup de tipo GET
-	//El parametro de entrada Model es el que tiene la informacion de la peticion y de
-	//la respuesta. Es donde pondremos los Beans que queremos enlazar con la web, de donde
-	//sacaremos los beans que nos llegan de la peticion...
 	@GetMapping("/signup")
 	public String signupGet(Model model) {
-		//Creamos un bean nuevo para el signup, y lo anadimos al model
+		
 		SignupBean signupBean = new SignupBean();
 		model.addAttribute("signupBean",signupBean);
 		model.addAttribute("mensajeError","");
 		
-		//Aqui retornamos el nombre de la vista que vamos a utilizar (el nombre del archivo jsp)
-		//sin la extension. Las vistas estan en src/main/webapp/WEB-INF/jsp/
 		return "signup";
 	}
 	
-	//Para recibir un bean de un formulario utilizamos las etiquetas @Valid @ModelAttribute("nombreDelBean")
-	//y declaramos el argumento como hariamos con cualquier otra funcion en Java. Tambien capturamos el Model.
-	//El objeto Model SIEMPRE se captura cuando estamos interactuando con la web.
 	@PostMapping("/signup")
 	public String signupPost(@Valid @ModelAttribute("signupBean") SignupBean signupBean,
 			Model model) {
-		//El checkeo de que todos los campos estan rellenos, y que cumplen el formato correcto (sin caracteres raros,
-		//contraseña con longitud minima...) se comprueban en el bean (principio de ocultacion de información).
-		//Una vez está correcto, transformamos el bean en un SignupModel, con el que interactuaremos durante el resto de
-		//la peticion
+		
 		if(signupBean.checkCamposValidos()) {
-			//Podemos utilizar los metodos debug, info, warn y error para loggear mensajes
-			//Hay que evitar el uso de System.out.println(), ya que NO SE GUARDA UNA VEZ SE ACABA
-			//LA EJECUCION
+			
 			logger.info("Peticion de Signup recibida correctamente y con campos validos");
 			/*
 			//La clase UsuarioModel representa el modelo de datos que vamos a manejar en la aplicacion

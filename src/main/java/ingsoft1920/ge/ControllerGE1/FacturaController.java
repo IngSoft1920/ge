@@ -21,7 +21,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 @Controller
 public class FacturaController {
 	
-	final static Logger logger = LogManager.getLogger(ge_Controller.class.getName());
+	final static Logger logger = LogManager.getLogger(FacturaController.class.getName());
 	
 	
 	@GetMapping("/factura")

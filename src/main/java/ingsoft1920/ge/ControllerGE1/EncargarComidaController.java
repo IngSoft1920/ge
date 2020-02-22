@@ -22,7 +22,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 @Controller
 public class EncargarComidaController {
 	
-	final static Logger logger = LogManager.getLogger(ge_Controller.class.getName());
+	final static Logger logger = LogManager.getLogger(EncargarComidaController.class.getName());
 	
 
 	@Autowired

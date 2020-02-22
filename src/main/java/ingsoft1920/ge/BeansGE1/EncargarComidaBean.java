@@ -9,8 +9,23 @@ import org.springframework.web.context.annotation.SessionScope;
 public class EncargarComidaBean {
 	private  int numHabitacion;
 	private String pedido;
+	private int numPersonas;
+	private String fecha;
 	
 	
+	
+	public int getNumPersonas() {
+		return numPersonas;
+	}
+	public void setNumPersonas(int numPersonas) {
+		this.numPersonas = numPersonas;
+	}
+	public String getFecha() {
+		return fecha;
+	}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
 	public int getNumHabitacion() {
 		return numHabitacion;
 	}
@@ -23,15 +38,18 @@ public class EncargarComidaBean {
 	public void setPedido(String pedido) {
 		this.pedido = pedido;
 	}
-	public EncargarComidaBean(int numHabitacion, String pedido) {
+	public EncargarComidaBean(int numHabitacion, String pedido, int numPersonas, String fecha) {
 		super();
 		this.numHabitacion = numHabitacion;
 		this.pedido = pedido;
+		this.numPersonas = numPersonas;
+		this.fecha = fecha;
 	}
 	public EncargarComidaBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 
 }

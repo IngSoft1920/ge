@@ -33,27 +33,7 @@ public class ge_Controller {
 	public String index(Model model) {
 		return "index";
 	}
-	@GetMapping("/reservaServicios")
-	public String reservaServicios() {
-		return "reservaServicios";
-	}
 	
-	@GetMapping("/servicios")
-	public String servicios() {
-		
-		return "servicios";
-	}	
-	@GetMapping("/incidencias")
-	public String incidencias() {
-		
-		return "incidencias";
-	}
-	
-
-	@GetMapping("/procesarIncidencias")
-	public String ProcesarIncidencias() {
-		return "procesarIncidencias";
-	}
 	
 	@GetMapping("/cabecera")
 	public String cabecera() {

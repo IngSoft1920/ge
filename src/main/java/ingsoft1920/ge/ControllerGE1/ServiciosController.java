@@ -45,9 +45,10 @@ public class ServiciosController {
 		return resp;
 		
 	}
-	@GetMapping("/serviciosEnviar")
+	
+	@GetMapping("/servicios")
 	public static String checkInEnviar(Model model) {
-		return "";
+		return "servicios";
 	}
 
 }

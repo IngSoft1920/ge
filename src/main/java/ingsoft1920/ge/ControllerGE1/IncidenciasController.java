@@ -16,44 +16,35 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 @Controller
 public class IncidenciasController {
 
-	final static Logger logger = LogManager.getLogger(ge_Controller.class.getName());
+	final static Logger logger = LogManager.getLogger(IncidenciasController.class.getName());
 
 
 	@Autowired
 	IncidenciasBean incidenciasBean;
 
+	@PostMapping("/incidencias")
+	public String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
+			Model model) throws Exception {
+		
+		System.out.print(incidenciasBean.toString());
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/apiUsuarios", "POST");
+		
+		client.setRequestBody(incidenciasBean.toString());
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();
+			  }
+		
+		return "incidencias";
+		
+
+		}
+	
 	@GetMapping("/incidencias")
 	public String Incidencias(Model model) {
 		return "incidencias";
 	}
-
-	
-	@GetMapping("/procesarIncidencias")
-	public String procesarIncidencias(Model model) {
-		return "procesarIncidencias";
 	}
-	
-/*
-	@PostMapping("/procesarIncidencias")
-	public String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean IncidenciasBean,
-			Model model) throws Exception {
-
-		//Si los campos no estan vacios
-		if(IncidenciasBean.checkCamposValidos()) {
-			logger.info("Peticion de enviar incidencia recibida correctamente y con campos validos");
-
-			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/...", "POST");
-			client.setRequestBody("");
-			int respCode = client.getResponseCode();
-			if(respCode==200) {
-				client.getResponseBody();
-			}
-			return "procesarIncidencias";
-
-		}
-
-		else
-			return "incidencias";
-
-	}  */
-}

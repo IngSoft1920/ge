@@ -70,7 +70,7 @@
 
 
        <div class="grid-container">
-       <div class="card" onclick="document.location = '/reservaServicios'">
+       <div class="card" onclick="document.location = '/reservas'">
         <div class="container", style="padding-top:20px">
           <a><b>Reservas</b></a> 
           <p>¡Acceda para gestionar su reserva!</p> 

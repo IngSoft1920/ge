@@ -33,7 +33,7 @@ public class CheckOutController {
 	public static String checkinEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
 			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("localhost:7004/apiUsuarios", "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/apiUsuarios", "POST");
 		
 		client.setRequestBody(checkoutBean.toString());
 		

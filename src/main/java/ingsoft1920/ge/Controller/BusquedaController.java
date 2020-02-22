@@ -79,4 +79,15 @@ public class BusquedaController {
 		
 		return "redirect:buscador";
 	}
+	
+	
+	@PostMapping("/reservarTarifa")
+	public String reservarTarifaPost(@Valid @ModelAttribute("habitacionId") int habitacionId, @Valid @ModelAttribute("optionComida") String optionComida,
+			Model model) {
+		System.out.print("nos metemos");
+		logger.info("ReservaTarifa recibida correctamente con opcion la opcion de comida:"+optionComida+"y en la habitacion:"+habitacionId);
+		
+		return "redirect:buscador";
+	}
+	
 }

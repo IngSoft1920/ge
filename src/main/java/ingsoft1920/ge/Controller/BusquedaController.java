@@ -115,7 +115,7 @@ public class BusquedaController {
 		}
 		logger.info(reserva);
 		
-		return "redirect:buscador";
+		return "redirect:misReservas";
 	}
 	
 	

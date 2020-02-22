@@ -18,22 +18,20 @@ public class LoginBean {
 			resultado = false;
 		} else if (password.isEmpty()) {
 			resultado = false;
-		} else if (email.isEmpty()) {
-			resultado = false;
-		} else if (!email.isEmpty()) {
+		} else if (!usuario.isEmpty()) {
 			int contador = 0; 
-			for (int i = 0; i < email.length(); i++) {
-				if (email.charAt(i) == '@') {
+			for (int i = 0; i < usuario.length(); i++) {
+				if (usuario.charAt(i) == '@') {
 					contador++;
 				}
 			}
 			if (contador == 0 || contador > 1) {
 				resultado = false;
-			} else if (!email.contains(".")) {
+			} else if (!usuario.contains(".")) {
 				resultado = false;
 			}
-			String temporal = email.substring(email.indexOf('@') + 1, email.length());
-			if (!temporal.contains(".") || email.charAt(email.indexOf('@') + 1) == '.') {
+			String temporal = usuario.substring(usuario.indexOf('@') + 1, usuario.length());
+			if (!temporal.contains(".") || usuario.charAt(usuario.indexOf('@') + 1) == '.') {
 				resultado = false;
 			} else {
 				for (int j = 0; j < temporal.length(); j++) {

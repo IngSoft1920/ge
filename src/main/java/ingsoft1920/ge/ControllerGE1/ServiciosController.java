@@ -32,23 +32,23 @@ public class ServiciosController {
 	ServiciosBean servicios;
 	
 	@Autowired
-	SesionBean sesion;
+	static SesionBean sesion;
 	
 	@PostMapping("/serviciosEnviar")
-	public static String checkinEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
-			Model model,SesionBean sesion) throws Exception {
+	public static String serviciosEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
+			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+//		
+//		client.setRequestBody(""+ beanToJson(servicios));
+//		
+//		int respCode = client.getResponseCode();
+//		
+//		String resp="";
+//		if(respCode==200) {
+//			  resp=client.getResponseBody();}
 		
-		client.setRequestBody(""+ beanToJson(servicios));
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();}
-		
-		return resp;
+		return "";
 		
 	}
 	
@@ -57,16 +57,16 @@ public class ServiciosController {
 	@GetMapping("/servicios")
 	public static String checkInEnviar(Model model, SesionBean sesion) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
-		
-		client.setRequestBody("dadnos el menu");
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();
-			  }
+//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+//		
+//		client.setRequestBody("dadnos el menu");
+//		
+//		int respCode = client.getResponseCode();
+//		
+//		String resp="";
+//		if(respCode==200) {
+//			  resp=client.getResponseBody();
+//			  }
 		
 		return "servicios";
 	}

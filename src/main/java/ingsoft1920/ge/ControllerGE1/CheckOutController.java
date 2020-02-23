@@ -33,24 +33,25 @@ public class CheckOutController {
 	CheckOutBean checkout;
 	
 	@Autowired
-	SesionBean sesion;
+	static SesionBean sesion;
 	
 	@PostMapping("/checkoutEnviar")
-	public static String checkinEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
-			Model model,SesionBean sesion) throws Exception {
+	public static String checkoutEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
+			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+//		
+//		client.setRequestBody(""+beanToJson(checkoutBean));
+//		
+//		int respCode = client.getResponseCode();
+//		
+//		String resp="";
+//		if(respCode==200) {
+//			  resp=client.getResponseBody();
+//			  }
 		
-		client.setRequestBody(""+beanToJson(checkoutBean));
 		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();
-			  }
-		
-		return resp;
+		return "misReservas";
 		
 	}
 	@GetMapping("/checkout")

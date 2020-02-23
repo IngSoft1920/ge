@@ -28,23 +28,23 @@ public class EncargarComidaController {
 	EncargarComidaBean encargarComida;
 	
 	@Autowired
-	SesionBean sesion;
+	static SesionBean sesion;
 	
 	@PostMapping("/encargarComidaEnviar")
-	public static String checkinEnviar(@Valid @ModelAttribute("encargarComidaBean") EncargarComidaBean encargarComida,
-			Model model,SesionBean sesion) throws Exception {
+	public static String encargarEnviar(@Valid @ModelAttribute("encargarComidaBean") EncargarComidaBean encargarComida,
+			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+//		
+//		client.setRequestBody(""+ beanToJson(encargarComida));
+//		
+//		int respCode = client.getResponseCode();
+//		
+//		String resp="";
+//		if(respCode==200) {
+//			  resp=client.getResponseBody();}
 		
-		client.setRequestBody(""+ beanToJson(encargarComida));
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();}
-		
-		return resp;
+		return "";
 		
 	}
 	

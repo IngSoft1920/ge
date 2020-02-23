@@ -31,23 +31,23 @@ public class CheckInController {
 	CheckInBean checkin;
 	
 	@Autowired
-	SesionBean sesion;
+	static SesionBean sesion;
 	
 	@PostMapping("/checkinEnviar")
 	public static String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
 			Model model) throws Exception {
 		System.out.println(checkInBean.toString());
         beanToJson(checkInBean);
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/loquesea", "POST");
-		
-		
-		client.setRequestBody(""+beanToJson(checkInBean));
-		
-		int respCode = client.getResponseCode();
-		
-		
-		if(respCode==200) {
-			  client.getResponseBody();}
+//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/loquesea"+ sesion.getUsuarioID(), "POST");
+//		
+//		
+//		client.setRequestBody(""+beanToJson(checkInBean));
+//		
+//		int respCode = client.getResponseCode();
+//		
+//		
+//		if(respCode==200) {
+//			  client.getResponseBody();}
 		
 		return "checkin";
 		

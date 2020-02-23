@@ -10,7 +10,9 @@ public class LoginBean {
 	int id;
 	
 	//En un bean siempre es necesario el constructor vacio
-	public LoginBean() {}
+	public LoginBean() {
+		
+	}
 	
 	public boolean checkCamposValidos() {
 		boolean resultado = true;

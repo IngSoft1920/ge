@@ -28,14 +28,13 @@ public class EncargarComidaController {
 	EncargarComidaBean encargarComida;
 	
 	@Autowired
-	static
-	LoginBean usuarioLogin;
+	SesionBean sesion;
 	
 	@PostMapping("/encargarComidaEnviar")
 	public static String checkinEnviar(@Valid @ModelAttribute("encargarComidaBean") EncargarComidaBean encargarComida,
-			Model model) throws Exception {
+			Model model,SesionBean sesion) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+usuarioLogin.getId(), "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 		
 		client.setRequestBody(""+ beanToJson(encargarComida));
 		

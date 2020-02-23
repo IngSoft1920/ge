@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import ingsoft1920.ge.Beans.LoginBean;
+import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
@@ -17,13 +18,12 @@ final static Logger logger = LogManager.getLogger(ReservasController.class.getNa
 	
 	
 @Autowired
-static
-LoginBean usuarioLogin;
+SesionBean sesion;
 
 	@GetMapping("/reservas")
-	public static String checkinEnviar(Model model) throws Exception {
+	public static String checkinEnviar(Model model, SesionBean sesion) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+usuarioLogin.getId(), "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 		
 		client.setRequestBody("dadnos las facturas");
 		

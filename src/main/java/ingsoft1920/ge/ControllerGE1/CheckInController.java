@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.google.gson.Gson;
 
 import ingsoft1920.ge.Beans.LoginBean;
+import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -29,15 +30,13 @@ public class CheckInController {
 	CheckInBean checkin;
 	
 	@Autowired
-	static
-	LoginBean usuarioLogin;
-	
+	SesionBean sesion;
 	
 	@PostMapping("/checkinEnviar")
 	public static String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
-			Model model) throws Exception {
+			Model model,SesionBean sesion) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/getHbaitacion/"+usuarioLogin.getId(), "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/getHbaitacion/"+sesion.getUsuarioID(), "POST");
 		
 		
 		client.setRequestBody(""+beanToJson(checkInBean));

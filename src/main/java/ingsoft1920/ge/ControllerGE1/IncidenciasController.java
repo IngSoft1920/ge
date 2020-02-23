@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.google.gson.Gson;
 
 import ingsoft1920.ge.Beans.LoginBean;
+import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -27,15 +28,14 @@ public class IncidenciasController {
 	IncidenciasBean incidenciasBean;
 	
 	@Autowired
-	static
-	LoginBean usuarioLogin;
+	SesionBean sesion;
 
 	@PostMapping("/incidencias")
 	public String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
-			Model model) throws Exception {
+			Model model,SesionBean sesion) throws Exception {
 		if(incidenciasBean.checkCamposValidos()) {
 			System.out.print(incidenciasBean.toString());
-			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+usuarioLogin.getId(), "POST");
+			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 			
 			client.setRequestBody(""+beanToJson(incidenciasBean));
 

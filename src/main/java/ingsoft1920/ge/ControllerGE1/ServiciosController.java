@@ -32,14 +32,13 @@ public class ServiciosController {
 	ServiciosBean servicios;
 	
 	@Autowired
-	static
-	LoginBean usuarioLogin;
+	SesionBean sesion;
 	
 	@PostMapping("/serviciosEnviar")
 	public static String checkinEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
-			Model model) throws Exception {
+			Model model,SesionBean sesion) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+usuarioLogin.getId(), "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 		
 		client.setRequestBody(""+ beanToJson(servicios));
 		

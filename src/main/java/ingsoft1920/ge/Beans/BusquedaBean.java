@@ -22,6 +22,20 @@ public class BusquedaBean {
 	}
 	
 	public boolean checkCamposValidos() {
+		String now = java.time.LocalDate.now().toString();
+		String[] fecha = now.split("-"); // fecha = {"<año>", "<mes>", "<dia>"}
+		String[] fechaInicio = this.fechaInicio.split("-");
+		String[] fechaFin = this.fechaFin.split("-");
+		if (fechaInicio.length != 3 || fechaFin.length != 3 ||
+			fechaInicio[0].compareTo(fecha[0]) < 0 || 
+			fechaFin[0].compareTo(fechaInicio[0]) < 0 ||
+			fechaInicio[1].compareTo(fecha[1]) < 0 ||
+			fechaFin[1].compareTo(fechaInicio[1]) < 0 ||
+			fechaInicio[2].compareTo(fecha[2]) < 0 ||
+			fechaFin[2].compareTo(fechaInicio[2]) <= 0) {
+			
+			return false;
+		}
 		return true;
 	}
 	

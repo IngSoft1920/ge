@@ -90,45 +90,47 @@ public class BusquedaController {
 			for (int i = 0; i < ciudades.size(); i++) {
 				busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
 			}
-			
+
 			for (int i = 0; i < hoteles.size(); i++) {
 				busquedaBean.getHoteles().add(hoteles.get(i).getAsString());
 			}
 		}
-		*/
+		 */
 
 		model.addAttribute("busquedaBean",busquedaBean);
-		
+
 		return "buscador";
 	}
-	
+
 	@PostMapping("/buscador")
 	public String buscarPost(@Valid @ModelAttribute("busquedaBean") BusquedaBean busquedaBean,
 			Model model) {
-		
-		logger.info("Busqueda recibida correctamente");
-		
-		// Consulta a la base de datos
-		
-		hotelesDisponibles = new HotelesDisponiblesBean();
-		HotelBean hotel = new HotelBean("Ritz", "Zaragoza", 15, 30);
-		List<HabitacionBean> listaHabitaciones = new ArrayList<HabitacionBean>();
-		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 0));
-		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 1));
-		listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0", 2));
-		hotel.setHabitaciones(listaHabitaciones);
-		hotelesDisponibles.getHoteles().add(hotel);
-		
-		hotel = new HotelBean("Hotel 2", "Madrid", 15, 30);
-		listaHabitaciones = new ArrayList<HabitacionBean>();
-		listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 3));
-		listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 4));
-		listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0", 5));
-		hotel.setHabitaciones(listaHabitaciones);
-		hotelesDisponibles.getHoteles().add(hotel);
-		
-		model.addAttribute("hotelesDisponiblesBean", hotelesDisponibles);
-		
+
+		if (busquedaBean.checkCamposValidos()) {
+
+			logger.info("Busqueda recibida correctamente");
+
+			// Consulta a la base de datos
+
+			hotelesDisponibles = new HotelesDisponiblesBean();
+			HotelBean hotel = new HotelBean("Ritz", "Zaragoza", 15, 30);
+			List<HabitacionBean> listaHabitaciones = new ArrayList<HabitacionBean>();
+			listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 0));
+			listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 1));
+			listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0", 2));
+			hotel.setHabitaciones(listaHabitaciones);
+			hotelesDisponibles.getHoteles().add(hotel);
+
+			hotel = new HotelBean("Hotel 2", "Madrid", 15, 30);
+			listaHabitaciones = new ArrayList<HabitacionBean>();
+			listaHabitaciones.add(new HabitacionBean ("Suit", "300.0", 3));
+			listaHabitaciones.add(new HabitacionBean ("Turista", "100.0", 4));
+			listaHabitaciones.add(new HabitacionBean ("Privilegiada", "200.0", 5));
+			hotel.setHabitaciones(listaHabitaciones);
+			hotelesDisponibles.getHoteles().add(hotel);
+
+			model.addAttribute("hotelesDisponiblesBean", hotelesDisponibles);
+		}
 		return "buscador";
 	}
 	

@@ -4,10 +4,6 @@ import javax.validation.Valid;
 
 
 import org.apache.logging.log4j.LogManager;
-
-
-
-
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,13 +28,14 @@ public class FacturaController {
 	@Autowired
 	SesionBean sesion;
 	
-	public static String facturaGet(Model model) throws Exception {
-		fillJson("hola");
 	@GetMapping("/facturacion")
+	public static String facturaGet(Model model,SesionBean sesion) throws Exception {
+		fillJson("hola");
+	
 		
 		client.setRequestBody("dadnos las facturas");
 		
-		//int respCode = client.getResponseCode();
+		int respCode = client.getResponseCode();
 		
 		String resp="";
 		if(respCode==200) {

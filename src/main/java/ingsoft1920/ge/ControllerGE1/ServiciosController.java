@@ -52,10 +52,26 @@ public class ServiciosController {
 		
 	}
 	
+	
+	
 	@GetMapping("/servicios")
-	public static String checkInEnviar(Model model) {
+	public static String checkInEnviar(Model model, SesionBean sesion) throws Exception {
+		
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+		
+		client.setRequestBody("dadnos el menu");
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();
+			  }
+		
 		return "servicios";
 	}
+	
+	
 	public static Object beanToJson(Object bean) {
 		Gson gson = new Gson();
 		String JSON = gson.toJson(bean);	

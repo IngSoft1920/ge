@@ -47,6 +47,11 @@ public class EncargarComidaController {
 		return resp;
 		
 	}
+	
+	
+	
+	
+	
 	public static Object beanToJson(Object bean) {
 		Gson gson = new Gson();
 		String JSON = gson.toJson(bean);	

@@ -34,16 +34,16 @@ public class IncidenciasController {
 	public String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
 			Model model,SesionBean sesion) throws Exception {
 			
-//			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
-//			
-//			client.setRequestBody(""+beanToJson(incidenciasBean));
-//
-//			int respCode = client.getResponseCode();
-//
-//			String resp="";
-//			if(respCode==200) {
-//				resp=client.getResponseBody();
-//			}
+			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+			
+			client.setRequestBody(""+beanToJson(incidenciasBean));
+
+			int respCode = client.getResponseCode();
+
+			String resp="";
+			if(respCode==200) {
+				resp=client.getResponseBody();
+			}
 			return "incidencias";
 		
 	}

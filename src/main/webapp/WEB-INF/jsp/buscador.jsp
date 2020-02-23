@@ -218,6 +218,7 @@ tarifas {
 					<h3>Ciudad</h3>
 
 					<select name="ciudad">
+						<option value="">(Opcional)</option>
 						<c:forEach items="${busquedaBean.ciudades}" var="ciudad">
 							<option value="${ciudad}">${ciudad}</option>
 						</c:forEach>
@@ -228,6 +229,7 @@ tarifas {
 					<h3>Hotel</h3>
 
 					<select name="hotel">
+						<option value="">(Opcional)</option>
 						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
 							<option value="${hotel}">${hotel}</option>
 						</c:forEach>

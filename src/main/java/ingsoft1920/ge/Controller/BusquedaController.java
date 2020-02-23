@@ -41,15 +41,12 @@ public class BusquedaController {
 	public String buscarGet(Model model) throws Exception {
 		
 		busquedaBean = new BusquedaBean();
-		busquedaBean.getCiudades().add("Zaragoza");
-		busquedaBean.getCiudades().add("Barcelona");
-		busquedaBean.getHoteles().add("Ritz");
 		
 		/*
 		 * Formato Json recibido:
 		 * {
-		 * 		"ciudades": ["Guadalajara", "Toledo", ...],
-		 * 		"hoteles": ["Rich", "Paco", ...]
+		 * 		"ciudades": ["Guadalajara", "Madrid", "Zaragoza", "Valencia"],
+		 * 		"hoteles": ["Rich", "Paquito", "Medici", "Corporate"]
 		 * }
 		 */
 
@@ -110,8 +107,6 @@ public class BusquedaController {
 			Model model) {
 		
 		logger.info("Busqueda recibida correctamente");
-		
-		logger.info(busquedaBean.getFechaInicio());
 		
 		// Consulta a la base de datos
 		

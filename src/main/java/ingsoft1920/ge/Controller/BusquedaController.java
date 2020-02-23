@@ -14,11 +14,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
 
 
 @Controller
@@ -33,20 +38,68 @@ public class BusquedaController {
 	SesionBean sesionBean;
 	
 	@GetMapping("/buscador")
-	public String buscarGet(Model model) {
+	public String buscarGet(Model model) throws Exception {
 		
 		busquedaBean = new BusquedaBean();
 		busquedaBean.getCiudades().add("Zaragoza");
 		busquedaBean.getCiudades().add("Barcelona");
 		busquedaBean.getHoteles().add("Ritz");
 		
-		try {
-			//HttpClient servidor = new HttpClient(HttpClient.urlCM, "getHoteles");
-			//servidor.getResposeBody();
-		} catch (Exception e) {
-			e.printStackTrace();
+		/*
+		 * Formato Json recibido:
+		 * {
+		 * 		"ciudades": ["Guadalajara", "Toledo", ...],
+		 * 		"hoteles": ["Rich", "Paco", ...]
+		 * }
+		 */
+
+		// Creamos los ejemplos.
+		JsonObject obj = new JsonObject();
+		JsonArray arr = new JsonArray();
+		arr.add("Guadalajara");
+		arr.add("Madrid");
+		arr.add("Zaragoza");
+		arr.add("Valencia");
+		obj.add("ciudades",	arr);
+		arr = new JsonArray();
+		arr.add("Rich");
+		arr.add("Paquito");
+		arr.add("Medici");
+		arr.add("Corporate");
+		obj.add("hoteles", arr);
+		
+		JsonArray ciudades = (JsonArray) obj.get("ciudades");
+		JsonArray hoteles = (JsonArray) obj.get("hoteles");
+		
+		for (int i = 0; i < ciudades.size(); i++) {
+			busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
 		}
 		
+		for (int i = 0; i < hoteles.size(); i++) {
+			busquedaBean.getHoteles().add(hoteles.get(i).getAsString());
+		}
+		// El siguiente código debería consultar a CM de forma correcta
+		/*
+		String response = "";
+		
+		HttpClient server = new HttpClient(HttpClient.urlCM, "getHoteles");
+		if (server.getResponseCode() != 404) {// Si encuentra el servidor
+			response = server.getResponseBody();
+			obj = new Gson().fromJson(response, JsonObject.class);
+
+			JsonArray ciudades = (JsonArray) obj.get("ciudades");
+			JsonArray hoteles = (JsonArray) obj.get("hoteles");
+			
+			for (int i = 0; i < ciudades.size(); i++) {
+				busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
+			}
+			
+			for (int i = 0; i < hoteles.size(); i++) {
+				busquedaBean.getHoteles().add(hoteles.get(i).getAsString());
+			}
+		}
+		*/
+
 		model.addAttribute("busquedaBean",busquedaBean);
 		
 		return "buscador";

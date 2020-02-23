@@ -2,25 +2,19 @@ package ingsoft1920.ge.BeansGE1;
 
 public class FacturaBean {
 	
-	@Override
-	public String toString() {
-		return "FacturaBean [facturaPdf=" + facturaPdf + "]";
+	
+	private String idReserva;
+	
+
+	public String getIdReserva() {
+		return idReserva;
 	}
 
-	private String facturaPdf;
 
-	public String getFactura() {
-		return facturaPdf;
+	public void setIdReserva(String idReserva) {
+		this.idReserva = idReserva;
 	}
 
-	public void setFactura(String factura) {
-		this.facturaPdf = factura;
-	}
-
-	public FacturaBean(String factura) {
-		super();
-		this.facturaPdf = factura;
-	}
 
 	public FacturaBean() {
 		super();

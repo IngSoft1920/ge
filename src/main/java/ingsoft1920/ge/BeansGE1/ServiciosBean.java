@@ -6,6 +6,15 @@ import org.springframework.web.context.annotation.SessionScope;
 @Component
 @SessionScope
 public class ServiciosBean {
+	
+	private String idReserva;
+	
+	public String getIdReserva() {
+		return idReserva;
+	}
+	public void setIdReserva(String idReserva) {
+		this.idReserva = idReserva;
+	}
 	private String servicio;
 	private String fecha;
 	
@@ -22,8 +31,10 @@ public class ServiciosBean {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	public ServiciosBean(String servicio, String fecha) {
+	
+	public ServiciosBean(String idReserva, String servicio, String fecha) {
 		super();
+		this.idReserva = idReserva;
 		this.servicio = servicio;
 		this.fecha = fecha;
 	}

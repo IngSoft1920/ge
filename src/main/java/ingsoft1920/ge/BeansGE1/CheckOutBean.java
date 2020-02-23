@@ -7,6 +7,7 @@ import org.springframework.web.context.annotation.SessionScope;
 public class CheckOutBean {
 
 	private String horaSalida;
+	private String idReserva;
 
 	public String getHoraSalida() {
 		return horaSalida;

@@ -23,19 +23,19 @@ SesionBean sesion;
 	@GetMapping("/reservas")
 	public static String checkinEnviar(Model model, SesionBean sesion) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
-		
-		client.setRequestBody("dadnos las facturas");
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();
-			  }
-		else {
-			resp="ERROR:Formato invalido";
-		}
+//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+//		
+//		client.setRequestBody("dadnos las facturas");
+//		
+//		int respCode = client.getResponseCode();
+//		
+//		String resp="";
+//		if(respCode==200) {
+//			  resp=client.getResponseBody();
+//			  }
+//		else {
+//			resp="ERROR:Formato invalido";
+//		}
 		
 		return "reservaServicios";
 		

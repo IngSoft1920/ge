@@ -60,13 +60,13 @@ elemento.parentNode.remove();
 	
 			<h3>Servicios</h3>
 			<!-- Lista de servicios -->
-			<select>
+			<select name="servicio">
 				<option>Spa</option>
 				<option>Piscina</option>
 				<option>Reservar mesa</option>
 				</select>
 		<br/><br/>	
-	<select>
+	<select name="num_personas">
     <option value="0">Número de personas:</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -85,7 +85,7 @@ elemento.parentNode.remove();
 			
 			<!-- Lista de horas -->
 			<br/><br/>
-			<select>
+			<select name="dia">
                 <option>Día</option>
 				<option>1</option>
 				<option>2</option>
@@ -117,11 +117,9 @@ elemento.parentNode.remove();
                 <option>28</option>
                 <option>29</option>
                 <option>30</option>
-                <option>31</option>
-               
-                
-			</select>
-                <select>
+                <option>31</option>  
+			</select >
+                <select name="mes">
                 <option>Mes</option>
 				<option>Enero</option>
 				<option>Febrero</option>
@@ -136,7 +134,7 @@ elemento.parentNode.remove();
                 <option>Noviembre</option>
                 <option>Diciembre</option>
 			</select>
-            <select>
+            <select name="hora">
 				<option>10:00</option>
 				<option>10:30</option>
 				<option>11:00</option>

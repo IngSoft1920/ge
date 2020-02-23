@@ -18,10 +18,10 @@ final static Logger logger = LogManager.getLogger(ReservasController.class.getNa
 	
 	
 @Autowired
-static SesionBean sesion;
+ SesionBean sesion;
 
 	@GetMapping("/reservas")
-	public static String reservasEnviar(Model model) throws Exception {
+	public  String reservasEnviar(Model model) throws Exception {
 		
 //		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 //		

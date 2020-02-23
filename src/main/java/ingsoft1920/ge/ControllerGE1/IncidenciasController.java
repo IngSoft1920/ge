@@ -28,10 +28,10 @@ public class IncidenciasController {
 	IncidenciasBean incidenciasBean;
 	
 	@Autowired
-	static SesionBean sesion;
+	 SesionBean sesion;
 
 	@PostMapping("/incidencias")
-	public static String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
+	public  String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
 			Model model) throws Exception {
 			
 			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");

@@ -32,10 +32,10 @@ public class ServiciosController {
 	ServiciosBean servicios;
 	
 	@Autowired
-	static SesionBean sesion;
+	 SesionBean sesion;
 	
 	@PostMapping("/serviciosEnviar")
-	public static String serviciosEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
+	public  String serviciosEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
 			Model model) throws Exception {
 		
 //		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
@@ -55,7 +55,7 @@ public class ServiciosController {
 	
 	
 	@GetMapping("/servicios")
-	public static String checkInEnviar(Model model, SesionBean sesion) throws Exception {
+	public  String checkInEnviar(Model model, SesionBean sesion) throws Exception {
 		
 //		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 //		

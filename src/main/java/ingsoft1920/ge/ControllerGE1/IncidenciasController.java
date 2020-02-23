@@ -32,7 +32,7 @@ public class IncidenciasController {
 
 	@PostMapping("/incidencias")
 	public String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
-			Model model,SesionBean sesion) throws Exception {
+			Model model, SesionBean sesion) throws Exception {
 			
 			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 			

@@ -29,8 +29,8 @@ public class FacturaController {
 	
 	@GetMapping("/factura")
 	public static String checkinEnviar(Model model,SesionBean sesion) throws Exception {
-		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+		/*
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 		
 		client.setRequestBody("dadnos las facturas");
 		
@@ -43,7 +43,7 @@ public class FacturaController {
 		else {
 			resp="ERROR:Formato invalido";
 		}
-		
+		*/
 		return "facturacion";
 		
 	}

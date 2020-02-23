@@ -30,8 +30,8 @@
     text-align: center;
     }
     .card {
-    background-color: black;
-    opacity: 40%;
+    background-color: orange;
+    opacity: 70%;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
@@ -70,7 +70,7 @@
 
 
        <div class="grid-container">
-       <div class="card" onclick="document.location = '/reservas'">
+       <div class="card" onclick="document.location = '/reservaServicios'">
         <div class="container", style="padding-top:20px">
           <a><b>Reservas</b></a> 
           <p>¡Acceda para gestionar su reserva!</p> 

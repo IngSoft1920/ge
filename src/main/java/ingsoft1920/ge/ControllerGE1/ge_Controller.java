@@ -12,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.BeansGE1.CheckInBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
 
 
 
@@ -40,6 +43,4 @@ public class ge_Controller {
 		return "cabecera";
 	}
 	
-		
-
 }

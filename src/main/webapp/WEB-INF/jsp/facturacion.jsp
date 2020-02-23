@@ -3,7 +3,7 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 
-
+<%@ page import="ingsoft1920.ge.ControllerGE1.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,11 +61,11 @@ div.center {
     </div> 
 
   <div class="aspecto">
-		<form  method="GET" style="width:100%;" action="factura" modelAttribute="facturaBean">
+		<form  method="GET" style="width:100%;" action="facturaGet" modelAttribute="facturaBean">
 				<label>Factura PDF</label><br>
-				<input type="text" size="20" value="hola" readonly  name="facturaPdf" style="margin-top:5px; margin-bottom:10px"></input><br>
+				<input size="20" value=<%= ingsoft1920.ge.ControllerGE1.FacturaController.receivedJSON.get("facturaPdf") %> readonly  name="factName" style="margin-top:5px; margin-bottom:10px"></input><br>
 				<br><br>
-				<input type="submit" value="Enviar">
+				<input type="submit" value="Enviar" >
 		</form>
 	</div>
     </body>

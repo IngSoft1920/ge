@@ -47,7 +47,7 @@
 
             <br><br>                                   
             <label for="factura"> Tu factura</label>           
-            <input id= factura type="button" value="factura" onclick="window.location.href='/factura'">
+            <input id= factura type="button" value="factura" onclick="window.location.href='/facturacion'">
 
             
 

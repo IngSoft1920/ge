@@ -74,19 +74,5 @@ div.center {
 		</form>
 	</div>
 	
-<script>
-
-function submitCheckIn(){
-    var reserva = document.getElementById("reserva").value;
-    var entrada = document.getElementById("entrada").value;
-    
-    var myJSON = { "reserva": reserva, "entrada": entrada };
-    console.log(myJSON)
-
-    postcheckin(myJSON);
-    
-}
-
-</script>
     </body>
 </html>

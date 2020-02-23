@@ -20,6 +20,7 @@ import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
+import com.google.gson.*;
 
 @Controller
 public class CheckInController {
@@ -34,9 +35,10 @@ public class CheckInController {
 	
 	@PostMapping("/checkinEnviar")
 	public static String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
-			Model model,SesionBean sesion) throws Exception {
-		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/getHbaitacion/"+sesion.getUsuarioID(), "POST");
+			Model model) throws Exception {
+		System.out.println(checkInBean.toString());
+        beanToJson(checkInBean);
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/loquesea", "POST");
 		
 		
 		client.setRequestBody(""+beanToJson(checkInBean));
@@ -46,7 +48,6 @@ public class CheckInController {
 		
 		if(respCode==200) {
 			  client.getResponseBody();}
-		
 		
 		return "checkin";
 		

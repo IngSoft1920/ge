@@ -11,11 +11,14 @@ public class HotelBean {
 	private String nombre;
 	private String ciudad;
 	private List<HabitacionBean> habitaciones;
+	private int hotel_id;
 	private int desayuno;
 	private int pensionCompleta;
 	private String comidas;
 	
-	public HotelBean () {}
+	public HotelBean () {
+		habitaciones = new ArrayList<HabitacionBean>();
+	}
 	
 	public HotelBean (String nombre, String ciudad, int desayuno, int pensionCompleta) {
 		this.nombre = nombre;
@@ -72,6 +75,14 @@ public class HotelBean {
 
 	public void setComidas(String comidas) {
 		this.comidas = comidas;
+	}
+
+	public int getHotel_id() {
+		return hotel_id;
+	}
+
+	public void setHotel_id(int hotel_id) {
+		this.hotel_id = hotel_id;
 	}
 	
 	

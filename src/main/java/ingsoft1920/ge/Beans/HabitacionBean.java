@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 public class HabitacionBean {
 	
 	private String tipo;
-	private String tarifa;
+	private double tarifa;
 	private int id;
 	
 	public HabitacionBean () {}
 	
-	public HabitacionBean (String tipo, String tarifa, int id) {
+	public HabitacionBean (String tipo, double tarifa, int id) {
 		this.tipo = tipo;
 		this.tarifa = tarifa;
 		this.id = id;
@@ -27,11 +27,11 @@ public class HabitacionBean {
 		this.tipo = tipo;
 	}
 
-	public String getTarifa() {
+	public double getTarifa() {
 		return tarifa;
 	}
 
-	public void setTarifa(String tarifa) {
+	public void setTarifa(double tarifa) {
 		this.tarifa = tarifa;
 	}
 

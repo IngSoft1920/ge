@@ -16,9 +16,9 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 @Controller
 public class FacturaController {
 	public static JSONObject receivedJSON = new JSONObject();
-	
+
 	final static Logger logger = LogManager.getLogger(FacturaController.class.getName());
-	
+
 	@Autowired
 	static SesionBean sesion;
 	
@@ -41,12 +41,12 @@ public class FacturaController {
 //		}
 		
 		return "facturacion";
-		
+
 	}
 
 	public static void fillJson(String value) {
 		receivedJSON.put("facturaPdf", value);
 	}
-	
+
 
 }

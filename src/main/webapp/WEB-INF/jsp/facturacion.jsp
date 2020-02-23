@@ -60,7 +60,7 @@ div.center {
 	<div class="aspecto">
 		<form method="GET" style="width: 100%;" action="facturaGet"
 			modelAttribute="facturaBean">
-			<label>Nï¿½ Reserva</label> <br>
+			<label>Nº Reserva</label> <br>
 			<textarea name="idReserva" rows="2" cols="10"
 				style="margin-top: 5px; margin-bottom: 15px">
 				</textarea>

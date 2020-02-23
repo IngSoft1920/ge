@@ -31,10 +31,10 @@ public class CheckInController {
 	CheckInBean checkin;
 	
 	@Autowired
-	static SesionBean sesion;
+	SesionBean sesion;
 	
 	@PostMapping("/checkinEnviar")
-	public static String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
+	public String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
 			Model model) throws Exception {
 		System.out.println(checkInBean.toString());
         beanToJson(checkInBean);

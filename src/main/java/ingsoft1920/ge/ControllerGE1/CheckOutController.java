@@ -33,10 +33,10 @@ public class CheckOutController {
 	CheckOutBean checkout;
 	
 	@Autowired
-	static SesionBean sesion;
+	 SesionBean sesion;
 	
 	@PostMapping("/checkoutEnviar")
-	public static String checkoutEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
+	public  String checkoutEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
 			Model model) throws Exception {
 		
 //		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");

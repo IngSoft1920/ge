@@ -20,10 +20,10 @@ public class FacturaController {
 	final static Logger logger = LogManager.getLogger(FacturaController.class.getName());
 
 	@Autowired
-	static SesionBean sesion;
+	 SesionBean sesion;
 	
 	@GetMapping("/facturacion")
-	public static String facturaGet(Model model) throws Exception {
+	public  String facturaGet(Model model) throws Exception {
 		fillJson("hola");
 //	
 //		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");

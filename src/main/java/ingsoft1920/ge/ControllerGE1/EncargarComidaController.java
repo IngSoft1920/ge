@@ -35,9 +35,10 @@ public class EncargarComidaController {
 	@GetMapping("/recibirInfo")
 	public  String recibirInfo() throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7003/infoRest", "GET");
+		Gson prueba= new Gson();
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/infoRest", "GET");
 		
-		client.setRequestBody("");
+		client.setRequestBody(""+prueba);
 		
 		int respCode = client.getResponseCode();
 		

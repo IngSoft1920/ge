@@ -2,6 +2,7 @@ package ingsoft1920.ge.ControllerGE1;
 
 import javax.validation.Valid;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,21 +31,43 @@ public class EncargarComidaController {
 	@Autowired
 	 SesionBean sesion;
 	
-	@PostMapping("/encargarComidaEnviar")
-	public  String encargarEnviar(@Valid @ModelAttribute("encargarComidaBean") EncargarComidaBean encargarComida,
+	//pedimos los restaurantes disponibles y mas cosas que de monento no usamos
+	@GetMapping("/recibirInfo")
+	public  String recibirInfo() throws Exception {
+		
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7003/infoRest", "GET");
+		
+		client.setRequestBody("");
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();}
+		
+		return resp;
+		
+	}
+	//damos el restaurante que queremos con el numero de gente que queremos y nos devulven las horas OCUPADAS
+	@GetMapping("/pedirFechas")
+	public String  fechas(@Valid @ModelAttribute("encargarComidaBean") EncargarComidaBean encargarComida,
 			Model model) throws Exception {
+
+		EncargarComidaBean cuerpoPet= new EncargarComidaBean();
+		cuerpoPet.setNombreRestaurante(encargarComida.getNombreRestaurante());
+		cuerpoPet.setNumPersonas(encargarComida.getNumPersonas());
 		
-//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
-//		
-//		client.setRequestBody(""+ beanToJson(encargarComida));
-//		
-//		int respCode = client.getResponseCode();
-//		
-//		String resp="";
-//		if(respCode==200) {
-//			  resp=client.getResponseBody();}
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7003/checkReservRest", "GET");
 		
-		return "";
+		client.setRequestBody(""+cuerpoPet);
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();}
+		
+		return resp;
 		
 	}
 	

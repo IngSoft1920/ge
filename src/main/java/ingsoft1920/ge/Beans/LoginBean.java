@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class LoginBean {
 	String usuario;
 	String password;
+	String method = "login";
 	int id;
 	
 	//En un bean siempre es necesario el constructor vacio
@@ -71,6 +72,14 @@ public class LoginBean {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
 	}
 	
 }

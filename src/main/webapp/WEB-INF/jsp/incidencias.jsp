@@ -53,8 +53,8 @@
 				<label>Asunto</label> <br>
 				<select name="Asunto" style="margin-top:5px; margin-bottom:10px">
 						<option id="habitacion">Habitacion</option>
-						<option id="restaurante">Restaurante - comida</option>
-						<option id="servicio">Servicio</option>
+						<option id="restaurante">Mantenimiento</option>
+						<option id="servicio">Otros...</option>
 				</select>
 				<br><br>
 				<label>Mensaje</label><br>

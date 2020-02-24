@@ -44,7 +44,7 @@ public class LoginController {
 			Model model) throws Exception{
 
 		if(loginBean.checkCamposValidos()) {
-			logger.info("Peticion de Signup recibida correctamente y con campos validos");
+			logger.info("Peticion de Log In recibida correctamente y con campos validos");
 			
 			// Se comprueba que el usuario existe y que la contraseña es correcta.
 			JsonObject obj = new JsonObject();

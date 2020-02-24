@@ -24,6 +24,7 @@ import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
+import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -31,13 +32,14 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 @Controller
 public class BusquedaController {
 	final static Logger logger = LogManager.getLogger(BusquedaController.class.getName());
-
 	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
 	@Autowired
 	BusquedaBean busquedaBean;
 	@Autowired
 	SesionBean sesionBean;
+	
+	JsonObject crearReserva;
 
 	@GetMapping("/buscador")
 	public String buscarGet(Model model) throws Exception {
@@ -195,10 +197,12 @@ public class BusquedaController {
 			
 			// El siguiente código debería consultar a CM de forma correcta
 			String response = "";
+			
+			hotelesDisponibles = new HotelesDisponiblesBean();
 			/*
 			HttpClient server = new HttpClient(HttpClient.urlCM+"precioDisponible", "GET");
 			// Añado los datos de la consulta
-			server.setRequestBody(obj.toString())
+			server.setRequestBody(obj.toString());
 			
 			if (server.getResponseCode() != 404) {// Si encuentra el servidor
 				response = server.getResponseBody();
@@ -256,10 +260,12 @@ public class BusquedaController {
 		
 		// Para que siga mostrando las opciones de Ciudades y hoteles
 		// después de una búsqueda, necesito hacer esto.
-		busquedaBean.setCiudades(this.busquedaBean.getCiudades());
-		busquedaBean.setHoteles(this.busquedaBean.getHoteles());
-		busquedaBean.setIds(this.busquedaBean.getIds());
-		model.addAttribute("busquedaBean", busquedaBean);
+		this.busquedaBean.setCiudad(busquedaBean.getCiudad());
+		this.busquedaBean.setFechaFin(busquedaBean.getFechaFin());
+		this.busquedaBean.setHotel(busquedaBean.getHotel());
+		this.busquedaBean.setHotel_id(busquedaBean.getHotel_id());
+		this.busquedaBean.setFechaInicio(busquedaBean.getFechaInicio());
+		model.addAttribute("busquedaBean", this.busquedaBean);
 		
 		return "buscador";
 	}
@@ -267,45 +273,121 @@ public class BusquedaController {
 	@PostMapping("/reservar")
 	public String reservarPost(@Valid @ModelAttribute("habitacionId") int habitacionId,
 			@Valid @ModelAttribute("comidas") String comidas,
-			Model model) {
+			Model model) throws Exception{
 		
-		if (sesionBean.getUsuarioID() == -1) {
-			return "redirect:login";
-		}
+		/*
+         * {
+         *
+         *  "fecha_inicio":"yyyy-MM-dd"
+         *  "fecha_fin":"yyyy-MM-dd"
+         *  "precio":"1023124"
+         *  "hotel_id":"12"
+         *  "tipo":"lujo"
+         *  "cliente_id":"123456789"
+         *
+         * }
+         */
 		
-		logger.info("Reserva recibida correctamente." + habitacionId);
-		String reserva = "";
+		crearReserva = new JsonObject();
+		crearReserva.addProperty("fecha_inicio", busquedaBean.getFechaInicio());
+		crearReserva.addProperty("fecha_fin", busquedaBean.getFechaFin());
 		boolean encontrado = false;
 		for (HotelBean hotel: hotelesDisponibles.getHoteles()) {
-			
 			for (HabitacionBean habitacion: hotel.getHabitaciones()) {
 				if (habitacion.getId() == habitacionId) {
+					crearReserva.addProperty("tipo", habitacion.getTipo());
+					crearReserva.addProperty("precio", habitacion.getTarifa());
+					crearReserva.addProperty("hotel_id", hotel.getHotel_id());
 					encontrado = true;
-					reserva += "\nTipo: " + habitacion.getTipo();
-					reserva += "\nTarifa: " + habitacion.getTarifa();
 					break;
 				}
 			}
-			if (encontrado) {
-				reserva += "\nComidas: " + comidas;
-				reserva = "\nCiudad: " + hotel.getCiudad() + reserva;
-				reserva = "Hotel: " + hotel.getNombre() + reserva;
-				break;
-			}
+			if (encontrado) break;
 		}
-		logger.info(reserva);
+		
+		if (sesionBean.getUsuarioID() == -1) {
+			LoginBean login = new LoginBean();
+			login.setMethod("loginReservar");
+			model.addAttribute(login);
+			return "login";
+		}
+
+		crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
+		/*
+		HttpClient server = new HttpClient(HttpClient.urlCM+"crearReserva", "GET");
+		// Añado los datos de la consulta
+		server.setRequestBody(crearReserva.toString());
+		
+		if (server.getResponseCode() == 404) {// Si encuentra el servidor
+			model.addAttribute("mensajeError", "La reserva no se ha podido realizar correctamente");
+			return "buscador";
+		}*/
 		
 		return "redirect:misReservas";
 	}
 	
-	
-	@PostMapping("/reservarTarifa")
-	public String reservarTarifaPost(@Valid @ModelAttribute("habitacionId") int habitacionId, @Valid @ModelAttribute("optionComida") String optionComida,
-			Model model) {
-		System.out.print("nos metemos");
-		logger.info("ReservaTarifa recibida correctamente con opcion la opcion de comida:"+optionComida+"y en la habitacion:"+habitacionId);
+	@PostMapping("/loginReservar")
+	public String loginPost(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) throws Exception{
+
+		if(loginBean.checkCamposValidos()) {
+			logger.info("Peticion de Log In recibida correctamente y con campos validos");
+			
+			// Se comprueba que el usuario existe y que la contraseña es correcta.
+			JsonObject obj = new JsonObject();
+			obj.addProperty("email", loginBean.getUsuario());
+			obj.addProperty("password", loginBean.getPassword());
+			String response = "";
+			
+			/*
+			HttpClient server = new HttpClient(HttpClient.urlCM+"login", "GET");
+			server.setRequestBody(obj.getAsString());
+			if (server.getResponseCode() != 404) {// Si encuentra el servidor
+				response = server.getResponseBody();
+				obj = new Gson().fromJson(response, JsonObject.class);
+				int id = obj.get("id_cliente").getAsInt();
+				
+				if (id == -1) {
+					
+					model.addAttribute("loginBean", loginBean);
+					model.addAttribute("mensajeError","El usuario no existe");
+					
+					return "login";
+				}
+				else {
+					loginBean.setId(id);
+					
+					// Guarda el email del usuario en el sesion bean
+					sesionBean = new SesionBean(new UsuarioModel(loginBean));
+					
+					return "redirect:buscador";
+				}
+			}
+			*/
+			// Pruebas de SessionScope sin conexión al servidor
+			loginBean.setId(1);
+
+			// Guarda el email del usuario en el sesion bean
+			sesionBean.setUsuarioID(1);
+
+			crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
+			/*
+			HttpClient server = new HttpClient(HttpClient.urlCM+"crearReserva", "GET");
+			// Añado los datos de la consulta
+			server.setRequestBody(crearReserva.toString());
+			
+			if (server.getResponseCode() == 404) {// Si encuentra el servidor
+				model.addAttribute("mensajeError", "La reserva no se ha podido realizar correctamente");
+				return "buscador";
+			}
+			*/
+			return "redirect:misReservas";
+		}
 		
-		return "redirect:buscador";
+		model.addAttribute("loginBean", loginBean);
+		model.addAttribute("mensajeError","Email o password no existe");
+		
+		return "login";
 	}
 	
 }

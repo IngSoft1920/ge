@@ -51,7 +51,6 @@ public class BusquedaController {
 			 * 		"ciudades": ["Guadalajara", "Madrid", "Zaragoza", "Valencia"]
 			 * }
 			 */
-
 			// Creamos los ejemplos.
 			JsonObject obj = new JsonObject();
 			JsonArray arr = new JsonArray();
@@ -60,13 +59,12 @@ public class BusquedaController {
 			arr.add("Zaragoza");
 			arr.add("Valencia");
 			obj.add("ciudades",	arr);
-
+			
 			JsonArray ciudades = (JsonArray) obj.get("ciudades");
 
 			for (int i = 0; i < ciudades.size(); i++) {
 				busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
 			}
-
 			/*
 			 * Formato Json recibido:
 			 * [
@@ -93,7 +91,7 @@ public class BusquedaController {
 			 * 		
 			 * ]
 			 */
-
+			
 			// Creamos los ejemplos.
 			arr = new JsonArray();
 			obj = new JsonObject();
@@ -117,7 +115,7 @@ public class BusquedaController {
 			obj.addProperty("hotel_id", "4");
 			arr.add(obj);
 			obj = new JsonObject();
-
+			
 			JsonArray hoteles = arr.getAsJsonArray();
 
 			for (int i = 0; i < hoteles.size(); i++) {
@@ -125,27 +123,38 @@ public class BusquedaController {
 				busquedaBean.getHoteles().add(hotel.get("nombre").getAsString());
 				busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("hotel_id").getAsInt());
 			}
+			
 			// El siguiente código debería consultar a CM de forma correcta
 			/*
 			String response = "";
-	
-			HttpClient server = new HttpClient(HttpClient.urlCM, "getHoteles");
-			if (server.getResponseCode() != 404) {// Si encuentra el servidor
-				response = server.getResponseBody();
+			JsonObject obj;
+			HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"ciudades", "GET");
+			if (serverCiudades.getResponseCode() != 404) {// Si encuentra el servidor
+				response = serverCiudades.getResponseBody();
 				obj = new Gson().fromJson(response, JsonObject.class);
-	
+
 				JsonArray ciudades = (JsonArray) obj.get("ciudades");
-				JsonArray hoteles = (JsonArray) obj.get("hoteles");
-	
+
 				for (int i = 0; i < ciudades.size(); i++) {
 					busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
 				}
-	
+			}
+			
+			JsonArray hoteles;
+			HttpClient serverHoteles = new HttpClient(HttpClient.urlCM+"hoteles", "GET");
+			if (serverHoteles.getResponseCode() != 404) {// Si encuentra el servidor
+				response = serverHoteles.getResponseBody();
+				
+				hoteles = new Gson().fromJson(response, JsonArray.class);
+
 				for (int i = 0; i < hoteles.size(); i++) {
-					busquedaBean.getHoteles().add(hoteles.get(i).getAsString());
+					JsonObject hotel = hoteles.get(i).getAsJsonObject();
+					busquedaBean.getHoteles().add(hotel.get("nombre").getAsString());
+					busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("hotel_id").getAsInt());
 				}
 			}
 			*/
+
 		}
 		model.addAttribute("busquedaBean",busquedaBean);
 

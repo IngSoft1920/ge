@@ -80,7 +80,7 @@ a:active {
 .reserva {
 	background-color: #A8F4EA;
 	border: 1px solid black;
-	margin-top: 5px;
+	margin-top: 10px;
 	overflow: hidden
 }
 
@@ -89,6 +89,8 @@ a:active {
 	color: red;
 	border: 1px solid #FA220C;
 	padding: 5px;
+	font-size:15px;
+	font-family: Helvetica;
 	margin-right: 10px;
 	background-color: FFA79B
 }
@@ -171,13 +173,20 @@ bidi-override
 			</p>
 			<p class="habitacion">
 				Habitación: ${reserva.habitacion} <span class="tarifa">Tarifa:${reserva.tarifa}</span>
-				<span class="cancelar">Cancelar reserva</span> <span
-					class="cancelar">Cambiar reserva</span>
-			</p>
-		</div>
-
+				<c:remove var="reserva"/>
+				
+				<span><button class="cancelar" name="button" value="cancelar">Cancelar Reserva</button></span> 
+				
+			<div onclick="document.location = '/buscador'">
+          <a><button class="cancelar" name="button" value="cancelar">Cambiar Reserva</button></a> 
+        </div>
+      </div>
+	</p>
+	</c:forEach>
 
 		<h2 class="titulo_historial">Historial</h2>
+<c:forEach items="${misReservasBean.reservas}" var="reserva">
+
 		<div class="historial">
 			<p>Hotel ${reserva.hotel} en ${reserva.ciudad}
 			<form>

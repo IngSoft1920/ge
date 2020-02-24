@@ -75,6 +75,6 @@ public class SignupController {
 		
 		
 		
-		return "redirect:buscador";
+		return "redirect:home";
 	}
 }

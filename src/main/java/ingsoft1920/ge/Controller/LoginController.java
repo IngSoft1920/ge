@@ -53,7 +53,7 @@ public class LoginController {
 			String response = "";
 			
 			/*
-			HttpClient server = new HttpClient(HttpClient.urlCM, "datoUsuario1");
+			HttpClient server = new HttpClient(HttpClient.urlCM+"login", "GET");
 			server.setRequestBody(obj.getAsString());
 			if (server.getResponseCode() != 404) {// Si encuentra el servidor
 				response = server.getResponseBody();
@@ -84,7 +84,7 @@ public class LoginController {
 			//sesionBean = new SesionBean(new UsuarioModel(loginBean));
 			sesionBean.setUsuarioID(1);
 			
-			return "redirect:buscador";
+			return "redirect:home";
 		}
 		
 		model.addAttribute("loginBean", loginBean);

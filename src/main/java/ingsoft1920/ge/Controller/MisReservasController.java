@@ -31,4 +31,13 @@ public class MisReservasController {
 		return "misReservas";
 
 	}
+	
+	@PostMapping("/misReservas")
+	public String misReservasPost(@Valid @ModelAttribute("valoracionId") String valoracionId,
+			Model model) {
+		
+		logger.info("Valoración recibida correctamente." + valoracionId);
+		
+		return "misReservas";
+	}
 }

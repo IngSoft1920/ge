@@ -54,6 +54,7 @@ public class BusquedaController {
 			// Creamos los ejemplos.
 			JsonObject obj = new JsonObject();
 			JsonArray arr = new JsonArray();
+			
 			arr.add("Guadalajara");
 			arr.add("Madrid");
 			arr.add("Zaragoza");
@@ -127,7 +128,7 @@ public class BusquedaController {
 			// El siguiente código debería consultar a CM de forma correcta
 			/*
 			String response = "";
-			JsonObject obj;
+			//JsonObject obj;
 			HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"ciudades", "GET");
 			if (serverCiudades.getResponseCode() != 404) {// Si encuentra el servidor
 				response = serverCiudades.getResponseBody();
@@ -157,6 +158,7 @@ public class BusquedaController {
 
 		}
 		model.addAttribute("busquedaBean",busquedaBean);
+		model.addAttribute("sesionBean", sesionBean);
 
 		return "buscador";
 	}
@@ -275,6 +277,7 @@ public class BusquedaController {
 		this.busquedaBean.setHotel_id(busquedaBean.getHotel_id());
 		this.busquedaBean.setFechaInicio(busquedaBean.getFechaInicio());
 		model.addAttribute("busquedaBean", this.busquedaBean);
+		model.addAttribute("sesionBean", sesionBean);
 		
 		return "buscador";
 	}
@@ -323,7 +326,7 @@ public class BusquedaController {
 
 		crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
 		/*
-		HttpClient server = new HttpClient(HttpClient.urlCM+"crearReserva", "GET");
+		HttpClient server = new HttpClient(HttpClient.urlCM+"crearReserva", "POST");
 		// Añado los datos de la consulta
 		server.setRequestBody(crearReserva.toString());
 		

@@ -180,7 +180,7 @@ bidi-override
 		<h2 class="titulo_historial">Historial</h2>
 		<div class="historial">
 			<p>Hotel ${reserva.hotel} en ${reserva.ciudad}
-			<form method="POST" action="valorar" name="valoracionId">
+			<form method="POST" action="misReservas" name="valoracionId">
 			
 				<div class="clasificacion">
 					<input id="radio1" type="radio" name="estrellas" value="5">
@@ -212,7 +212,7 @@ bidi-override
     -->
 					<label for="radio5">&#9733</label>
 				</div>
-				<input type="submit" >Enviar</input>
+				<input type="submit">Enviar</input>
 			</form>
 			<p>De ${reserva.fechaInicio} a ${reserva.fechaFin}</p>
 			<p>

@@ -37,7 +37,7 @@ public class MisReservasController {
 			Model model) {
 		
 		logger.info("Valoración recibida correctamente." + valoracionId);
-		
+		model.addAttribute("mensajeError","");
 		return "misReservas";
 	}
 }

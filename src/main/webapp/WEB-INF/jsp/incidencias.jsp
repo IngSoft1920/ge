@@ -46,7 +46,7 @@
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
-		<form action="/incidencias" method="post">
+		<form action="/incidencias" method="get">
 				<label>Nº Reserva</label> <br>
 				<textarea name="idReserva" rows="2" cols="10" style="margin-top:5px; margin-bottom:15px">
 				</textarea> <br>

@@ -52,7 +52,7 @@ public class MisReservasController {
 	public void borrarReserva(@Valid @ModelAttribute("ReservaBean") ReservaBean reservaBean, Model model)
 			throws Exception {
 		// HttpClient client= new
-		// HttpClient("piedrafita.ls.fi.upm.es:7000/cancelarReserva", "POST");
+		// HttpClient(HttpClient.urlCM+ "cancelarReserva", "POST");
 		// client.setRequestBody(beanToJson(reservaBean).toString());
 		// String response = null;
 		// if(client.getResponseCode()==200) {

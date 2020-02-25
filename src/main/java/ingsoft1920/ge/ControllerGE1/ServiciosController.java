@@ -47,8 +47,10 @@ public class ServiciosController {
 //		String resp="";
 //		if(respCode==200) {
 //			  resp=client.getResponseBody();}
-		
+		model.addAttribute("sesionBean", sesion);
+
 		return "";
+		
 		
 	}
 	
@@ -66,7 +68,9 @@ public class ServiciosController {
 //		if(respCode==200) {
 //			  resp=client.getResponseBody();			 
 //			  }
-//		
+//				
+		model.addAttribute("sesionBean", sesion);
+
 		return "servicios";
  	}
 	

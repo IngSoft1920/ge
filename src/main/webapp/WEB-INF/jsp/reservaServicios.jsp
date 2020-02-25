@@ -8,13 +8,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <body style="background: radial-gradient(beige, transparent);">
+    <body>
     <style>
             .aspecto {
                 margin: 20px;
                 padding: 10px;
-                background-color: orange;
-                opacity: 50%;
+                background-color: #B0C4DE;
+                opacity: 80%;
             }
 
             .parte1 {
@@ -22,7 +22,7 @@
                 grid-column-end: 5;
             }
             </style>
-    <div style="margin-top:40px; background-color: orange; opacity: 30%;">
+    <div style="margin-top:40px; background-color: #B0C4DE; opacity: 60%;">
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
     </div> 
     <div class="aspecto">

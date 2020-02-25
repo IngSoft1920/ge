@@ -44,12 +44,16 @@ public class IncidenciasController {
 			if(respCode==200) {
 				resp=client.getResponseBody();
 			}
+			model.addAttribute("sesionBean", sesion);
+
 			return "incidencias";
 		
 	}
 
 	@GetMapping("/incidencias")
 	public String Incidencias(Model model) {
+		model.addAttribute("sesionBean", sesion);
+
 		return "incidencias";
 	}
 	public static Object beanToJson(Object bean) {

@@ -21,7 +21,7 @@ public class SignupBean {
 		boolean resultado = true;
 		if (usuario.isEmpty()) {
 			resultado = false;
-		} else if (password.isEmpty() || !password.equals(verificacionPassword)) {
+		} else if (password.isEmpty() || password.compareTo(verificacionPassword) != 0) {
 			resultado = false;
 		} else if (email.isEmpty()) {
 			resultado = false;
@@ -122,5 +122,11 @@ public class SignupBean {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
+	}
+
+	public void setVerificacionPassword(String verificacionPassword) {
+		this.verificacionPassword = verificacionPassword;
 	}	
+	
+	
 }

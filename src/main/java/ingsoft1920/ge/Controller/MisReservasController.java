@@ -43,12 +43,12 @@ public class MisReservasController {
 	@PostMapping("/cancelarReserva")
 	public void borrarReserva(@Valid @ModelAttribute("ReservaBean") ReservaBean reservaBean,
 			Model model) throws Exception {
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7000/cancelarReserva", "POST");
-		client.setRequestBody(beanToJson(reservaBean).toString());
-		String response = null;
-		if(client.getResponseCode()==200) {
-			response = client.getResponseBody();
-		}
+		//HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7000/cancelarReserva", "POST");
+		//client.setRequestBody(beanToJson(reservaBean).toString());
+		//String response = null;
+		//if(client.getResponseCode()==200) {
+		//	response = client.getResponseBody();
+		//}
 		
 	}
 	public static Object beanToJson(Object bean) {

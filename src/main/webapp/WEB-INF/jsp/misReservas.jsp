@@ -189,43 +189,28 @@ bidi-override
 
 		<div class="historial">
 			<p>Hotel ${reserva.hotel} en ${reserva.ciudad}
-			<form>
+			<form method="POST" action="valorar" name="valoracionId">
+
 				<div class="clasificacion">
 					<input id="radio1" type="radio" name="estrellas" value="5">
-					<!--
-    -->
-					<label for="radio1">&#9733</label>
-					<!--
-    -->
-					<input id="radio2" type="radio" name="estrellas" value="4">
-					<!--
-    -->
-					<label for="radio2">&#9733</label>
-					<!--
-    -->
+
+					<label for="radio1">&#9733</label> <input id="radio2" type="radio"
+						name="estrellas" value="4"> <label for="radio2">&#9733</label>
+
 					<input id="radio3" type="radio" name="estrellas" value="3">
-					<!--
-    -->
-					<label for="radio3">&#9733</label>
-					<!--
-    -->
-					<input id="radio4" type="radio" name="estrellas" value="2">
-					<!--
-    -->
-					<label for="radio4">&#9733</label>
-					<!--
-    -->
+
+					<label for="radio3">&#9733</label> <input id="radio4" type="radio"
+						name="estrellas" value="2"> <label for="radio4">&#9733</label>
+
 					<input id="radio5" type="radio" name="estrellas" value="1">
-					<!--
-    -->
-					<label for="radio5">&#9733</label>
+
+					<label for="radio5">&#9733</label> <input type="submit"></input>
 				</div>
+
 			</form>
 			<p>De ${reserva.fechaInicio} a ${reserva.fechaFin}</p>
 			<p>
-				Habitación: ${reserva.habitacion} <span>
-					<button class="enviar">Enviar</button>
-				</span>
+				Habitación: ${reserva.habitacion} <span> </span>
 			</p>
 		</div>
 	</c:forEach>

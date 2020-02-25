@@ -100,10 +100,5 @@ public class SignupBean {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public void setVerificacionPassword(String verificacionPassword) {
-		this.verificacionPassword = verificacionPassword;
-	}
-	
+	}	
 }

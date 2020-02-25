@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<jsp:include page="cabecera.jsp"></jsp:include>
+<jsp:include page="cabecera.jsp"></jsp:include> 
 
 <html>
 <head>Log In 
@@ -19,8 +19,12 @@
 		<label>Contrasena</label>
 		<form:input type="password" name="password" path="password" />
 		<input type="submit" value="Entrar">
-		<br>
 	</form:form>
+
+		<div class="card" onclick="document.location = '/signup'">
+		 <div class="container", style="padding-top:20px">
+		   <a><b><input type="submit" value="Si no estas registrado. Ir a Signup"></b></a> 
+		 </div>
 
 </body>
 </html>

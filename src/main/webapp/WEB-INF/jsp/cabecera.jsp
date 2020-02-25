@@ -85,15 +85,16 @@ padding-top: 50px;
  
  <li id="menu"> 
  
- 
+ <a href="${sesionBean.redirect}" value="${sesionBean.usuario}">${sesionBean.usuario}</a> 
+ <!--  
  <% if(request.getSession(false)==null){ %>
  ${sesionBean.usuarioID}
  
  <%}else{ %> 
- <a href="/login" > Log in</a> 
+ <a href="${sesionBean.redirect}" value="${sesionBean.usuario}">${sesionBean.usuario}</a> 
   
  <% } %>
-
+-->
  
  </li>
  

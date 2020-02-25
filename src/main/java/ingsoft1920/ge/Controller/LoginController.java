@@ -83,6 +83,7 @@ public class LoginController {
 			// Guarda el email del usuario en el sesion bean
 			//sesionBean = new SesionBean(new UsuarioModel(loginBean));
 			sesionBean.setUsuarioID(1);
+			sesionBean.setUsuario(loginBean.getUsuario().split("@")[0]);
 			
 			return "redirect:home";
 		}

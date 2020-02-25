@@ -86,9 +86,11 @@ public class EncargarComidaController {
 			
 		}
 		
-		// Veamos la respuesta:
-		String respuesta = EntityUtils.toString(response.getEntity());
-		System.out.println(respuesta);
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();}
+		model.addAttribute("sesionBean", sesion);
+
 		
 	}
 //	@GetMapping("/encargarComidaEnviar")

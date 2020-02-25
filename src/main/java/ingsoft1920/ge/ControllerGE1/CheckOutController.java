@@ -50,12 +50,15 @@ public class CheckOutController {
 //			  resp=client.getResponseBody();
 //			  }
 		
-		
+		model.addAttribute("sesionBean", sesion);
+
 		return "misReservas";
 		
 	}
 	@GetMapping("/checkout")
-	public static String checkInEnviar(Model model) {
+	public  String checkInEnviar(Model model) {
+		model.addAttribute("sesionBean", sesion);
+
 		return "checkout";
 	}
 	

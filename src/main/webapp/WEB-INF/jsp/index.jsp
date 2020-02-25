@@ -30,8 +30,8 @@
     text-align: center;
     }
     .card {
-    background-color: orange;
-    opacity: 70%;
+    background-color: #B0C4DE;
+    opacity: 80%;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
@@ -66,7 +66,7 @@
     </head>
 
  
-    <body style="background: radial-gradient(beige, transparent);">
+    <body >
 
 
        <div class="grid-container">

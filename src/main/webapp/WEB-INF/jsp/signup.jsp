@@ -16,13 +16,31 @@
 		<form:input type="text" name="usuario" path="usuario" />
 		<br>
 		<br>
+		<label>Correo electronico</label>
+		<form:input type="text" name="email" path="email" />
+		<br>
+		<br>
 		<label>Contrasena</label>
 		<form:input type="password" name="password" path="password" />
 		<br>
 		<br>
-		<label>Correo electronico</label>
-		<form:input type="text" name="email" path="email" />
+		<label>Dni</label>
+		<form:input type="dni" name="dni" path="dni" />
 		<br>
+		<br>
+		<label>Nombre</label>
+		<form:input type="text" name="nombre" path="nombre" />
+		<br>
+		<br>
+		<label>Apellidos</label>
+		<form:input type="text" name="apellidos" path="apellidos" />
+		<br>
+		<br>
+		<label>Repetir contrasena </label>
+		<form:input type="verificacionPassword" name="verificacionPassword" path="verificacionPassword" />
+		<br>
+		<br>
+		<input type="submit" value="Registrar">
 	</form:form>
 </body>
 </html>

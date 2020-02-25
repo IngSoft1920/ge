@@ -36,7 +36,8 @@ final static Logger logger = LogManager.getLogger(ReservasController.class.getNa
 //		else {
 //			resp="ERROR:Formato invalido";
 //		}
-		
+		model.addAttribute("sesionBean", sesion);
+
 		return "reservaServicios";
 		
 	}

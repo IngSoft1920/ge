@@ -2,19 +2,20 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <jsp:include page="cabecera.jsp"></jsp:include>
+<%@ page import="ingsoft1920.ge.ControllerGE1.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <body style="background: radial-gradient(beige, transparent);">
+    <body>
     <style>
             .aspecto {
                 margin: 20px;
                 padding: 10px;
-                background-color: orange;
-                opacity: 50%;
+                background-color: #B0C4DE;
+                opacity: 80%;
             }
 
             .parte1 {
@@ -22,15 +23,16 @@
                 grid-column-end: 5;
             }
             </style>
-    <div style="margin-top:40px; background-color: orange; opacity: 30%;">
+    <div style="margin-top:40px; background-color: #B0C4DE; opacity: 60%;">
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
     </div> 
     <div class="aspecto">
 		<div class="parte1">
 			<h3>Gestiona tu reserva</h3>
-            <form action="/my-handling-form-page" method="post">
+            <form action="reservasEnviar" method="GET">
             <p> Ver mi reserva:</p>
-
+     
+            <input value=<%=ingsoft1920.ge.ControllerGE1.ReservasController.receivedJSON.get("datosReserva")%> readonly style="margin-top: 5px; margin-bottom: 10px;background-color:#B0C4DE;border: none"></input>
             <br><br>
             </form>
 		</div>        

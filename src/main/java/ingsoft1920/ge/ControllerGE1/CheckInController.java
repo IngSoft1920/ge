@@ -49,6 +49,7 @@ public class CheckInController {
 //		if(respCode==200) {
 //			  client.getResponseBody();}
 		
+        model.addAttribute("sesionBean", sesion);
 		return "checkin";
 		
 	}

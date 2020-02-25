@@ -43,7 +43,8 @@ public class EncargarComidaController {
 //		String resp="";
 //		if(respCode==200) {
 //			  resp=client.getResponseBody();}
-		
+        model.addAttribute("sesionBean", sesion);
+
 		return "";
 		
 	}

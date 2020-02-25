@@ -15,8 +15,8 @@
     margin-top:60px;
     	margin: 20px;
 	padding: 10px;
-	background-color: orange;
-	opacity: 50%;
+	background-color: #B0C4DE;
+	opacity: 80%;
     }
     
          .card {
@@ -42,7 +42,7 @@ div.center {
     }
     .card {
     background-color: orange;
-    opacity: 50%;
+    opacity: 80%;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
@@ -54,9 +54,9 @@ div.center {
     font-size:20px
     }
     </style>
-    <body style="background: radial-gradient(beige, transparent);">
+    <body>
        
-    <div style="margin-top:40px; background-color: orange; opacity: 30%;">
+    <div style="margin-top:40px; background-color: #B0C4DE; opacity: 60%;">
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check In</h1>
     </div> 
     
@@ -67,7 +67,7 @@ div.center {
 				<input type="text" size="20"  name="idReserva" style="margin-top:5px; margin-bottom:10px"></input><br>
 				<label>Hora de llegada</label><br>
 				<input type="text" size="20"  name="horaLlegada" style="margin-top:5px; margin-bottom:10px"></input><br>
-     			<label>D�jenos su comentario!</label><br>
+     			<label>D&eacute;jenos su comentario!</label><br>
      			<textarea rows="5" size="20" maxlength="100" name="comentario" style="margin-top:5px; margin-bottom:10px"></textarea>
 				<br><br>
 				<input type="submit" value="Enviar">

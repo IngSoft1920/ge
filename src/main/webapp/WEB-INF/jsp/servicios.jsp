@@ -9,15 +9,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<body style="background: radial-gradient(beige, transparent);">
+<body >
 	<style>
 .aspecto {
 	text-align: center;
 	margin-top: 60px;
 	margin: 20px;
 	padding: 10px;
-	background-color: orange;
-	opacity: 50%;
+	background-color: #B0C4DE;
+	opacity: 80%;
 }
 
 label {
@@ -49,7 +49,7 @@ elemento.parentNode.remove();
 </script>
 
 	<!-- Cabecera de la pagina -->
-	<div style="margin-top: 40px; background-color: orange; opacity: 30%;">
+	<div style="margin-top: 40px; background-color: #B0C4DE; opacity: 60%;">
 		<h1
 			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios</h1>
 	</div>
@@ -64,11 +64,24 @@ elemento.parentNode.remove();
 			<textarea name="idReserva" rows="2" cols="10"
 				style="margin-top: 5px;">
 				</textarea>
-			<br> <br> <select name="servicio">
-				<option>Spa</option>
-				<option>Piscina</option>
-				<option>Reservar mesa</option>
-			</select> <br /> <br /> <select name="num_personas">
+			<br> <br> 
+			<select name="servicio" id="tipoServicio" onclick=funcion()>
+				<option value="Spa">Spa</option>
+				<option value="Piscina">Piscina</option>
+				<option value="Reservar mesa">Reservar mesa</option>
+			</select> 
+			<script>
+			function funcion(){
+				var e = document.getElementById("tipoServicio");
+				var seleccionado = e.options[e.selectedIndex].text;
+			var reservaMesa = false;
+			if (seleccionado== "Reservar mesa"){
+				reservaMesa = true;
+			}
+			console.log(reservaMesa);
+			}
+			</script>
+			<br /> <br /> <select name="num_personas">
 				<option value="0">Número de personas:</option>
 				<option value="1">1</option>
 				<option value="2">2</option>

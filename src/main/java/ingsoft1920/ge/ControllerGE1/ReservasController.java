@@ -2,6 +2,7 @@ package ingsoft1920.ge.ControllerGE1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +17,15 @@ public class ReservasController {
 	
 final static Logger logger = LogManager.getLogger(ReservasController.class.getName());
 	
+public static JSONObject receivedJSON = new JSONObject();
 	
 @Autowired
  SesionBean sesion;
 
 	@GetMapping("/reservas")
 	public  String reservasEnviar(Model model) throws Exception {
+		receivedJSON.put("datosReserva", "Datos de su reserva");
+
 		
 //		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 //		
@@ -36,7 +40,8 @@ final static Logger logger = LogManager.getLogger(ReservasController.class.getNa
 //		else {
 //			resp="ERROR:Formato invalido";
 //		}
-		
+        model.addAttribute("sesionBean", sesion);
+
 		return "reservaServicios";
 		
 	}

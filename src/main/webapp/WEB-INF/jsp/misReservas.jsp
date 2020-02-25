@@ -147,22 +147,34 @@ input[type="radio"]:checked ~ label {
 direction
 
 
+
+
 :
+
 
  
 
+
 rtl
+
+
 
 
 ;
 unicode-bidi
 
 
+
+
 :
+
 
  
 
+
 bidi-override
+
+
 
 
 ;
@@ -188,7 +200,7 @@ bidi-override
 		<h2 class="titulo_historial">Historial</h2>
 		<div class="historial">
 			<p>Hotel ${reserva.hotel} en ${reserva.ciudad}
-			<form method="POST" action="misReservas" name="valoracionId">
+			<form method="POST" action="valorar" name="valoracionId">
 
 				<div class="clasificacion">
 					<input id="radio1" type="radio" name="estrellas" value="5">
@@ -203,9 +215,9 @@ bidi-override
 
 					<input id="radio5" type="radio" name="estrellas" value="1">
 
-					<label for="radio5">&#9733</label>
+					<label for="radio5">&#9733</label> <input type="submit">Enviar</input>
 				</div>
-				<input type="submit">Enviar</input>
+
 			</form>
 			<p>De ${reserva.fechaInicio} a ${reserva.fechaFin}</p>
 			<p>

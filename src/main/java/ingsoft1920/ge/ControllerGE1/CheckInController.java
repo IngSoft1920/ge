@@ -38,19 +38,6 @@ public class CheckInController {
 			Model model) throws Exception {
 		System.out.println(checkInBean.toString());
         beanToJson(checkInBean);
-<<<<<<< HEAD
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/loquesea"+ sesion.getUsuarioID(), "POST");
-		
-		
-		client.setRequestBody(""+beanToJson(checkInBean));
-		
-		int respCode = client.getResponseCode();
-		
-		
-		if(respCode==200) {
-			  client.getResponseBody();}
-		
-=======
 //		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/loquesea"+ sesion.getUsuarioID(), "POST");
 //		
 //		
@@ -62,7 +49,6 @@ public class CheckInController {
 //		if(respCode==200) {
 //			  client.getResponseBody();}
 		model.addAttribute("sesionBean", sesion);
->>>>>>> release
 		return "checkin";
 		
 	}

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.google.gson.JsonObject;
+
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.Beans.SignupBean;
 
@@ -71,6 +73,19 @@ public class SignupController {
 			 * model.addAttribute("mensajeError","Usuario ya existe!"); return "signup";
 			 * }
 			 */
+			
+			JsonObject obj = new JsonObject();
+			obj.addProperty("email", signupBean.getEmail());
+			obj.addProperty("password", signupBean.getPassword());
+			obj.addProperty("dni", signupBean.getDni());
+			obj.addProperty("nombre", signupBean.getNombre());
+			obj.addProperty("apellidos", signupBean.getApellidos());
+			String response = "";
+			
+			signupBean.setId(1);
+			
+			sesionBean.setUsuarioID(1);
+			sesionBean.setUsuario(signupBean.getUsuario().split("@")[0]);
 			
 			return "redirect:home";
 		}

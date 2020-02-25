@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 public class SignupBean {
 	String usuario;
 	String password;
+	String nombre;
+	String apellidos;
 	String email;
 	String dni;
 	String verificacionPassword;
@@ -49,6 +51,10 @@ public class SignupBean {
 				
 			}
 		} else if (dni.isEmpty()) {
+			resultado = false;
+		} else if (nombre.isEmpty()) {
+			resultado = false;
+		} else if (apellidos.isEmpty()) {
 			resultado = false;
 		}
 		return resultado;
@@ -97,8 +103,24 @@ public class SignupBean {
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
+	}	
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}	
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}	
 }

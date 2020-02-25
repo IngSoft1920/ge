@@ -35,6 +35,7 @@ public class MisReservasController {
 		misReservasBean.getReservas().add(reservaBean);
 
 		model.addAttribute("misReservasBean", misReservasBean);
+		model.addAttribute("sesionBean", sesionBean);
 		model.addAttribute("mensajeError", "");
 
 		return "misReservas";

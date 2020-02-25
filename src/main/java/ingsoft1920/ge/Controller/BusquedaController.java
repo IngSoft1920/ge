@@ -403,6 +403,7 @@ public class BusquedaController {
 
 			// Guarda el email del usuario en el sesion bean
 			sesionBean.setUsuarioID(1);
+			sesionBean.setUsuario(loginBean.getUsuario().split("@")[0]);
 
 			crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
 			/*

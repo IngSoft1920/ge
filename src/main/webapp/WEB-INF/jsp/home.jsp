@@ -66,7 +66,7 @@
     </head>
 
  
-    <body style="background: radial-gradient(beige, transparent);">
+    <body>
 
 
        <div class="grid-container">

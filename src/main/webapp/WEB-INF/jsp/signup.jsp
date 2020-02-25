@@ -29,11 +29,11 @@
 		<br>
 		<br>
 		<label>Nombre</label>
-		<form:input type="nombre" name="nombre" path="nombre" />
+		<form:input type="text" name="nombre" path="nombre" />
 		<br>
 		<br>
 		<label>Apellidos</label>
-		<form:input type="apellidos" name="apellidos" path="apellidos" />
+		<form:input type="text" name="apellidos" path="apellidos" />
 		<br>
 		<br>
 		<label>Repetir contrasena </label>

@@ -215,7 +215,7 @@ bidi-override
 
 					<input id="radio5" type="radio" name="estrellas" value="1">
 
-					<label for="radio5">&#9733</label> <input type="submit">Enviar</input>
+					<label for="radio5">&#9733</label> <input type="submit"></input>
 				</div>
 
 			</form>

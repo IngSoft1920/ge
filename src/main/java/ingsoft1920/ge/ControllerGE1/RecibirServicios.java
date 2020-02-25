@@ -45,6 +45,8 @@ public class RecibirServicios {
 		if(respCode==200) {
 			  resp=client.getResponseBody();			 
 			  }
+		model.addAttribute("sesionBean", sesion);
+
 		return resp;
 	}
 

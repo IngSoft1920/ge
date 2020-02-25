@@ -11,6 +11,8 @@ import ingsoft1920.ge.Model.UsuarioModel;
 @SessionScope 
 public class SesionBean {
 	int usuarioID = -1;
+	String usuario = "Log In";
+	String redirect = "/login";
 	
 	public SesionBean () {}
 	
@@ -25,4 +27,22 @@ public class SesionBean {
 	public void setUsuarioID(int usuarioID) {
 		this.usuarioID = usuarioID;
 	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+		this.redirect = "/home";
+	}
+
+	public String getRedirect() {
+		return redirect;
+	}
+
+	public void setRedirect(String redirect) {
+		this.redirect = redirect;
+	}
+	
 }

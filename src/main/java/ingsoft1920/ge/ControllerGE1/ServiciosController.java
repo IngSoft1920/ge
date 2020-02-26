@@ -32,7 +32,7 @@ public class ServiciosController {
 	ServiciosBean servicios;
 	
 	@Autowired
-	 SesionBean sesion;
+	SesionBean sesion;
 	
 	@PostMapping("/serviciosEnviar")
 	public  String serviciosEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
@@ -47,17 +47,18 @@ public class ServiciosController {
 //		String resp="";
 //		if(respCode==200) {
 //			  resp=client.getResponseBody();}
-		
+		model.addAttribute("sesionBean", sesion);
+
 		return "";
+		
 		
 	}
 	
 	
-	
 	@GetMapping("/servicios")
-	public  String checkInEnviar(Model model, SesionBean sesion) throws Exception {
-		
-//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
+	public String checkInEnviar(Model model, SesionBean sesion) throws Exception {
+	
+//		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:700*/...", "GET");		
 //		
 //		client.setRequestBody("dadnos el menu");
 //		
@@ -65,11 +66,13 @@ public class ServiciosController {
 //		
 //		String resp="";
 //		if(respCode==200) {
-//			  resp=client.getResponseBody();
+//			  resp=client.getResponseBody();			 
 //			  }
-		
+//				
+		model.addAttribute("sesionBean", sesion);
+
 		return "servicios";
-	}
+ 	}
 	
 	
 	public static Object beanToJson(Object bean) {

@@ -13,8 +13,8 @@
 	margin-top: 60px;
 	margin: 20px;
 	padding: 10px;
-	background-color: orange;
-	opacity: 50%;
+	background-color: #B0C4DE;
+	opacity: 80%;
 }
 
 .card {
@@ -44,8 +44,8 @@ div.center {
 }
 
 .card {
-	background-color: orange;
-	opacity: 50%;
+	background-color: #B0C4DE;
+	opacity: 80%;
 	border: 1px solid rgba(0, 0, 0, 0.8);
 	padding: 30px;
 	width: 250px;
@@ -54,9 +54,14 @@ div.center {
 	margin-right: 60px;
 }
 </style>
-<body style="background: radial-gradient(beige, transparent);">
+<body >
 
-
+	<!-- Cabecera de la pagina -->
+	<div style="margin-top: 40px; background-color: #B0C4DE; opacity: 60%;">
+		<h1
+			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Facturaci&oacute;n</h1>
+	</div>
+	
 	<div class="aspecto">
 		<form method="GET" style="width: 100%;" action="facturaGet"
 			modelAttribute="facturaBean">

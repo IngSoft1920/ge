@@ -9,15 +9,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<body style="background: radial-gradient(beige, transparent);">
+<body>
 	<style>
 .aspecto {
 	text-align: center;
 	margin-top: 60px;
 	margin: 20px;
 	padding: 10px;
-	background-color: orange;
-	opacity: 50%;
+	background-color: #B0C4DE;
+	opacity: 80%;
 }
 
 label {
@@ -49,7 +49,7 @@ elemento.parentNode.remove();
 </script>
 
 	<!-- Cabecera de la pagina -->
-	<div style="margin-top: 40px; background-color: orange; opacity: 30%;">
+	<div style="margin-top: 40px; background-color: #B0C4DE; opacity: 60%;">
 		<h1
 			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios</h1>
 	</div>

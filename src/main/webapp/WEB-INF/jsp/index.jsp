@@ -28,14 +28,15 @@
     justify-content: center;
     width:100%;
     text-align: center;
+    position: absolute;
     }
     .card {
     background-color: #B0C4DE;
-    opacity: 80%;
+    opacity: 90%;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
-    margin-top: 90px;
+    margin-top: 120px;
     margin-left: 60px;
     margin-right: 60px;
     height: 70%;
@@ -54,6 +55,12 @@
     color:white;
     font-size: 20px;
     }
+    .imagensilla{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 60%;
+    }
     </style>
     
    
@@ -68,7 +75,7 @@
  
     <body >
 
-
+<img class="imagensilla" src="https://cosaspracticas.lasprovincias.es/wp-content/uploads/hoteles.jpg">
        <div class="grid-container">
        <div class="card" onclick="document.location = '/reservas'">
         <div class="container", style="padding-top:20px">

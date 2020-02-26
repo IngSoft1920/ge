@@ -41,7 +41,7 @@ div.center {
     justify-content: center;
     }
     .card {
-    background-color: orange;
+    background-color: #B0C4DE;
     opacity: 80%;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
@@ -54,7 +54,7 @@ div.center {
     font-size:20px
     }
     </style>
-    <body>
+    <body >
        
     <div style="margin-top:40px; background-color: #B0C4DE; opacity: 60%;">
      <h1 style="text-align: center;font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Check In</h1>

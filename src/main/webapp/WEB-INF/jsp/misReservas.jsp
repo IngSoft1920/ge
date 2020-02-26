@@ -80,16 +80,17 @@ a:active {
 .reserva {
 	background-color: #A8F4EA;
 	border: 1px solid black;
-	margin-top: 5px;
+	margin-top: 10px;
 	overflow: hidden
 }
 
 .cancelar {
-	float: right;
 	color: red;
 	border: 1px solid #FA220C;
 	padding: 5px;
-	margin-right: 10px;
+	font-size:15px;
+	font-family: Helvetica;
+	margin-right: 15px;
 	background-color: FFA79B
 }
 
@@ -104,7 +105,9 @@ a:active {
 .historial {
 	background-color: #A8F4EA;
 	border: 1px solid black;
-	overflow: hidden
+	overflow: hidden;
+	padding: 5px;
+	font-family: Helvetica;
 }
 
 .fondo {
@@ -112,7 +115,6 @@ a:active {
 }
 
 .clasificacion {
-	float: right;
 	margin-bottom: px;
 	margin-right: 20px;
 	font-size: 25px;
@@ -135,6 +137,16 @@ label {
 .clasificacion {
 	direction: rtl;
 	unicode-bidi: bidi-override;
+}
+
+.factura {
+	color: blue;
+	border: 1px solid blue;
+	padding: 5px;
+	font-size:15px;
+	font-family: Helvetica;
+	margin-right: 15px;
+	background-color: 73F3E3
 }
 
 label:hover, label:hover ~ label {
@@ -166,58 +178,59 @@ bidi-override
 	<c:forEach items="${misReservasBean.reservas}" var="reserva">
 		<div class="reserva">
 			<p class="hotel">
-				Hotel ${reserva.hotel} en ${reserva.ciudad} <span class="fecha">De
-					${reserva.fechaInicio} a ${reserva.fechaFin} </span>
+				Hotel ${reserva.hotel} en ${reserva.ciudad} 
+				<span class="fecha">De ${reserva.fechaInicio} a ${reserva.fechaFin} </span>
+					<span><table align="right">
+					<tr>
+						<td><button class="factura" name="button" value="factura">Ver factura</button></td>
+					</tr>
+					<tr>
+						<td><button class="cancelar" name="button" value="cancelar">Cancelar Reserva</button></td>
+					</tr>
+					<tr>
+						<td><div onclick="document.location = '/buscador'">
+          					<a><button class="cancelar" name="button" value="cambiar">Cambiar Reserva</button></a> 
+        					</div>
+        				</td>
+					</tr>	
+				</table></span>
 			</p>
 			<p class="habitacion">
 				Habitación: ${reserva.habitacion} <span class="tarifa">Tarifa:${reserva.tarifa}</span>
-				<span class="cancelar">Cancelar reserva</span> <span
-					class="cancelar">Cambiar reserva</span>
-			</p>
-		</div>
+				<c:remove var="reserva"/>
+			</p>	
+				
+      </div>
 
+	</c:forEach>
 
 		<h2 class="titulo_historial">Historial</h2>
+<c:forEach items="${misReservasBean.reservas}" var="reserva">
+
 		<div class="historial">
-			<p>Hotel ${reserva.hotel} en ${reserva.ciudad}
-			<form>
+			<p>Hotel ${reserva.hotel} en ${reserva.ciudad}</p>
+			
+			<p>De ${reserva.fechaInicio} a ${reserva.fechaFin}</p>
+			
+			<p>Habitación: ${reserva.habitacion}</p>
+			
+			<form method="POST" action="valorar" name="valoracionId">
 				<div class="clasificacion">
 					<input id="radio1" type="radio" name="estrellas" value="5">
-					<!--
-    -->
-					<label for="radio1">&#9733</label>
-					<!--
-    -->
-					<input id="radio2" type="radio" name="estrellas" value="4">
-					<!--
-    -->
-					<label for="radio2">&#9733</label>
-					<!--
-    -->
+
+					<label for="radio1">&#9733</label> <input id="radio2" type="radio"
+						name="estrellas" value="4"> <label for="radio2">&#9733</label>
+
 					<input id="radio3" type="radio" name="estrellas" value="3">
-					<!--
-    -->
-					<label for="radio3">&#9733</label>
-					<!--
-    -->
-					<input id="radio4" type="radio" name="estrellas" value="2">
-					<!--
-    -->
-					<label for="radio4">&#9733</label>
-					<!--
-    -->
+
+					<label for="radio3">&#9733</label> <input id="radio4" type="radio"
+						name="estrellas" value="2"> <label for="radio4">&#9733</label>
+
 					<input id="radio5" type="radio" name="estrellas" value="1">
-					<!--
-    -->
-					<label for="radio5">&#9733</label>
+
+					<label for="radio5">&#9733</label> <input type="submit">
 				</div>
 			</form>
-			<p>De ${reserva.fechaInicio} a ${reserva.fechaFin}</p>
-			<p>
-				Habitación: ${reserva.habitacion} <span>
-					<button class="enviar">Enviar</button>
-				</span>
-			</p>
 		</div>
 	</c:forEach>
 </body>

@@ -55,7 +55,7 @@ label {
 	font-size: 20px
 }
 </style>
-<body style="background: radial-gradient(beige, transparent);">
+<body>
 
 
 	<div style="margin-top: 40px; background-color: #B0C4DE; opacity: 60%;">

@@ -25,15 +25,19 @@ public class ge_Controller {
 	
 	final static Logger logger = LogManager.getLogger(ge_Controller.class.getName());
 	
-	
+	@Autowired
+	 SesionBean sesion;
 	
 	@GetMapping("/home")
 	public String home(Model model) {
+		model.addAttribute("sesionBean", sesion);
 		return "home";
 	}
 	
 	@GetMapping("/index")
 	public String index(Model model) {
+		model.addAttribute("sesionBean", sesion);
+
 		return "index";
 	}
 	

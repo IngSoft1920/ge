@@ -18,6 +18,7 @@
 </head>
 
 <div class="contenido">
+
 	<form:form method="POST" action="buscador"
 		modelAttribute="busquedaBean">
 		<div class="buscador">

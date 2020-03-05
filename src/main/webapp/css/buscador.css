@@ -104,9 +104,52 @@ div {
 	margin: -10px -7px -10px -5px;
 }
 
-.contenido {
-	background-color: #B0C4DE;
+/*
+	.contenido {
+	background-color: #B0C4DE;  
+	background-image: url("/imagenes/icon.jpg");
+}*/
+
+.contenido{
+	width:auto;
+	height: auto;
+	/*background-position: center center;	
+	background-repeat: no-repeat;
+	background-visibility: hidden;*/
+	animation-name: slide;
+  animation-duration: 40s;
+	background-image: url("/imagenes/hotel1.jpg");
+	
 }
+
+@keyframes slide {
+	
+	0%{
+	background-image: url("/imagenes/hotel1.jpg");
+	}
+	
+	25%{
+	background-image: url("/imagenes/jardin.jpg");
+	}
+	
+	50%{
+	background-image: url("/imagenes/photograph.jpg");
+	}
+	
+	75%{
+	background-image: url("/imagenes/hotel2.jpg");
+	}
+	
+	100%{
+	background-image: url("/imagenes/trip.jpg");
+	}
+	
+	
+}
+
+
+
+
 
 ul {
 	margin-left: -40px;

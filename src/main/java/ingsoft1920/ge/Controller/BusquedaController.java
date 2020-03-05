@@ -54,7 +54,7 @@ public class BusquedaController {
 			// Creamos los ejemplos.
 			JsonObject obj = new JsonObject();
 			JsonArray arr = new JsonArray();
-			
+			/*
 			arr.add("Guadalajara");
 			arr.add("Madrid");
 			arr.add("Zaragoza");
@@ -92,7 +92,7 @@ public class BusquedaController {
 			 * 		
 			 * ]
 			 */
-			
+			/*
 			// Creamos los ejemplos.
 			arr = new JsonArray();
 			obj = new JsonObject();
@@ -124,9 +124,9 @@ public class BusquedaController {
 				busquedaBean.getHoteles().add(hotel.get("nombre").getAsString());
 				busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("hotel_id").getAsInt());
 			}
-			
+			*/
 			// El siguiente código debería consultar a CM de forma correcta
-			/*
+			
 			String response = "";
 			//JsonObject obj;
 			HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"ciudades", "GET");
@@ -140,9 +140,11 @@ public class BusquedaController {
 					busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
 				}
 			}
-			
+			obj = new JsonObject();
+			obj.addProperty("ubicacion", "");
 			JsonArray hoteles;
-			HttpClient serverHoteles = new HttpClient(HttpClient.urlCM+"hoteles", "GET");
+			HttpClient serverHoteles = new HttpClient(HttpClient.urlCM+"hoteles", "POST");
+			serverHoteles.setRequestBody(obj.toString());
 			if (serverHoteles.getResponseCode() != 404) {// Si encuentra el servidor
 				response = serverHoteles.getResponseBody();
 				
@@ -151,10 +153,9 @@ public class BusquedaController {
 				for (int i = 0; i < hoteles.size(); i++) {
 					JsonObject hotel = hoteles.get(i).getAsJsonObject();
 					busquedaBean.getHoteles().add(hotel.get("nombre").getAsString());
-					busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("hotel_id").getAsInt());
+					busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("id").getAsInt());
 				}
 			}
-			*/
 
 		}
 		model.addAttribute("busquedaBean",busquedaBean);
@@ -211,58 +212,79 @@ public class BusquedaController {
 			
 			hotelesDisponibles = new HotelesDisponiblesBean();
 			/*
-			HttpClient server = new HttpClient(HttpClient.urlCM+"precioDisponible", "GET");
+			HttpClient server = new HttpClient(HttpClient.urlCM+"precioDisponible", "POST");
 			// Añado los datos de la consulta
 			server.setRequestBody(obj.toString());
 			
 			if (server.getResponseCode() != 404) {// Si encuentra el servidor
 				response = server.getResponseBody();
-			*/ 
+			 */
 				JsonArray arr = new JsonArray();
 				JsonObject json = new JsonObject();
+				//arr = new Gson().fromJson(response, JsonArray.class);
 				
-				json.addProperty("nombre", "Rich");
-				json.addProperty("hotel_id", "1");
-				json.addProperty("ubicacion", "Madrid");
+				json.addProperty("nombre", "Barcelo Playa");
+				json.addProperty("id", 3);
+				json.addProperty("ubicacion", "Asturias");
 				json.addProperty("tipo", "lujo");
-				json.addProperty("precio", 1000000);
+				json.addProperty("precio", 99.9);
 				arr.add(json);
 				json = new JsonObject();
-				json.addProperty("nombre", "Medici");
-				json.addProperty("hotel_id", "3");
-				json.addProperty("ubicacion", "Valencia");
+				json.addProperty("nombre", "Barcelo Playa");
+				json.addProperty("id", 3);
+				json.addProperty("ubicacion", "Asturias");
+				json.addProperty("tipo", "económica");
+				json.addProperty("precio", 49.9);
+				arr.add(json);
+				json = new JsonObject();
+				json.addProperty("nombre", "El Resplandor");
+				json.addProperty("id", 4);
+				json.addProperty("ubicacion", "Málaga");
 				json.addProperty("tipo", "lujo");
-				json.addProperty("precio", 1000000);
+				json.addProperty("precio", 87.9);
+				arr.add(json);
+				json = new JsonObject();
+				json.addProperty("nombre", "El Resplandor");
+				json.addProperty("id", 4);
+				json.addProperty("ubicacion", "Málaga");
+				json.addProperty("tipo", "económica");
+				json.addProperty("precio", 35.9);
 				arr.add(json);
 				
 				int numero_dias = busquedaBean.getNumeroDias();
 				
-				Map<String, Integer> hoteles = new HashMap<String, Integer>();
+				Map<Integer, Integer> hoteles = new HashMap<Integer, Integer>();
 				HotelBean hotel; HabitacionBean habitacion;
 				//JsonObject json;
 				for (int i = 0; i < arr.size(); i++) {
 					json = arr.get(i).getAsJsonObject();
 
-					if (!hoteles.containsKey(json.get("nombre").getAsString())) {
-						hotel = new HotelBean();
-						hotel.setNombre(json.get("nombre").getAsString());
-						hotel.setCiudad(json.get("ubicacion").getAsString());
-						hotel.setHotel_id(json.get("hotel_id").getAsInt());
-						// Añado el hotel a la lista de hoteles si este no había aparecido antes.
-						hoteles.put(json.get("nombre").getAsString(), hotelesDisponibles.getHoteles().size()-1);
-					} 
-					else { // Obtengo el hotel que ya existe para añadirle una habitación
-						hotel = hotelesDisponibles.getHoteles()
-								.get(hoteles.get(json.get("nombre").getAsString()));
-					}
-					
 					habitacion = new HabitacionBean();
 					habitacion.setTipo(json.get("tipo").getAsString());
 					habitacion.setTarifa(json.get("precio").getAsDouble() * numero_dias);
 					habitacion.setId(i);
+					System.out.println(json.get("id").getAsInt());
+					if (!hoteles.containsKey(json.get("id").getAsInt())) {
+						hotel = new HotelBean();
+						hotel.setNombre(json.get("nombre").getAsString());
+						hotel.setCiudad(json.get("ubicacion").getAsString());
+						hotel.setHotel_id(json.get("id").getAsInt());
+						// Añado el hotel a la lista de hoteles si este no había aparecido antes.
+						hoteles.put(json.get("id").getAsInt(), hotelesDisponibles.getHoteles().size());
+						
+						hotelesDisponibles.getHoteles().add(hotel);
+						
+					} 
+					else { // Obtengo el hotel que ya existe para añadirle una habitación
+						hotel = hotelesDisponibles.getHoteles()
+								.get(hoteles.get(json.get("id").getAsInt()));
+					}
+
 					hotel.getHabitaciones().add(habitacion);
 					
-					hotelesDisponibles.getHoteles().add(hotel);
+					//System.out.println(hoteles.get(3));
+					//System.out.println(hoteles.get(4));
+					//System.out.println(hotelesDisponibles.getHoteles().size());
 				}
 			//}
 
@@ -325,7 +347,7 @@ public class BusquedaController {
 		}
 
 		crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
-		/*
+		
 		HttpClient server = new HttpClient(HttpClient.urlCM+"crearReserva", "POST");
 		// Añado los datos de la consulta
 		server.setRequestBody(crearReserva.toString());
@@ -333,7 +355,7 @@ public class BusquedaController {
 		if (server.getResponseCode() == 404) {// Si encuentra el servidor
 			model.addAttribute("mensajeError", "La reserva no se ha podido realizar correctamente");
 			return "buscador";
-		}*/
+		}
 		
 		return "redirect:misReservas";
 	}
@@ -381,6 +403,7 @@ public class BusquedaController {
 
 			// Guarda el email del usuario en el sesion bean
 			sesionBean.setUsuarioID(1);
+			sesionBean.setUsuario(loginBean.getUsuario().split("@")[0]);
 
 			crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
 			/*

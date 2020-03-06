@@ -30,8 +30,10 @@
 				</p>
 				<br>
 			</div>
+			<div class="espacio"></div>
 
 
+		<div class="recogerBuscar">
 			<div class="fila">
 				<div class="columna">
 					<h3>Fecha inicio</h3>
@@ -64,11 +66,8 @@
 						</c:forEach>
 					</select>
 				</div>
-
-
-
-			</div>
-		</div>
+			
+	
 		<br>
 		<br>
 		<br>
@@ -78,12 +77,19 @@
 		<br>
 		<br>
 
+		
+		<div class="columna">
 		<div class="buttonSearch">
 			<input type="submit" id="search" value="Search">
 
 		</div>
-
+		</div>
+		
+		</div>
+		</div>
+</div>
 	</form:form>
+
 
 </div>
 

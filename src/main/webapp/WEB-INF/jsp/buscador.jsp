@@ -14,7 +14,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" type="text/css" href="/css/buscador.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/css/buscador.css"
+	media="screen" />
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
 </head>
 
 <div class="contenido">
@@ -22,6 +27,9 @@
 	<form:form method="POST" action="buscador"
 		modelAttribute="busquedaBean">
 		<div class="buscador">
+			<br>
+			<br>
+			<br>
 			<br>
 			<div class="buscar">
 				<h2>Encuentra tu mejor oportunidad:</h2>
@@ -33,63 +41,91 @@
 			<div class="espacio"></div>
 
 
-		<div class="recogerBuscar">
-			<div class="fila">
-				<div class="columna">
-					<h3>Fecha inicio</h3>
-					<form:input type="date" name="fechaInicio" path="fechaInicio" />
+			<div class="recogerBuscar">
+				<div class="fila">
+
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-map-marker"></i>
+							</div>
+							<select name="ciudad">
+								<option value="">Ciudad</option>
+								<c:forEach items="${busquedaBean.ciudades}" var="ciudad">
+									<option value="${ciudad}">${ciudad}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+
+
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-search"></i>
+							</div>
+							<select name="hotel">
+								<option value="">Hotel</option>
+								<c:forEach items="${busquedaBean.hoteles}" var="hotel">
+									<option value="${hotel}">${hotel}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<form:input type="text" name="fechaInicio" path="fechaInicio"
+								placeholder="Entrada" onfocus="(this.type='date')"
+								onblur="(this.type='text')" />
+						</div>
+					</div>
+
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<form:input type="text" name="fechaFin" path="fechaFin"
+								placeholder="Salida" onfocus="(this.type='date')"
+								onblur="(this.type='text')" />
+						</div>
+					</div>
+
+
+
+					<div class="columna">
+						<div class="buttonSearch">
+							<input type="submit" id="search" value="Search">
+
+						</div>
+					</div>
+					
 				</div>
+				
+			</div>
+			<div class="garantizado">
+			<div class="icon"><i class="fa fa-plus"></i></div>
 
-				<div class="columna">
-					<h3>Fecha salida</h3>
-					<form:input type="date" name="fechaFin" path="fechaFin" />
-				</div>
-
-
-				<div class="columna">
-
-					<h3>Ciudad</h3>
-					<select name="ciudad">
-						<option value="">(Opcional)</option>
-						<c:forEach items="${busquedaBean.ciudades}" var="ciudad">
-							<option value="${ciudad}">${ciudad}</option>
-						</c:forEach>
-					</select>
-				</div>
-
-				<div class="columna">
-					<h3>Hotel</h3>
-					<select name="hotel">
-						<option value="">(Opcional)</option>
-						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
-							<option value="${hotel}">${hotel}</option>
-						</c:forEach>
-					</select>
-				</div>
-			
-	
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-
-		
-		<div class="columna">
-		<div class="buttonSearch">
-			<input type="submit" id="search" value="Search">
-
+			<pre style= color:white>
+<b>	MEJOR PRECIO
+	GARANTIZADO</b>
+			</pre>
+			</div>
+			<br> <br> <br> <br> <br> <br> <br>
 		</div>
-		</div>
-		
-		</div>
-		</div>
-</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 	</form:form>
-
+	<br> <br> <br> <br> <br> <br> <br>
 
 </div>
 
@@ -218,14 +254,14 @@
 					<c:forEach items="${hotel.habitaciones}" var="habitacion">
 						<form:form method="POST" action="reservar">
 							<div class="columnaHabitacion">
-									<select name="comidas">
-										<option value="+0, sólo alojamiento">+0, sólo
-											alojamiento</option>
-										<option value="+${hotel.desayuno}, alojamiento y desayuno">+${hotel.desayuno},
-											alojamiento y desayuno</option>
-										<option value="+${hotel.pensionCompleta}, pensión completa">+${hotel.pensionCompleta},
-											pensión completa</option>
-									</select>
+								<select name="comidas">
+									<option value="+0, sólo alojamiento">+0, sólo
+										alojamiento</option>
+									<option value="+${hotel.desayuno}, alojamiento y desayuno">+${hotel.desayuno},
+										alojamiento y desayuno</option>
+									<option value="+${hotel.pensionCompleta}, pensión completa">+${hotel.pensionCompleta},
+										pensión completa</option>
+								</select>
 							</div>
 
 							<div class="columnaHabitacion">

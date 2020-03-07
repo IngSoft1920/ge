@@ -38,8 +38,8 @@ h2 {
 
 .columna {
 	float: left;
-	width: 10%;
-	padding: 50px;
+	width: 15%;
+	padding: 15px;
 	text-align: center;
 }
 
@@ -61,12 +61,43 @@ h3 {
 	font-size: 15px;
 }
 
-input[type=date] {
-	width: 100%;
+.icon{
+  position: absolute;
+  margin-left: 0px;
+  margin-top: 10px;
+  z-index: 1;
+  color: white;
+  
+}
+
+
+
+.input_photo{
+	width: 75%;
+	height: 5%;
 	padding: 15px 22px;
 	margin: 10px 5px;
 	border: none;
-	background-color: #B0E0E6;
+	background-color: #b8b078;
+		
+	
+}
+
+input[type=text] {
+	
+	width: 100%;	
+	margin: 10px 20px;
+	border: none;
+	background-color: #b8b078;
+	
+
+}
+
+input[type=date] {
+	width: 100%;	
+	margin: 10px 20px;
+	border: none;
+	background-color: #b8b078;
 }
 
 input[type=date]:focus {
@@ -75,52 +106,36 @@ input[type=date]:focus {
 }
 
 select {
-	font-family: Oldtown, fantasy;
-	font-size: 15px;
-	width: 100%;
-	padding: 15px 22px;
-	margin: 10px 5px;
+	width: 100%;	
+	margin: 10px 20px;
 	border: none;
+	background-color: #b8b078;
+	font-size: 15px;	
 	color: white;
-	background-color: #B0E0E6;
 }
 
 input[type=button] {
 	font-family: Oldtown, fantasy;
-	font-size: 25px;
+	font-size: 15px;
 	width: 100%;
 	padding: 15px 22px;
 	margin: 10px 5px;
 	border-color: black;
-	background-color: #B0E0E6;
+	background-color: #b8b078;
 }
 
 input[type=submit] {
 	font-family: Oldtown, fantasy;
+	color:white;
 	font-size: 15px;
-	/*width: 75%;
+	width: 100%;
+	height: 10%;
 	padding: 15px 22px;
-	margin: 10px 10px;*/
+	margin: 10px 50px;
 	border-color: black;
-	background-color: #B0E0E6;
+	background-color: #b8b078;
 }
 
-
-
-
-.contenido{
-
-	overflow:hidden;
-	background-repeat: no-repeat;
-	/*background-position: center center;	
-	background-repeat: no-repeat;
-	background-visibility: hidden;*/
-	
-	background-image: url("/imagenes/hotel1.jpg");
-	animation: slide 40s linear infinite;
-	
-
-}
 .espacio{
 	
 	margin-top: 300px;
@@ -132,19 +147,33 @@ input[type=submit] {
 	float:left;
 	border: 3px solid black;
 	box-sizing: border-box;
-position: relative;
-  left: 10%;
+	position: relative;
+  	left: 12%;
+block-size: inherit;
+background-color: #4f5457;
   
 }
 
 
-img{
-            
-        width: 100%; 
-        height: 100%; 
-         object-fit: contain;           
+
+.contenido{
+
+	overflow:hidden;
+	background-repeat: no-repeat;
+	background-position: center center;	
+	background-repeat: no-repeat;
+	background-visibility: hidden;
+	
+	background-image: url("/imagenes/hotel1.jpg");
+	animation: slide 40s linear infinite 0s;
+	animation-timing-function: ease-in-out;
+	
+ 
+  background-size: 1500px 1500px;
 	
 }
+
+
 
 
 
@@ -152,29 +181,42 @@ img{
 	
 	0%{
 	background-image: url("/imagenes/hotel3.jpg");
+	
 	}
 	
 	25%{
 	background-image: url("/imagenes/hotel2.jpg");
+	
 	}
 	
 	50%{
-	background-image: url("/imagenes/hotel3.jpg");
+	background-image: url("/imagenes/hotel1.jpg");
+	
 	}
 	
 	75%{
 	background-image: url("/imagenes/hotel4.jpg");
+	
 	}
 	
 	100%{
 	background-image: url("/imagenes/hotelhabitacion.jpg");
+	
 	}
 	
 	
 }
 
-
-
+.garantizado{
+ 
+	  width: 175px;
+	  height:50px;
+ 	margin-top:418px;
+ 	margin-left:1150px;
+  border: 5px solid #b8b078;;
+	padding:5px 5px;
+  background-color:#69C223;
+}
 
 
 ul {
@@ -238,3 +280,4 @@ ul.habitacion {
 tarifas {
 	margin-top: -40px;
 }
+

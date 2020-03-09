@@ -1,0 +1,243 @@
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+	margin-left: 0px;
+}
+
+#button {
+	margin: 0;
+	padding: 20;
+	overflow: hidden;
+	background-color: #333;
+}
+
+#button li {
+	display: inline;
+}
+
+#button li img {
+	display: inline-block;
+	float: left;
+	padding: 0px;
+	border: 1px;
+	height: 40;
+	width: 40;
+}
+
+#menu {
+	display: inline-block;
+	font-family: Arial;
+	font-size: 15px;
+	float: right;
+	padding: 10px;
+}
+
+a:link {
+	color: white;
+	text-decoration: none;
+}
+
+a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+a:active {
+	color: red;
+	text-decoration: none;
+}
+
+.hotel {
+	font-family: Helvetica;
+	padding: 5px;
+}
+
+.fecha {
+	font-family: Helvetica;
+	margin-left: 50px;
+	padding: 5px;
+}
+
+.habitacion {
+	font-family: Helvetica;
+	padding: 5px;
+}
+
+.tarifa {
+	font-family: Helvetica;
+	margin-left: 50px;
+	padding: 5px;
+}
+
+.reserva {
+	background-color: #4f5457;
+	border: 1px solid black;
+	overflow: hidden;
+	color:white;
+}
+
+.titulo_historial {
+	margin-top: 30px;
+	text-align: center;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 40px;
+	text-decoration: underline;
+}
+
+.historial {
+	background-color: #4f5457;
+	border: 1px solid black;
+	overflow: hidden;
+	padding: 5px;
+	font-family: Helvetica;
+	color:white;
+}
+
+.fondo {
+	background-color: D1F0EC;
+}
+
+.clasificacion {
+	margin-bottom: px;
+	margin-right: 20px;
+	font-size: 25px;
+}
+
+.enviar {
+	float: right;
+	margin-top: 7px;
+	margin-right: 40px
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+label {
+	color: black;
+}
+
+.clasificacion {
+	direction: rtl;
+	unicode-bidi: bidi-override;
+}
+
+.factura {
+	background-color: #b8b078;
+	color: white;
+	padding: 8px;
+	border: 2px solid black;
+	margin-right: 5px;
+	cursor: pointer;
+	opacity: 0.8;
+	float: right;
+}
+
+.cambiarReserva {
+	background-color: #b8b078;
+	color: white;
+	padding: 8px;
+	border: 2px solid black;
+	margin-right: 5px;
+	cursor: pointer;
+	opacity: 0.8;
+	float: right;
+	margin-bottom: 10px;
+	font-size:14px;
+}
+
+.enviarCambio {
+	background-color: #b8b078;
+	color: #fff;
+	padding: 12px 20px;
+	border: none;
+	cursor: pointer;
+	width: 70%;
+	margin-bottom: 10px;
+	opacity: 0.8;
+	margin: 10px;
+	margin-left:80px;
+}
+
+
+.form-container .btn:hover, .open-button:hover {
+	opacity: 1;
+}
+
+label:hover, label:hover ~ label {
+	color: red;
+}
+
+input[type="radio"]:checked ~ label {
+	color: red;
+}
+
+
+.container#blur.active {
+	filter: blur(20px);
+	pointer-events:none;
+	user-select:none;
+}
+
+.container .content {
+  position:relative;
+  max-widht:800px;
+}
+
+#popup {
+	position:fixed;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width : 600px;
+	padding : 50px;
+	box-shadow: 0 5px 30px rgba(0,0,0,.30);
+	background: #fff;
+	visibility: hidden;
+	opacity:0;
+	transition: 0.5s;
+}
+
+#popup.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}	
+
+figure{
+   overflow:hidden;
+   margin:0;
+   margin-top:-251px;
+}
+
+figure img{
+   display:block;
+   width:100%;
+   margin:-11.875% 0;
+   filter: brightness(40%);
+}
+
+.centered {
+  position: absolute;
+  top: 46%;
+  left: 27%;
+  transform: translate(-50%, -50%);
+  font-family: Garamond;
+  font-size:66px;
+  color:white;
+}

@@ -35,7 +35,7 @@
  
 
 
- <li id="menu"><a href="/buscador">Buscar</a></li>
+ <li id="menu"><a href="./buscador">Buscar</a></li>
  </ul>
  
 </div>

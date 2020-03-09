@@ -1,8 +1,6 @@
 package ingsoft1920.ge.Controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -24,7 +22,6 @@ import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
-import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -34,130 +31,126 @@ public class BusquedaController {
 	final static Logger logger = LogManager.getLogger(BusquedaController.class.getName());
 	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
-	@Autowired
-	BusquedaBean busquedaBean;
+
+	BusquedaBean busquedaBean = new BusquedaBean();
 	@Autowired
 	SesionBean sesionBean;
-	
+
 	JsonObject crearReserva;
 
-	@GetMapping("/buscador")
+	@GetMapping("/")
 	public String buscarGet(Model model) throws Exception {
 
-		if (busquedaBean.getCiudades().size() == 0) {
-			/*
-			 * Formato Json recibido:
-			 * {
-			 * 		"ciudades": ["Guadalajara", "Madrid", "Zaragoza", "Valencia"]
-			 * }
-			 */
-			// Creamos los ejemplos.
-			JsonObject obj = new JsonObject();
-			JsonArray arr = new JsonArray();
-			/*
-			arr.add("Guadalajara");
-			arr.add("Madrid");
-			arr.add("Zaragoza");
-			arr.add("Valencia");
-			obj.add("ciudades",	arr);
-			
+		/*
+		 * Formato Json recibido:
+		 * {
+		 * 		"ciudades": ["Guadalajara", "Madrid", "Zaragoza", "Valencia"]
+		 * }
+		 */
+		// Creamos los ejemplos.
+		JsonObject obj = new JsonObject();
+		JsonArray arr = new JsonArray();
+
+		arr.add("Guadalajara");
+		arr.add("Madrid");
+		arr.add("Zaragoza");
+		arr.add("Valencia");
+		obj.add("ciudades",	arr);
+
+		JsonArray ciudades = (JsonArray) obj.get("ciudades");
+
+		for (int i = 0; i < ciudades.size(); i++) {
+			busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
+		}
+		/*
+		 * Formato Json recibido:
+		 * [
+		 * 		{
+		 * 			"nombre": "Rich",
+		 * 			"ubicacion": "Madrid",
+		 * 			"hotel_id": "1"
+		 * 		},
+		 * 		{
+		 * 			"nombre": "Paquito",
+		 * 			"ubicacion": "Zaragoza",
+		 * 			"hotel_id": "2"
+		 * 		},
+		 * 		{
+		 * 			"nombre": "Medici",
+		 * 			"ubicacion": "Valencia",
+		 * 			"hotel_id": "3"
+		 * 		},
+		 * 		{
+		 * 			"nombre": "Corporate",
+		 * 			"ubicacion": "Guadalajara",
+		 * 			"hotel_id": "4"
+		 * 		},
+		 * 		
+		 * ]
+		 */
+
+		// Creamos los ejemplos.
+		arr = new JsonArray();
+		obj = new JsonObject();
+		obj.addProperty("nombre", "Rich");
+		obj.addProperty("ubicacion", "Madrid");
+		obj.addProperty("hotel_id", "1");
+		arr.add(obj);
+		obj = new JsonObject();
+		obj.addProperty("nombre", "Paquito");
+		obj.addProperty("ubicacion", "Zaragoza");
+		obj.addProperty("hotel_id", "2");
+		arr.add(obj);
+		obj = new JsonObject();
+		obj.addProperty("nombre", "Medici");
+		obj.addProperty("ubicacion", "Valencia");
+		obj.addProperty("hotel_id", "3");
+		arr.add(obj);
+		obj = new JsonObject();
+		obj.addProperty("nombre", "Corporate");
+		obj.addProperty("ubicacion", "Guadalajara");
+		obj.addProperty("hotel_id", "4");
+		arr.add(obj);
+		obj = new JsonObject();
+
+		JsonArray hoteles = arr.getAsJsonArray();
+
+		for (int i = 0; i < hoteles.size(); i++) {
+			JsonObject hotel = hoteles.get(i).getAsJsonObject();
+			busquedaBean.getHoteles().add(hotel.get("nombre").getAsString());
+			busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("hotel_id").getAsInt());
+		}
+
+		// El siguiente código debería consultar a CM de forma correcta
+		/*
+		String response = "";
+		HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"ciudades", "GET");
+		if (serverCiudades.getResponseCode() != 404) {// Si encuentra el servidor
+			response = serverCiudades.getResponseBody();
+			obj = new Gson().fromJson(response, JsonObject.class);
+
 			JsonArray ciudades = (JsonArray) obj.get("ciudades");
 
 			for (int i = 0; i < ciudades.size(); i++) {
 				busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
 			}
-			/*
-			 * Formato Json recibido:
-			 * [
-			 * 		{
-			 * 			"nombre": "Rich",
-			 * 			"ubicacion": "Madrid",
-			 * 			"hotel_id": "1"
-			 * 		},
-			 * 		{
-			 * 			"nombre": "Paquito",
-			 * 			"ubicacion": "Zaragoza",
-			 * 			"hotel_id": "2"
-			 * 		},
-			 * 		{
-			 * 			"nombre": "Medici",
-			 * 			"ubicacion": "Valencia",
-			 * 			"hotel_id": "3"
-			 * 		},
-			 * 		{
-			 * 			"nombre": "Corporate",
-			 * 			"ubicacion": "Guadalajara",
-			 * 			"hotel_id": "4"
-			 * 		},
-			 * 		
-			 * ]
-			 */
-			/*
-			// Creamos los ejemplos.
-			arr = new JsonArray();
-			obj = new JsonObject();
-			obj.addProperty("nombre", "Rich");
-			obj.addProperty("ubicacion", "Madrid");
-			obj.addProperty("hotel_id", "1");
-			arr.add(obj);
-			obj = new JsonObject();
-			obj.addProperty("nombre", "Paquito");
-			obj.addProperty("ubicacion", "Zaragoza");
-			obj.addProperty("hotel_id", "2");
-			arr.add(obj);
-			obj = new JsonObject();
-			obj.addProperty("nombre", "Medici");
-			obj.addProperty("ubicacion", "Valencia");
-			obj.addProperty("hotel_id", "3");
-			arr.add(obj);
-			obj = new JsonObject();
-			obj.addProperty("nombre", "Corporate");
-			obj.addProperty("ubicacion", "Guadalajara");
-			obj.addProperty("hotel_id", "4");
-			arr.add(obj);
-			obj = new JsonObject();
-			
-			JsonArray hoteles = arr.getAsJsonArray();
+		}
+		obj = new JsonObject();
+		obj.addProperty("ubicacion", "");
+		JsonArray hoteles;
+		HttpClient serverHoteles = new HttpClient(HttpClient.urlCM+"hoteles", "POST");
+		serverHoteles.setRequestBody(obj.toString());
+		if (serverHoteles.getResponseCode() != 404) {// Si encuentra el servidor
+			response = serverHoteles.getResponseBody();
+
+			hoteles = new Gson().fromJson(response, JsonArray.class);
 
 			for (int i = 0; i < hoteles.size(); i++) {
 				JsonObject hotel = hoteles.get(i).getAsJsonObject();
 				busquedaBean.getHoteles().add(hotel.get("nombre").getAsString());
-				busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("hotel_id").getAsInt());
+				busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("id").getAsInt());
 			}
-			*/
-			// El siguiente código debería consultar a CM de forma correcta
-			
-			String response = "";
-			//JsonObject obj;
-			HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"ciudades", "GET");
-			if (serverCiudades.getResponseCode() != 404) {// Si encuentra el servidor
-				response = serverCiudades.getResponseBody();
-				obj = new Gson().fromJson(response, JsonObject.class);
-
-				JsonArray ciudades = (JsonArray) obj.get("ciudades");
-
-				for (int i = 0; i < ciudades.size(); i++) {
-					busquedaBean.getCiudades().add(ciudades.get(i).getAsString());
-				}
-			}
-			obj = new JsonObject();
-			obj.addProperty("ubicacion", "");
-			JsonArray hoteles;
-			HttpClient serverHoteles = new HttpClient(HttpClient.urlCM+"hoteles", "POST");
-			serverHoteles.setRequestBody(obj.toString());
-			if (serverHoteles.getResponseCode() != 404) {// Si encuentra el servidor
-				response = serverHoteles.getResponseBody();
-				
-				hoteles = new Gson().fromJson(response, JsonArray.class);
-
-				for (int i = 0; i < hoteles.size(); i++) {
-					JsonObject hotel = hoteles.get(i).getAsJsonObject();
-					busquedaBean.getHoteles().add(hotel.get("nombre").getAsString());
-					busquedaBean.getIds().put(hotel.get("nombre").getAsString(), hotel.get("id").getAsInt());
-				}
-			}
-
-		}
+		}*/
 		model.addAttribute("busquedaBean",busquedaBean);
 		model.addAttribute("sesionBean", sesionBean);
 
@@ -211,18 +204,18 @@ public class BusquedaController {
 			String response = "";
 			
 			hotelesDisponibles = new HotelesDisponiblesBean();
-			/*
+			
 			HttpClient server = new HttpClient(HttpClient.urlCM+"precioDisponible", "POST");
 			// Añado los datos de la consulta
 			server.setRequestBody(obj.toString());
 			
 			if (server.getResponseCode() != 404) {// Si encuentra el servidor
 				response = server.getResponseBody();
-			 */
+			 
 				JsonArray arr = new JsonArray();
 				JsonObject json = new JsonObject();
-				//arr = new Gson().fromJson(response, JsonArray.class);
-				
+				arr = new Gson().fromJson(response, JsonArray.class);
+				/*
 				json.addProperty("nombre", "Barcelo Playa");
 				json.addProperty("id", 3);
 				json.addProperty("ubicacion", "Asturias");
@@ -250,7 +243,7 @@ public class BusquedaController {
 				json.addProperty("tipo", "económica");
 				json.addProperty("precio", 35.9);
 				arr.add(json);
-				
+				*/
 				int numero_dias = busquedaBean.getNumeroDias();
 				
 				Map<Integer, Integer> hoteles = new HashMap<Integer, Integer>();
@@ -263,7 +256,6 @@ public class BusquedaController {
 					habitacion.setTipo(json.get("tipo").getAsString());
 					habitacion.setTarifa(json.get("precio").getAsDouble() * numero_dias);
 					habitacion.setId(i);
-					System.out.println(json.get("id").getAsInt());
 					if (!hoteles.containsKey(json.get("id").getAsInt())) {
 						hotel = new HotelBean();
 						hotel.setNombre(json.get("nombre").getAsString());
@@ -281,12 +273,8 @@ public class BusquedaController {
 					}
 
 					hotel.getHabitaciones().add(habitacion);
-					
-					//System.out.println(hoteles.get(3));
-					//System.out.println(hoteles.get(4));
-					//System.out.println(hotelesDisponibles.getHoteles().size());
 				}
-			//}
+			}
 
 			model.addAttribute("hotelesDisponiblesBean", hotelesDisponibles);
 		}		
@@ -338,13 +326,6 @@ public class BusquedaController {
 			}
 			if (encontrado) break;
 		}
-		
-		if (sesionBean.getUsuarioID() == -1) {
-			LoginBean login = new LoginBean();
-			login.setMethod("loginReservar");
-			model.addAttribute(login);
-			return "login";
-		}
 
 		crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
 		
@@ -358,71 +339,5 @@ public class BusquedaController {
 		}
 		
 		return "redirect:misReservas";
-	}
-	
-	@PostMapping("/loginReservar")
-	public String loginPost(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-			Model model) throws Exception{
-
-		if(loginBean.checkCamposValidos()) {
-			logger.info("Peticion de Log In recibida correctamente y con campos validos");
-			
-			// Se comprueba que el usuario existe y que la contraseña es correcta.
-			JsonObject obj = new JsonObject();
-			obj.addProperty("email", loginBean.getUsuario());
-			obj.addProperty("password", loginBean.getPassword());
-			String response = "";
-			
-			/*
-			HttpClient server = new HttpClient(HttpClient.urlCM+"login", "GET");
-			server.setRequestBody(obj.getAsString());
-			if (server.getResponseCode() != 404) {// Si encuentra el servidor
-				response = server.getResponseBody();
-				obj = new Gson().fromJson(response, JsonObject.class);
-				int id = obj.get("id_cliente").getAsInt();
-				
-				if (id == -1) {
-					
-					model.addAttribute("loginBean", loginBean);
-					model.addAttribute("mensajeError","El usuario no existe");
-					
-					return "login";
-				}
-				else {
-					loginBean.setId(id);
-					
-					// Guarda el email del usuario en el sesion bean
-					sesionBean = new SesionBean(new UsuarioModel(loginBean));
-					
-					return "redirect:buscador";
-				}
-			}
-			*/
-			// Pruebas de SessionScope sin conexión al servidor
-			loginBean.setId(1);
-
-			// Guarda el email del usuario en el sesion bean
-			sesionBean.setUsuarioID(1);
-			sesionBean.setUsuario(loginBean.getUsuario().split("@")[0]);
-
-			crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
-			/*
-			HttpClient server = new HttpClient(HttpClient.urlCM+"crearReserva", "GET");
-			// Añado los datos de la consulta
-			server.setRequestBody(crearReserva.toString());
-			
-			if (server.getResponseCode() == 404) {// Si encuentra el servidor
-				model.addAttribute("mensajeError", "La reserva no se ha podido realizar correctamente");
-				return "buscador";
-			}
-			*/
-			return "redirect:misReservas";
-		}
-		
-		model.addAttribute("loginBean", loginBean);
-		model.addAttribute("mensajeError","Email o password no existe");
-		
-		return "login";
-	}
-	
+	}	
 }

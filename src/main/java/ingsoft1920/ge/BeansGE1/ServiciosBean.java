@@ -8,7 +8,7 @@ import org.springframework.web.context.annotation.SessionScope;
 public class ServiciosBean {
 	
 	private String idReserva;
-	private String servicio;
+	private String tipoServicio;
 	private String fecha;
 	private int numPersonas;
 	

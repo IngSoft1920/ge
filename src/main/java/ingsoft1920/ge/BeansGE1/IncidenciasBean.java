@@ -10,6 +10,8 @@ public class IncidenciasBean {
 	private String idReserva;
 	private String Asunto;
 	private String mensaje;
+	
+	
 	public String getIdReserva() {
 		return idReserva;
 	}

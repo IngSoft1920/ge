@@ -18,6 +18,7 @@ public class ReservasController {
 final static Logger logger = LogManager.getLogger(ReservasController.class.getName());
 	
 public static JSONObject receivedJSON = new JSONObject();
+public static int allFestivals[] = {1,2,3};
 	
 @Autowired
  SesionBean sesion;
@@ -25,8 +26,8 @@ public static JSONObject receivedJSON = new JSONObject();
 	@GetMapping("/reservas")
 	public  String reservasEnviar(Model model) throws Exception {
 		receivedJSON.put("datosReserva", "Datos de su reserva");
-
-		
+	
+		System.out.println(allFestivals.length);
 //		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 //		
 //		client.setRequestBody("dadnos las facturas");

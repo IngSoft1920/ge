@@ -48,8 +48,6 @@
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
 		<form action="/incidencias" method="get">
-				<label>Nï¿½ Reserva</label> <br>
-				<textarea name="idReserva" rows="2" cols="10" style="margin-top:5px; margin-bottom:15px">
 				</textarea> <br>
 				<label>Asunto</label> <br>
 				<select name="Asunto" style="margin-top:5px; margin-bottom:10px">
@@ -62,9 +60,24 @@
 				<textarea name="mensaje" placeholder="Escriba su mensaje" style="margin-top:5px; margin-bottom:10px">
 				</textarea> 
 				<br><br>
-				<input type="submit" value="Enviar">
+				<input type="submit" onclick="popup()" value="Enviar">
 		</form>
 	</div>
+	
+	<div class="card" id="procesarIncidencia">
+		Incidencia enviada con éxito
+		<div class="boton">
+			<input type="submit" onclick="document.location ='/index'"
+				value="Volver al inicio" />
+		</div>
+
+	</div>
+
+	<script>
+	function popup(){
+		document.getElementById("procesarIncidencia").style.display = "block";
+		}
+	</script>
 
 </body>
 </html>

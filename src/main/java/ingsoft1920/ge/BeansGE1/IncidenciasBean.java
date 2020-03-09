@@ -40,6 +40,10 @@ public class IncidenciasBean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "IncidenciasBean [idReserva=" + idReserva + ", Asunto=" + Asunto + ", mensaje=" + mensaje + "]";
+	}
 
 
 	

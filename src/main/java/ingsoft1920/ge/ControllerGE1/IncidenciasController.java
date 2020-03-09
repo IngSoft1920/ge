@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
@@ -30,14 +31,18 @@ public class IncidenciasController {
 	@Autowired
 	 SesionBean sesion;
 
-	@PostMapping("/incidencias")
-	public  String procesarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
+	
+	//enviar incidencia
+	@PostMapping("/incidencias") //cambiar endpoint
+	public  String enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
 			Model model) throws Exception {
 			
 			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
 			
-			client.setRequestBody(""+beanToJson(incidenciasBean));
-
+			JsonObject json = new JsonObject();
+			
+			client.setRequestBody(""+sesion.getUsuarioID()+beanToJson(incidenciasBean)); //añadir id usuario y id reserva
+			
 			int respCode = client.getResponseCode();
 
 			String resp="";
@@ -47,13 +52,34 @@ public class IncidenciasController {
 	        model.addAttribute("sesionBean", sesion);
 
 			return "incidencias";
-		
 	}
+	
+	//pedir asuntos disponibles
+//	@GetMapping("/incidencias") //cambiar endpoint
+//	public String recibirAsuntos(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
+//			Model model) throws Exception {
+//
+//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "GET");
+//		
+//		String respuesta=client.getResponseBody();
+//
+//		int respCode = client.getResponseCode();
+//
+//		String resp="";
+//		if(respCode==200) {
+//			resp=client.getResponseBody();
+//		}
+//        model.addAttribute("sesionBean", sesion);
+//
+//		return respuesta;
+//	}
+	
+	
 
 	@GetMapping("/incidencias")
 	public String Incidencias(Model model) {
         model.addAttribute("sesionBean", sesion);
-
+        
 		return "incidencias";
 	}
 	public static Object beanToJson(Object bean) {

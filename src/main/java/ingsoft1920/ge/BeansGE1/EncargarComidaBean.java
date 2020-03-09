@@ -7,6 +7,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 
 public class EncargarComidaBean {
+	private static String tipoServicio= "encargarComida";
 	//Falta por definir
 	
 

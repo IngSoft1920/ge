@@ -16,10 +16,10 @@ public class ServiciosBean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ServiciosBean(String idReserva, String servicio, String fecha, int numPersonas) {
+	public ServiciosBean(String idReserva, String tipoServicio, String fecha, int numPersonas) {
 		super();
 		this.idReserva = idReserva;
-		this.servicio = servicio;
+		this.tipoServicio = tipoServicio;
 		this.fecha = fecha;
 		this.numPersonas = numPersonas;
 	}
@@ -30,10 +30,10 @@ public class ServiciosBean {
 		this.idReserva = idReserva;
 	}
 	public String getServicio() {
-		return servicio;
+		return tipoServicio;
 	}
 	public void setServicio(String servicio) {
-		this.servicio = servicio;
+		this.tipoServicio = servicio;
 	}
 	public String getFecha() {
 		return fecha;

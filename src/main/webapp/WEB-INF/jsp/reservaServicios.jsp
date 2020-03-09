@@ -55,7 +55,8 @@
       const array = [1,2,3];
       
       for(i=0; i<array.length; i++){
-      array[i] = `<div class="row pl-3">
+      array[i] = `
+      		<div class="row pl-3">
 			<h3>Reservas en curso</h3>
           </div>
           <div class="row pl-3 pb-3">

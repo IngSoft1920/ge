@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.google.gson.Gson;
 
 import ingsoft1920.ge.Beans.LoginBean;
+import ingsoft1920.ge.Beans.ReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckOutBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
@@ -30,48 +31,37 @@ public class ServiciosController {
 
 	@Autowired
 	ServiciosBean servicios;
-	
-	@Autowired
 	SesionBean sesion;
-	
-	@PostMapping("/serviciosEnviar")
-	public  String serviciosEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
-			Model model) throws Exception {
-		
-//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
-//		
-//		client.setRequestBody(""+ beanToJson(servicios));
-//		
-//		int respCode = client.getResponseCode();
-//		
-//		String resp="";
-//		if(respCode==200) {
-//			  resp=client.getResponseBody();}
-        model.addAttribute("sesionBean", sesion);
-
-		return "";
-		
-		
-	}
+	ReservaBean reserva;
 	
 	
 	@GetMapping("/servicios")
 	public String checkInEnviar(Model model, SesionBean sesion) throws Exception {
-	
-//		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:700*/...", "GET");		
-//		
-//		client.setRequestBody("dadnos el menu");
-//		
-//		int respCode = client.getResponseCode();
-//		
-//		String resp="";
-//		if(respCode==200) {
-//			  resp=client.getResponseBody();			 
-//			  }
         model.addAttribute("sesionBean", sesion);
-
 		return "servicios";
  	}
+	
+	
+
+	//recibir servicios
+	public  String serviciosEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
+			Model model) throws Exception {
+		
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
+		
+		//enviar nombre del hotel
+		client.setRequestBody(reserva.getHotel());
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();
+			  }
+ 		return resp;
+		
+		
+	}
 	
 	
 	public static Object beanToJson(Object bean) {

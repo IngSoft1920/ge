@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.annotation.SessionScope;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
@@ -35,25 +36,27 @@ public class CheckOutController {
 	@Autowired
 	 SesionBean sesion;
 	
-	@PostMapping("/checkoutEnviar")
+	@PostMapping("/envioCheckOut")
 	public  String checkoutEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
 			Model model) throws Exception {
 		
-//		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/apiUsuarios/"+sesion.getUsuarioID(), "POST");
-//		
-//		client.setRequestBody(""+beanToJson(checkoutBean));
-//		
-//		int respCode = client.getResponseCode();
-//		
-//		String resp="";
-//		if(respCode==200) {
-//			  resp=client.getResponseBody();
-//			  }
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/envioCheckOut", "POST");
+		JsonObject json = new JsonObject();
+		json.addProperty("usuarioID", sesion.getUsuarioID());
+		json.addProperty("idReserva", checkout.getIdReserva());
+		json.addProperty("horaSalida", checkout.getHoraSalida());
 		
-        model.addAttribute("sesionBean", sesion);
-
-		return "misReservas";
 		
+		client.setRequestBody(json.toString());
+		int respCode = client.getResponseCode();
+		System.out.println(respCode+"\n");
+		if(respCode==200)
+		{
+			client.getResponseBody();
+		}
+		
+		
+		return "";
 	}
 	@GetMapping("/checkout")
 	public  String checkInEnviar(Model model) {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.ReservaBean;
@@ -62,6 +63,30 @@ public class ServiciosController {
 		
 		
 	}
+	//reservar servicios
+	public String serviciosReservados(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos,
+			Model model) throws Exception{
+			
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
+		JsonObject json = new JsonObject();
+		json.addProperty("tipoServicio", servicios.getServicio());
+		json.addProperty("fecha", servicios.getFecha());
+		json.addProperty("numPersonas", servicios.getNumPersonas());
+		json.addProperty("usuarioID", sesion.getUsuarioID());
+		json.addProperty("idReserva", servicios.getIdReserva());
+		
+		client.setRequestBody(json.toString());
+		int respCode = client.getResponseCode();
+		System.out.println(respCode+"\n");
+		if(respCode==200)
+		{
+			client.getResponseBody();
+		}
+		
+		
+		return "";
+	}
+	
 	
 	
 	public static Object beanToJson(Object bean) {

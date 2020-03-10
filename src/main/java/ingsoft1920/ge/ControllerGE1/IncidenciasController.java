@@ -46,7 +46,7 @@ public class IncidenciasController {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/*no se sabe endpoint", "POST");
 
 		JsonObject json = new JsonObject();
-
+		
 		client.setRequestBody(""+sesion.getUsuarioID() + checkInBean.getIdReserva() + beanToJson(incidenciasBean));
 
 		int respCode = client.getResponseCode();

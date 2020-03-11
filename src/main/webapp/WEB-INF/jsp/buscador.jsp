@@ -24,7 +24,7 @@
 
 <div class="contenido">
 
-	<form:form method="POST" action="buscador"
+	<form:form method="POST" action=""
 		modelAttribute="busquedaBean">
 		<div class="buscador">
 			<br>
@@ -51,8 +51,8 @@
 							</div>
 							<select name="ciudad">
 								<option value="">Ciudad</option>
-								<c:forEach items="${busquedaBean.ciudades}" var="ciudad">
-									<option value="${ciudad}">${ciudad}</option>
+								<c:forEach items="${hotelesDisponibles.hoteles}" var="hotel">
+									<option value="${hotel.ciudad}">${hotel.ciudad}</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -66,8 +66,8 @@
 							</div>
 							<select name="hotel">
 								<option value="">Hotel</option>
-								<c:forEach items="${busquedaBean.hoteles}" var="hotel">
-									<option value="${hotel}">${hotel}</option>
+								<c:forEach items="${hotelesDisponibles.hoteles}" var="hotel">
+									<option value="${hotel.nombre}">${hotel.nombre}</option>
 								</c:forEach>
 							</select>
 						</div>

@@ -2,11 +2,6 @@ package ingsoft1920.ge.Beans;
 
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,15 +11,8 @@ public class BusquedaBean {
 	private String hotel;
 	private String ciudad;
 	private int hotel_id;
-	private List<String> hoteles;
-	private Map<String, Integer> ids;
-	private List<String> ciudades;
 	
-	public BusquedaBean() {
-		this.hoteles = new ArrayList<String>();
-		this.ids = new HashMap<String, Integer>();
-		this.ciudades = new ArrayList<String>();
-	}
+	public BusquedaBean() {}
 	
 	public boolean checkCamposValidos() {
 		String now = java.time.LocalDate.now().toString();
@@ -32,14 +20,6 @@ public class BusquedaBean {
 				this.fechaInicio.compareTo(this.fechaFin) < 0)
 			return true;
 		return false;
-	}
-
-	public List<String> getCiudades() {
-		return ciudades;
-	}
-
-	public void setCiudades(List<String> ciudades) {
-		this.ciudades = ciudades;
 	}
 
 	public String getFechaInicio() {
@@ -82,22 +62,6 @@ public class BusquedaBean {
 		this.hotel_id = hotel_id;
 	}
 
-	public List<String> getHoteles() {
-		return hoteles;
-	}
-
-	public void setHoteles(List<String> hoteles) {
-		this.hoteles = hoteles;
-	}
-
-	public Map<String, Integer> getIds() {
-		return ids;
-	}
-
-	public void setIds(Map<String, Integer> ids) {
-		this.ids = ids;
-	}
-	
 	public int getNumeroDias () {
 		String[] inS = fechaInicio.split("-");
 		String[] outS = fechaFin.split("-");

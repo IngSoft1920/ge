@@ -40,7 +40,7 @@ public class HttpClient {
 			this.method=method;
 			con.setRequestProperty("Content-Type", "application/json; utf-8");
 			con.setRequestProperty("Accept", "application/json");
-		}catch(Exception ex) {
+		} catch(Exception ex) {
 			logger.error("Error al inicializar la peticion",ex);
 			throw ex;
 		}

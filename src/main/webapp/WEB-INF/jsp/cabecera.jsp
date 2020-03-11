@@ -20,7 +20,7 @@
 	<div class="top">
 		<ul id="button">
 			<div class="menu1">
-				<li><a href="/buscador"><img src="/imagenes/LogoHotel.jpg" /></li>
+				<li><a href="/"><img src="/imagenes/LogoHotel.jpg" /></li>
 			</div>
 			<div class="menu1">
 				<li><a href="/reservas"><i class="fa fa-book"></i>Mis
@@ -36,7 +36,7 @@
 
 
 
-			<li id="menu"><a href="/buscador"> <i class="fa fa-list"></i>
+			<li id="menu"><a href="/"> <i class="fa fa-list"></i>
 					Inicio
 			</a></li>
 
@@ -46,15 +46,15 @@
 				<div class="popup" onclick="myHotel()">
 
 					<i class="fa fa-users"></i> MyAccount <span class="popuptext"
-						id="myPopup"> <br> Accede a tu cuenta o regï¿½strate y
-						obtï¿½n descuentos <br> <br> <a href="/login"
+						id="myPopup"> <br> Accede a tu cuenta o regïstrate y
+						obten descuentos <br> <br> <a href="/login"
 						value="login">
 							<button class="botonMyHotel">Log In</button>
 					</a> <a href="/signup" value="signup">
 							<button class="botonMyHotel">Registrarse</button>
 					</a>
 					</span> <span class="popuptext" id="UserPopup"> <br>
-						ï¿½BIENVENIDO ${sesionBean.usuario}!<br> Disfruta de esta
+						!BIENVENIDO ${sesionBean.usuario}!<br> Disfruta de esta
 						experiencia con nosotros <br> <a href="/reservas"
 						value="reservas">
 							<button class="botonMyHotel">Mis Reservas</button>

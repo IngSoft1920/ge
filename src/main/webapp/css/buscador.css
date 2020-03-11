@@ -65,7 +65,6 @@ h3 {
   position: absolute;
   margin-left: 0px;
   margin-top: 10px;
-  z-index: 1;
   color: white;
   
 }
@@ -250,13 +249,13 @@ li {
 	text-align: center;
 }
 
-button {
+.buttonLista {
 	font-family: Oldtown, fantasy;
 	font-size: 15px;
 	width: 100%;
 	padding: 15px 22px;
 	margin: 10px 5px;
-	background-color: #B0E0E6;
+	background-color: #b8b078;
 	text-align: center;
 	color: white;
 	margin: auto;

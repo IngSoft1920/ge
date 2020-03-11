@@ -75,7 +75,7 @@ public class LoginController {
 			sesionBean.setUsuarioID(1);
 			sesionBean.setUsuario(loginBean.getUsuario().split("@")[0]);
 
-			return "redirect:home";
+			return "redirect:buscador";
 		}
 
 		model.addAttribute("loginBean", loginBean);

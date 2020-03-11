@@ -44,6 +44,30 @@
 			<div class="recogerBuscar">
 				<div class="fila">
 
+					
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<form><input type="text" name="fechaInicio" path="fechaInicio"
+								placeholder="Entrada" onfocus="(this.type='date')"
+								onblur="(this.type='text')" required>
+								</form>
+						</div>
+					</div>
+
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<form:input type="text" name="fechaFin" path="fechaFin"
+								placeholder="Salida" onfocus="(this.type='date')"
+								onblur="(this.type='text')" />
+						</div>
+					</div>
+					
 					<div class="columna">
 						<div class="input_photo">
 							<div class="icon">
@@ -72,29 +96,7 @@
 							</select>
 						</div>
 					</div>
-
-					<div class="columna">
-						<div class="input_photo">
-							<div class="icon">
-								<i class="fa fa-calendar"></i>
-							</div>
-							<form:input type="text" name="fechaInicio" path="fechaInicio"
-								placeholder="Entrada" onfocus="(this.type='date')"
-								onblur="(this.type='text')" />
-						</div>
-					</div>
-
-					<div class="columna">
-						<div class="input_photo">
-							<div class="icon">
-								<i class="fa fa-calendar"></i>
-							</div>
-							<form:input type="text" name="fechaFin" path="fechaFin"
-								placeholder="Salida" onfocus="(this.type='date')"
-								onblur="(this.type='text')" />
-						</div>
-					</div>
-
+					
 
 
 					<div class="columna">

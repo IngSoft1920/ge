@@ -4,6 +4,7 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -33,6 +34,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 public class BusquedaController {
 	final static Logger logger = LogManager.getLogger(BusquedaController.class.getName());
 	
+	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
 
 	BusquedaBean busquedaBean = new BusquedaBean();
@@ -74,11 +76,11 @@ public class BusquedaController {
 		ejemplo.addProperty("direccion", "Calle Gran Vía, 21");
 		JsonArray ejemploArr = new JsonArray();
 		JsonObject ejemploCat = new JsonObject();
-		ejemploCat.addProperty("id", 1);
+		ejemploCat.addProperty("categoria_id", 1);
 		ejemploCat.addProperty("nombre", "pet-friendly");
 		ejemploArr.add(ejemploCat);
 		ejemploCat = new JsonObject();
-		ejemploCat.addProperty("id", 2);
+		ejemploCat.addProperty("categoria_id", 2);
 		ejemploCat.addProperty("nombre", "adult-only");
 		ejemploArr.add(ejemploCat);
 		ejemplo.add("categorias", ejemploArr);
@@ -95,11 +97,11 @@ public class BusquedaController {
 		ejemplo.addProperty("direccion", "Calle Cuenca es mejor, 21");
 		ejemploArr = new JsonArray();
 		ejemploCat = new JsonObject();
-		ejemploCat.addProperty("id", 1);
+		ejemploCat.addProperty("categoria_id", 1);
 		ejemploCat.addProperty("nombre", "pet-friendly");
 		ejemploArr.add(ejemploCat);
 		ejemploCat = new JsonObject();
-		ejemploCat.addProperty("id", 3);
+		ejemploCat.addProperty("categoria_id", 3);
 		ejemploCat.addProperty("nombre", "caga-y-vete");
 		ejemploArr.add(ejemploCat);
 		ejemplo.add("categorias", ejemploArr);
@@ -111,7 +113,7 @@ public class BusquedaController {
 		if (serverCiudades.getResponseCode() != 404) {// Si encuentra el servidor
 			response = serverCiudades.getResponseBody();
 		}*/
-		
+
 		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
 		hotelesDisponibles.setHoteles(new Gson().fromJson(response, tipo));
 		
@@ -127,7 +129,12 @@ public class BusquedaController {
 			Model model) throws Exception{
 
 		if (busquedaBean.checkCamposValidos()) {
-
+			
+			// Será interesante para el futuro
+			List<HotelBean> list = hotelesDisponibles.getHoteles().stream()
+					.filter(hotel -> !hotel.getHabitaciones().isEmpty())
+					.collect(Collectors.toList());
+			
 			logger.info("Busqueda recibida correctamente");
 
 			// Consulta a la base de datos

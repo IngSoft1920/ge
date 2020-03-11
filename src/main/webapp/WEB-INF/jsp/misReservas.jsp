@@ -19,7 +19,14 @@
 		<img src="https://images.unsplash.com/photo-1564711165898-67fe8327b433?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80">
 		<div class="centered"><strong>Gestiona tus reservas</strong></div>
 		</figure>
+		
+	<div class ="vertical-menu">
+	 	<a href="#" onclick ="toggleReserva()">Mis Reservas</a>
+  		<a href="#" onclick ="toggleHistorial()">Historial</a>
+	</div>
 	
+	<div class="toggle">
+	<div id ="misreservas">
 	<c:forEach items="${misReservasBean.reservas}" var="reserva">
 		<div class="reserva">
 			<p class="hotel">
@@ -32,17 +39,19 @@
 				Habitación: ${reserva.habitacion} <span class="tarifa">Tarifa:${reserva.tarifa}</span>
 			<a href="#" onclick="toggle()" class ="cambiarReserva">Cambiar reserva</a>
 		</div>
-
 	</c:forEach>
+	</div>
 
-	<h2 class="titulo_historial">Historial</h2>
+	<div id="historial">
 	<c:forEach items="${misReservasBean.reservas}" var="reserva">
 
 		<div class="historial">
 			<p>Hotel ${reserva.hotel} en ${reserva.ciudad}</p>
 
-			<p>De ${reserva.fechaInicio} a ${reserva.fechaFin}</p>
-
+			<p>De ${reserva.fechaInicio} a ${reserva.fechaFin}
+			<button class="factura" name="button" value="factura">Ver
+					factura</button>
+			</p>
 			<p>Habitación: ${reserva.habitacion}</p>
 			<form method="POST" action="valorar" name="valoracionId">
 				<div class="clasificacion">
@@ -55,11 +64,16 @@
 					<input id="radio4" type="radio" name="estrellas" value="2">
 					<label for="radio4">&#9733</label>
 					<input id="radio5" type="radio" name="estrellas" value="1">
-					<label for="radio5">&#9733</label> <input type="submit">
-				</div>
+					<label for="radio5">&#9733</label> 
+				
+					<button type="submit" class="botonClasificacion">Enviar</button>
+					</div>
 			</form>
 		</div>
 	</c:forEach>
+	</div>
+	</div>
+	
 	</div>
 	</div>
 	
@@ -92,6 +106,20 @@
 			blur.classList.toggle('active');
 			var popup = document.getElementById('popup');
 			popup.classList.toggle('active');
+		}
+		
+		function toggleReserva() {
+			var reserva = document.getElementById('misreservas');
+			reserva.classList.toggle	('active');
+			var historial = document.getElementById('historial');
+			historial.classList.remove('active');
+		}
+		
+		function toggleHistorial() {
+			var reserva = document.getElementById('misreservas');
+			reserva.classList.remove('active');
+			var historial = document.getElementById('historial');
+			historial.classList.toggle('active');
 		}
 	</script>
 

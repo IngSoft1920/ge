@@ -70,43 +70,86 @@ a:active {
 }
 
 .reserva {
+	margin-bottom:5px;
 	background-color: #4f5457;
 	border: 1px solid black;
 	overflow: hidden;
 	color:white;
 }
 
-.titulo_historial {
-	margin-top: 30px;
-	text-align: center;
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 40px;
-	text-decoration: underline;
+#misreservas {
+	visibility: hidden;
+	opacity:0;
+	transition: 0.5s;
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
 }
+
+#misreservas.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.toggle {
+	position:relative;
+}
+
 
 .historial {
+	margin-bottom:5px;
 	background-color: #4f5457;
 	border: 1px solid black;
 	overflow: hidden;
-	padding: 5px;
-	font-family: Helvetica;
 	color:white;
+	padding:5px;
 }
+
+#historial {
+	visibility: hidden;
+	position:absolute;
+	opacity:0;
+	transition: 0.5s;
+	right:0px;
+	left:0px;
+	top:0px;
+}
+
+#historial.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
 
 .fondo {
 	background-color: D1F0EC;
 }
 
 .clasificacion {
-	margin-bottom: px;
-	margin-right: 20px;
+	margin-right:10px;
 	font-size: 25px;
+	float:right;
 }
 
-.enviar {
+.mismaLinea {
+	display:inline;
+}
+
+.botonClasificacion {	
+	background-color: #b8b078;
+	color: white;
+	padding: 8px;
+	border: 2px solid black;
+	margin-right: 5px;
+	cursor: pointer;
+	opacity: 0.8;
 	float: right;
-	margin-top: 7px;
-	margin-right: 40px
+	margin-left:10px;
 }
 
 input[type="radio"] {
@@ -174,14 +217,14 @@ input[type="radio"]:checked ~ label {
 
 
 .container#blur.active {
-	filter: blur(20px);
+	filter: blur(10px);
 	pointer-events:none;
 	user-select:none;
 }
 
 .container .content {
   position:relative;
-  max-widht:800px;
+  max-width:800px;
 }
 
 #popup {
@@ -233,11 +276,35 @@ figure img{
 }
 
 .centered {
-  position: absolute;
+  position: relative;
   top: 46%;
-  left: 27%;
+  left: 53%;
   transform: translate(-50%, -50%);
   font-family: Garamond;
   font-size:66px;
   color:white;
+}
+
+.vertical-menu {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.vertical-menu a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.vertical-menu a:hover {
+  background-color: #b8b078;
+  color: black;
+}
+
+.menu-vertical a.active {
+  background-color: #b8b078;
+  color: white;
 }

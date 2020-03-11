@@ -10,6 +10,8 @@ public class IncidenciasBean {
 	private String idReserva;
 	private String Asunto;
 	private String mensaje;
+	
+	
 	public String getIdReserva() {
 		return idReserva;
 	}
@@ -37,6 +39,10 @@ public class IncidenciasBean {
 	public IncidenciasBean() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "IncidenciasBean [idReserva=" + idReserva + ", Asunto=" + Asunto + ", mensaje=" + mensaje + "]";
 	}
 
 

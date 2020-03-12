@@ -69,7 +69,7 @@ public class ServiciosController {
 			
 		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
 		JsonObject json = new JsonObject();
-		json.addProperty("tipoServicio", servicios.getServicio());
+		json.addProperty("tipoServicio", servicios.getTipoServicio());
 		json.addProperty("fecha", servicios.getFecha());
 		json.addProperty("numPersonas", servicios.getNumPersonas());
 		json.addProperty("usuarioID", sesion.getUsuarioID());

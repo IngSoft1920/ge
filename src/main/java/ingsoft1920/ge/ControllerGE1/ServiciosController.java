@@ -68,7 +68,7 @@ public class ServiciosController {
 		}
 		
 		
-		//falta api que nos de las horas disponibles
+		//falta api que nos de las horas disponibles y mandamos fecha e id de servicio
 		
 		
 		
@@ -76,7 +76,7 @@ public class ServiciosController {
 	@PostMapping("/reservarServicio")	
 	public String serviciosReservados(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos) throws Exception{
 			
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
 		JsonObject json = new JsonObject();
 		json.addProperty("tipoServicio", servicios.getTipoServicio());//se puede mandar el servicio en vez del id??
 		json.addProperty("fecha", servicios.getFecha());

@@ -40,7 +40,7 @@ public class EncargarComidaController {
 	public String recibirPlatos() throws Exception {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/platosRest", "POST");
 		JsonObject json= new JsonObject();
-		json.addProperty("rest_nom", );
+		json.addProperty("rest_nom","Mamma Mia" );
 		
 		client.setRequestBody(json.toString());
 		
@@ -60,7 +60,7 @@ public class EncargarComidaController {
 	public String recibirItems() throws Exception {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/itemsRest", "POST");
 		JsonObject json= new JsonObject();
-		json.addProperty("rest_nom", );
+		json.addProperty("rest_nom","Mamma Mia" );
 		
 		client.setRequestBody(json.toString());
 		

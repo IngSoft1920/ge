@@ -42,7 +42,7 @@ public class ServiciosController {
 
 
 	//recibir servicios
-	@GetMapping("/recibirServicios")
+	@PostMapping("/recibirServicios")
 	public static  String recibirServiciosr(@ModelAttribute("reserva") VerReservasBean reserva) throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
@@ -50,7 +50,7 @@ public class ServiciosController {
 		//enviar nombre del hotel
 		JsonObject json = new JsonObject();
 		json.addProperty("nombre_hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
-		//ASI?? json.addProperty("id_estancia", reserva.getNombre_hotel());   ASI¿?
+		//ASI?? json.addProperty("id_estancia", reserva.getNombre_hotel());   ASI¿?¿?
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
@@ -61,30 +61,18 @@ public class ServiciosController {
 		}
 		return resp;
 	}
-
-	public  String recibirServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
-			Model model) throws Exception {
-
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
-
-		return "";
-	}
-
 	//falta api que nos de las horas disponibles y mandamos fecha e id de servicio
 
-
-
-	//recibir servicios reservados por el cliente
-	@GetMapping("/serviciosReservados")
-	public static  String serviciosReservados(@Valid @ModelAttribute("sesion") SesionBean sesion,
-			@ModelAttribute("reserva") VerReservasBean reserva) throws Exception {
+	//recibir servicios reservados por un cliente
+	public  String recibirServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
+			Model model) throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
 
 		//enviar id_cliente e id_reserva
 		JsonObject json = new JsonObject();
 		json.addProperty("id_cliente", sesion.getUsuarioID()); //coger id_usuario de la sesionBean
-		json.addProperty("id_estancia", reserva.getId_reserva()); //coger id_reserva de VerReservasBean
+		json.addProperty("id_estancia", reservas.getId_reserva()); //coger id_reserva de VerReservasBean
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
@@ -95,6 +83,7 @@ public class ServiciosController {
 		}
 		return resp;
 	}
+
 
 	//reservar servicios
 	@PostMapping("/reservarServicios1")	

@@ -36,11 +36,12 @@ public class CheckOutController {
 	@Autowired
 	 SesionBean sesion;
 	
+	//enviar check-out
 	@PostMapping("/envioCheckOut")
 	public  String checkoutEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
 			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:700*/envioCheckOut", "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/envioCheckOut", "POST");
 		JsonObject json = new JsonObject();
 		json.addProperty("usuarioID", sesion.getUsuarioID());
 		json.addProperty("idReserva", checkout.getIdReserva());

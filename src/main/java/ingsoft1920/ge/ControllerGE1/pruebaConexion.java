@@ -14,21 +14,21 @@ public class pruebaConexion {
 	
 	public static void main(String[]agrs) throws Exception {
 		
-		serviciosEnviar();
-//		JsonObject obj = (JsonObject) JsonParser.parseString(st); 
-//		String res = obj.getAsJsonArray("servicios_disponibles_nombre").getAsString();
-//		System.out.print(res);
+		
+		JsonObject obj = (JsonObject) JsonParser.parseString(serviciosEnviar()); 
+		String res = obj.getAsJsonArray("servicios_disponibles_nombre").getAsString();
+		System.out.print(res);
 	}
 	
 	//recibir servicios
 			@GetMapping("/recibirServicios")
 			public static  String serviciosEnviar() throws Exception {
 				
-				HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "GET");
+				HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 				
 				//enviar nombre del hotel
 				JsonObject json = new JsonObject();
-				json.addProperty("me_cago_en_todo", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
+				json.addProperty("nombre_Hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
 				client.setRequestBody(json.toString());
 				
 				int respCode = client.getResponseCode();

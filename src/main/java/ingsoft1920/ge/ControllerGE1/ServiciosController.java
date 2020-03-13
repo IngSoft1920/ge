@@ -42,7 +42,7 @@ public class ServiciosController {
 
 
 	//recibir servicios
-	@PostMapping("/recibirServicios")
+	@GetMapping("/recibirServicios")
 	public static  String recibirServiciosr(@ModelAttribute("reserva") VerReservasBean reserva) throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");

@@ -31,6 +31,8 @@ public class CheckInController {
 	@Autowired
 	SesionBean sesion;
 	
+	
+	//enviar check-in
 	@PostMapping("/envioCheckIn")
 	public String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
 			Model model) throws Exception {
@@ -50,8 +52,7 @@ public class CheckInController {
 		{
 			client.getResponseBody();
 		}
-		
-		
+
 		return "";
 	}
 	

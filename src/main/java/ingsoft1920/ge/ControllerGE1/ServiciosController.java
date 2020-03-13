@@ -2,6 +2,7 @@ package ingsoft1920.ge.ControllerGE1;
 
 import javax.validation.Valid;
 
+
 import org.apache.logging.log4j.LogManager;
 
 
@@ -13,14 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
-import ingsoft1920.ge.Beans.LoginBean;
-import ingsoft1920.ge.Beans.ReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.BeansGE1.CheckOutBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;

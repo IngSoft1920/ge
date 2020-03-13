@@ -1,8 +1,12 @@
 package ingsoft1920.ge.ControllerGE1;
 
+import java.time.LocalDate;
+
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -10,8 +14,10 @@ public class pruebaConexion {
 	
 	public static void main(String[]agrs) throws Exception {
 		
-		
 		serviciosEnviar();
+//		JsonObject obj = (JsonObject) JsonParser.parseString(st); 
+//		String res = obj.getAsJsonArray("servicios_disponibles_nombre").getAsString();
+//		System.out.print(res);
 	}
 	
 	//recibir servicios
@@ -22,7 +28,7 @@ public class pruebaConexion {
 				
 				//enviar nombre del hotel
 				JsonObject json = new JsonObject();
-				json.addProperty("nombre_hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
+				json.addProperty("me_cago_en_todo", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
 				client.setRequestBody(json.toString());
 				
 				int respCode = client.getResponseCode();

@@ -1,7 +1,5 @@
 package ingsoft1920.ge.BeansGE1;
 
-import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -9,36 +7,12 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 public class ServiciosBean {
 	
-	private String idReserva;
 	private String tipoServicio;
 	private String fecha;
+	private String hora;
 	private int numPersonas;
 	
 	
-	public int getNumPersonas() {
-		return numPersonas;
-	}
-	public void setNumPersonas(int numPersonas) {
-		this.numPersonas = numPersonas;
-	}
-	public ServiciosBean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	public ServiciosBean(String idReserva, String tipoServicio, String fecha, int numPersonas) {
-		super();
-		this.idReserva = idReserva;
-		this.tipoServicio = tipoServicio;
-		this.fecha = fecha;
-		this.numPersonas = numPersonas;
-	}
-	public String getIdReserva() {
-		return idReserva;
-	}
-	public void setIdReserva(String idReserva) {
-		this.idReserva = idReserva;
-	}
 	public String getTipoServicio() {
 		return tipoServicio;
 	}
@@ -51,9 +25,29 @@ public class ServiciosBean {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+	public String getHoras() {
+		return hora;
+	}
+	public void setHoras(String hora) {
+		this.hora = hora;
+	}
+	public int getNumPersonas() {
+		return numPersonas;
+	}
+	public void setNumPersonas(int numPersonas) {
+		this.numPersonas = numPersonas;
+	}
+	public ServiciosBean(String tipoServicio, String fecha, String horas, int numPersonas) {
+		super();
+		this.tipoServicio = tipoServicio;
+		this.fecha = fecha;
+		this.hora = hora;
+		this.numPersonas = numPersonas;
+	}
 	
 	
-
+	
+	
 	
 
 }

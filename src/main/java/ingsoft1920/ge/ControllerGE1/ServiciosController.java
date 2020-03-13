@@ -22,6 +22,7 @@ import ingsoft1920.ge.Beans.ReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckOutBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
+import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
@@ -33,7 +34,7 @@ public class ServiciosController {
 	@Autowired
 	ServiciosBean servicios;
 	SesionBean sesion;
-	ReservaBean reserva;
+	VerReservasBean reservas;
 	
 	
 	@GetMapping("/servicios")
@@ -45,35 +46,50 @@ public class ServiciosController {
 	
 
 	//recibir servicios
-	public  String serviciosEnviar(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
-			Model model) throws Exception {
+		@GetMapping("/recibirServicios")
+		public static  String serviciosEnviar() throws Exception {
+			
+			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
+			
+			//enviar nombre del hotel
+			JsonObject json = new JsonObject();
+			json.addProperty("nombre_hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
+			client.setRequestBody(json.toString());
+			
+			int respCode = client.getResponseCode();
+			
+			String resp="";
+			if(respCode==200) {
+				  resp=client.getResponseBody();
+				  }
+			return resp;
+			
+			
+		}
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 		
-		//enviar nombre del hotel
-		client.setRequestBody(reserva.getHotel());
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();
-			  }
- 		return resp;
+		//falta api que nos de las horas disponibles
 		
 		
-	}
+		
 	//reservar servicios
-	public String serviciosReservados(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos,
-			Model model) throws Exception{
+	@PostMapping("/reservarServicio")	
+	public String serviciosReservados(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos) throws Exception{
 			
 		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
 		JsonObject json = new JsonObject();
-		json.addProperty("tipoServicio", servicios.getTipoServicio());
+		json.addProperty("tipoServicio", servicios.getTipoServicio());//se puede mandar el servicio en vez del id??
 		json.addProperty("fecha", servicios.getFecha());
+		json.addProperty("hora", servicios.getHoras());
+		json.addProperty("cliente_id", sesion.getUsuarioID());
+		//falta el lugar,¿como?
+		
+		//cosas que faltan
 		json.addProperty("numPersonas", servicios.getNumPersonas());
-		json.addProperty("usuarioID", sesion.getUsuarioID());
-		json.addProperty("idReserva", servicios.getIdReserva());
+		json.addProperty("idReserva", reservas.getId_reserva());
+		json.addProperty("platos", (String)null);
+		json.addProperty("items", (String)null);
+		//falta el nombre del restaurante al reservar una mesa
 		
 		client.setRequestBody(json.toString());
 		int respCode = client.getResponseCode();

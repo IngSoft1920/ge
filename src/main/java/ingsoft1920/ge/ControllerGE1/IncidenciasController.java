@@ -17,6 +17,7 @@ import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
+import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
@@ -26,9 +27,8 @@ public class IncidenciasController {
 
 
 	@Autowired
-	IncidenciasBean incidenciasBean;
-	CheckInBean checkInBean;
 	SesionBean sesion;
+	VerReservasBean reservas;
 
 	//ruta a pagina de incidencias
 	@GetMapping("/incidencias")
@@ -40,14 +40,19 @@ public class IncidenciasController {
 
 	//enviar incidencia
 	@PostMapping("/incidencias") //cambiar endpoint
-	public  String enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidenciasBean,
+	public  String enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
 			Model model) throws Exception {
 
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/*no se sabe endpoint", "POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/endpoint", "POST");
 
 		JsonObject json = new JsonObject();
+		json.addProperty("asunto",incidencias.getAsunto());
+		json.addProperty("mansaje", incidencias.getMensaje());
+		json.addProperty("usuario_id", sesion.getUsuarioID());
+		json.addProperty("id_reserva", reservas.getId_reserva());
 		
-		client.setRequestBody(""+sesion.getUsuarioID() + checkInBean.getIdReserva() + beanToJson(incidenciasBean));
+		
+		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
 

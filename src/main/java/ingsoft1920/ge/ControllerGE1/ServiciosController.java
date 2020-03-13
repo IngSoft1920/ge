@@ -62,7 +62,14 @@ public class ServiciosController {
 			
 			
 		}
+
+	public  String recibirServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
+			Model model) throws Exception {
 		
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
+		
+		return "";
+	}
 		
 		//falta api que nos de las horas disponibles y mandamos fecha e id de servicio
 		

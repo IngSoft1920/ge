@@ -26,7 +26,6 @@ import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.HttpClient.HttpClient;
 
 
 @Controller
@@ -312,12 +311,8 @@ public class BusquedaController {
 			model.addAttribute("mensajeError", "La reserva no se ha podido realizar correctamente");
 			return "buscador";
 		}
-		
-		return "redirect:misReservas";
 		*/
-		model.addAttribute("busquedaBean", busquedaBean);
-		model.addAttribute("sesionBean", sesionBean);
+		return "redirect:misReservas";
 		
-		return "buscador";
 	}	
 }

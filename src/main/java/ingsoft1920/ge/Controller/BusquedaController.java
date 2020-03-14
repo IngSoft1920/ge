@@ -1,9 +1,7 @@
 package ingsoft1920.ge.Controller;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -37,6 +36,8 @@ public class BusquedaController {
 	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
 
+	List<HotelBean> hoteles;
+	
 	BusquedaBean busquedaBean = new BusquedaBean();
 	@Autowired
 	SesionBean sesionBean;
@@ -47,7 +48,7 @@ public class BusquedaController {
 	public String buscarGet(Model model) throws Exception {
 		
 		
-		/*
+		/*[
 		 * {
   		 *		"id" : 1,
   		 *		"nombre" : "Sol Creciente",
@@ -61,7 +62,22 @@ public class BusquedaController {
      	 *			{“categoria_id” : 1 , “nombre” : “pet-friendly” },
      	 *			{“categoria_id” : 2 , “nombre” : “adult-only”}
     	 *		]
- 		 *	}
+ 		 *	},
+ 		 *  {
+  		 *		"id" : 1,
+  		 *		"nombre" : "Luna Creciente",
+  		 *		"descripcion" : "Curiosa experiencia",
+  		 *		"estrellas" : 3,
+  		 *		"continente" : "Europa",
+  		 *		"pais" : "España",
+  		 *		"ciudad" : "Albacete",
+  		 *		"direccion" : "Calle Cuenca es mejor,21",
+  		 *		“categorias” : [
+     	 *			{“categoria_id” : 1 , “nombre” : “pet-friendly” },
+     	 *			{“categoria_id” : 2 , “nombre” : “caga-y-vete”}
+    	 *		]
+ 		 *	 }
+ 		 * ]
 		 */
 		JsonArray arrayGrande = new JsonArray();
 		
@@ -87,7 +103,7 @@ public class BusquedaController {
 		arrayGrande.add(ejemplo);
 		
 		ejemplo = new JsonObject();
-		ejemplo.addProperty("id", 1);
+		ejemplo.addProperty("id", 2);
 		ejemplo.addProperty("nombre", "Luna Creciente");
 		ejemplo.addProperty("descripcion", "Curiosa Experiencia");
 		ejemplo.addProperty("estrellas", 3);
@@ -115,9 +131,9 @@ public class BusquedaController {
 		}*/
 
 		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
-		hotelesDisponibles.setHoteles(new Gson().fromJson(response, tipo));
-		
-		model.addAttribute("hoteles", hotelesDisponibles);
+		hoteles = new Gson().fromJson(response, tipo);
+
+		model.addAttribute("hoteles", hoteles);
 		model.addAttribute("busquedaBean",busquedaBean);
 		model.addAttribute("sesionBean", sesionBean);
 
@@ -129,145 +145,130 @@ public class BusquedaController {
 			Model model) throws Exception{
 
 		if (busquedaBean.checkCamposValidos()) {
-			
-			// Será interesante para el futuro
+
+			/* Será interesante para el futuro
 			List<HotelBean> list = hotelesDisponibles.getHoteles().stream()
 					.filter(hotel -> !hotel.getHabitaciones().isEmpty())
 					.collect(Collectors.toList());
-			
+			 */
 			logger.info("Busqueda recibida correctamente");
 
-			// Consulta a la base de datos
 			/*
-			 * El formato de la consulta es el siguiete:
-			 * {
-			 * 		"fecha_inicio": "2020-08-22",
-			 * 		"fecha_fin": "2020-08-29",
-			 * 		"hotel_id": 12,            // Los campos ciudad y hotel
-			 * 		"ubicacion": "Madrid"          // strings vacíos.
-			 * }
+			 * En este caso los datos para la búsqueda 
+			 * de disponibilidad los paso en la url
+			 * 
+			 *  /hotel/disponibles?fecha_inicio=2020-10-03&fecha_fin=2020-10-05
 			 */
-			JsonObject obj = new JsonObject();
-			obj.addProperty("fecha_inicio", busquedaBean.getFechaInicio());
-			obj.addProperty("fecha_fin", busquedaBean.getFechaFin());
-			obj.addProperty("hotel_id", busquedaBean.getHotel_id());
-			obj.addProperty("ubicacion", busquedaBean.getCiudad());
 			
 			/*
-	         * [
-	         * 		{
-	         *  		"nombre":"Uno caro"
-	         * 			"ubicacion":"Ayelo"
-	         *  		"hotel_id":"1"
-	         *  		"tipo":"lujo"
-	         *  		"precio":"1000000"
-	         * 		},
-	         * 		{
-	         *  		"nombre":"Otro caro"
-	         * 			"ubicacion":"Ayelo"
-	         *  		"hotel_id":"2020"
-	         *  		"tipo":"lujo"
-	         *  		"precio":"1000000"
-	         * 		}
-	         * ]
-	         */
-			
-			// El siguiente código debería consultar a CM de forma correcta
-			//String response = "";
-			
-			hotelesDisponibles = new HotelesDisponiblesBean();
+			 * Formato de la respuesta:
+			 * [
+ 			 *	{
+ 			 *  	"hotel_id" : 1,
+			 *  	“habitaciones” : [
+ 			 *     		{"tipo_hab_id" : 1, "nombre": “normal”, "precio_total" : 300},
+ 			 *     		{"tipo_hab_id" : 2, "nombre" : “premium”, "precio_total" : 400}
+ 			 *  	]
+ 			 *  },
+ 			 *  {
+ 			 *  	"hotel_id" : 2,
+ 			 *  	"habitaciones" : [
+ 			 *     		{"tipo_hab_id" : 1, "nombre": “normal”, "precio_total" : 100},
+ 			 *     		{"tipo_hab_id":3, "nombre" : "presidencial" , "precio_total" : 600}
+ 			 *   	]
+ 			 *  }
+ 			 * ]
+			 */
+
+			JsonArray jarr = new JsonArray();
+			JsonObject jobj = new JsonObject();
+			jobj.addProperty("hotel_id", 1);
+			JsonArray arrhab = new JsonArray();
+			JsonObject objhab = new JsonObject();
+			objhab.addProperty("tipo_hab_id", 1);
+			objhab.addProperty("nombre", "normal");
+			objhab.addProperty("precio_total", 300);
+			arrhab.add(objhab);
+			objhab = new JsonObject();
+			objhab.addProperty("tipo_hab_id", 2);
+			objhab.addProperty("nombre", "premium");
+			objhab.addProperty("precio_total", 400);
+			arrhab.add(objhab);
+			jobj.add("habitaciones", arrhab);
+			jarr.add(jobj);
+
+			jobj = new JsonObject();
+			jobj.addProperty("hotel_id", 2);
+			arrhab = new JsonArray();
+			objhab = new JsonObject();
+			objhab.addProperty("tipo_hab_id", 1);
+			objhab.addProperty("nombre", "normal");
+			objhab.addProperty("precio_total", 100);
+			arrhab.add(objhab);
+			objhab = new JsonObject();
+			objhab.addProperty("tipo_hab_id", 3);
+			objhab.addProperty("nombre", "presidencial");
+			objhab.addProperty("precio_total", 600);
+			arrhab.add(objhab);
+			jobj.add("habitaciones", arrhab);
+			jarr.add(jobj);
+
+			String response = jarr.toString();
 			/*
-			HttpClient server = new HttpClient(HttpClient.urlCM+"precioDisponible", "POST");
-			// Añado los datos de la consulta
-			server.setRequestBody(obj.toString());
-			
-			if (server.getResponseCode() != 404) {// Si encuentra el servidor
+			HttpClient server = new HttpClient(
+					HttpClient.urlCM+"hotel/disponibles?" + 
+					"fecha_inicio=" + busquedaBean.getFechaInicio() +
+					"&fecha_fin=" + busquedaBean.getFechaFin(), "GET");
+
+			if (server.getResponseCode() == 200) {
 				response = server.getResponseBody();
-			*/
-				JsonArray arr = new JsonArray();
-				JsonObject json = new JsonObject();
-				//arr = new Gson().fromJson(response, JsonArray.class);
-				
-				json.addProperty("nombre", "Barcelo Playa");
-				json.addProperty("id", 3);
-				json.addProperty("ubicacion", "Asturias");
-				json.addProperty("tipo", "lujo");
-				json.addProperty("precio", 99.9);
-				arr.add(json);
-				json = new JsonObject();
-				json.addProperty("nombre", "Barcelo Playa");
-				json.addProperty("id", 3);
-				json.addProperty("ubicacion", "Asturias");
-				json.addProperty("tipo", "económica");
-				json.addProperty("precio", 49.9);
-				arr.add(json);
-				json = new JsonObject();
-				json.addProperty("nombre", "El Resplandor");
-				json.addProperty("id", 4);
-				json.addProperty("ubicacion", "Málaga");
-				json.addProperty("tipo", "lujo");
-				json.addProperty("precio", 87.9);
-				arr.add(json);
-				json = new JsonObject();
-				json.addProperty("nombre", "El Resplandor");
-				json.addProperty("id", 4);
-				json.addProperty("ubicacion", "Málaga");
-				json.addProperty("tipo", "económica");
-				json.addProperty("precio", 35.9);
-				arr.add(json);
-				
-				int numero_dias = busquedaBean.getNumeroDias();
-				
-				Map<Integer, Integer> hoteles = new HashMap<Integer, Integer>();
-				HotelBean hotel; HabitacionBean habitacion;
-				//JsonObject json;
-				for (int i = 0; i < arr.size(); i++) {
-					json = arr.get(i).getAsJsonObject();
+			}*/
 
-					habitacion = new HabitacionBean();
-					habitacion.setTipo(json.get("tipo").getAsString());
-					habitacion.setTarifa(json.get("precio").getAsDouble() * numero_dias);
-					habitacion.setId(i);
-					if (!hoteles.containsKey(json.get("id").getAsInt())) {
-						hotel = new HotelBean();
-						hotel.setNombre(json.get("nombre").getAsString());
-						hotel.setCiudad(json.get("ubicacion").getAsString());
-						hotel.setId(json.get("id").getAsInt());
-						// Añado el hotel a la lista de hoteles si este no había aparecido antes.
-						hoteles.put(json.get("id").getAsInt(), hotelesDisponibles.getHoteles().size());
-						
-						hotelesDisponibles.getHoteles().add(hotel);
-						
-					} 
-					else { // Obtengo el hotel que ya existe para añadirle una habitación
-						hotel = hotelesDisponibles.getHoteles()
-								.get(hoteles.get(json.get("id").getAsInt()));
-					}
+			List<HotelBean> disponibles = hoteles;
 
-					hotel.getHabitaciones().add(habitacion);
-				}
-			//}
+			if (busquedaBean.getCiudad() != "") {
+				disponibles = disponibles.stream()
+						.filter(hotel -> 
+						hotel.getCiudad().compareTo(busquedaBean.getCiudad()) == 0)
+						.collect(Collectors.toList());
+			}
 
-			model.addAttribute("hotelesDisponiblesBean", hotelesDisponibles);
-		}		
-		
-		// Para que siga mostrando las opciones de Ciudades y hoteles
-		// después de una búsqueda, necesito hacer esto.
-		this.busquedaBean.setCiudad(busquedaBean.getCiudad());
-		this.busquedaBean.setFechaFin(busquedaBean.getFechaFin());
-		this.busquedaBean.setHotel(busquedaBean.getHotel());
-		this.busquedaBean.setHotel_id(busquedaBean.getHotel_id());
-		this.busquedaBean.setFechaInicio(busquedaBean.getFechaInicio());
-		model.addAttribute("busquedaBean", this.busquedaBean);
+			if (busquedaBean.getHotel() != "") {
+				disponibles = disponibles.stream()
+						.filter(hotel -> 
+						hotel.getNombre().compareTo(busquedaBean.getHotel()) == 0)
+						.collect(Collectors.toList());
+			}
+
+			JsonArray habitaciones = new Gson().fromJson(response, JsonArray.class);
+			for (JsonElement je: habitaciones) {
+				JsonObject jo = je.getAsJsonObject();
+				int hotel_id = jo.get("hotel_id").getAsInt();
+				HotelBean h = disponibles.stream().filter(hotel -> hotel.getId() == hotel_id).findFirst().get();
+				h.setHabitaciones(new Gson().fromJson(jo.get("habitaciones"), new TypeToken<List<HabitacionBean>>(){}.getType()));
+			}
+			
+			hotelesDisponibles.setHoteles(
+					disponibles.stream()
+					.filter(hotel -> hotel.getHabitaciones().size() > 0)
+					.collect(Collectors.toList()));
+			
+			model.addAttribute("hotelesDisponibles", hotelesDisponibles);
+			model.addAttribute("hoteles", hoteles);
+		}
+
+
+		model.addAttribute("busquedaBean", busquedaBean);
 		model.addAttribute("sesionBean", sesionBean);
-		
 		return "buscador";
 	}
-	
+
 	@PostMapping("/reservar")
 	public String reservarPost(@Valid @ModelAttribute("habitacionId") int habitacionId,
-			@Valid @ModelAttribute("comidas") String comidas,
+			@Valid @ModelAttribute("comidas") String comidas, @Valid @ModelAttribute("hotelId") int hotelId,
 			Model model) throws Exception{
+		
+		System.out.println("habitacionId: " + habitacionId + "; hotelId: " + hotelId);
 		
 		/*
          * {
@@ -282,15 +283,17 @@ public class BusquedaController {
          * }
          */
 		
+		/*
+		
 		crearReserva = new JsonObject();
 		crearReserva.addProperty("fecha_inicio", busquedaBean.getFechaInicio());
 		crearReserva.addProperty("fecha_fin", busquedaBean.getFechaFin());
 		boolean encontrado = false;
 		for (HotelBean hotel: hotelesDisponibles.getHoteles()) {
 			for (HabitacionBean habitacion: hotel.getHabitaciones()) {
-				if (habitacion.getId() == habitacionId) {
-					crearReserva.addProperty("tipo", habitacion.getTipo());
-					crearReserva.addProperty("precio", habitacion.getTarifa());
+				if (habitacion.getTipo_hab_id() == habitacionId) {
+					crearReserva.addProperty("tipo", habitacion.getNombre());
+					crearReserva.addProperty("precio", habitacion.getPrecio_total());
 					crearReserva.addProperty("hotel_id", hotel.getId());
 					encontrado = true;
 					break;
@@ -311,5 +314,10 @@ public class BusquedaController {
 		}
 		
 		return "redirect:misReservas";
+		*/
+		model.addAttribute("busquedaBean", busquedaBean);
+		model.addAttribute("sesionBean", sesionBean);
+		
+		return "buscador";
 	}	
 }

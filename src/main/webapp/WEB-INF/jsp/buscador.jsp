@@ -75,7 +75,7 @@
 							</div>
 							<select name="ciudad">
 								<option value="">Ciudad</option>
-								<c:forEach items="${hotelesDisponibles.hoteles}" var="hotel">
+								<c:forEach items="${hoteles}" var="hotel">
 									<option value="${hotel.ciudad}">${hotel.ciudad}</option>
 								</c:forEach>
 							</select>
@@ -90,7 +90,7 @@
 							</div>
 							<select name="hotel">
 								<option value="">Hotel</option>
-								<c:forEach items="${hotelesDisponibles.hoteles}" var="hotel">
+								<c:forEach items="${hoteles}" var="hotel">
 									<option value="${hotel.nombre}">${hotel.nombre}</option>
 								</c:forEach>
 							</select>
@@ -138,7 +138,7 @@
 
 <ul id="list">
 
-	<c:forEach items="${hotelesDisponiblesBean.hoteles}" var="hotel">
+	<c:forEach items="${hotelesDisponibles.hoteles}" var="hotel">
 		<div class="rehabitacion">
 			<li>
 				<div class="encabecadohotel">
@@ -154,9 +154,7 @@
 
 							<div class="habitacionTipo">
 								<ul class="habitacion">
-
-
-									<li class="habitacionLI">${habitacion.tipo}</li>
+									<li class="habitacionLI">${habitacion.nombre}</li>
 								</ul>
 							</div>
 
@@ -170,99 +168,23 @@
 							<div class="habitacionTipo">
 								<ul class="habitacion">
 
-									<li class="habitacionLI">${habitacion.tarifa}</li>
+									<li class="habitacionLI">${habitacion.precio_total}</li>
 								</ul>
 							</div>
 
 						</c:forEach>
 
 					</div>
-					<!--  
-					<div class="columnaHabitacion">
-
-						<h3>¿Comida?</h3>
-
-						
-
-						<div class="tarifas">
-
-
-							<ul>
-								<li>
-
-									<form method="POST" action="reservarTarifa">
-
-										<button value="cero">+0 extra: alojamiento</button>
-
-										<input type="hidden" name="optionComida" value=" 0 " />
-
-
-										<c:forEach items="${hotel.habitaciones}" var="habitacion">
-											<input type="hidden" name="habitacionId"
-												value="${habitacion.getId()}" />
-
-										</c:forEach>
-
-									</form>
-								</li>
-
-								<li>
-
-									<form method="POST" action="reservarTarifa">
-
-										<button value="desayuno">+ ${hotel.desayuno} extra:
-											alojamiento + desayuno</button>
-
-										<input type="hidden" name="optionComida"
-											value="${hotel.getDesayuno()}" />
-
-										<c:forEach items="${hotel.habitaciones}" var="habitacion">
-											<input type="hidden" name="habitacionId"
-												value="${habitacion.getId()}" />
-										</c:forEach>
-
-									</form>
-								</li>
-
-
-								<li>
-									<form method="POST" action="reservarTarifa">
-
-										<button value="pensionCompleta">+
-											${hotel.pensionCompleta} extra: pension completa</button>
-
-										<input type="hidden" name="optionComida"
-											value="${hotel.getPensionCompleta()}" />
-
-										<c:forEach items="${hotel.habitaciones}" var="habitacion">
-											<input type="hidden" name="habitacionId"
-												value="${habitacion.getId()}" />
-										</c:forEach>
-									</form>
-
-								</li>
-							</ul>
-
-						</div>
-
-						
-				</div>
-					<div class="columnaHabitacion">
-						<h3>Régimen de Comidas:</h3>
-					</div>
-					<div class="columnaHabitacion">
-						<h3>Reservar:</h3>
-					</div>-->
 					<c:forEach items="${hotel.habitaciones}" var="habitacion">
 						<form:form method="POST" action="reservar">
 							<div class="columnaHabitacion">
 								<select name="comidas">
 									<option value="+0, sólo alojamiento">+0, sólo
 										alojamiento</option>
-									<option value="+${hotel.desayuno}, alojamiento y desayuno">+${hotel.desayuno},
+									<option value="+15, alojamiento y desayuno">+15,
 										alojamiento y desayuno</option>
-									<option value="+${hotel.pensionCompleta}, pensión completa">+${hotel.pensionCompleta},
-										pensión completa</option>
+									<option value="+30, pensión completa">+30, pensión
+										completa</option>
 								</select>
 							</div>
 
@@ -270,7 +192,8 @@
 								<div class="habitacionTipo">
 									<ul class="habitacion">
 										<input type="hidden" name="habitacionId"
-											value="${habitacion.getId()}" />
+											value="${habitacion.tipo_hab_id}" />
+										<input type="hidden" name="hotelId" value="${hotel.id }" />
 										<input type="submit" value="Reservar" />
 									</ul>
 								</div>

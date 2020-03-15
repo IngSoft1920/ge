@@ -1,9 +1,6 @@
 package ingsoft1920.ge.ControllerGE1;
 
 import javax.validation.Valid;
-
-
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +42,7 @@ public class ServiciosController {
 
 	//recibir servicios
 	@GetMapping("/recibirServicios")
-	public static  String[] recibirServiciosr(@ModelAttribute("reserva") VerReservasBean reserva) throws Exception {
+	public static  String[] recibirServiciosr() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 

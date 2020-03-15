@@ -14,7 +14,7 @@ public class VerReservasController {
 @Autowired
  SesionBean sesion;
 
-	@GetMapping("/reservass")
+	@GetMapping("/reservas")
 	public  String reservasEnviar() throws Exception {
 		//receivedJSON.put("datosReserva", "Datos de su reserva");
 

@@ -6,6 +6,8 @@ public class ReservarMesaBean {
 	private String nombreRestaurante;
 	private String fecha;
 	private String hora;
+	
+	
 	public String getHora() {
 		return hora;
 	}

@@ -88,20 +88,6 @@ public class MisReservasController {
 
 	}
 	
-	@GetMapping("/recibirReservas")
-    public  String recibirReservas(@Valid @ModelAttribute("misReservasBean") MisReservasBean reservas,
-			Model model) throws Exception {
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/{cliente_id}", "GET");
-		JsonObject json = new JsonObject();
-		json.addProperty("id_cliente", sesionBean.getUsuarioID()); //coger id_usuario de la sesionBean
-		client.setRequestBody(json.toString());
-		int respCode = client.getResponseCode();
-		String resp="";
-		if(respCode==200) {
-			resp=client.getResponseBody();
-		}
-		return resp;
-	}
 	
 
 	public static Object beanToJson(Object bean) {

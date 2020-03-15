@@ -3,6 +3,17 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 
+<script>
+  function mostrarContrasena(){
+      var tipo = document.getElementById("password");
+      if(tipo.type == "password"){
+          tipo.type = "text";
+      }else{
+          tipo.type = "password";
+      }
+  }
+</script>
+
 <html>
 <head>Signup
 </head>
@@ -22,8 +33,9 @@
 		<form:input type="text" name="email" path="email" />
 		<br>
 		<br>
-		<label>Contrasena</label>
+		<label >Contrasena</label>
 		<form:input type="password" name="password" path="password" />
+		<button class="btn btn-primary" type="button" onclick="mostrarContrasena()">Mostrar</button>
 		<br>
 		<br>
 		<label>Repetir contrasena </label>

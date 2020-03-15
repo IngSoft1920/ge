@@ -57,7 +57,7 @@
       cards[i] = `
           <div class="row pl-3 pb-3">
           <div class="col-md-6 pb-3" var="festival">
-                <div class="card" onclick="document.location = '/reservas'" style="width: 17rem;">
+                <div class="card" onclick="document.location = '/index'" style="width: 17rem;">
                     <div class="card-body">
                         <h5 class="card-title">Numero de reserva: </h5>
                         <h6 class="card-subtitle mb-2 text-muted">Fecha de reserva:</h6>
@@ -89,7 +89,7 @@
         </div>
         <div class="row pl-3 pb-3">
             <div class="col-4">
-            <div class="card" onclick="document.location = '/reservas'" style="width: 17rem;">
+            <div class="card" onclick="document.location = '/index'" style="width: 17rem;">
                 <div class="card-body">
                     <h5 class="card-title">Numero de reserva: </h5>
                     <h6 class="card-subtitle mb-2 text-muted">Fecha de reserva:</h6>

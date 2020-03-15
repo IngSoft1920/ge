@@ -10,7 +10,7 @@
 function backButton(){
 var pageName = window.location.href;
 
-if(pageName=="http://localhost:7004/index"){
+if(pageName=="http://localhost:7004/index" || pageName=="http://localhost:7004/home"){
     document.getElementById('backbut').style.visibility = 'hidden';
 }
 console.log(pageName);

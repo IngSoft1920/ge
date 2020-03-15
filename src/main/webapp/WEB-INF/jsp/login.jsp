@@ -12,8 +12,10 @@
 		<h1>${mensajeError}</h1>
 	</div>
 	<form:form method="POST" action="${loginBean.method}" modelAttribute="loginBean">
-		<label>Nombre de usuario</label>
-		<form:input type="text" name="usuario" path="usuario" />
+		<br>
+		<br>
+		<label>Correo electronico</label>
+		<form:input type="text" name="email" path="email" />
 		<br>
 		<br>
 		<label>Contrasena</label>
@@ -23,7 +25,7 @@
 
 		<div class="card" onclick="document.location = '/signup'">
 		 <div class="container", style="padding-top:20px">
-		   <a><b><input type="submit" value="Si no estas registrado. Ir a Signup"></b></a> 
+		   <a><b><input type="submit" value="Registrate"></b></a> 
 		 </div>
 
 </body>

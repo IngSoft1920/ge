@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class LoginBean {
 	String usuario;
 	String password;
+	String email;
 	String method = "login";
 	int id;
 	
@@ -56,6 +57,14 @@ public class LoginBean {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

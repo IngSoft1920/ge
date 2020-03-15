@@ -37,7 +37,7 @@
 			</p>
 			<p class="habitacion">
 				Habitación: ${reserva.habitacion} <span class="tarifa">Tarifa:${reserva.tarifa}</span>
-			<a href="#" onclick="toggle()" class ="cambiarReserva">Cambiar reserva</a>
+			<button onclick="toggle()" class ="cambiarReserva">Cambiar reserva</button>
 		</div>
 	</c:forEach>
 	</div>
@@ -77,6 +77,7 @@
 	</div>
 	</div>
 	
+	<div class="popup2" id ="noClick">
 	<div id="popup">
 		<span class="close" onclick="toggle()">&times;</span>
 		<h1>Cambie la reserva</h1>
@@ -98,6 +99,16 @@
 			</div>
 		</fieldset>
 		<button class="enviarCambio" onclick="toggle()" type="submit" class="btn">Enviar</button>
+		<button class="cancelar" onclick="toggleCancelar()" type="submit">Cancelar Reserva</button>
+	</div>
+	</div>
+	
+	<div id="cancelar">
+		<span class="close" onclick="toggleCancelar()">&times;</span>
+		<h1>¿Está seguro de que quiere cancelar la reserva?</h1>
+
+		<button class="SI" type="submit" class="btn">SI</button>
+		<button class="NO" type="submit">NO</button>
 	</div>
 
 	<script>
@@ -106,6 +117,14 @@
 			blur.classList.toggle('active');
 			var popup = document.getElementById('popup');
 			popup.classList.toggle('active');
+		}
+		
+		function toggleCancelar(){
+			var cancelar = document.getElementById('cancelar');
+			cancelar.classList.toggle('active');
+			var noClick = document.getElementById('noClick');
+			noClick.classList.toggle('active');
+			
 		}
 		
 		function toggleReserva() {

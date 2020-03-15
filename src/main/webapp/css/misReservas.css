@@ -108,6 +108,20 @@ a:active {
 	padding:5px;
 }
 
+.cancelar {
+	background-color: red;
+	color: #fff;
+	padding: 12px 20px;
+	border: none;
+	cursor: pointer;
+	position: relative;
+  	left: 53%;
+  	transform: translate(-66%, 10%);
+	margin-bottom: 10px;
+	opacity: 0.8;
+}
+
+
 #historial {
 	visibility: hidden;
 	position:absolute;
@@ -307,4 +321,43 @@ figure img{
 .menu-vertical a.active {
   background-color: #b8b078;
   color: white;
+}
+
+#cancelar {
+	position:fixed;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width : 400px;
+	padding : 50px;
+	box-shadow: 0 5px 30px rgba(0,0,0,.30);
+	background: #fff;
+	visibility: hidden;
+	opacity:0;
+	transition: 0.5s;
+}
+
+#cancelar.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.SI {
+	float:left;
+	background-color:#b8b078;
+	width: 130px;
+}
+
+.NO {
+	float:right;
+	background-color:#b8b078;
+	width: 130px;
+}
+
+.popup2#noClick.active {
+	pointer-events:none;
+	user-select:none;
+	
 }

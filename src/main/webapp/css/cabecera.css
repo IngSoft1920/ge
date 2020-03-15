@@ -1,7 +1,7 @@
 
 
 
-#button {
+#buttonCabecera {
   margin: 0;
   padding: 20;
   overflow: hidden;
@@ -9,12 +9,12 @@
 
  }
  
-#button li {
+#buttonCabecera li {
  display: inline;
 
  }
  
-#button li img{
+#buttonCabecera li img{
   display: inline-block;
  float: left;
  padding: 0px; 
@@ -24,7 +24,7 @@
  
 }
 
-#menu{
+#menu2Cabecera{
   display: inline-block;
  font-family: Arial;
  font-size: 18px;
@@ -34,7 +34,7 @@
   margin-left: 10px;
  }
  
- .menu1{
+ .menu1Cabecera{
    display: inline-block;
  font-family: Arial;
  font-size: 18px;
@@ -53,14 +53,14 @@
   text-decoration: none;
  }
   a:active{
-  color: red;
+  color: white;
  text-decoration: none;
  }
  img {
   display: inline-block;
 }
 
-.top{
+.topCabecera{
     position: fixed;
     background-color: #4f5457;
     opacity: 1;

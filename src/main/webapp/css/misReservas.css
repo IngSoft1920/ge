@@ -38,12 +38,12 @@ a:link {
 }
 
 a:visited {
-	color: white;
+	color: #b8b078;
 	text-decoration: none;
 }
 
 a:active {
-	color: red;
+	color: white;
 	text-decoration: none;
 }
 

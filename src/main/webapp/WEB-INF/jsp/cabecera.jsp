@@ -17,31 +17,31 @@
 </head>
 
 <header>
-	<div class="top">
-		<ul id="button">
-			<div class="menu1">
+	<div class="topCabecera">
+		<ul id="buttonCabecera">
+			<div class="menu1Cabecera">
 				<li><a href="/"><img src="/imagenes/LogoHotel.jpg" /></li>
 			</div>
-			<div class="menu1">
-				<li><a href="/reservas"><i class="fa fa-book"></i>Mis
+			<div class="menu1Cabecera">
+				<li><a href="/misReservas"><i class="fa fa-book"></i>Mis
 						Reservas</li>
 			</div>
-			<div class="menu1">
+			<div class="menu1Cabecera">
 				<li><a href="/servicios"><i class="fa fa-glass"></i>Servicios</li>
 			</div>
-			<div class="menu1">
+			<div class="menu1Cabecera">
 				<li><a href="/incidencias"><i class="fa fa-pencil"></i>Incidencias</li>
 			</div>
 
 
 
 
-			<li id="menu"><a href="/"> <i class="fa fa-list"></i>
+			<li id="menu2Cabecera"><a href="/"> <i class="fa fa-list"></i>
 					Inicio
 			</a></li>
 
 
-			<li id="menu">
+			<li id="menu2Cabecera">
 
 				<div class="popup" onclick="myHotel()">
 

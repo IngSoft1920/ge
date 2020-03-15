@@ -4,6 +4,20 @@
 
 
 <html>
+
+<body onload=backButton() >
+<script>
+
+function backButton(){
+var pageName = window.location.href;
+
+if(pageName=="http://localhost:7004/index" || pageName=="http://localhost:7004/home"){
+    document.getElementById('backbut').style.visibility = 'hidden';
+}
+console.log(pageName);
+}
+
+</script>
 <head>
 
 <title>Home Page</title>
@@ -46,7 +60,7 @@
 				<div class="popup" onclick="myHotel()">
 
 					<i class="fa fa-users"></i> MyAccount <span class="popuptext"
-						id="myPopup"> <br> Accede a tu cuenta o regïstrate y
+						id="myPopup"> <br> Accede a tu cuenta o regï¿½strate y
 						obten descuentos <br> <br> <a href="/login"
 						value="login">
 							<button class="botonMyHotel">Log In</button>

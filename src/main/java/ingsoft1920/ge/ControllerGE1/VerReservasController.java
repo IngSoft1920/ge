@@ -1,9 +1,5 @@
 package ingsoft1920.ge.ControllerGE1;
 
-
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +14,12 @@ public class VerReservasController {
 @Autowired
  SesionBean sesion;
 
-	@GetMapping("/reservas")
+	@GetMapping("/reservass")
 	public  String reservasEnviar() throws Exception {
 		//receivedJSON.put("datosReserva", "Datos de su reserva");
 
 		
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas ","POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
 		JsonObject json= new JsonObject();
 		json.addProperty("id_cliente", sesion.getUsuarioID());
 		

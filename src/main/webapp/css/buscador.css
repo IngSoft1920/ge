@@ -1,33 +1,14 @@
-/*
-.buscador {
-	height: auto;
-	width: 1000px;
-	margin: 0 auto;
-	display: inline;
-	font-family: Arial;
-	font-size: 15px;
-	float: center;
-	padding: 20 px;
-	overflow: hidden;
-	background-size: cover;
-	background-attachment: fixed;
-	position: relative;
-}
 
-div {
-	margin: -10px -7px -10px -5px;
-}
-*/
 
 h2 {
 	text-align: center;
-	font-family: Oldtown, fantasy;
+	font-family: Georgia;
 	font-size: 50px;
 }
 
 .postbuscar {
 	text-align: center;
-	font-family: Oldtown, fantasy;
+	font-family: Georgia;
 	font-size: 20px;
 }
 
@@ -56,7 +37,7 @@ fila {
 }
 
 h3 {
-	font-family: Oldtown, fantasy;
+	font-family: Georgia;
 	Line-Height: 5px;
 	font-size: 15px;
 }
@@ -114,7 +95,7 @@ select {
 }
 
 input[type=button] {
-	font-family: Oldtown, fantasy;
+	font-family: Georgia;
 	font-size: 15px;
 	width: 100%;
 	padding: 15px 22px;
@@ -124,7 +105,7 @@ input[type=button] {
 }
 
 input[type=submit] {
-	font-family: Oldtown, fantasy;
+	font-family: Georgia;
 	color:white;
 	font-size: 15px;
 	width: 100%;
@@ -226,13 +207,19 @@ li {
 	list-style: none;
 }
 
-.encabecadohotel {
+.rehabitacion {
 	background-color: #DAD5D5;
+
+}
+.encabecadohotel {
+	background-color;
+	color: #b8b078;
+	 border-style: double;
+  border-color: white;	
+  border-width: 10px;
 }
 
-.rehabitacion {
-	background-color: #CDCDF7;
-}
+
 
 .habitacion {
 	overflow: hidden;
@@ -245,10 +232,92 @@ li {
 .columnaHabitacion {
 	float: left;
 	width: 22%;
-	padding: 15px;
+	padding: 10px;
 	text-align: center;
 }
 
+
+.mitadColumnaHabitacion{
+	float: left;
+	width: 38%;
+	padding: 20px;
+	text-align: center;
+	font-size: 10px;
+	
+}
+
+.mitadColumnaHabitacion h3{
+	
+	text-align: center;
+	font-size: 25px;
+	
+
+	}
+
+
+
+
+.imagenHabitacionGrande img{
+  display: inline-block;
+ float: left;
+ padding: 0px; 
+height: 150px;
+width: 180px;
+}
+
+.selectComidas select{
+		width: 100%;	
+	/*margin: 10px 20px;*/
+	border: none;
+	background-color: #b8b078;
+	font-size: 15px;	
+	color: white;
+	display:inline;
+}
+
+.mitadComida h3{
+		
+	font-size: 25px;
+}
+
+
+
+
+.bucle{
+	/*line-height: 1pt;*/
+	/*display: inline-block;*/
+	display: inline;
+}
+
+
+.habitacionTipo {
+	font-family: Georgia;
+	font-size: 20px;
+	line-height: 10pt;
+}
+
+.habitacion ul{
+	/*margin: 15px 15px;*/
+}
+
+.habitacion input[type=submit]{
+	
+	
+	font-family: Georgia;
+	color:white;
+	font-size: 15px;
+	width: 40%;
+	height: 6%;
+	/*padding: 15px 22px;*/
+	/*margin: 5px 10px;*/
+	margin-top: -20px;
+	border: none;
+	border-color: none;
+	background-color: none;
+	
+}
+
+ /*
 .buttonLista {
 	font-family: Oldtown, fantasy;
 	font-size: 15px;
@@ -266,17 +335,31 @@ li {
 	display: none;
 }
 
-.habitacionTipo {
-	font-family: Oldtown, fantasy;
-	font-size: 25px;
-	line-height: 50pt;
-}
 
-ul.habitacion {
-	margin: 15px 15px;
-}
 
 tarifas {
 	margin-top: -40px;
 }
+*/
+ 
+/*
+.buscador {
+	height: auto;
+	width: 1000px;
+	margin: 0 auto;
+	display: inline;
+	font-family: Arial;
+	font-size: 15px;
+	float: center;
+	padding: 20 px;
+	overflow: hidden;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+}
+
+div {
+	margin: -10px -7px -10px -5px;
+}
+*/
 

@@ -6,7 +6,7 @@
 <html>
 <head>Signup
 </head>
-<body style="text-align: center; background-color: skyblue">
+<body style="text-align: center; background-color: #A6A3A2">
 	<div>
 		<!-- Podemos acceder a tipos basicos (String, int...) mediante esta etiqueta -->
 		<h1>${mensajeError}</h1>

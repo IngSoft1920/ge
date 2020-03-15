@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import ingsoft1920.ge.Beans.MisReservasBean;
 import ingsoft1920.ge.Beans.ReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
@@ -42,6 +44,25 @@ public class MisReservasController {
 
 	}
 
+	@GetMapping("/recibirReservas")
+	public String recibirReservas(@Valid @ModelAttribute("misReservasBean") MisReservasBean reservas, Model model)
+			throws Exception {
+
+		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/{cliente_id}", "GET");
+
+		JsonObject json = new JsonObject();
+		json.addProperty("id_cliente", sesionBean.getUsuarioID()); // coger id_usuario de la sesionBean
+		client.setRequestBody(json.toString());
+
+		int respCode = client.getResponseCode();
+
+		String resp = "";
+		if (respCode == 200) {
+			resp = client.getResponseBody();
+		}
+		return resp;
+	}
+
 	@PostMapping("/valorar")
 	public String misReservasPost(@Valid @ModelAttribute("valoracionId") String valoracionId, Model model) {
 
@@ -52,13 +73,18 @@ public class MisReservasController {
 	@PostMapping("/cancelarReserva")
 	public void borrarReserva(@Valid @ModelAttribute("ReservaBean") ReservaBean reservaBean, Model model)
 			throws Exception {
-		// HttpClient client= new
-		// HttpClient(HttpClient.urlCM+ "cancelarReserva", "POST");
-		// client.setRequestBody(beanToJson(reservaBean).toString());
-		// String response = null;
-		// if(client.getResponseCode()==200) {
-		// response = client.getResponseBody();
-		// }
+
+		JsonObject json = new JsonObject();
+		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/eliminar/{reserva_id}", "POST");
+		json.addProperty("id_reserva", reservaBean.getReservaID()); // coger id_reserva de la reservaBean
+		client.setRequestBody(json.toString());
+		int respCode = client.getResponseCode();
+		System.out.println(respCode + "\n");
+		if (respCode == 200) {
+			client.getResponseBody();
+		}
+
+		logger.info("Cancelación de reserva realizada correctamente." + reservaBean);
 
 	}
 

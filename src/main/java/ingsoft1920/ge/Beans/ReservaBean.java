@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ReservaBean {
+
+	private int reservaID;
 	private String hotel;
 	private String tarifa;
 	private String ciudad;
@@ -11,19 +13,21 @@ public class ReservaBean {
 	private String fechaFin;
 	private String habitacion;
 	private String valoracion;
-	
-	public ReservaBean () {}
 
-	public ReservaBean (String hotel, String ciudad, String fechaInicio, String fechaFin, String habitacion, String tarifa, String valoracion) {
+	public ReservaBean() {
+	}
+
+	public ReservaBean(String hotel, String ciudad, String fechaInicio, String fechaFin, String habitacion,
+			String tarifa, String valoracion) {
 		this.hotel = hotel;
 		this.tarifa = tarifa;
 		this.ciudad = ciudad;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.habitacion = habitacion;	
+		this.habitacion = habitacion;
 		this.valoracion = valoracion;
 	}
-	
+
 	public String getHotel() {
 		return hotel;
 	}
@@ -79,7 +83,13 @@ public class ReservaBean {
 	public void setValoracion(String valoracion) {
 		this.valoracion = valoracion;
 	}
-	
-	
-}
 
+	public int getReservaID() {
+		return reservaID;
+	}
+
+	public void setReservaID(int reservaID) {
+		this.reservaID = reservaID;
+	}
+
+}

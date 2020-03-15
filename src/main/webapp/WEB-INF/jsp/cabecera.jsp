@@ -3,6 +3,20 @@
 
 
 <html>
+
+<body onload=backButton() >
+<script>
+
+function backButton(){
+var pageName = window.location.href;
+
+if(pageName=="http://localhost:7004/index"){
+    document.getElementById('backbut').style.visibility = 'hidden';
+}
+console.log(pageName);
+}
+
+</script>
 <head>
 
 <title>Home Page</title>
@@ -33,7 +47,7 @@
  
  </li>
  
- <li><button value="back" onclick="history.back()" style="margin-top: 10px;
+ <li><button id="backbut" value="back" onclick="history.back()" style="margin-top: 10px;
     margin-left: 25px;
     margin-top: 6px;
     color: white;
@@ -47,7 +61,6 @@
     </button></li>
  
 
-
  <li id="menu"><a href="/buscador">Buscar</a></li>
  </ul>
  
@@ -57,7 +70,6 @@
     
 </header>
 
-<body>
 
 </body>
 </html>

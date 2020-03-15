@@ -1,6 +1,7 @@
 package ingsoft1920.ge.Controller;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
 
 
 @Controller
@@ -36,6 +38,7 @@ public class BusquedaController {
 	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
 
+	List<String> ciudades;
 	List<HotelBean> hoteles;
 	
 	BusquedaBean busquedaBean = new BusquedaBean();
@@ -124,15 +127,22 @@ public class BusquedaController {
 		arrayGrande.add(ejemplo);
 		
 		String response = arrayGrande.toString();
-		/*
+		
 		HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"hotel/ge", "GET");
 		if (serverCiudades.getResponseCode() != 404) {// Si encuentra el servidor
 			response = serverCiudades.getResponseBody();
-		}*/
+		}
 
 		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
 		hoteles = new Gson().fromJson(response, tipo);
 
+		ciudades = new ArrayList<String>();
+		for (HotelBean h: hoteles) {
+			if (!ciudades.contains(h.getCiudad()))
+				ciudades.add(h.getCiudad());
+		}
+ 		
+		model.addAttribute("ciudades", ciudades);
 		model.addAttribute("hoteles", hoteles);
 		model.addAttribute("busquedaBean",busquedaBean);
 		model.addAttribute("sesionBean", sesionBean);
@@ -260,6 +270,7 @@ public class BusquedaController {
 		}
 
 
+		model.addAttribute("ciudades", ciudades);
 		model.addAttribute("busquedaBean", busquedaBean);
 		model.addAttribute("sesionBean", sesionBean);
 		return "buscador";

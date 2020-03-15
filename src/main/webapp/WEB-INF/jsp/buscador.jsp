@@ -75,8 +75,8 @@
 							</div>
 							<select name="ciudad">
 								<option value="">Ciudad</option>
-								<c:forEach items="${hoteles}" var="hotel">
-									<option value="${hotel.ciudad}">${hotel.ciudad}</option>
+								<c:forEach items="${ciudades}" var="ciudad">
+									<option value="${ciudad}">${ciudad}</option>
 								</c:forEach>
 							</select>
 						</div>

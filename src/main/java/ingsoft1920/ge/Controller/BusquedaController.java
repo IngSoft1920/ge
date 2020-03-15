@@ -2,6 +2,7 @@ package ingsoft1920.ge.Controller;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -243,7 +244,9 @@ public class BusquedaController {
 			for (JsonElement je: habitaciones) {
 				JsonObject jo = je.getAsJsonObject();
 				int hotel_id = jo.get("hotel_id").getAsInt();
-				HotelBean h = disponibles.stream().filter(hotel -> hotel.getId() == hotel_id).findFirst().get();
+				Optional<HotelBean> maybe = disponibles.stream().filter(hotel -> hotel.getId() == hotel_id).findFirst();
+				if (!maybe.isPresent()) continue;
+				HotelBean h = maybe.get();
 				h.setHabitaciones(new Gson().fromJson(jo.get("habitaciones"), new TypeToken<List<HabitacionBean>>(){}.getType()));
 			}
 			

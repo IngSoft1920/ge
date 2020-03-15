@@ -36,36 +36,32 @@
                 background-color: #4f5457;
             }
         </style>
-        <header>
-            <div class="container">
-                <div class="row justify-content-center" >
-                    <h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
-                    </div> 
-                </div>
-        </header>
-    
-    
-    
-    <div class="container" id="container1">
 
+
+	<div style="margin-top: 50px; margin-bottom:35px; background-color: #B0C4DE; opacity: 60%;">
+		<h1 style="text-align: center; font-size: 50px; color:black; font-weight:bold; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
+	</div>
+    
+    
+				 
+    <div class="container" id="container1">
+		<div class="row pl-3">
+			<h3>Reservas en curso</h3>
+          </div>
 
       <script>
       const container = document.getElementById('container1');
-      var cards;
-      const array = [1,2,3];
+      const cards = [1,2,3,4];
       
-      for(i=0; i<array.length; i++){
-      array[i] = `
-      		<div class="row pl-3">
-			<h3>Reservas en curso</h3>
-          </div>
+      for(i=0; i<cards.length; i++){
+      cards[i] = `
           <div class="row pl-3 pb-3">
           <div class="col-md-6 pb-3" var="festival">
                 <div class="card" onclick="document.location = '/reservas'" style="width: 17rem;">
                     <div class="card-body">
                         <h5 class="card-title">Numero de reserva: </h5>
                         <h6 class="card-subtitle mb-2 text-muted">Fecha de reserva:</h6>
-                        <p class="card-text">Nombre del Hotel:<br> Número de habitación:</p>
+                        <p class="card-text">Nombre del Hotel:<br> Nï¿½mero de habitaciï¿½n:</p>
                         <a href="/checkout" class="btn btn-primary">Check-out</a>
                         <a href="/facturacion" class="btn btn-primary">Factura</a>
                     </div>
@@ -73,7 +69,7 @@
             </div>
             </div>`;
     
-            container.innerHTML += array[i];
+            container.innerHTML += cards[i];
 
       }
 
@@ -97,7 +93,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Numero de reserva: </h5>
                     <h6 class="card-subtitle mb-2 text-muted">Fecha de reserva:</h6>
-                    <p class="card-text">Nombre del Hotel:<br> Número de habitación:</p>
+                    <p class="card-text">Nombre del Hotel:<br> Nï¿½mero de habitaciï¿½n:</p>
                     <a href="/checkin" class="btn btn-primary" >Check-in</a>
                 </div>
             </div>

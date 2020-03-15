@@ -12,6 +12,8 @@
 		<h1>${mensajeError}</h1>
 	</div>
 	<form:form method="POST" action="signup" modelAttribute="signupBean">
+		<br>
+		<br>
 		<label>Nombre de usuario</label>
 		<form:input type="text" name="usuario" path="usuario" />
 		<br>
@@ -24,6 +26,10 @@
 		<form:input type="password" name="password" path="password" />
 		<br>
 		<br>
+		<label>Repetir contrasena </label>
+		<form:input type="password" name="verificacionPassword" path="verificacionPassword" />
+		<br>
+		<br>
 		<label>Dni</label>
 		<form:input type="dni" name="dni" path="dni" />
 		<br>
@@ -34,10 +40,6 @@
 		<br>
 		<label>Apellidos</label>
 		<form:input type="text" name="apellidos" path="apellidos" />
-		<br>
-		<br>
-		<label>Repetir contrasena </label>
-		<form:input type="verificacionPassword" name="verificacionPassword" path="verificacionPassword" />
 		<br>
 		<br>
 		<input type="submit" value="Registrar">

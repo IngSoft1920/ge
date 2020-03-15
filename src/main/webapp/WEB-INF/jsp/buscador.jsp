@@ -1,3 +1,6 @@
+
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -132,52 +135,103 @@
 </div>
 
 
-<br>
-<br>
 
-
-<ul id="list">
+<ul class="list">
 
 	<c:forEach items="${hotelesDisponibles.hoteles}" var="hotel">
 		<div class="rehabitacion">
-			<li>
+		<br>
+		<br>
+			<li class="list2">
 				<div class="encabecadohotel">
-					<h2 style="display: inline">Hotel ${hotel.nombre}</h2>
-					<h2 style="display: inline">en ${hotel.ciudad}</h2>
+					<h2 style="display: center">Hotel ${hotel.nombre} en ${hotel.ciudad}</h2>
 				</div>
 
 				<div class="habitacion">
 					<div class="columnaHabitacion">
-						<h3>Habitaciones:</h3>
+					
+					<div class="mitadColumnaHabitacion">
+					<h3>Habitaciones:</h3>	
+					<br>
+					<div class="imagenHabitacionGrande">
+<img src="/imagenes/habitacion.jpg" />
+</div>
+									
 
+						</div>			
+								
+
+				<div class="mitadColumnaHabitacion">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 						<c:forEach items="${hotel.habitaciones}" var="habitacion">
 
 							<div class="habitacionTipo">
 								<ul class="habitacion">
 									<li class="habitacionLI">${habitacion.nombre}</li>
+									<br>
 								</ul>
 							</div>
 
 						</c:forEach>
+						
+						</div>
 					</div>
 
 					<div class="columnaHabitacion">
-
+<div class="mitadColumnaHabitacion">
 						<h3>Tarifas:</h3>
+						<br>
+						<div class="imagenHabitacionGrande">
+<img src="/imagenes/hotelpeople.jpg" />
+</div>
+	</div>
+	
+	<div class="mitadColumnaHabitacion">
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 						<c:forEach items="${hotel.habitaciones}" var="habitacion">
+						
 							<div class="habitacionTipo">
 								<ul class="habitacion">
 
-									<li class="habitacionLI">${habitacion.precio_total}</li>
+									<li class="habitacionLI">${habitacion.precio_total}
+									<br>
+									<br>
+									</li>
+									
 								</ul>
 							</div>
 
 						</c:forEach>
+						</div>
+						
 
 					</div>
+					
+					
+	<div class="mitadComida">				
+	<br>
+									<h3>Comidas:</h3>
+									</div>
+									
+					<br>
+				
 					<c:forEach items="${hotel.habitaciones}" var="habitacion">
+							<div class="bucle">
 						<form:form method="POST" action="reservar">
 							<div class="columnaHabitacion">
+
+				<div class="selectComidas">							
+						
 								<select name="comidas">
 									<option value="+0, sólo alojamiento">+0, sólo
 										alojamiento</option>
@@ -186,6 +240,8 @@
 									<option value="+30, pensión completa">+30, pensión
 										completa</option>
 								</select>
+								</div>
+							
 							</div>
 
 							<div class="columnaHabitacion">
@@ -194,16 +250,22 @@
 										<input type="hidden" name="habitacionId"
 											value="${habitacion.tipo_hab_id}" />
 										<input type="hidden" name="hotelId" value="${hotel.id }" />
+										
 										<input type="submit" value="Reservar" />
 									</ul>
 								</div>
 							</div>
+							
+
 						</form:form>
+						</div>
 					</c:forEach>
+					
 				</div>
 			</li>
 		</div>
 	</c:forEach>
+	
 </ul>
 
 
@@ -222,6 +284,25 @@
 </html>
 
 <!-- 
+
+<div class="imagenHabitacionGrande">
+<img src="/imagenes/habitacion.jpg" />
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="columnaHabitacion">
 	<br>

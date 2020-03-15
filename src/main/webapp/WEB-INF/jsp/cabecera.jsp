@@ -33,12 +33,28 @@
  
  </li>
  
+ <li><button value="back" onclick="history.back()" style="margin-top: 10px;
+    margin-left: 25px;
+    margin-top: 6px;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    background: #B0C4DE;
+    font-family: cursive;
+    width: 30px;
+    height:30px;
+    text-align: center;">&#8249;
+    </button></li>
+ 
 
 
  <li id="menu"><a href="/buscador">Buscar</a></li>
  </ul>
  
 </div>
+
+
+    
 </header>
 
 <body>

@@ -1,5 +1,7 @@
 package ingsoft1920.ge.ControllerGE1;
 
+import java.util.Calendar;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +25,8 @@ public class IncidenciasController {
 
 	final static Logger logger = LogManager.getLogger(IncidenciasController.class.getName());
 
-
+	Calendar calendario = Calendar.getInstance();
+	
 	@Autowired
 	SesionBean sesion;
 	VerReservasBean reservas;
@@ -45,9 +48,12 @@ public class IncidenciasController {
 
 		JsonObject json = new JsonObject();
 		json.addProperty("asunto",incidencias.getAsunto());
-		json.addProperty("mansaje", incidencias.getMensaje());
-		json.addProperty("usuario_id", sesion.getUsuarioID());
-		json.addProperty("id_reserva", reservas.getId_reserva());
+		json.addProperty("descripcion", incidencias.getMensaje());
+		json.addProperty("nombre_hotel", reservas.getNombre_hotel());
+		json.addProperty("fecha", calendario.get(Calendar.YEAR) + "-" +
+				calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.DATE));
+		json.addProperty("hora", calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE));
+		json.addProperty("lugar", "H49");//habitacion de prueba, de momento solo se pueden enviar habitaciones
 		
 		
 		client.setRequestBody(json.toString());

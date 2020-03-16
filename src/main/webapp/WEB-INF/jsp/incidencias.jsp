@@ -51,9 +51,9 @@
 				</textarea> <br>
 				<label>Asunto</label> <br>
 				<select name="Asunto" style="margin-top:5px; margin-bottom:10px">
-						<option id="habitacion">Habitacion</option>
-						<option id="restaurante">Mantenimiento</option>
-						<option id="servicio">Otros...</option>
+						<option id="LIMPIEZA">Limpieza</option>
+						<option id="MANTENIMIENTO">Mantenimiento</option>
+					<!-- De momento son los asuntos establecidos por DHO -->
 				</select>
 				<br><br>
 				<label>Mensaje</label><br>

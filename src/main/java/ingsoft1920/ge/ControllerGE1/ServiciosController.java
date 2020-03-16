@@ -49,7 +49,7 @@ public class ServiciosController {
 		//enviar nombre del hotel
 		JsonObject json = new JsonObject();
 		json.addProperty("nombre_hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
-		//ASI?? json.addProperty("id_estancia", reserva.getNombre_hotel());   ASI¿?¿?
+		//ASI json.addProperty("id_estancia", reserva.getNombre_hotel());
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();

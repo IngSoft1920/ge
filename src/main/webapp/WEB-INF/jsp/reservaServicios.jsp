@@ -79,7 +79,7 @@
 		</div>        
 	
      <!--
-            <input value=<%=ingsoft1920.ge.ControllerGE1.ReservasController.receivedJSON.get("datosReserva")%> readonly style="margin-top: 5px; margin-bottom: 10px;background-color:#B0C4DE;border: none"></input>
+            <input value=<%=ingsoft1920.ge.ControllerGE1.VerReservasController.receivedJSON.get("datosReserva")%> readonly style="margin-top: 5px; margin-bottom: 10px;background-color:#B0C4DE;border: none"></input>
             <br><br> -->
             
         <!-- Realiza tu reserva -->

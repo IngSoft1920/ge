@@ -1,5 +1,6 @@
 package ingsoft1920.ge.ControllerGE1;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,14 +10,15 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class VerReservasController {
-//public static JSONObject receivedJSON = new JSONObject();
+public static JSONObject receivedJSON = new JSONObject();
 	
 @Autowired
  SesionBean sesion;
 
 	@GetMapping("/reservas")
 	public  String reservasEnviar() throws Exception {
-		//receivedJSON.put("datosReserva", "Datos de su reserva");
+		
+		receivedJSON.put("datosReserva", "Datos de su reserva");
 
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
@@ -31,7 +33,7 @@ public class VerReservasController {
 		if(respCode==200) {
 			  resp=client.getResponseBody();
 			  }
-		return resp;
+		return "reservaServicios";
 		
 	}
 

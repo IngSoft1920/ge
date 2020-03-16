@@ -62,7 +62,7 @@
             <h3>Reserva de servicios</h3>
         </div>
         <!-- Lista de servicios -->
-        <form method="get" style="width: 100%;" action="">
+         <!-- <form method="get" style="width: 100%;" action="">-->
             <div class="row ">
                 <div class="col pb-3">
                     <select name="servicio" id="tipoServicio">
@@ -105,7 +105,7 @@
                 </div>
             </div>
         
-		</form>
+	<!--</form>  -->	
 		
 	</div>
 
@@ -117,7 +117,7 @@
             <h3>Reserva de mesa</h3>
         </div>
         <!-- Lista de servicios -->
-        <form method="get" style="width: 100%;" action="">
+        <!-- <form method="get" style="width: 100%;" action="">-->
             <div class="row">
                 <div class="col pb-3">
                     <select name="nombre_restaurante" id="nombre_restaurante">
@@ -162,7 +162,7 @@
                 </div>
             </div>
         
-		</form>
+		<!--</form>-->
 	</div>
         
         <!-- Parte de encargar comida -->

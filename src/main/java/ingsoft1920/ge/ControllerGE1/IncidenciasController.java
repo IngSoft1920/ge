@@ -31,16 +31,9 @@ public class IncidenciasController {
 	SesionBean sesion;
 	VerReservasBean reservas;
 
-	//ruta a pagina de incidencias
-	@GetMapping("/incidencias")
-	public String Incidencias(Model model) {
-		model.addAttribute("sesionBean", sesion);
-
-		return "incidencias";
-	}
 
 	//enviar incidencia
-	@PostMapping("/incidencias") //cambiar endpoint
+	@PostMapping("/enviarIncidencia") //cambiar endpoint
 	public  String enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
 			Model model) throws Exception {
 

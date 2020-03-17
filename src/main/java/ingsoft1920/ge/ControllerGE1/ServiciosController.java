@@ -32,17 +32,10 @@ public class ServiciosController {
 	SesionBean sesion;
 	VerReservasBean reservas;
 
-	@GetMapping("/servicios")
-	public String checkInEnviar(Model model, SesionBean sesion) throws Exception {
-		model.addAttribute("sesionBean", sesion);
-		return "servicios";
-	}
-
-
 
 	//recibir servicios
-	@GetMapping("/recibirServicios")
-	public static  String[] recibirServiciosr() throws Exception {
+	
+	public static  JsonObject recibirServiciosr() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 
@@ -81,7 +74,7 @@ public class ServiciosController {
 		}
 		servicios_id=ides;
 		
-		return servicios;
+		return obj;
 	}
 	
 	
@@ -110,7 +103,7 @@ public class ServiciosController {
 
 
 	//reservar servicios
-	@PostMapping("/reservarServicios1")	
+
 	public int reservarServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos) throws Exception{
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");

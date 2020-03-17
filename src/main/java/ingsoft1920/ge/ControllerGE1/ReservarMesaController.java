@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
@@ -26,8 +27,8 @@ public class ReservarMesaController {
 	VerReservasBean reservas;
 	
 	//recibimos los posibles restaurantes¿no nos hace falta mandar el hotel?
-	@GetMapping("/recibirRestaurantes")
-	public static  String recibirRestaurantes() throws Exception {
+	
+	public static  JsonObject recibirRestaurantes() throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/infoRest", "GET");
 		
@@ -35,15 +36,17 @@ public class ReservarMesaController {
 		int respCode = client.getResponseCode();
 		
 		System.out.print(respCode+"\n");
+		String resp="";
 		if(respCode==200) {
-			  client.getResponseBody();}
+			 resp= client.getResponseBody();}
 		
-		return "";
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
+		return obj;
 	}
 	
 	//mandamos un restaurante, el num de personas y la fecha y nos devuelven las horas disponibles
-	@PostMapping("/horasDisponibles")
-	public static  String horasDisponibles() throws Exception {
+
+	public static  JsonObject horasDisponibles() throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/checkReservRest", "POST");
 		
@@ -58,14 +61,16 @@ public class ReservarMesaController {
 		int respCode = client.getResponseCode();
 		
 		System.out.print(respCode+"\n");
+		String resp="";
 		if(respCode==200) {
-			  client.getResponseBody();}
+			 resp= client.getResponseBody();}
 		
-		return "";
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
+		return obj;
 		}
 
 	//reservar servicios a DHO
-		@PostMapping("/reservarServicio")	
+			
 		public String serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa) throws Exception{
 				
 			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");

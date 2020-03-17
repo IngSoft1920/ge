@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.EncargarComidaBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -25,8 +27,8 @@ public class EncargarComidaController {
 	@Autowired
 	 SesionBean sesion;
 	
-	@GetMapping("/recibirPlatos")
-	public String recibirPlatos() throws Exception {
+	
+	public JsonObject recibirPlatos() throws Exception {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/platosRest", "POST");
 		JsonObject json= new JsonObject();
 		json.addProperty("rest_nom","Mamma Mia" );
@@ -40,13 +42,13 @@ public class EncargarComidaController {
 			  resp=client.getResponseBody();
 			  }
 		
-		
-		return null;
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
+		return obj;
 	}
 	
 
-	@GetMapping("/recibirItems")
-	public String recibirItems() throws Exception {
+	
+	public JsonObject recibirItems() throws Exception {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/itemsRest", "POST");
 		JsonObject json= new JsonObject();
 		json.addProperty("rest_nom","Mamma Mia" );
@@ -61,7 +63,8 @@ public class EncargarComidaController {
 			  }
 		
 		
-		return null;
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
+		return obj;
 	}
 	
 	

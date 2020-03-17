@@ -16,22 +16,23 @@ public class pruebaConexion {
 		
 		
 		//Creo un objeto Json de lo recibido, que es un String, pero al estar en formato Json se puede pasar a este
-				JsonObject obj = (JsonObject) JsonParser.parseString(serviciosEnviar()); 
+				//JsonObject obj = (JsonObject) JsonParser.parseString(serviciosEnviar()); 
 				
 				//Creo un Array de tipo Json del campo que quiero, con el getAsElTipoDelCampoQueQuiero
-				JsonArray res= obj.get("servicios_disponibles_nombre").getAsJsonArray();
-				//Creo una estructura del tipo que quiero y en este caso como es una array, la recorro con un for rellenandolo
-				String[] servicios= new String[res.size()];
-				for(int i=0;i<servicios.length;i++) {
-					servicios[i]=res.get(i).getAsString();
-					System.out.println(servicios[i]);
-				}
+//				JsonArray res= obj.get("servicios_disponibles_nombre").getAsJsonArray();
+//				//Creo una estructura del tipo que quiero y en este caso como es una array, la recorro con un for rellenandolo
+//				String[] servicios= new String[res.size()];
+//				for(int i=0;i<servicios.length;i++) {
+//					servicios[i]=res.get(i).getAsString();
+//					System.out.println(servicios[i]);
+//				}
+		reservasEnviar();
 		
 	}
 	
 	//recibir servicios
 			@GetMapping("/recibirServicios")
-			public static  String serviciosEnviar() throws Exception {
+			public static  JsonObject serviciosEnviar() throws Exception {
 				
 				HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 				
@@ -46,8 +47,33 @@ public class pruebaConexion {
 				if(respCode==200) {
 					  resp=client.getResponseBody();
 					  }
-				return resp;
 				
+				JsonObject objeto = (JsonObject) JsonParser.parseString(resp);
+				
+				return objeto;
+				
+				
+			}
+			public  static JsonObject reservasEnviar() throws Exception {
+				
+				//receivedJSON.put("datosReserva", "Datos de su reserva");
+
+				
+				HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
+				JsonObject json= new JsonObject();
+				json.addProperty("id_cliente","1");
+				
+				client.setRequestBody(json.toString());
+				
+				int respCode = client.getResponseCode();
+				
+				String resp="";
+				if(respCode==200) {
+					  resp=client.getResponseBody();
+					  }
+				
+				JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
+				return obj;
 				
 			}
 }

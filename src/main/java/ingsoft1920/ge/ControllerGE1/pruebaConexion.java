@@ -1,6 +1,7 @@
 package ingsoft1920.ge.ControllerGE1;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,7 +15,8 @@ public class pruebaConexion {
 	
 	public static void main(String[]agrs) throws Exception {
 		
-		
+		Calendar calendario = Calendar.getInstance();
+
 		//Creo un objeto Json de lo recibido, que es un String, pero al estar en formato Json se puede pasar a este
 				//JsonObject obj = (JsonObject) JsonParser.parseString(serviciosEnviar()); 
 				

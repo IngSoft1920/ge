@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
+import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -61,6 +62,26 @@ public class IncidenciasController {
 		return "incidencias";
 	}
 
+	//recibir servicios reservados por un cliente
+		public  String recibirServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
+				Model model) throws Exception {
+
+			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
+
+			//enviar id_cliente e id_reserva
+			JsonObject json = new JsonObject();
+			json.addProperty("id_cliente", sesion.getUsuarioID()); //coger id_usuario de la sesionBean
+			json.addProperty("id_estancia", reservas.getId_reserva()); //coger id_reserva de VerReservasBean
+			client.setRequestBody(json.toString());
+
+			int respCode = client.getResponseCode();
+
+			String resp="";
+			if(respCode==200) {
+				resp=client.getResponseBody();
+			}
+			return resp;
+		}
 	//recibir asuntos disponibles
 	public String recibirAsuntos(Model model) throws Exception {
 

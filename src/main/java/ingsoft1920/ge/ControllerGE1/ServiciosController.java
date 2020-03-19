@@ -34,8 +34,8 @@ public class ServiciosController {
 
 
 	//recibir servicios
-	
-	public static  JsonObject recibirServiciosr() throws Exception {
+
+	public static  JsonObject recibirServicios() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 
@@ -51,37 +51,77 @@ public class ServiciosController {
 		if(respCode==200) {
 			resp=client.getResponseBody();
 		}
-		
+
 		//Creo un objeto Json de lo recibido, que es un String, pero al estar en formato Json se puede pasar a este
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
-		
+
 		//Creo un Array de tipo Json del campo que quiero, con el getAsElTipoDelCampoQueQuiero
-		JsonArray nombres= obj.get("servicios_disponibles_nombre").getAsJsonArray();
+		//JsonArray nombres= obj.get("servicios_disponibles_nombre").getAsJsonArray();
 		//Creo una estructura del tipo que quiero y en este caso como es una array, la recorro con un for rellenandolo
-		String[] servicios= new String[nombres.size()];
-		for(int i=0;i<servicios.length;i++) {
-			servicios[i]=nombres.get(i).getAsString();	
-		}
+		//String[] servicios= new String[nombres.size()];
+		//for(int i=0;i<servicios.length;i++) {
+		//	servicios[i]=nombres.get(i).getAsString();	
+		//}
 		//Me he declarado un atributo de la clase para guardar el array cuando nos lo manden para luego sacar 
 		//el id del sericio con otro for
-		servicios_nombre= servicios;
-		
+		//servicios_nombre= servicios;
+
 		//igual pero con los identificadores de los servicios
-		JsonArray ids= obj.get("servicios_disponibles_id").getAsJsonArray();
-		int[] ides= new int[ids.size()];
-		for(int i=0;i<ides.length;i++) {
-			ides[i]=ids.get(i).getAsInt();	
-		}
-		servicios_id=ides;
-		
+		//JsonArray ids= obj.get("servicios_disponibles_id").getAsJsonArray();
+		//int[] ides= new int[ids.size()];
+		//for(int i=0;i<ides.length;i++) {
+		//	ides[i]=ids.get(i).getAsInt();	
+		//}
+		//servicios_id=ides;
+
 		return obj;
 	}
-	
-	
-	//IMPORTANTE:falta api que nos de las horas disponibles y mandamos fecha e id de servicio
+
+
+	//recibir horas disponibles de cada servicio
+	public JsonObject recibirHorasServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
+			Model model, int id_servicio_buscando) throws Exception {
+
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosHoras", "POST");
+
+		//enviar id_servicio
+		JsonObject json = new JsonObject();
+		JsonObject obj = new JsonObject();
+		obj=null;
+		//buscar el servicio del que se quieren ver las horas disponibles
+		JsonObject servicio = recibirServicios();
+		JsonArray id_servicios= servicio.get("servicios_disponibles_id").getAsJsonArray();
+		boolean servicioDisponible = false;
+		int[] ids= new int[id_servicios.size()];
+		for(int i=0;i<ids.length;i++) {
+			ids[i]=id_servicios.get(i).getAsInt();	
+		}
+		for(int i=0;i<ids.length;i++) {
+			if(id_servicio_buscando==ids[i]) {
+				servicioDisponible = true; //existe el servicio
+			}
+		}
+
+		if(servicioDisponible) {
+			json.addProperty("id_servicioHotel", id_servicio_buscando);
+			client.setRequestBody(json.toString());
+
+			int respCode = client.getResponseCode();
+
+			String resp="";
+			if(respCode==200) {
+				resp=client.getResponseBody();
+			}
+			obj = (JsonObject) JsonParser.parseString(resp);
+
+		}
+
+		return obj;
+	}
+
 
 	//recibir servicios reservados por un cliente
-	public  String recibirServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
+	public JsonObject recibirServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
 			Model model) throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
@@ -98,7 +138,10 @@ public class ServiciosController {
 		if(respCode==200) {
 			resp=client.getResponseBody();
 		}
-		return resp;
+
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+
+		return obj;
 	}
 
 
@@ -107,7 +150,7 @@ public class ServiciosController {
 	public int reservarServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos) throws Exception{
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
-		
+
 		//Para averiguar el identificador del servicio liamos todo esto
 		int id_servicio_dho=0;
 		for (int i=0;i<servicios_id.length;i++) {
@@ -115,7 +158,7 @@ public class ServiciosController {
 				id_servicio_dho=servicios_id[i];
 			}
 		}
-		
+
 		JsonObject json = new JsonObject();
 		json.addProperty("id_servicio", id_servicio_dho);//se puede mandar el servicio en vez del id??
 		json.addProperty("fecha", servicios.getFecha());

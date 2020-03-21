@@ -2,11 +2,11 @@ package ingsoft1920.ge.ControllerGE1;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.ControllerGE1.VerReservasController;
 
 
 
@@ -41,6 +41,15 @@ public class Routing {
 	
 	@GetMapping("/incidencias")
 	public String incidencias() {
+
+		return "incidencias";
+	}
+
+	@GetMapping("/checkin")
+	public String checkin() {
+		
+		
+		
 
 		return "incidencias";
 	}

@@ -30,18 +30,18 @@ public class pruebaConexion {
 		Calendar calendario = Calendar.getInstance();
 
 		//Creo un objeto Json de lo recibido, que es un String, pero al estar en formato Json se puede pasar a este
-		//JsonObject obj = (JsonObject) JsonParser.parseString(serviciosEnviar()); 
-
-		//Creo un Array de tipo Json del campo que quiero, con el getAsElTipoDelCampoQueQuiero
-		//				JsonArray res= obj.get("servicios_disponibles_nombre").getAsJsonArray();
-		//				//Creo una estructura del tipo que quiero y en este caso como es una array, la recorro con un for rellenandolo
-		//				String[] servicios= new String[res.size()];
-		//				for(int i=0;i<servicios.length;i++) {
-		//					servicios[i]=res.get(i).getAsString();
-		//					System.out.println(servicios[i]);
-		//				}
-		reservasEnviar();
-
+				//JsonObject obj = (JsonObject) JsonParser.parseString(serviciosEnviar()); 
+				
+				//Creo un Array de tipo Json del campo que quiero, con el getAsElTipoDelCampoQueQuiero
+//				JsonArray res= obj.get("servicios_disponibles_nombre").getAsJsonArray();
+//				//Creo una estructura del tipo que quiero y en este caso como es una array, la recorro con un for rellenandolo
+//				String[] servicios= new String[res.size()];
+//				for(int i=0;i<servicios.length;i++) {
+//					servicios[i]=res.get(i).getAsString();
+//					System.out.println(servicios[i]);
+//				}
+		serviciosEnviar();
+		
 	}
 
 	//recibir servicios

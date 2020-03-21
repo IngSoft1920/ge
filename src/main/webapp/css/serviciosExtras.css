@@ -1,0 +1,78 @@
+.ServiciosZona {
+	background-color: #b8b078;
+	height: 300px;
+}
+
+.tituloServicios {
+	font-family: Georgia;
+	color: white;
+	font-size: 60px;
+	text-align: center;
+	font-weight: 600;
+	margin: 0;
+	text-transform: uppercase;
+	line-height: 300px;
+}
+
+.fila_1 {
+	
+}
+
+.mitad_fila {
+	/*float: left;
+	width: 44%;
+	padding: 20px;*/
+	text-align: center;
+	background-color: #4f5457;
+	margin-top: 100px;
+}
+
+.mitad_fila h3 {
+	color: #b8b078;
+	font-size: 50px;
+	line-height: 100px;
+}
+
+.imagenfila {
+	position: relative;
+}
+
+.imagenfila img {
+	height: 600px;
+	width: 100%;
+	position: relative;
+}
+
+.centrarTodo {
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	color: white;
+	font-size: 50px;
+	font-weight: 600;
+}
+
+.centrarTodo2 {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-weight: 600;
+}
+
+.centrarTodo2 button {
+	background-color: #b8b078;
+	font-family: Georgia;
+	color: white;
+	font-size: 35px;
+	width: 200px;
+	height: 200px;
+	/*padding: 15px 22px;*/
+	/*margin: 5px 10px;*/
+	margin-top: -20px;
+	border: 1px;
+	border-color: none;
+	background-color: none;
+	border-radius: 50%;
+}

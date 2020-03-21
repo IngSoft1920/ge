@@ -75,6 +75,8 @@ console.log(pageName);
 					</a> <a href="/servicios" value="servicios">
 							<button class="botonMyHotel">Mis Servicios</button>
 					</a>
+							<button class="botonMyHotel">Cerrar sesión</button>
+					
 					</span>
 				</div> <script>
 						function myHotel() {

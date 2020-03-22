@@ -5,91 +5,75 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReservaBean {
 
-	private int reservaID;
-	private String hotel;
-	private String tarifa;
-	private String ciudad;
-	private String fechaInicio;
-	private String fechaFin;
-	private String habitacion;
-	private String valoracion;
+	private int reserva_id;
+	private int hotel_id;
+	private String tipo_hab;
+	private String regimen;
+	private double importe;
+	private String fecha_entrada;
+	private String fecha_salida;
 
-	public ReservaBean() {
+	public int getReserva_id() {
+		return reserva_id;
 	}
 
-	public ReservaBean(String hotel, String ciudad, String fechaInicio, String fechaFin, String habitacion,
-			String tarifa, String valoracion) {
-		this.hotel = hotel;
-		this.tarifa = tarifa;
-		this.ciudad = ciudad;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
-		this.habitacion = habitacion;
-		this.valoracion = valoracion;
+	public void setReserva_id(int reserva_id) {
+		this.reserva_id = reserva_id;
 	}
 
-	public String getHotel() {
-		return hotel;
+	public int getHotel_id() {
+		return hotel_id;
 	}
 
-	public void setHotel(String hotel) {
-		this.hotel = hotel;
+	public void setHotel_id(int hotel_id) {
+		this.hotel_id = hotel_id;
 	}
 
-	public String getTarifa() {
-		return tarifa;
+	public String getTipo_hab() {
+		return tipo_hab;
 	}
 
-	public void setTarifa(String tarifa) {
-		this.tarifa = tarifa;
+	public void setTipo_hab(String tipo_hab) {
+		this.tipo_hab = tipo_hab;
 	}
 
-	public String getCiudad() {
-		return ciudad;
+	public String getRegimen() {
+		return regimen;
 	}
 
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	public void setRegimen(String regimen) {
+		this.regimen = regimen;
 	}
 
-	public String getFechaInicio() {
-		return fechaInicio;
+	public double getImporte() {
+		return importe;
 	}
 
-	public void setFechaInicio(String fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	public void setImporte(double importe) {
+		this.importe = importe;
 	}
 
-	public String getFechaFin() {
-		return fechaFin;
+	public String getFecha_entrada() {
+		return fecha_entrada;
 	}
 
-	public void setFechaFin(String fechaFin) {
-		this.fechaFin = fechaFin;
+	public void setFecha_entrada(String fecha_entrada) {
+		this.fecha_entrada = fecha_entrada;
 	}
 
-	public String getHabitacion() {
-		return habitacion;
+	public String getFecha_salida() {
+		return fecha_salida;
 	}
 
-	public void setHabitacion(String habitacion) {
-		this.habitacion = habitacion;
+	public void setFecha_salida(String fecha_salida) {
+		this.fecha_salida = fecha_salida;
 	}
 
-	public String getValoracion() {
-		return valoracion;
-	}
-
-	public void setValoracion(String valoracion) {
-		this.valoracion = valoracion;
-	}
-
-	public int getReservaID() {
-		return reservaID;
-	}
-
-	public void setReservaID(int reservaID) {
-		this.reservaID = reservaID;
+	@Override
+	public String toString() {
+		return "ReservaBean [reserva_id=" + reserva_id + ", hotel_id=" + hotel_id + ", tipo_hab=" + tipo_hab
+				+ ", regimen=" + regimen + ", importe=" + importe + ", fecha_entrada=" + fecha_entrada
+				+ ", fecha_salida=" + fecha_salida + "]";
 	}
 
 }

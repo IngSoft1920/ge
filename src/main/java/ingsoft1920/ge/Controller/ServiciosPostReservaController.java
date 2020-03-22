@@ -63,7 +63,7 @@ public class ServiciosPostReservaController {
 		String response = arrayGrande.toString();
 
 		HttpClient serverServicios = new HttpClient(
-				HttpClient.urlCM + "hotel/servicios" + mostrarServiciosPostReservaBean.getHotel_id(), "GET");
+				HttpClient.urlCM + "hotel/servicios/" + mostrarServiciosPostReservaBean.getHotel_id(), "GET");
 
 		JsonObject json = new JsonObject();
 		json.addProperty("id_hotel", mostrarServiciosPostReservaBean.getHotel_id()); // coger id_hotel de

@@ -1,5 +1,8 @@
 package ingsoft1920.ge.Controller;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,12 +15,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
+import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.MisReservasBean;
+import ingsoft1920.ge.Beans.MostarReservasBean;
 import ingsoft1920.ge.Beans.ReservaBean;
+import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
@@ -25,43 +32,68 @@ public class MisReservasController {
 	final static Logger logger = LogManager.getLogger(MisReservasController.class.getName());
 
 	@Autowired
+	MisReservasBean misReservasBean;
 	SesionBean sesionBean;
 
+	List<ReservaBean> reservas;
+	MostarReservasBean mostarReservasBean = new MostarReservasBean();
+
 	@GetMapping("/misReservas")
-	public String buscarGet(Model model) {
+	public String mostrarReservasGet(Model model) throws Exception {
 
-		MisReservasBean misReservasBean = new MisReservasBean();
+		/*
+		 * [ { reserva_id : 21, hotel_id : 1 , tipo_hab : “normal”, regimen :
+		 * “no_aplica”, importe : “300”, fecha_entrada : “2020-02-10”, fecha_salida :
+		 * “2020-02-15”, }, { reserva_id : 10, hotel_id : 14 , tipo_hab : “premium”,
+		 * regimen : “media_pension”, importe : “750”, fecha_entrada : “2020-07-10”,
+		 * fecha_salida : “2020-07-15”, } ]
+		 */
 
-		ReservaBean reservaBean = new ReservaBean("Rich", "Guadalajara", "10/12/2020", "15/12/2020", "Suit", "300.0",
-				"");
-		misReservasBean.getReservas().add(reservaBean);
+		JsonArray arrayGrande = new JsonArray();
 
-		model.addAttribute("misReservasBean", misReservasBean);
+		JsonObject ejemplo = new JsonObject();
+		ejemplo.addProperty("reserva_id", 21);
+		ejemplo.addProperty("hotel_id", 1);
+		ejemplo.addProperty("tipo_hab", "normal");
+		ejemplo.addProperty("regimen", "no aplica");
+		ejemplo.addProperty("importe", 300);
+		ejemplo.addProperty("fecha_entrada", "2020-02-10");
+		ejemplo.addProperty("fecha_salida", "2020-02-15");
+		arrayGrande.add(ejemplo);
+		
+		ejemplo.addProperty("reserva_id", 10);
+		ejemplo.addProperty("hotel_id", 14);
+		ejemplo.addProperty("tipo_hab", "premium");
+		ejemplo.addProperty("regimen", "media_pension");
+		ejemplo.addProperty("importe", 750);
+		ejemplo.addProperty("fecha_entrada", "2020-07-10");
+		ejemplo.addProperty("fecha_salida", "2020-07-15");
+		arrayGrande.add(ejemplo);
+		
+		String response = arrayGrande.toString();
+
+		HttpClient serverReservas = new HttpClient(
+				HttpClient.urlCM + "reserva/cliente/ " + sesionBean.getUsuarioID(), "GET");
+
+		JsonObject json = new JsonObject();
+		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean
+																						
+
+		if (serverReservas.getResponseCode() == 200) {// Si encuentra el servidor
+			response = serverReservas.getResponseBody();
+		}
+
+		Type tipo = new TypeToken<List<ReservaBean>>() {
+		}.getType();
+		reservas = new Gson().fromJson(response, tipo);
+
+		model.addAttribute("mostrarReservasBean", mostarReservasBean);
 		model.addAttribute("sesionBean", sesionBean);
-		model.addAttribute("mensajeError", "");
 
 		return "misReservas";
 
 	}
 
-	@GetMapping("/recibirReservas")
-	public String recibirReservas(@Valid @ModelAttribute("misReservasBean") MisReservasBean reservas, Model model)
-			throws Exception {
-
-		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/{cliente_id}", "GET");
-
-		JsonObject json = new JsonObject();
-		json.addProperty("id_cliente", sesionBean.getUsuarioID()); // coger id_usuario de la sesionBean
-		client.setRequestBody(json.toString());
-
-		int respCode = client.getResponseCode();
-
-		String resp = "";
-		if (respCode == 200) {
-			resp = client.getResponseBody();
-		}
-		return resp;
-	}
 
 	@PostMapping("/valorar")
 	public String misReservasPost(@Valid @ModelAttribute("valoracionId") String valoracionId, Model model) {
@@ -69,26 +101,6 @@ public class MisReservasController {
 		logger.info("Valoración recibida correctamente." + valoracionId);
 		return "redirect:misReservas";
 	}
-
-	@PostMapping("/cancelarReserva")
-	public void borrarReserva(@Valid @ModelAttribute("ReservaBean") ReservaBean reservaBean, Model model)
-			throws Exception {
-
-		JsonObject json = new JsonObject();
-		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/eliminar/{reserva_id}", "POST");
-		json.addProperty("id_reserva", reservaBean.getReservaID()); // coger id_reserva de la reservaBean
-		client.setRequestBody(json.toString());
-		int respCode = client.getResponseCode();
-		System.out.println(respCode + "\n");
-		if (respCode == 200) {
-			client.getResponseBody();
-		}
-
-		logger.info("Cancelación de reserva realizada correctamente." + reservaBean);
-
-	}
-	
-	
 
 	public static Object beanToJson(Object bean) {
 		Gson gson = new Gson();

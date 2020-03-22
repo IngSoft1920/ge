@@ -76,6 +76,9 @@
     <body >
 
 <img class="imagensilla" src="https://cosaspracticas.lasprovincias.es/wp-content/uploads/hoteles.jpg">
+
+
+    </button> 
        <div class="grid-container">
        <div class="card" onclick="document.location = '/reservas'">
         <div class="container", style="padding-top:20px">
@@ -88,7 +91,7 @@
       </div>
       
 
-      <div class="card" onclick="document.location = '/servicios'">
+      <div class="card" onclick="document.location = '/recibirServicios'">
         <div class="container", style="padding-top:20px">
           <a><b>Servicios</b></a> 
           <p>¡Acceda para gestionar y reportar los servicios solicitados!</p> 
@@ -110,4 +113,5 @@
 
 
     </body>
+   
 </html>

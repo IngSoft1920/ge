@@ -1,5 +1,12 @@
 package ingsoft1920.ge.ControllerGE1;
 
+import java.util.LinkedList;
+
+
+import java.util.List;
+
+import org.springframework.web.servlet.ModelAndView;
+
 import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,8 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import com.google.gson.Gson;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -35,35 +41,35 @@ public class ServiciosController {
 
 	//recibir servicios
   
-	public static  JsonObject recibirServicios() throws Exception {
-
+	@GetMapping("/recibirServicios")
+	public static  ModelAndView recibirServicios() throws Exception {
+		System.out.print("HOLA ESTOY AQUI");
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 
 		//enviar nombre del hotel
 		JsonObject json = new JsonObject();
 		json.addProperty("nombre_hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
-		//ASI json.addProperty("id_estancia", reserva.getNombre_hotel());
+		
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
-
+		System.out.print(respCode+"<--------");
 		String resp="";
 		if(respCode==200) {
 			resp=client.getResponseBody();
 		}
+		System.out.print(resp+"<--------");
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
 
-		//Creo un Array de tipo Json del campo que quiero, con el getAsElTipoDelCampoQueQuiero
+		
 		JsonArray nombres= obj.get("servicios_disponibles_nombre").getAsJsonArray();
-		//Creo una estructura del tipo que quiero y en este caso como es una array, la recorro con un for rellenandolo
-		String[] servicios= new String[nombres.size()];
-		for(int i=0;i<servicios.length;i++) {
-			servicios[i]=nombres.get(i).getAsString();	
+		
+		List<String> serviciosList= new LinkedList<>();
+		System.out.print(nombres.size());
+		
+		for(int i=0;i<nombres.size();i++) {
+			serviciosList.add(nombres.get(i).getAsString());	
 		}
-		//Me he declarado un atributo de la clase para guardar el array cuando nos lo manden para luego sacar 
-		//el id del sericio con otro for
-		servicios_nombre= servicios;
-
 		//igual pero con los identificadores de los servicios
 		JsonArray ids= obj.get("servicios_disponibles_id").getAsJsonArray();
 		int[] ides= new int[ids.size()];
@@ -72,7 +78,7 @@ public class ServiciosController {
 		}
 		servicios_id=ides;
 
-		return obj;
+		return new ModelAndView("encargarComidaAlfonso","servicios_de_un_hotel", serviciosList);
 	}
 
 
@@ -172,12 +178,5 @@ public class ServiciosController {
 		return respCode;
 	}
 
-
-
-	public static Object beanToJson(Object bean) {
-		Gson gson = new Gson();
-		String JSON = gson.toJson(bean);	
-		return JSON;
-	}
 
 }

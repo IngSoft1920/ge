@@ -1,21 +1,13 @@
 package ingsoft1920.ge.ControllerGE1;
 
-import java.time.LocalDate;
-import java.util.Calendar;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.BeansGE1.ServiciosBean;
+
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -42,12 +34,11 @@ public class pruebaConexion {
 //				}
 		//serviciosEnviar();
 		
-		recibirPlatos();
+		serviciosEnviar();
 		
 	}
-
 	//recibir servicios
-	@GetMapping("/recibirServicios")
+	
 	public static  JsonObject serviciosEnviar() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
@@ -63,8 +54,9 @@ public class pruebaConexion {
 		if(respCode==200) {
 			resp=client.getResponseBody();
 		}
-
+		System.out.println(resp);
 		JsonObject objeto = (JsonObject) JsonParser.parseString(resp);
+		System.out.print(objeto.toString());
 
 		return objeto;
 

@@ -1,8 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
     <!DOCTYPE html>
 
@@ -10,8 +7,8 @@
         ENCARGOS DE COMIDA
     </h1>
 
-    <c:forEach items="${EncargarComidController.recibirPlatos()}" var="platos">
-        <p>Plato ${platos} </p>
+    <c:forEach var="Servicios" items="${servicios_de_un_hotel}">
+        <h1>Plato ${Servicios} </h1>
 
 
 

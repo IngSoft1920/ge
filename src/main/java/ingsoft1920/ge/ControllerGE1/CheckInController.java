@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
+import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 import com.google.gson.*;
 
@@ -27,6 +28,7 @@ public class CheckInController {
 	
 	@Autowired
 	CheckInBean checkin;
+	
 	
 	@Autowired
 	SesionBean sesion;

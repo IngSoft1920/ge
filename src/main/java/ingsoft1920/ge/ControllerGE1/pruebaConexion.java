@@ -27,7 +27,7 @@ public class pruebaConexion {
 
 	public static void main(String[]agrs) throws Exception {
 
-		Calendar calendario = Calendar.getInstance();
+		//Calendar calendario = Calendar.getInstance();
 
 		//Creo un objeto Json de lo recibido, que es un String, pero al estar en formato Json se puede pasar a este
 				//JsonObject obj = (JsonObject) JsonParser.parseString(serviciosEnviar()); 
@@ -40,7 +40,9 @@ public class pruebaConexion {
 //					servicios[i]=res.get(i).getAsString();
 //					System.out.println(servicios[i]);
 //				}
-		serviciosEnviar();
+		//serviciosEnviar();
+		
+		recibirPlatos();
 		
 	}
 
@@ -119,6 +121,25 @@ public class pruebaConexion {
 
 		return obj;
 	}
+
+	public static JsonObject recibirPlatos() throws Exception {
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/platosRest", "POST");
+		JsonObject json= new JsonObject();
+		json.addProperty("rest_nom","Mamma Mia" );
+		
+		client.setRequestBody(json.toString());
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();
+			  }
+		
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
+		return obj;
+	}
+	
 
 }
 /*public void  fechas() throws Exception {

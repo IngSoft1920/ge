@@ -44,14 +44,19 @@ public class Routing {
 
 		return "incidencias";
 	}
-
-	@GetMapping("/checkin")
-	public String checkin() {
-		
-		
-		
-
-		return "incidencias";
+	@GetMapping("/onload")
+	public void onload() throws Exception {
+		ReservarMesaController.recibirRestaurantes();
+		ServiciosController.recibirServicios();
 	}
-	
+//
+//	@GetMapping("/checkin")
+//	public String checkin() {
+//		
+//		
+//		
+//
+//		return "incidencias";
+//	}
+//	
 }

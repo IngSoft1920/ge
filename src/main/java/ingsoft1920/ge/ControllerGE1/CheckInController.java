@@ -34,26 +34,43 @@ public class CheckInController {
 	
 	//enviar check-in
 	@PostMapping("/envioCheckIn")
-	public String checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
+	public JsonObject checkinEnviar(@Valid @ModelAttribute("checkInBean") CheckInBean checkInBean,
 			Model model) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/envioCheckIn", "POST");
+		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/*no se sabe", "POST");
 		JsonObject json = new JsonObject();
 		json.addProperty("usuarioID", sesion.getUsuarioID());
-		json.addProperty("idReserva", checkin.getIdReserva());
-		json.addProperty("horaLlegada", checkin.getHoraLlegada());
-		json.addProperty("comentario", checkin.getComentario());
 	
 		client.setRequestBody(json.toString());
 		
 		int respCode = client.getResponseCode();
+		
+		String resp ="";
 		System.out.println(respCode+"\n");
 		if(respCode==200)
 		{
-			client.getResponseBody();
+			resp=client.getResponseBody();
 		}
+		
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
 
-		return "";
+		String cliente_id = obj.get("cliente_id").toString();
+		String nombre = obj.get("nombre").toString();
+		String apellidos = obj.get("apellidos").toString();
+		String DNI = obj.get("DNI").toString();
+		String email = obj.get("email").toString();
+		String password = obj.get("password").toString();
+		String nacionalidad = obj.get("nacionalidad").toString();
+		String telefono = obj.get("telefono").toString();
+		
+		//si algun campo esta vacio hay que redirigir a una pagna que todavia no esta hecha
+		if(cliente_id.isEmpty() && nombre.isEmpty() && DNI.isEmpty() && email.isEmpty() && 
+				password.isEmpty() && nacionalidad.isEmpty() && telefono.isEmpty()){
+			//redireccionar a pagina
+		}
+		
+		
+		return obj;
 	}
 	
 	@GetMapping("/checkin")

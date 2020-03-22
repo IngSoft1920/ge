@@ -281,7 +281,7 @@ public class BusquedaController {
 			@Valid @ModelAttribute("comidas") String comidas, @Valid @ModelAttribute("hotelId") int hotelId,
 			Model model) throws Exception{
 		
-		System.out.println("habitacionId: " + habitacionId + "; hotelId: " + hotelId);
+		System.out.println("habitacionId: " + habitacionId + "; hotelId: " + hotelId+ ";comidas:"+comidas);
 		
 		/*
          * {
@@ -326,7 +326,7 @@ public class BusquedaController {
 			return "buscador";
 		}
 		*/
-		return "redirect:misReservas";
+		return "redirect:serviciosExtras";
 		
 	}	
 }

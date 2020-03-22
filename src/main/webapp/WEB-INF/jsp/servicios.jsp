@@ -1,3 +1,6 @@
+<%@page import="ingsoft1920.ge.ControllerGE1.ReservarMesaController"%>
+<%@page import="ingsoft1920.ge.ControllerGE1.pruebaConexion"%>
+<%@page import="ingsoft1920.ge.ControllerGE1.ServiciosController"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -61,15 +64,20 @@
 		<div class="row justify-content-center pb-3 ">
             <h3>Reserva de servicios</h3>
         </div>
+        
+		
+        
         <!-- Lista de servicios -->
-         <!-- <form method="get" style="width: 100%;" action="">-->
+          <form method="get" style="width: 100%;" action="serviciosGet">
             <div class="row ">
-                <div class="col pb-3">
-                    <select name="servicio" id="tipoServicio">
-                        <option value="Spa">Spa</option>
-                        <option value="Piscina">Piscina</option>
-                       
+                <div class="col pb-3">              
+					<select name="servicio" id="tipoServicio">
+                        <option value="">tipo de servicio</option>
+                        
+				
+        
                     </select> 
+                    
                 </div>
                 <div class="col pb-3">
                      <select name="num_personas">
@@ -93,7 +101,6 @@
                 </div>
             </div>
 			
-			
 			<!-- Lista de horas -->
             <div id="mostrar" style="display: none" class="row" >
                 <div id="horas1" class="col" >
@@ -105,8 +112,8 @@
                 </div>
             </div>
         
-	<!--</form>  -->	
-		
+	</form>	
+			
 	</div>
 
 
@@ -125,6 +132,15 @@
                         <option value="nombre_restaurante_1">Restaurante 1</option>
                         <option value="nombre_restaurante_2">Restaurante 2</option>
                         <option value="nombre_restaurante_3">Restaurante 3</option>
+                        <option id="aqui"></option>
+                       
+                        <script>
+                        myObj = <%=ReservarMesaController.restaurantes%>;
+                        x = myObj["nombre"];
+                        for (y in x) {
+                          document.getElementById("aqui").innerHTML += x;
+                        }
+                        </script>
                     </select> 
                 </div>
                 <div class="col pb-3">
@@ -173,7 +189,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <button type="button"> Ver menú</button>
+                <a  href=/menu class="btn btn-light" type="button"> Ver menú</a>
                 <!--Debe redirigir a una pagina similar a la de food and beverage-->
             </div>
             

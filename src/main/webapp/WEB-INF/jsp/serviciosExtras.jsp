@@ -1,9 +1,10 @@
 
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <jsp:include page="cabecera.jsp"></jsp:include>
-
 
 
 <html>
@@ -35,85 +36,23 @@
 
 <div class="fila_1">
 
-<form:form method="POST" action="reservarServicios" modelAttribute="reservasBean">
-	<div class="mitad_fila">
-	<h3> SPA </h3>
 
-	<div class="imagenfila">
-	
-	<img src="/imagenes/spa.jpg">
-	<div class="centrarTodo">
-	¡Apuntate a nuestro spa y di adios al estrés!
-	</div>
-	<div class="centrarTodo3">
-	<select name="num_personas">
-                         <option value="0">Personas:</option><option value="1">1</option>
-                         <option value="2">2</option>
-                         <option value="3">3</option>
-                         <option value="4">4</option>
-                         <option value="5">5</option>
-                         <option value="6">6</option>
-                         <option value="7">7</option>
-                         <option value="8">8</option>
-                         <option value="9">9</option>
-                         <option value="10">10</option>
-       </select>
-	   </div>
-	   	<div class="centrarTodo4">
-	<!--
-	 <form:input type="text" name="fecha" path="fecha"
-								placeholder="Fecha" onfocus="(this.type='date')"
-								onblur="(this.type='text')" />	 
-		-->
-		<input type="text" name="fecha" path="fecha"
-								placeholder="Fecha" onfocus="(this.type='date')"
-								onblur="(this.type='text')" />
-	 </div>
+
+	 <c:forEach items="${servicios}" var="servicio">
 	 
-	 	<div class="centrarTodo5">
-	   			
-			<select name="horas">
-                         <option value="0">Ver Horas:</option>
-						 <c:forEach items="${horasDisponibles}" var="hora">
-						 <option value="${hora}">${hora}</option>
-						 </c:forEach>
-       </select>
-
-       </div>
-	   
-	   
-	
-	
-		<div class="centrarTodo2">
-		
-<input type="hidden" name="tipoServicio" value="spa"/>
-	<input type="submit" id="reservar" value="Reservar">
-
-	</div>
-	</div>
-	
-	</div>
-	</form:form>
-	
-	
-	
-	
-	
-	
-		<form:form method="POST" action="reservarServicios" modelAttribute="reservasBean">
-	
-	
-	<div class="mitad_fila">
-	<h3> PISCINA </h3>
+	 	<div class="mitad_fila">
+	<h3> ${servicio.nombre} </h3>
 	
 	
 	<div class="imagenfila">
-	<img src="/imagenes/piscina_niña.jpg">
+	<img src="/imagenes/${servicio.nombre}.jpg">
 		<div class="centrarTodo">
-	¡Ven a nuestra piscina y disfruta como un niño!
+	¡Aprovecha nuestras instalaciones como ${servicio.nombre} y disfruta!
 	</div>
+	
+	<form:form method="POST" action="serviciosExtras" modelAttribute="mostrarServiciosPostReservaBean">
 		<div class="centrarTodo3">
-	<select name="num_personas">
+	<select name="numPersonas">
                          <option value="0">Personas:</option><option value="1">1</option>
                          <option value="2">2</option>
                          <option value="3">3</option>
@@ -127,64 +66,41 @@
        </select>
 	   </div>
 	   	<div class="centrarTodo4">
-	<!--
-	 <form:input type="text" name="fecha" path="fecha"
-								placeholder="Fecha" onfocus="(this.type='date')"
-								onblur="(this.type='text')" />	 
-		-->
+
 		<input type="text" name="fecha" path="fecha"
 								placeholder="Fecha" onfocus="(this.type='date')"
-								onblur="(this.type='text')" />
+								onblur="(this.type='text')"> </input>
 	 </div>
 	 
 	 	<div class="centrarTodo5">
 	   			<select name="horas">
-                         <option value="0">Ver Horas:</option>
-						 <c:forEach items="${horasDisponibles}" var="hora">
-						 <option value="${hora}">${hora}</option>
-						 </c:forEach>
+                         <option value="0">Ver Horas:</option>						 
+						 <option value="hora">${hora}</option>
+						
        </select>
 	   
 	   			
-			<!-- 
-			Lista de horas 
-			<button id="boton1"> Ver horas </button>
-            <div id="mostrar" style="display: none" class="row" >
-                <div id="horas1" class="horas" >
-				BLAAAAA
-				7:00
-				8:00	
-				<!--
-                    <c:forEach items="${horasDisponibles}" var="hora">
-					${hora}
-					</c:forEach>
-					
-                </div>
-            </div>
-			
-			
-			
-			    <script type="application/javascript">
-        	$( "boton1" ).click(function() {
-        	  $( "mostrar" ).show( "slow" );
-        	});
-          
-			</script>
-			-->
+
        </div>
 	   
 	
 		<div class="centrarTodo2">
 
-<input type="hidden" name="tipoServicio" value="piscina"/>
+<input type="hidden" name="tipoServicio" value="${servicio.nombre}"/>
+<input type="hidden" name="hotel_id" value="${servicio.id}"/>
 	<input type="submit" id="reservar" value="Reservar">
 	</div>
+		</form:form>
 	
 	</div>
 	
 	
 	</div>
-	</form:form>
+	 
+	 </c:forEach>
+	
+
+
 
 
 </div>
@@ -199,7 +115,4 @@
 
 </body>
 </html>
-
-
-
 

@@ -189,7 +189,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <a  href=/menu class="btn btn-light" type="button"> Ver menú</a>
+                <a  href=/recibirPlatos class="btn btn-light" type="button"> Ver menú</a>
                 <!--Debe redirigir a una pagina similar a la de food and beverage-->
             </div>
             

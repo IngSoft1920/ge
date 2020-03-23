@@ -51,7 +51,54 @@
 		<div class="row pl-3">
 			<h3>Reservas en curso</h3>
           </div>
-
+          
+          <form  action="/enviarReserva" method="get" style="width: 100%;">
+	          <div class="row justify-content-center">
+	        		<div class="col-auto">
+	        			<div class="table-responsive-md text-center">
+		        			<table class="table table-dark table-borderless table-sm-sm">
+	                            <thead>
+	                                <tr>
+	                                	<c:forEach var="num_reserva" items="${todo.num_reserva}">
+	                                    	<th> <a href="/index" >Número de reserva:</a> ${num_reserva}</th>
+	                                	</c:forEach>
+	                                </tr>
+	                            </thead>
+								<tbody>
+	                                <tr>
+	                                	<c:forEach var="nombre" items="${todo.nombres}">
+	                                		<td> Nombre del hotel :  ${nombre}</td>
+	                                	</c:forEach>
+	                                    
+	                                </tr>
+	                                <tr>
+	                                	<c:forEach var="habitacion" items="${todo.num_hab}">
+	                                		<td> Número de habitación : ${habitacion}</td>
+	                                	</c:forEach>
+	                                    
+	                                </tr>
+	                                <tr>
+	                                    <c:forEach var="inicio" items="${todo.fecha_inicial}">
+	                                		<td> Fecha de inicio :  ${inicio}</td>
+	                                	</c:forEach>
+	                                    
+	                                </tr>
+	                                <tr>
+	                                    
+	                                		<td> Fecha de fin :  </td>
+	                                	
+	                                </tr>
+	                                
+	                                
+	                               
+	                            </tbody>
+							</table>
+						</div>
+	        		</div>
+	        	</div>
+           </form>
+          
+<!--  
       <script>
       const container = document.getElementById('container1');
       const cards = [1,2,3,4];
@@ -77,9 +124,12 @@
       }
 
             </script>
-       
+      --> 
 
-		</div>        
+		</div> 
+		
+		
+		
 	
      
 

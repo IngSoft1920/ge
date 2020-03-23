@@ -1,6 +1,9 @@
 package ingsoft1920.ge.ControllerGE1;
 
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 
@@ -8,12 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
-
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.BeansGE1.EncargarComidaBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
@@ -21,6 +26,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class ReservarMesaController {
+	
 	public static JsonObject restaurantes;
 	
 	@Autowired
@@ -30,7 +36,7 @@ public class ReservarMesaController {
 	
 	//recibimos los posibles restaurantes¿no nos hace falta mandar el hotel?
 	@GetMapping("/recibirRestaurantes")
-	public static  String recibirRestaurantes() throws Exception {
+	public static  ModelAndView recibirRestaurantes() throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/infoRest", "GET");
 		
@@ -42,13 +48,20 @@ public class ReservarMesaController {
 		if(respCode==200) {
 			 resp= client.getResponseBody();}
 		
-		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+		JsonArray nombres= obj.get("nombre").getAsJsonArray();
+		List<String> prueba= new LinkedList<>();
+		for (int i=0;i<nombres.size();i++) {
+			prueba.add(nombres.get(i).getAsString());
+		}
+		
 		restaurantes=obj;
-		return "servicios";
+		return new ModelAndView("servicios","restaurantes", prueba);
+
 	}
 	
 	//mandamos un restaurante, el num de personas y la fecha y nos devuelven las horas disponibles
-
+	@GetMapping("/horasRestaurante")
 	public static  JsonObject horasDisponibles() throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/checkReservRest", "POST");
@@ -68,9 +81,22 @@ public class ReservarMesaController {
 		if(respCode==200) {
 			 resp= client.getResponseBody();}
 		
-		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+		JsonArray items= obj.get("fecha_reserva").getAsJsonArray();
+		List<String> item= new LinkedList<>();
+		for (int i=0;i<items.size();i++) {
+			item.add(items.get(i).getAsString());
+		}
+		
 		return obj;
 		}
+	
+	@GetMapping("/enviarReserva")
+	public static String enviarComanda(@Valid@ModelAttribute("ReservarMesaBean") ReservarMesaBean reserva_mesa) {
+		System.out.print(reserva_mesa.toString());
+		return "servicios";
+			
+	}
 
 	//reservar servicios a DHO
 			

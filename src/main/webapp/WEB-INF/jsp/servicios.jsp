@@ -73,6 +73,9 @@
                 <div class="col pb-3">              
 					<select name="servicio" id="tipoServicio">
                         <option value="">tipo de servicio</option>
+                        <c:forEach var="servicio" items="${servicios_de_un_hotel}">
+                        	<option name=servicios value="${servicio}"> ${servicio} </option>
+                        </c:forEach>
                         
 				
         
@@ -124,24 +127,19 @@
             <h3>Reserva de mesa</h3>
         </div>
         <!-- Lista de servicios -->
-        <!-- <form method="get" style="width: 100%;" action="">-->
+        <form  action="/enviarReserva" method="get" style="width: 100%;">
             <div class="row">
                 <div class="col pb-3">
-                    <select name="nombre_restaurante" id="nombre_restaurante">
+                    <select id="nombreRestaurante" name="nombreRestaurante" >
                         <!--Aquí hay que mostar los nombres de los restaurantes que nos manden-->
-                        <option value="nombre_restaurante_1">Restaurante 1</option>
-                        <option value="nombre_restaurante_2">Restaurante 2</option>
-                        <option value="nombre_restaurante_3">Restaurante 3</option>
-                        <option id="aqui"></option>
+                        <option value="">Nombre de restaurante</option>
+                        <c:forEach var="restaurante" items="${restaurantes}">
+                        	<option name=nombreRestaurante value="${restaurante}"> ${restaurante} </option>
+                        </c:forEach>
+                        
                        
-                        <script>
-                        myObj = <%=ReservarMesaController.restaurantes%>;
-                        x = myObj["nombre"];
-                        for (y in x) {
-                          document.getElementById("aqui").innerHTML += x;
-                        }
-                        </script>
                     </select> 
+                    
                 </div>
                 <div class="col pb-3">
                      <select name="num_personas">
@@ -159,12 +157,14 @@
                     </select>
                 </div>
                 <div class="col pb-3">
-                   <input style="border-radius: 5px" type="date" id="fecha_reserva" max="31/12/2020">
+                   <input style="border-radius: 5px" type="date" id="fecha" name="fecha" max="31/12/2020">
                 </div>
                 <div class="col pb-3">
                     <button value="Ver horas disponibles" onclick="mostrarHoras2()"> Ver horas</button>
                 </div>
+                 <input type="submit" value="Enviar">
             </div>
+            </form>
 			
 			
 			<!-- Lista de horas -->
@@ -178,7 +178,7 @@
                 </div>
             </div>
         
-		<!--</form>-->
+		
 	</div>
         
         <!-- Parte de encargar comida -->

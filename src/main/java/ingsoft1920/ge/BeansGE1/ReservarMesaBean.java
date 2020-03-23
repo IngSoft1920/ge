@@ -1,5 +1,7 @@
 package ingsoft1920.ge.BeansGE1;
 
+import java.util.Arrays;
+
 public class ReservarMesaBean {
 	
 	
@@ -40,6 +42,10 @@ public class ReservarMesaBean {
 	}
 	public void setNumPersonas(int numPersonas) {
 		this.numPersonas = numPersonas;
+	}
+	@Override
+	public String toString() {
+		return "ReservarMesaBean [nombreRestaurante=" + nombreRestaurante + ",fecha=" + fecha + "]";
 	}
 	public ReservarMesaBean() {
 		super();

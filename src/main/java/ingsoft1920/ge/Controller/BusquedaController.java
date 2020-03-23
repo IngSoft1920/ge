@@ -129,7 +129,7 @@ public class BusquedaController {
 		String response = arrayGrande.toString();
 		
 		HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"hotel/ge", "GET");
-		if (serverCiudades.getResponseCode() != 404) {// Si encuentra el servidor
+		if (serverCiudades.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverCiudades.getResponseBody();
 		}
 
@@ -169,6 +169,7 @@ public class BusquedaController {
 			 * 
 			 *  /hotel/disponibles?fecha_inicio=2020-10-03&fecha_fin=2020-10-05
 			 */
+			
 			
 			/*
 			 * Formato de la respuesta:

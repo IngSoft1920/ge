@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.Beans.SignupBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
 
 /*
  *Con esta anotacion establecemos que esta clase es un controlador. 
@@ -93,36 +95,55 @@ public class SignupController {
 	 */
 	
 	@PostMapping("/signup")
-	public String signupPost(@Valid @ModelAttribute("signupBean") SignupBean signupBean, Model model) {
+	public String signupPost(@Valid @ModelAttribute("signupBean") SignupBean signupBean, Model model) throws Exception {
 
-		String resultado;
+		String resultado = "";
 		if (signupBean.checkCamposValidos()) {
 
 			logger.info("Peticion de Signup recibida correctamente y con campos validos");
 
-			JsonObject obj = new JsonObject();
-			obj.addProperty("email", signupBean.getEmail());
-			obj.addProperty("password", signupBean.getPassword());
-			obj.addProperty("dni", signupBean.getDni());
-			obj.addProperty("nombre", signupBean.getNombre());
-			obj.addProperty("apellidos", signupBean.getApellidos());
+			JsonObject objetoJson = new JsonObject();
+			objetoJson.addProperty("nombre", signupBean.getNombre());
+			objetoJson.addProperty("apellidos", signupBean.getApellidos());
+			objetoJson.addProperty("DNI", signupBean.getDNI());
+			objetoJson.addProperty("email", signupBean.getEmail());
+			objetoJson.addProperty("telefono", signupBean.getTelefono());
+			objetoJson.addProperty("nacionalidad", signupBean.getNacionalidad());
+			objetoJson.addProperty("password", signupBean.getPassword());
 			String response = "";
-
-			signupBean.setId(1);
-
-			sesionBean.setUsuarioID(1);
-			sesionBean.setUsuario(signupBean.getUsuario().split("@")[0]);
 			
-
-			resultado = "redirect:home";
+			//Mandar usuario registrado correctamente a la base de datos
+			HttpClient server = new HttpClient(HttpClient.urlCM+"signup", "POST");
+			server.setRequestBody(objetoJson.toString());
+			if (server.getResponseCode() == 200) {
+				response = server.getResponseBody();
+				objetoJson = new Gson().fromJson(response, JsonObject.class);
+				int id = objetoJson.get("id").getAsInt();
+				
+				if (id == -1) { //Usuario ya existe y no queremos volver a registar
+					
+					model.addAttribute("signup", signupBean);
+					model.addAttribute("mensajeError","Usuario existente");
+					
+					resultado = "signup";
+				} else {
+					signupBean.setId(id);
+					sesionBean.setUsuarioID(id);
+					sesionBean.setUsuario(signupBean.getEmail().split("@")[0]);
+					resultado = "redirect:home";
+				}
+			} else {
+				model.addAttribute("signup", signupBean);
+				model.addAttribute("mensajeError","Conexión con el servidor fallida");
+				resultado = "signup";
+			}
+			
 		} else {
 			model.addAttribute("signupBean", signupBean);
 			model.addAttribute("mensajeError", "Datos incorrectos");
 
 			resultado = "signup";
 		}
-
 		return resultado;
-
 	}
 }

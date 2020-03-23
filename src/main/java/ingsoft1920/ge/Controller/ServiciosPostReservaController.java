@@ -70,7 +70,7 @@ public class ServiciosPostReservaController {
 HttpClient.urlCM + "hotel/servicios/" + mostrarServiciosPostReservaBean.getHotel_id(), "GET");
  */
 		JsonObject json = new JsonObject();
-		json.addProperty("id_hotel", mostrarServiciosPostReservaBean.getHotel_id()); // coger id_hotel de
+		json.addProperty("hotel_id", mostrarServiciosPostReservaBean.getHotel_id()); // coger id_hotel de
 																						// mostarServiciosPostReservaBean
 /*
 		if (serverServicios.getResponseCode() == 200) {// Si encuentra el servidor

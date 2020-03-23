@@ -1,6 +1,5 @@
 package ingsoft1920.ge.Beans;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -11,7 +10,6 @@ public class MisReservasBean {
 
 	
 	public MisReservasBean() {
-		reservas = new ArrayList<ReservaBean>();
 	}
 
 

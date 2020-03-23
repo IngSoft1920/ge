@@ -22,10 +22,12 @@ import com.google.gson.reflect.TypeToken;
 import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.MisReservasBean;
 import ingsoft1920.ge.Beans.MostarReservasBean;
+import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.ReservaBean;
 import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class MisReservasController {
@@ -33,9 +35,11 @@ public class MisReservasController {
 
 	@Autowired
 	MisReservasBean misReservasBean;
+	
 	SesionBean sesionBean;
 
 	List<ReservaBean> reservas;
+	
 	MostarReservasBean mostarReservasBean = new MostarReservasBean();
 
 	@GetMapping("/misReservas")
@@ -60,7 +64,8 @@ public class MisReservasController {
 		ejemplo.addProperty("fecha_entrada", "2020-02-10");
 		ejemplo.addProperty("fecha_salida", "2020-02-15");
 		arrayGrande.add(ejemplo);
-		
+
+		ejemplo = new JsonObject();
 		ejemplo.addProperty("reserva_id", 10);
 		ejemplo.addProperty("hotel_id", 14);
 		ejemplo.addProperty("tipo_hab", "premium");
@@ -69,43 +74,61 @@ public class MisReservasController {
 		ejemplo.addProperty("fecha_entrada", "2020-07-10");
 		ejemplo.addProperty("fecha_salida", "2020-07-15");
 		arrayGrande.add(ejemplo);
-		
+
 		String response = arrayGrande.toString();
 
-		HttpClient serverReservas = new HttpClient(
-				HttpClient.urlCM + "reserva/cliente/ " + sesionBean.getUsuarioID(), "GET");
+		/*
+		 * HttpClient serverReservas = new HttpClient( HttpClient.urlCM +
+		 * "reserva/cliente/ " + sesionBean.getUsuarioID(), "GET");
+		 */
 
-		JsonObject json = new JsonObject();
-		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean
-																						
+		/*
+		 * JsonObject json = new JsonObject();
+		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean 
+		*/
 
-		if (serverReservas.getResponseCode() == 200) {// Si encuentra el servidor
-			response = serverReservas.getResponseBody();
-		}
+		/*
+		 * if (serverReservas.getResponseCode() == 200) {// Si encuentra el servidor
+		 * response = serverReservas.getResponseBody(); }
+		 */
 
 		Type tipo = new TypeToken<List<ReservaBean>>() {
 		}.getType();
 		reservas = new Gson().fromJson(response, tipo);
-
+		
+		model.addAttribute("reservas", reservas);
 		model.addAttribute("mostrarReservasBean", mostarReservasBean);
 		model.addAttribute("sesionBean", sesionBean);
+
+		for (int i = 0; i < reservas.size(); i++) {
+			System.out.println(reservas.get(i));
+		}
 
 		return "misReservas";
 
 	}
+	
+	@PostMapping("/misReservas")
+	public String mostarReservasPost(
 
+			@Valid @ModelAttribute("mostarReservasBean") MostarReservasBean mostarReservasBean,
+			Model model) throws Exception {
+		
+		System.out.println("Bien");
+		
 
+		model.addAttribute("reservas", reservas);
+		model.addAttribute("mostarReservasBean", mostarReservasBean);
+		model.addAttribute("sesionBean", sesionBean);
+		
+		return "misReservas";
+	}
 	@PostMapping("/valorar")
-	public String misReservasPost(@Valid @ModelAttribute("valoracionId") String valoracionId, Model model) {
+	public String valorarPost(@Valid @ModelAttribute("valoracionId") String valoracionId, Model model) {
 
 		logger.info("Valoración recibida correctamente." + valoracionId);
 		return "redirect:misReservas";
 	}
 
-	public static Object beanToJson(Object bean) {
-		Gson gson = new Gson();
-		String JSON = gson.toJson(bean);
-		return JSON;
-	}
 
 }

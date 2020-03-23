@@ -24,35 +24,35 @@
 	 	<a href="#" onclick ="toggleReserva()">Mis Reservas</a>
   		<a href="#" onclick ="toggleHistorial()">Historial</a>
 	</div>
-	
+	<form:form method="POST" action="misReservas" modelAttribute="mostarReservasBean">
 	<div class="toggle">
 	<div id ="misreservas">
-	<c:forEach items="${misReservasBean.reservas}" var="reserva">
+	<c:forEach items="${reservas}" var="reserva">
 		<div class="reserva">
 			<p class="hotel">
-				Hotel ${reserva.hotel} en ${reserva.ciudad} <span class="fecha">De
-					${reserva.fechaInicio} a ${reserva.fechaFin} </span>
+				Hotel ${reserva.hotel_id} <span class="fecha">De
+					${reserva.fecha_entrada} a ${reserva.fecha_salida} </span>
 				<button class="factura" name="button" value="factura">Ver
 					factura</button>
 			</p>
 			<p class="habitacion">
-				Habitación: ${reserva.habitacion} <span class="tarifa">Tarifa:${reserva.tarifa}</span>
+				Habitación: ${reserva.tipo_hab} <span class="tarifa">Tarifa:${reserva.importe}</span><span class="regimen">Régimen:${reserva.regimen}</span>
 			<button onclick="toggle()" class ="cambiarReserva">Cambiar reserva</button>
 		</div>
 	</c:forEach>
 	</div>
 
 	<div id="historial">
-	<c:forEach items="${misReservasBean.reservas}" var="reserva">
+	<c:forEach items="${reservas}" var="reserva">
 
 		<div class="historial">
-			<p>Hotel ${reserva.hotel} en ${reserva.ciudad}</p>
+			<p>Hotel ${reserva.hotel_id}</p>
 
-			<p>De ${reserva.fechaInicio} a ${reserva.fechaFin}
+			<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}
 			<button class="factura" name="button" value="factura">Ver
 					factura</button>
 			</p>
-			<p>Habitación: ${reserva.habitacion}</p>
+			<p>Habitación: ${reserva.tipo_hab}</p>
 			<form method="POST" action="valorar" name="valoracionId">
 				<div class="clasificacion">
 					<input id="radio1" type="radio" name="estrellas" value="5">
@@ -71,8 +71,10 @@
 			</form>
 		</div>
 	</c:forEach>
+	</form:form>
 	</div>
 	</div>
+	
 	
 	</div>
 	</div>

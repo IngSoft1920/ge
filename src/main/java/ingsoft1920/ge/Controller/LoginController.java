@@ -83,33 +83,33 @@ public class LoginController {
 			String response = "";
 			
 			//Mandar usuario registrado correctamente a la base de datos
-			HttpClient server = new HttpClient(HttpClient.urlCM + "login", "POST");
+			HttpClient server = new HttpClient(HttpClient.urlCM + "cliente/login", "POST");
 			server.setRequestBody(objetoJson.toString());
 			if (server.getResponseCode() == 200) {//Conectado con el servidor
 				response = server.getResponseBody();
 				objetoJson = new Gson().fromJson(response, JsonObject.class);
 				int id = objetoJson.get("id").getAsInt();
-				if (id == -1) {
+				if (id == -1) { //Usuario no registrado. Mandamos de vuelta a la página de login
 					model.addAttribute("loginBean", loginBean);
 					model.addAttribute("mensajeError","El usuario no existe");
-					return "login";
-				} else {
+					resultado = "login";
+				} else { //Usuario existente y login exitoso
 					loginBean.setId(id);
 					sesionBean.setUsuarioID(id);
 					sesionBean.setUsuario(loginBean.getEmail().split("@")[0]);
-					resultado = "redirect:home";
+					resultado = "redirect:";
 				}
-			} else {
+			} else { //Conexión con el servidor fallida
 				model.addAttribute("login", loginBean);
 				model.addAttribute("mensajeError","Conexión con el servidor fallida");
 				resultado = "login";
 			} 
-		} else {
+		} else { //Datos mal introducidos al hacer el login 
 			model.addAttribute("loginBean", loginBean);
 			model.addAttribute("mensajeError", "Datos incorrectos");
 
-			return "login";
+			resultado = "login";
 		}
-		return "login";
+		return resultado;
 	}
 }

@@ -108,24 +108,27 @@ public class SignupController {
 
 			// Mandar usuario registrado correctamente a la base de datos
 
-			HttpClient server = new HttpClient(HttpClient.urlCM + "signup", "POST");
+			HttpClient server = new HttpClient(HttpClient.urlCM + "cliente", "POST");
 			server.setRequestBody(objetoJson.toString());
 			if (server.getResponseCode() == 200) { //Conexión con el servidor exitosa
 				response = server.getResponseBody();
 				objetoJson = new Gson().fromJson(response, JsonObject.class);
 				int id = objetoJson.get("id").getAsInt();
 
-				if (id == -1) { // Usuario ya existe y no queremos volver a registar. Mandamos de vuelta a la página registrar
-
+				if (id == -1) {
+					/*
+					 * Usuario ya existe y no queremos volver a registar. Mandamos de vuelta a la
+					 * página registrar No sabemos cual es el id de usuario erroneo por tanto
+					 * hacemos código temporal.
+					 */
 					model.addAttribute("signup", signupBean);
 					model.addAttribute("mensajeError", "Usuario existente");
-
 					resultado = "signup";
 				} else { //Usuario registrado correctamente
 					signupBean.setId(id);
 					sesionBean.setUsuarioID(id);
 					sesionBean.setUsuario(signupBean.getEmail().split("@")[0]);
-					resultado = "";
+					resultado = "redirect:";
 				}
 			} else { //Conexión con el servidor fallida
 				model.addAttribute("signup", signupBean);

@@ -14,11 +14,11 @@
 	<form:form method="POST" action="${loginBean.method}" modelAttribute="loginBean">
 		<br>
 		<br>
-		<label>Correo electronico</label>
+		<label>Email</label>
 		<form:input type="text" name="email" path="email" />
 		<br>
 		<br>
-		<label>Contrasena</label>
+		<label>Password</label>
 		<form:input type="password" name="password" path="password" />
 		<input type="submit" value="Entrar">
 	</form:form>

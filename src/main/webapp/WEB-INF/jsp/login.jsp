@@ -9,10 +9,10 @@
 <body style="text-align: center; background-color: #A6A3A2">
 	<div>
 		<!-- Podemos acceder a tipos basicos (String, int...) mediante esta etiqueta -->
+		<br>
 		<h1>${mensajeError}</h1>
 	</div>
 	<form:form method="POST" action="${loginBean.method}" modelAttribute="loginBean">
-		<br>
 		<br>
 		<label>Email</label>
 		<form:input type="text" name="email" path="email" />

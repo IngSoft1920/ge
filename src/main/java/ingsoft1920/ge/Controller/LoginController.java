@@ -92,7 +92,7 @@ public class LoginController {
 				if (id == -1) {
 					model.addAttribute("loginBean", loginBean);
 					model.addAttribute("mensajeError","El usuario no existe");
-					resultado = "login"; 
+					return "login";
 				} else {
 					loginBean.setId(id);
 					sesionBean.setUsuarioID(id);
@@ -108,8 +108,8 @@ public class LoginController {
 			model.addAttribute("loginBean", loginBean);
 			model.addAttribute("mensajeError", "Datos incorrectos");
 
-			resultado = "login";
+			return "login";
 		}
-		return resultado;
+		return "login";
 	}
 }

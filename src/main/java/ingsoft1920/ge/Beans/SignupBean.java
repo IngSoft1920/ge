@@ -86,7 +86,7 @@ public class SignupBean {
 		return DNI;
 	}
 
-	public void setDni(String DNI) {
+	public void setDNI(String DNI) {
 		this.DNI = DNI;
 	}
 

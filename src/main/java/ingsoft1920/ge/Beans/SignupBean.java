@@ -5,28 +5,34 @@ import org.springframework.stereotype.Component;
 //Con la etiqueta component especificamos que esta clase es un Bean 
 @Component
 public class SignupBean {
-	String usuario;
-	String password;
+	// Atributos que necesitamos
 	String nombre;
 	String apellidos;
+	String DNI;
 	String email;
-	String dni;
+	String telefono;
+	String nacionalidad;
+	String password;
 	String verificacionPassword;
 	int id;
 	
-	//En un bean siempre es necesario el constructor vacio
-	public SignupBean() {}
-	
+
+	// En un bean siempre es necesario el constructor vacio
+	public SignupBean() {
+	}
+
 	public boolean checkCamposValidos() {
 		boolean resultado = true;
-		if (usuario.isEmpty()) {
+		if (nombre.isEmpty()) {
 			resultado = false;
-		} else if (password.isEmpty() || password.compareTo(verificacionPassword) != 0) {
+		} else if (apellidos.isEmpty()) {
+			resultado = false;
+		} else if (DNI.isEmpty()) {
 			resultado = false;
 		} else if (email.isEmpty()) {
 			resultado = false;
 		} else if (!email.isEmpty()) {
-			int contador = 0; 
+			int contador = 0;
 			for (int i = 0; i < email.length(); i++) {
 				if (email.charAt(i) == '@') {
 					contador++;
@@ -43,29 +49,69 @@ public class SignupBean {
 			} else {
 				for (int j = 0; j < temporal.length(); j++) {
 					if (temporal.charAt(j) == '.') {
-						if (temporal.charAt(j) == temporal.charAt(j+1)) {
+						if (temporal.charAt(j) == temporal.charAt(j + 1)) {
 							resultado = false;
 						}
 					}
 				}
-				
+
 			}
-		} else if (dni.isEmpty()) {
+		} else if (telefono.isEmpty()) {
 			resultado = false;
-		} else if (nombre.isEmpty()) {
+		} else if (nacionalidad.isEmpty()) {
 			resultado = false;
-		} else if (apellidos.isEmpty()) {
+		} else if (password.isEmpty() || password.compareTo(verificacionPassword) != 0) {
 			resultado = false;
 		}
 		return resultado;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public String getDNI() {
+		return DNI;
+	}
+
+	public void setDni(String DNI) {
+		this.DNI = DNI;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
 	}
 
 	public String getPassword() {
@@ -76,22 +122,6 @@ public class SignupBean {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	public String getDni() {
-		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-	
 	public String getVerificacionPassword() {
 		return verificacionPassword;
 	}
@@ -103,30 +133,9 @@ public class SignupBean {
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
-	}	
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}	
-	
-	public String getNombre() {
-		return nombre;
-	}
-	
-	public String getApellidos() {
-		return apellidos;
 	}
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-	public void setVerificacionPassword(String verificacionPassword) {
-		this.verificacionPassword = verificacionPassword;
-	}	
-	
-	
 }

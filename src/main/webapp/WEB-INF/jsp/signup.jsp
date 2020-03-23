@@ -25,33 +25,37 @@
 	<form:form method="POST" action="signup" modelAttribute="signupBean">
 		<br>
 		<br>
-		<label>Nombre de usuario</label>
-		<form:input type="text" name="usuario" path="usuario" />
-		<br>
-		<br>
-		<label>Correo electronico</label>
-		<form:input type="text" name="email" path="email" />
-		<br>
-		<br>
-		<label >Contrasena</label>
-		<form:input type="password" name="password" path="password" />
-		<button class="btn btn-primary" type="button" onclick="mostrarContrasena()">Mostrar</button>
-		<br>
-		<br>
-		<label>Repetir contrasena </label>
-		<form:input type="password" name="verificacionPassword" path="verificacionPassword" />
-		<br>
-		<br>
-		<label>Dni</label>
-		<form:input type="dni" name="dni" path="dni" />
-		<br>
-		<br>
 		<label>Nombre</label>
 		<form:input type="text" name="nombre" path="nombre" />
 		<br>
 		<br>
 		<label>Apellidos</label>
 		<form:input type="text" name="apellidos" path="apellidos" />
+		<br>
+		<br>
+		<label>DNI</label>
+		<form:input type="DNI" name="DNI" path="DNI" />
+		<br>
+		<br>
+		<label>Email</label>
+		<form:input type="text" name="email" path="email" />
+		<br>
+		<br>
+		<label>Telefono</label>
+		<form:input type="text" name="telefono" path="telefono" />
+		<br>
+		<br>
+		<label>Nacionalidad</label>
+		<form:input type="text" name="nacionalidad" path="nacionalidad" />
+		<br>
+		<br>
+		<label >Password</label>
+		<form:input type="password" name="password" path="password" />
+		<button class="btn btn-primary" type="button" onclick="mostrarContrasena()">Mostrar</button>
+		<br>
+		<br>
+		<label>Repite password</label>
+		<form:input type="password" name="verificacionPassword" path="verificacionPassword" />
 		<br>
 		<br>
 		<input type="submit" value="Registrar">

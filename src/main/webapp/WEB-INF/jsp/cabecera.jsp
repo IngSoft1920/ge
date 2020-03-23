@@ -4,8 +4,6 @@
 
 
 <html>
-
-<body onload=backButton() >
 <script>
 
 function backButton(){
@@ -31,21 +29,85 @@ console.log(pageName);
 </head>
 
 <header>
+
+</header>
+
+<body onload="myRegistro()" onload="backButton()" >
+
 	<div class="topCabecera">
 		<ul id="buttonCabecera">
 			<div class="menu1Cabecera">
 				<li><a href="/"><img src="/imagenes/LogoHotel.jpg" /></li>
 			</div>
-			<div class="menu1Cabecera">
-				<li><a href="/misReservas"><i class="fa fa-book"></i>Mis
-						Reservas</li>
+			
+			
+			<div class="menu1Cabecera">			
+			<div id="redirigir1" >
+				<li><a href="/login">
+				<i class="fa fa-book">
+				</i>Mis Reservas</li>			
 			</div>
-			<div class="menu1Cabecera">
-				<li><a href="/servicios"><i class="fa fa-glass"></i>Servicios</li>
 			</div>
+			
+			
 			<div class="menu1Cabecera">
-				<li><a href="/incidencias"><i class="fa fa-pencil"></i>Incidencias</li>
+			<div id="redirigir2">
+				<li><a href="/login">
+				<i class="fa fa-glass">
+				</i>Servicios</li>			
+			</div>		
+			</div>	
+			
+			
+			<div class="menu1Cabecera">
+			<div id="redirigir3" >
+				<li><a href="/reservas">
+				<i class="fa fa-book">
+				</i>Mis Reservas</li>		
 			</div>
+			</div>
+			
+			
+			<div class="menu1Cabecera">
+			<div id="redirigir4">
+				<li><a href="/servicios">
+				<i class="fa fa-glass">
+				</i>Servicios</li>			
+			</div>
+			</div>
+			
+			<script type="text/javascript">			
+			
+			function myRegistro(){
+				
+				var sessiones = '${sesionBean.usuario}';
+				
+				if (sessiones == "LogIn" || sessiones == "") {
+					document.getElementById("redirigir1").style.display = "inline-block";
+					
+					document.getElementById("redirigir2").style.display = "inline-block";
+					
+
+					document.getElementById("redirigir3").style.display = "none";
+					
+					document.getElementById("redirigir4").style.display = "none";
+					
+				} else {
+					document.getElementById("redirigir1").style.display = "none";
+					
+					
+					document.getElementById("redirigir2").style.display = "none";					
+
+
+					document.getElementById("redirigir3").style.display = "inline-block";
+					
+					document.getElementById("redirigir4").style.display = "inline-block";
+				
+				}
+				
+			}			
+			
+			</script>
 
 
 
@@ -81,7 +143,7 @@ console.log(pageName);
 				</div> <script>
 						function myHotel() {
 							var sessiones = '${sesionBean.usuario}';
-							if (sessiones == "LogIn") {
+							if (sessiones == "LogIn" || sessiones == "") {
 								var popup = document.getElementById("myPopup");
 								popup.classList.toggle("show");
 							} else {
@@ -90,26 +152,48 @@ console.log(pageName);
 								popup.classList.toggle("show");
 							}
 						}
-					</script>
-
-
-
+</script>
 
 			</li>
 
 		</ul>
 
 	</div>
-</header>
-
-<body>
-
 </body>
 
 
 </html>
 
 <!--  
+<body onload=backButton() >
+<script>
+
+function backButton(){
+var pageName = window.location.href;
+
+if(pageName=="http://localhost:7004/index" || pageName=="http://localhost:7004/home"){
+    document.getElementById('backbut').style.visibility = 'hidden';
+}
+console.log(pageName);
+}
+
+</script>
+
+-->
+<!--  
+
+
+
+
+
+
+			<div class="menu1Cabecera">
+				<li><a href="/incidencias"><i class="fa fa-pencil"></i>Incidencias</li>
+			</div>
+
+
+
+
 
 				<div class="popup1" onclick="myMenu()">
 				

@@ -88,7 +88,24 @@
 
 <input type="hidden" name="tipoServicio" value="${servicio.nombre}"/>
 <input type="hidden" name="hotel_id" value="${servicio.id}"/>
-	<input type="submit" id="reservar" value="Reservar">
+<input type="submit" id="reservar" value="Reservar" onclick="reservamos()"/>
+	
+	<script type="text/javascript">
+	function reservamos() {
+		var sessiones = '${sesionBean.usuario}';
+		
+		/**
+		if (sessiones == "LogIn" || sessiones == "") {
+			var popup = document.getElementById("myPopup");
+			popup.classList.toggle("show");
+		} else {
+			var popup = document
+					.getElementById("UserPopup");
+			popup.classList.toggle("show");
+		}**/
+	}
+	
+	</script>
 	</div>
 		</form:form>
 	
@@ -109,7 +126,7 @@
 <br>
 
 <div class="botonUltimo">
-<a href="misRerservas.jsp"><button> Seguimos con la reserva </button> </a>
+<a href="datos"><button> Seguimos con la reserva </button> </a>
 </div>
 
 

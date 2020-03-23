@@ -36,6 +36,7 @@ public class MisReservasController {
 	@Autowired
 	MisReservasBean misReservasBean;
 	
+	@Autowired
 	SesionBean sesionBean;
 
 	List<ReservaBean> reservas;

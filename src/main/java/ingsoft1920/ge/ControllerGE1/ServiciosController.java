@@ -70,6 +70,7 @@ public class ServiciosController {
 		for(int i=0;i<nombres.size();i++) {
 			serviciosList.add(nombres.get(i).getAsString());	
 		}
+		
 		//igual pero con los identificadores de los servicios
 		JsonArray ids= obj.get("servicios_disponibles_id").getAsJsonArray();
 		int[] ides= new int[ids.size()];
@@ -78,7 +79,7 @@ public class ServiciosController {
 		}
 		servicios_id=ides;
 
-		return new ModelAndView("encargarComidaAlfonso","servicios_de_un_hotel", serviciosList);
+		return new ModelAndView("servicios","servicios_de_un_hotel", serviciosList);
 	}
 
 

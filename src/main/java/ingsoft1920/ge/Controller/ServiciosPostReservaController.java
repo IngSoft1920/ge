@@ -33,7 +33,9 @@ public class ServiciosPostReservaController {
 	@Autowired
 	ServiciosDisponiblesPostReservaBean serviciosDisponibles;
 
+	@Autowired
 	SesionBean sesionBean;
+	
 
 	List<ServiciosPostReservaBean> servicios;
 

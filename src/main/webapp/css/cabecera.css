@@ -35,13 +35,33 @@
  }
  
  .menu1Cabecera{
-   display: inline-block;
+   /*display: inline-block;*/
  font-family: Arial;
  font-size: 18px;
  float: left;
  padding: 10px;
   color:#b8b078;
   margin-left: 10px;
+ /*display:none;*/
+
+ }
+ 
+  
+ #redirigir1{
+ display:none;
+ }
+ 
+  
+ #redirigir2{
+ display:none;
+ }
+ 
+ #redirigir3{
+ display:none;
+ }
+ 
+ #redirigir4{
+ display:none;
  }
  
  a:link{

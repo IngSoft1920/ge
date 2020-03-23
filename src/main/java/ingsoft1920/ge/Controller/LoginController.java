@@ -73,31 +73,43 @@ public class LoginController {
 	@PostMapping("/login")
 	public String loginPost(@Valid @ModelAttribute("loginBean") LoginBean loginBean, Model model) throws Exception {
 
+		String resultado = "";
 		if (loginBean.checkCamposValidos()) {
 			logger.info("Peticion de Log In recibida correctamente y con campos validos");
 
-			JsonObject obj = new JsonObject();
-			obj.addProperty("email", loginBean.getUsuario());
-			obj.addProperty("password", loginBean.getPassword());
+			JsonObject objetoJson = new JsonObject();
+			objetoJson.addProperty("email", loginBean.getEmail());
+			objetoJson.addProperty("password", loginBean.getPassword());
 			String response = "";
-
-			// Pruebas de SessionScope sin conexión al servidor
-			loginBean.setId(1);
-
-			/*
-			 * Guarda el email del usuario en el sesion bean sesionBean = new SesionBean(new
-			 * UsuarioModel(loginBean));
-			 */
-			sesionBean.setUsuarioID(1);
-			sesionBean.setUsuario(loginBean.getUsuario().split("@")[0]);
-
-			return "redirect:";
+			
+			//Mandar usuario registrado correctamente a la base de datos
+			HttpClient server = new HttpClient(HttpClient.urlCM + "login", "POST");
+			server.setRequestBody(objetoJson.toString());
+			if (server.getResponseCode() == 200) {//Conectado con el servidor
+				response = server.getResponseBody();
+				objetoJson = new Gson().fromJson(response, JsonObject.class);
+				int id = objetoJson.get("id").getAsInt();
+				if (id == -1) {
+					model.addAttribute("loginBean", loginBean);
+					model.addAttribute("mensajeError","El usuario no existe");
+					resultado = "login"; 
+				} else {
+					loginBean.setId(id);
+					sesionBean.setUsuarioID(id);
+					sesionBean.setUsuario(loginBean.getEmail().split("@")[0]);
+					resultado = "redirect:home";
+				}
+			} else {
+				model.addAttribute("login", loginBean);
+				model.addAttribute("mensajeError","Conexión con el servidor fallida");
+				resultado = "login";
+			} 
 		} else {
-		
 			model.addAttribute("loginBean", loginBean);
-			model.addAttribute("mensajeError", "Email o password no existe");
-		}
+			model.addAttribute("mensajeError", "Datos incorrectos");
 
-		return "login";
+			resultado = "login";
+		}
+		return resultado;
 	}
 }

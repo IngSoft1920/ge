@@ -15,11 +15,11 @@
 </script>
 
 <html>
-<head>Signup
-</head>
+<head>signup</head>
 <body style="text-align: center; background-color: #A6A3A2">
 	<div>
 		<!-- Podemos acceder a tipos basicos (String, int...) mediante esta etiqueta -->
+		<br>
 		<h1>${mensajeError}</h1>
 	</div>
 	<form:form method="POST" action="signup" modelAttribute="signupBean">
@@ -34,7 +34,7 @@
 		<br>
 		<br>
 		<label>DNI</label>
-		<form:input type="DNI" name="DNI" path="DNI" />
+		<form:input type="text" name="DNI" path="DNI" />
 		<br>
 		<br>
 		<label>Email</label>

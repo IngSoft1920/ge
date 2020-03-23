@@ -34,7 +34,7 @@ public class pruebaConexion {
 //				}
 		//serviciosEnviar();
 		
-		serviciosEnviar();
+		recibirPlatos();
 		
 	}
 	//recibir servicios

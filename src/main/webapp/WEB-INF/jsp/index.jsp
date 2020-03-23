@@ -91,7 +91,7 @@
       </div>
       
 
-      <div class="card" onclick="document.location = '/recibirServicios'">
+      <div class="card" onclick="document.location = '/recibirPlatos'">
         <div class="container", style="padding-top:20px">
           <a><b>Servicios</b></a> 
           <p>¡Acceda para gestionar y reportar los servicios solicitados!</p> 

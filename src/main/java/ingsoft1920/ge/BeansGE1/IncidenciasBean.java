@@ -1,6 +1,7 @@
 package ingsoft1920.ge.BeansGE1;
 
 import org.springframework.stereotype.Component;
+
 import org.springframework.web.context.annotation.SessionScope;
 
 @Component
@@ -10,8 +11,13 @@ public class IncidenciasBean {
 	
 	private String asunto;
 	private String mensaje;
+	
 	public String getAsunto() {
 		return asunto;
+	}
+	@Override
+	public String toString() {
+		return "IncidenciasBean [asunto=" + asunto + ", mensaje=" + mensaje + "]";
 	}
 	public void setAsunto(String asunto) {
 		this.asunto = asunto;

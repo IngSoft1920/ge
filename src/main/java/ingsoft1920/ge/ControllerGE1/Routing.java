@@ -4,6 +4,7 @@ package ingsoft1920.ge.ControllerGE1;
 
 
 import java.util.List;
+
 import java.util.LinkedList;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.ControllerGE1.VerReservasController;
+import ingsoft1920.ge.ControllerGE1.EncargarComidaController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 
@@ -52,15 +54,17 @@ public class Routing {
 		return "servicios";
 	}
 	
-	@GetMapping("/incidencias")
-	public String incidencias() {
-
-		return "incidencias";
-	}
-	@GetMapping("/onload")
-	public void onload() throws Exception {
-		ReservarMesaController.recibirRestaurantes();
-		ServiciosController.recibirServicios();
+//	@GetMapping("/incidencias")
+//	public String incidencias() {
+//
+//		return "incidencias";
+//	}
+//	@GetMapping("/recibirPlatos")
+//	public String onload() throws Exception {
+//		EncargarComidaController.recibirPlatos();
+//		EncargarComidaController.recibirItems();
+//		return "encargarComidaAlfonso";
+//		
 	}
 //	@GetMapping("/serviciosAlfonso")
 //	public ModelAndView serviciosAlfonso() throws Exception {
@@ -85,7 +89,7 @@ public class Routing {
 //		return "incidencias";
 //	}
 //	
-}
+
 /*HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 
 		//enviar nombre del hotel

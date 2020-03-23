@@ -2,6 +2,7 @@ package ingsoft1920.ge.ControllerGE1;
 
 import java.util.Calendar;
 
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -34,9 +35,11 @@ public class IncidenciasController {
 
 
 	//enviar incidencia
-	@PostMapping("/enviarIncidencia") //cambiar endpoint
+	@GetMapping("/incidencias") //cambiar endpoint
 	public  String enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
 			Model model) throws Exception {
+		
+		System.out.print(incidencias.toString());
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/endpoint", "POST");
 

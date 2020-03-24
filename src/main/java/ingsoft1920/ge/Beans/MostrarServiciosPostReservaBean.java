@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MostrarServiciosPostReservaBean {
 	
-	private  String tipoServicio;
+	private String tipoServicio;
 	private int numPersonas;
 	private String fecha;
 	private String hora;

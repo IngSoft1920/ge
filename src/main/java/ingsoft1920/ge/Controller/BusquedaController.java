@@ -266,6 +266,14 @@ public class BusquedaController {
 					.filter(hotel -> hotel.getHabitaciones().size() > 0)
 					.collect(Collectors.toList()));
 			
+			if(hotelesDisponibles.getHoteles().size() == 0) {
+				model.addAttribute("error", "No hay habitaciones disponibles");
+				model.addAttribute("ciudades", ciudades);
+				model.addAttribute("busquedaBean", busquedaBean);
+				model.addAttribute("sesionBean", sesionBean);
+				return "buscador";
+			}
+			
 			model.addAttribute("hotelesDisponibles", hotelesDisponibles);
 			model.addAttribute("hoteles", hoteles);
 		}

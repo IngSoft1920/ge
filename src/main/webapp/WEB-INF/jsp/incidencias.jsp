@@ -50,32 +50,44 @@ label {
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
 		<form action="/informarIncidencia" method="get">
-			<br> <label>Asunto</label> <br> <select name="asunto"
-				style="margin-top: 5px; margin-bottom: 10px">
+			<br> <label style="font-size: 18px; margin-right: 10px;">Asunto</label>
+			<select name="asunto" style="margin-top: 5px; margin-bottom: 10px">
 				<option id="LIMPIEZA">Limpieza</option>
 				<option id="MANTENIMIENTO">Mantenimiento</option>
 				<!-- De momento son los asuntos establecidos por DHO -->
-			</select> 
-			<br>
-			<select name="mensaje"
+			</select> <br> <label style="font-size: 18px; margin-right: 10px;">Mensaje</label><select
+				name="mensaje" id="eleccion"
 				style="margin-top: 5px; margin-bottom: 10px">
 				<option>Mensaje predeterminado 1 (por establecer)</option>
 				<option>Mensaje predeterminado 2 (por establecer))</option>
-				<option>Otro...</option>
-			</select> 
-			
-		<!--   <label>Mensaje</label><br>
-			<textarea name="mensaje"
-				style="margin-top: 5px; margin-bottom: 10px">
-				</textarea>-->	
-				
-				
-			<br> <br> <input type="submit" value="Enviar"> <input
+				<option value=1>Otro...</option>
+			</select> <br>
+ 
+			<textarea id="mensaje" class="form-control " cols="30" rows="5"
+				placeholder="Escribe tu mensaje" hidden></textarea>
+
+			<br> <input type="submit" value="Enviar"> <input
 				type="reset" value="Borrar">
 		</form>
 	</div>
 
 
+	<!-- necesario para el script -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+
+	<script>
+		$('#eleccion').change(function() {
+			//asigna el valor a la variable opcion
+			var opcion = $(this).val();
+			//si la opción es 1 (otro)
+			if (opcion == 1) {
+				//muestra el text area de mensaje
+				$('#mensaje').show();
+			}
+		})
+	</script>
 
 </body>
 </html>

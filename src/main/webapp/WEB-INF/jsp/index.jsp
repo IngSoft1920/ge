@@ -84,7 +84,7 @@
        
 
 
-      <div class="card" onclick="document.location = '/servicios'">
+      <div class="card" onclick="document.location = '/recibirServicios'">
         <div class="container", style="padding-top:20px">
           <a><b>Servicios</b></a> 
           <p>：Gestione los servicios solicitados!</p> 

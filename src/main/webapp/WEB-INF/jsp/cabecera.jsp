@@ -55,7 +55,7 @@ console.log(pageName);
 						Reservas</li>
 			</div>
 			<div class="menu1Cabecera">
-				<li><a href="/servicios"><i class="fa fa-glass"></i>Servicios</li>
+				<li><a href="/recibirReservas"><i class="fa fa-glass"></i>Servicios</li>
 			</div>
 			<div class="menu1Cabecera">
 				<li><a href="/incidencias"><i class="fa fa-pencil"></i>Incidencias</li>

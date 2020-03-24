@@ -28,20 +28,20 @@ public class IncidenciasController {
 	final static Logger logger = LogManager.getLogger(IncidenciasController.class.getName());
 
 	Calendar calendario = Calendar.getInstance();
-	
+
 	@Autowired
 	SesionBean sesion;
 	VerReservasBean reservas;
 
 
 	//enviar incidencia
-	@GetMapping("/incidencias") //cambiar endpoint
-	public  String enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
+	@PostMapping("/informarIncidencia")
+	public int enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
 			Model model) throws Exception {
-		
+
 		System.out.print(incidencias.toString());
 
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/endpoint", "POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
 
 		JsonObject json = new JsonObject();
 		json.addProperty("asunto",incidencias.getAsunto());
@@ -51,54 +51,17 @@ public class IncidenciasController {
 				calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.DATE));
 		json.addProperty("hora", calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE));
 		json.addProperty("lugar", "H49");//habitacion de prueba, de momento solo se pueden enviar habitaciones
-		
-		
+
+
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
 
-		String resp="";
 		if(respCode==200) {
-			resp=client.getResponseBody();
+			client.getResponseBody();
 		}
 
-		return "incidencias";
-	}
-
-	//recibir servicios reservados por un cliente
-		public  String recibirServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios,
-				Model model) throws Exception {
-
-			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
-
-			//enviar id_cliente e id_reserva
-			JsonObject json = new JsonObject();
-			json.addProperty("id_cliente", sesion.getUsuarioID()); //coger id_usuario de la sesionBean
-			json.addProperty("id_estancia", reservas.getId_reserva()); //coger id_reserva de VerReservasBean
-			client.setRequestBody(json.toString());
-
-			int respCode = client.getResponseCode();
-
-			String resp="";
-			if(respCode==200) {
-				resp=client.getResponseBody();
-			}
-			return resp;
-		}
-	//recibir asuntos disponibles
-	public String recibirAsuntos(Model model) throws Exception {
-
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/*no se sabe endpoint", "POST");
-
-		client.setRequestBody("*no se sabe que piden*");
-
-		int respCode = client.getResponseCode();
-
-		String resp="";
-		if(respCode==200) {
-			resp=client.getResponseBody();
-		}
-		return resp;
+		return respCode;
 	}
 
 

@@ -23,7 +23,7 @@
 
     .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     padding: 10px;
     justify-content: center;
     width:100%;
@@ -31,15 +31,15 @@
     position: absolute;
     }
     .card {
-    background-color: #B0C4DE;
-    opacity: 90%;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    background-color: #333;
+    opacity: 95%;
+    border: 3px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
-    margin-top: 120px;
+    margin-top: 180px;
     margin-left: 60px;
     margin-right: 60px;
-    height: 70%;
+    height: 50%;
     }
     
     a{
@@ -56,10 +56,10 @@
     font-size: 20px;
     }
     .imagensilla{
-    width: 100%;
+    width: 105%;
     height: 100%;
     position: absolute;
-    opacity: 60%;
+    opacity: 85%;
     }
     </style>
     
@@ -75,32 +75,27 @@
  
     <body >
 
-<img class="imagensilla" src="https://cosaspracticas.lasprovincias.es/wp-content/uploads/hoteles.jpg">
-
-
-    </button> 
+<img class="imagensilla" src="/imagenes/fondo2.jpg">
        <div class="grid-container">
-       <div class="card" onclick="document.location = '/recibirReservas'">
-        <div class="container", style="padding-top:20px">
-          <a><b>Reservas</b></a> 
-          <p>¡Acceda para gestionar su reserva!</p> 
-<i class="far fa-address-card" style="color:white; size:20px;"></i>
+       
+       
+       
+       
+       
 
-          
-        </div>
-      </div>
-      
 
-      <div class="card" onclick="document.location = '/recibirRestaurantes'">
+      <div class="card" onclick="document.location = '/servicios'">
         <div class="container", style="padding-top:20px">
           <a><b>Servicios</b></a> 
-          <p>¡Acceda para gestionar y reportar los servicios solicitados!</p> 
+          <p>：Gestione los servicios solicitados!</p> 
+          <i class="far fa-address-card" style="color:white;"></i>
+          
         </div>
       </div>
       
         <div class="card" onclick="document.location = '/incidencias'">
         <div class="container", style="padding-top:20px">
-          <a href="/incidencias"><b>Incidencias</b></a> 
+          <a><b>Incidencias</b></a> 
           <p>¡Acceda para gestionar y reportar los servicios solicitados!</p>
           <i class="far fa-edit"></i>
 
@@ -113,5 +108,4 @@
 
 
     </body>
-   
 </html>

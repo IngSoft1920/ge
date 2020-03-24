@@ -54,11 +54,11 @@ public class Routing {
 		return "servicios";
 	}
 	
-//	@GetMapping("/incidencias")
-//	public String incidencias() {
-//
-//		return "incidencias";
-//	}
+	@GetMapping("/incidencias")
+	public String incidencias() {
+
+		return "incidencias";
+	}
 //	@GetMapping("/recibirPlatos")
 //	public String onload() throws Exception {
 //		EncargarComidaController.recibirPlatos();

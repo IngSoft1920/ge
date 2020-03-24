@@ -25,33 +25,22 @@
 </head>
 
 <body>
-<div class="ServiciosZona">
-<h1 class="tituloServicios"> �Quiere algun servicio mas?
-<img src="/imagenes/thankyou.gif">
- </h1>
-
-</div>
-
-	
-
-<div class="fila_1">
 
 
+	<div class="fila_1">
 
-	 <c:forEach items="${servicios}" var="servicio">
-	 
-	 	<div class="mitad_fila">
-	<h3> ${servicio.nombre} </h3>
-	
-	
-	<div class="imagenfila">
-	<img src="/imagenes/${servicio.nombre}.jpg">
-		<div class="centrarTodo">
-	�Aprovecha nuestras instalaciones como ${servicio.nombre} y disfruta!
-	</div>
+		<c:forEach items="${servicios}" var="servicio">
 
-					<form:form method="POST" action="serviciosExtras"
-						modelAttribute="mostrarServiciosPostReservaBean">
+			<form:form method="POST" modelAttribute="serviciosReservados"
+				action="">
+				<div class="mitad_fila">
+					<h3 name="tipoServicio" value="${servicio.nombre}">${servicio.nombre}</h3>
+
+					<div class="imagenfila">
+						<img src="/imagenes/${servicio.nombre}.jpg">
+						<div class="centrarTodo">�Aprovecha nuestras instalaciones
+							como ${servicio.nombre} y disfruta!</div>
+
 						<div class="centrarTodo3">
 							<select name="numPersonas">
 								<option value="0">Personas:</option>
@@ -69,52 +58,29 @@
 						</div>
 						<div class="centrarTodo4">
 
-							<input type="text" name="fecha" path="fecha" placeholder="Fecha"
-								onfocus="(this.type='date')" onblur="(this.type='text')">
-							</input>
+							<input type="text" name="fecha" placeholder="Fecha"
+								onfocus="(this.type='date')" onblur="(this.type='text')" />
 						</div>
 
-<input type="hidden" name="tipoServicio" value="${servicio.nombre}"/>
-<input type="hidden" name="hotel_id" value="${servicio.id}"/>
-<input type="submit" id="reservar" value="Reservar" onclick="reservamos()"/>
-	
-	<script type="text/javascript">
-	function reservamos() {
-		var sessiones = '${sesionBean.usuario}';
-		
-		/**
-		if (sessiones == "LogIn" || sessiones == "") {
-			var popup = document.getElementById("myPopup");
-			popup.classList.toggle("show");
-		} else {
-			var popup = document
-					.getElementById("UserPopup");
-			popup.classList.toggle("show");
-		}**/
-	}
-	
-	</script>
+						<input type="submit" id="reservar" value="Reservar" />
+
+					</div>
+
+				</div>
+
+			</form:form>
+
+		</c:forEach>
 	</div>
+
+	<br>
+	<br>
+
+	<div class="botonUltimo">
+		<form:form method="POST" action="continuar">
+			<input type="submit" value="Continuar con la reserva"/>
 		</form:form>
-	
-	
 	</div>
-	 
-	 </c:forEach>
-	
-
-
-
-
-</div>
-
-<br>
-<br>
-
-<div class="botonUltimo">
-<a href="datos"><button> Seguimos con la reserva </button> </a>
-</div>
-
 
 </body>
 </html>

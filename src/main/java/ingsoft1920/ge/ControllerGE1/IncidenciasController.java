@@ -35,8 +35,7 @@ public class IncidenciasController {
 
 
 	//enviar incidencia
-	@GetMapping("/incidencias") //cambiar endpoint
-	public  String enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
+	public String enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
 			Model model) throws Exception {
 		
 		System.out.print(incidencias.toString());
@@ -62,7 +61,7 @@ public class IncidenciasController {
 			resp=client.getResponseBody();
 		}
 
-		return "incidencias";
+		return "";
 	}
 
 	//recibir servicios reservados por un cliente

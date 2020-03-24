@@ -11,7 +11,7 @@
 	<form action="/enviarComanda" method="get">
 	<c:forEach var="platos" items="${todo.platos}">
         <input type="checkbox" name="platos" value="${platos}" >${platos}</input> <br></br>
-         <input name=platos type="text"> Cantidad</input> <br></br>
+         <input type="text"> Cantidad</input> <br></br>
 
     </c:forEach>
     

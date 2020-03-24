@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<body >
+<body>
 	<style>
 .aspecto {
 	margin: 20px;
@@ -29,10 +29,12 @@
 	padding: 10px;
 	background-color: #B0C4DE;
 	opacity: 80%;
-    }
-        label{
-    font-size:20px
-    }
+}
+
+label {
+	font-size: 20px
+}
+
 .parte1 {
 	grid-column-start: 1;
 	grid-column-end: 5;
@@ -40,44 +42,40 @@
 </style>
 
 	<!-- Cabecera de la pagina -->
-	<div style="margin-top: 40px; background-color: #B0C4DE; opacity: 60%;" >
+	<div style="margin-top: 40px; background-color: #B0C4DE; opacity: 60%;">
 		<h1
 			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Incidencias</h1>
 	</div>
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
-		<form action="/incidencias" method="get">
-				</textarea> <br>
-				<label>Asunto</label> <br>
-				<select name="Asunto" style="margin-top:5px; margin-bottom:10px">
-						<option id="LIMPIEZA">Limpieza</option>
-						<option id="MANTENIMIENTO">Mantenimiento</option>
-					<!-- De momento son los asuntos establecidos por DHO -->
-				</select>
-				<br><br>
-				<label>Mensaje</label><br>
-				<textarea name="mensaje" placeholder="Escriba su mensaje" style="margin-top:5px; margin-bottom:10px">
-				</textarea> 
-				<br><br>
-				<input type="submit" onclick="popup()" value="Enviar">
+		<form action="/informarIncidencia" method="get">
+			<br> <label>Asunto</label> <br> <select name="asunto"
+				style="margin-top: 5px; margin-bottom: 10px">
+				<option id="LIMPIEZA">Limpieza</option>
+				<option id="MANTENIMIENTO">Mantenimiento</option>
+				<!-- De momento son los asuntos establecidos por DHO -->
+			</select> 
+			<br>
+			<select name="mensaje"
+				style="margin-top: 5px; margin-bottom: 10px">
+				<option>Mensaje predeterminado 1 (por establecer)</option>
+				<option>Mensaje predeterminado 2 (por establecer))</option>
+				<option>Otro...</option>
+			</select> 
+			
+		<!--   <label>Mensaje</label><br>
+			<textarea name="mensaje"
+				style="margin-top: 5px; margin-bottom: 10px">
+				</textarea>-->	
+				
+				
+			<br> <br> <input type="submit" value="Enviar"> <input
+				type="reset" value="Borrar">
 		</form>
 	</div>
-	
-	<div class="card" id="procesarIncidencia">
-		Incidencia enviada con éxito
-		<div class="boton">
-			<input type="submit" onclick="document.location ='/index'"
-				value="Volver al inicio" />
-		</div>
 
-	</div>
 
-	<script>
-	function popup(){
-		document.getElementById("procesarIncidencia").style.display = "block";
-		}
-	</script>
 
 </body>
 </html>

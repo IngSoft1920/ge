@@ -96,8 +96,8 @@
         <div class="card" onclick="document.location = '/incidencias'">
         <div class="container", style="padding-top:20px">
           <a><b>Incidencias</b></a> 
-          <p>，cceda para reportar incidencias!</p>
-          <i class="far fa-edit" style="color:white;"></i>
+          <p>¡Acceda para gestionar y reportar los servicios solicitados!</p>
+          <i class="far fa-edit"></i>
 
            
         </div>

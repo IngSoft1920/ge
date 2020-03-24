@@ -49,7 +49,7 @@ label {
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
-		<form action="/informarIncidencia" method="get	">
+		<form action="/incidencias" method="get	">
 			<br> <label style="font-size: 18px; margin-right: 10px;">Asunto</label>
 			<select name="asunto" style="margin-top: 5px; margin-bottom: 10px">
 				<option id="LIMPIEZA">Limpieza</option>

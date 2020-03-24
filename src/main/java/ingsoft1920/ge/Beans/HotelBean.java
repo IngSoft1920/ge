@@ -1,5 +1,6 @@
 package ingsoft1920.ge.Beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -19,6 +20,10 @@ public class HotelBean {
 	private List<CategoriaBean> categorias;
 	
 	private List<HabitacionBean> habitaciones;
+	
+	public HotelBean () {
+		habitaciones = new ArrayList<HabitacionBean>();
+	}
 	
 	@Override
 	public String toString () {

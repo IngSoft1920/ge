@@ -26,7 +26,7 @@
 
 <body>
 <div class="ServiciosZona">
-<h1 class="tituloServicios"> ¿Quiere algun servicio mas?
+<h1 class="tituloServicios"> ï¿½Quiere algun servicio mas?
 <img src="/imagenes/thankyou.gif">
  </h1>
 
@@ -47,44 +47,32 @@
 	<div class="imagenfila">
 	<img src="/imagenes/${servicio.nombre}.jpg">
 		<div class="centrarTodo">
-	¡Aprovecha nuestras instalaciones como ${servicio.nombre} y disfruta!
+	ï¿½Aprovecha nuestras instalaciones como ${servicio.nombre} y disfruta!
 	</div>
-	
-	<form:form method="POST" action="serviciosExtras" modelAttribute="mostrarServiciosPostReservaBean">
-		<div class="centrarTodo3">
-	<select name="numPersonas">
-                         <option value="0">Personas:</option><option value="1">1</option>
-                         <option value="2">2</option>
-                         <option value="3">3</option>
-                         <option value="4">4</option>
-                         <option value="5">5</option>
-                         <option value="6">6</option>
-                         <option value="7">7</option>
-                         <option value="8">8</option>
-                         <option value="9">9</option>
-                         <option value="10">10</option>
-       </select>
-	   </div>
-	   	<div class="centrarTodo4">
 
-		<input type="text" name="fecha" path="fecha"
-								placeholder="Fecha" onfocus="(this.type='date')"
-								onblur="(this.type='text')"> </input>
-	 </div>
-	 
-	 	<div class="centrarTodo5">
-	   			<select name="horas">
-                         <option value="0">Ver Horas:</option>						 
-						 <option value="hora">${hora}</option>
-						
-       </select>
-	   
-	   			
+					<form:form method="POST" action="serviciosExtras"
+						modelAttribute="mostrarServiciosPostReservaBean">
+						<div class="centrarTodo3">
+							<select name="numPersonas">
+								<option value="0">Personas:</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</div>
+						<div class="centrarTodo4">
 
-       </div>
-	   
-	
-		<div class="centrarTodo2">
+							<input type="text" name="fecha" path="fecha" placeholder="Fecha"
+								onfocus="(this.type='date')" onblur="(this.type='text')">
+							</input>
+						</div>
 
 <input type="hidden" name="tipoServicio" value="${servicio.nombre}"/>
 <input type="hidden" name="hotel_id" value="${servicio.id}"/>
@@ -108,8 +96,6 @@
 	</script>
 	</div>
 		</form:form>
-	
-	</div>
 	
 	
 	</div>

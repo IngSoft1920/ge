@@ -96,11 +96,10 @@ HttpClient.urlCM + "hotel/servicios/" + mostrarServiciosPostReservaBean.getHotel
 	}
 
 	@PostMapping("/serviciosExtras")
-	public String mostarServiciosPost(
-
-			@Valid @ModelAttribute("mostrarServiciosPostReservaBean") MostrarServiciosPostReservaBean mostrarServiciosPostReservaBean,
+	public String mostarServiciosPost(@Valid @ModelAttribute("mostrarServiciosPostReservaBean") 
+			MostrarServiciosPostReservaBean mostrarServiciosPostReservaBean,
 			Model model) throws Exception {
-		System.out.println(""+mostrarServiciosPostReservaBean.getHora()+"ID"+mostrarServiciosPostReservaBean.getHotel_id()+"Fecha"+mostrarServiciosPostReservaBean.getFecha()+"TIPO "+mostrarServiciosPostReservaBean.getTipoServicio()+"num personas"+mostrarServiciosPostReservaBean.getNumPersonas());
+		// System.out.println(""+mostrarServiciosPostReservaBean.getHora()+"ID"+mostrarServiciosPostReservaBean.getHotel_id()+"Fecha"+mostrarServiciosPostReservaBean.getFecha()+"TIPO "+mostrarServiciosPostReservaBean.getTipoServicio()+"num personas"+mostrarServiciosPostReservaBean.getNumPersonas());
 		
 		model.addAttribute("servicios", servicios);
 		model.addAttribute("mostarServiciosPostReservaBean", mostrarServiciosPostReservaBean);

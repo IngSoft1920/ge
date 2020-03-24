@@ -5,13 +5,12 @@
 
 <html>
 
-<body onload=backButton() >
 <script>
 
 function backButton(){
 var pageName = window.location.href;
 
-if(pageName=="http://localhost:7004/index" || pageName=="http://localhost:7004/home" || pageName=="http://localhost:7004/"){
+if(pageName=="http://localhost:7004/index" || pageName=="http://localhost:7004/home"){
     document.getElementById('backbut').style.visibility = 'hidden';
 }
 console.log(pageName);
@@ -30,36 +29,78 @@ console.log(pageName);
 	rel="stylesheet">
 </head>
 
-<header>
+<header> </header>
+
+<body onload="myRegistro()" onload="backButton()">
+
 	<div class="topCabecera">
 		<ul id="buttonCabecera">
-						 
- <li><button id="backbut" value="back" onclick="history.back()" style="
-    float:left;
-    margin-top: 14px;
-    color: white;
-    border-radius: 50%;
-    border: none;
-    background: #b8b078;
-    font-family: cursive;
-    width: 30px;
-    height:30px;
-    text-align: center;">&#8249;
-    </button></li>
- 
- <div class="menu1Cabecera">
+			<div class="menu1Cabecera">
 				<li><a href="/"><img src="/imagenes/LogoHotel.jpg" /></li>
 			</div>
+
+
 			<div class="menu1Cabecera">
-				<li><a href="/misReservas"><i class="fa fa-book"></i>Mis
-						Reservas</li>
+				<div id="redirigir1">
+					<li><a href="/login"> <i class="fa fa-book"> </i>Mis
+							Reservas</li>
+				</div>
 			</div>
+
+
 			<div class="menu1Cabecera">
-				<li><a href="/recibirReservas"><i class="fa fa-glass"></i>Servicios</li>
+				<div id="redirigir2">
+					<li><a href="/login"> <i class="fa fa-glass"> </i>Servicios</li>
+				</div>
 			</div>
+
+
 			<div class="menu1Cabecera">
-				<li><a href="/incidencias"><i class="fa fa-pencil"></i>Incidencias</li>
+				<div id="redirigir3">
+					<li><a href="/reservas"> <i class="fa fa-book"> </i>Mis
+							Reservas</li>
+				</div>
 			</div>
+
+
+			<div class="menu1Cabecera">
+				<div id="redirigir4">
+					<li><a href="/servicios"> <i class="fa fa-glass"> </i>Servicios</li>
+				</div>
+			</div>
+
+			<script type="text/javascript">			
+			
+			function myRegistro(){
+				
+				var sessiones = '${sesionBean.usuario}';
+				
+				if (sessiones == "LogIn" || sessiones == "") {
+					document.getElementById("redirigir1").style.display = "inline-block";
+					
+					document.getElementById("redirigir2").style.display = "inline-block";
+					
+
+					document.getElementById("redirigir3").style.display = "none";
+					
+					document.getElementById("redirigir4").style.display = "none";
+					
+				} else {
+					document.getElementById("redirigir1").style.display = "none";
+					
+					
+					document.getElementById("redirigir2").style.display = "none";					
+
+
+					document.getElementById("redirigir3").style.display = "inline-block";
+					
+					document.getElementById("redirigir4").style.display = "inline-block";
+				
+				}
+				
+			}			
+			
+			</script>
 
 
 
@@ -89,13 +130,13 @@ console.log(pageName);
 					</a> <a href="/servicios" value="servicios">
 							<button class="botonMyHotel">Mis Servicios</button>
 					</a>
-							<button class="botonMyHotel">Cerrar sesión</button>
-					
+						<button class="botonMyHotel">Cerrar sesiï¿½n</button>
+
 					</span>
 				</div> <script>
 						function myHotel() {
 							var sessiones = '${sesionBean.usuario}';
-							if (sessiones == "LogIn") {
+							if (sessiones == "LogIn" || sessiones == "") {
 								var popup = document.getElementById("myPopup");
 								popup.classList.toggle("show");
 							} else {
@@ -104,29 +145,48 @@ console.log(pageName);
 								popup.classList.toggle("show");
 							}
 						}
-					</script>
-
-
-
+</script>
 
 			</li>
-			
-
-			
 
 		</ul>
 
 	</div>
-</header>
-
-<body>
-
 </body>
 
 
 </html>
 
 <!--  
+<body onload=backButton() >
+<script>
+
+function backButton(){
+var pageName = window.location.href;
+
+if(pageName=="http://localhost:7004/index" || pageName=="http://localhost:7004/home"){
+    document.getElementById('backbut').style.visibility = 'hidden';
+}
+console.log(pageName);
+}
+
+</script>
+
+-->
+<!--  
+
+
+
+
+
+
+			<div class="menu1Cabecera">
+				<li><a href="/incidencias"><i class="fa fa-pencil"></i>Incidencias</li>
+			</div>
+
+
+
+
 
 				<div class="popup1" onclick="myMenu()">
 				

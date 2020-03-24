@@ -94,14 +94,13 @@ public class EncargarComidaController {
 		map.put("platos", platos);
 		
 		//return m;
-		return new ModelAndView("encargarComidaAlfonso","todo",map);
+		return new ModelAndView("encargarComidaAlfonso","todo", map);
 	}
 	@GetMapping("/enviarComanda")
 	public static String enviarComanda(@Valid@ModelAttribute("encargarComidaBean") EncargarComidaBean comanda) {
 		System.out.print(comanda.toString());
 		return "encargarComidaAlfonso";
-		
-		
+			
 	}
 	
 	

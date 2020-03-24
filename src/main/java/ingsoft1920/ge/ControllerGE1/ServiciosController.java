@@ -1,9 +1,11 @@
 package ingsoft1920.ge.ControllerGE1;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,6 +30,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 public class ServiciosController {
 	public static String[] servicios_nombre;
 	public static int[] servicios_id;
+	public static List<String> servicios_reservados;
 
 	final static Logger logger = LogManager.getLogger(ServiciosController.class.getName());
 
@@ -43,22 +46,22 @@ public class ServiciosController {
   
 	@GetMapping("/recibirServicios")
 	public static  ModelAndView recibirServicios() throws Exception {
-		System.out.print("HOLA ESTOY AQUI");
+		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 
 		//enviar nombre del hotel
 		JsonObject json = new JsonObject();
-		json.addProperty("nombre_hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
+		json.addProperty("nombre_Hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
 		
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
-		System.out.print(respCode+"<--------");
+		
 		String resp="";
 		if(respCode==200) {
 			resp=client.getResponseBody();
 		}
-		System.out.print(resp+"<--------");
+	
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
 
 		
@@ -78,8 +81,12 @@ public class ServiciosController {
 			ides[i]=ids.get(i).getAsInt();	
 		}
 		servicios_id=ides;
-
-		return new ModelAndView("servicios","servicios_de_un_hotel", serviciosList);
+		Map<String,List<String>> map= new HashMap<>();
+		map.put("servicios", serviciosList);
+		map.put("restaurantes", ReservarMesaController.recibirRestaurantes());
+		map.put("servicos_reservados", servicios_reservados);
+		
+		return new ModelAndView("servicios","muchas_cosas", map);
 	}
 
 
@@ -115,7 +122,7 @@ public class ServiciosController {
 
 
 	//recibir servicios reservados por un cliente
-	public  JsonObject recibirServiciosReservados(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicios) throws Exception {
+	public  List<String> recibirServiciosReservados() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
 
@@ -133,8 +140,14 @@ public class ServiciosController {
 		}
 
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+		JsonArray reservas_hechas= obj.get("reservas_hechas").getAsJsonArray();//los nombres me los he inventado
 
-		return obj;
+		List<String> reservas= new LinkedList<>();
+		for (int i=0;i<reservas_hechas.size();i++) {
+			reservas.add(reservas_hechas.get(i).getAsString());
+		}
+		this.servicios_reservados= reservas;
+		return reservas;
 	}
 
 

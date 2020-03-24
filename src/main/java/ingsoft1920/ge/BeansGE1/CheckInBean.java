@@ -6,45 +6,72 @@ import org.springframework.web.context.annotation.SessionScope;
 @Component
 @SessionScope
 public class CheckInBean {
-	private String idReserva;
-	private String horaLlegada;
-	private String comentario;
-	
-	
-	
+	private String nombre;
+	private String apellidos;
+	private String DNI;
+	private String email;
+	//private String password; la contraseña no se pide
+	private String nacionalidad;
+	private String telefono ;
+	@Override
+	public String toString() {
+		return "CheckInBean [nombre=" + nombre + ", apellidos=" + apellidos + ", DNI=" + DNI + ", email=" + email
+				+ ", nacionalidad=" + nacionalidad + ", telefono=" + telefono + "]";
+	}
 	public CheckInBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CheckInBean(String idReserva, String horaLlegada, String comentario) {
+	public CheckInBean(String nombre, String apellidos, String dNI, String email, String nacionalidad,
+			String telefono) {
 		super();
-		this.idReserva = idReserva;
-		this.horaLlegada = horaLlegada;
-		this.comentario = comentario;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		DNI = dNI;
+		this.email = email;
+		this.nacionalidad = nacionalidad;
+		this.telefono = telefono;
 	}
-	public String getIdReserva() {
-		return idReserva;
+	public String getNombre() {
+		return nombre;
 	}
-	public void setIdReserva(String idReserva) {
-		this.idReserva = idReserva;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public String getHoraLlegada() {
-		return horaLlegada;
+	public String getApellidos() {
+		return apellidos;
 	}
-	public void setHoraLlegada(String horaLlegada) {
-		this.horaLlegada = horaLlegada;
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
-	public String getComentario() {
-		return comentario;
+	public String getDNI() {
+		return DNI;
 	}
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
+	public void setDNI(String dNI) {
+		DNI = dNI;
 	}
-	@Override
-	public String toString() {
-		return "CheckInBean [idReserva=" + idReserva + ", horaLlegada=" + horaLlegada + ", comentario=" + comentario
-				+ "]";
+	public String getEmail() {
+		return email;
 	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	
+	
+	
 	
 	
 

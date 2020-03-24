@@ -1,13 +1,21 @@
 package ingsoft1920.ge.ControllerGE1;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
-
+import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -34,7 +42,53 @@ public class pruebaConexion {
 //				}
 		//serviciosEnviar();
 		
-		recibirPlatos();
+		checkinEnviar();
+		
+	}
+	
+	public static ModelAndView checkinEnviar() throws Exception {
+		//HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/"+reservas.getIdReserva(), "GET");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/7", "GET");
+		
+		int respCode = client.getResponseCode();
+		
+		String resp ="";
+		System.out.println(respCode+"\n");
+		if(respCode==200)
+		{
+			resp=client.getResponseBody();
+		}
+		System.out.println(resp.toString());
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+
+		String cliente_id = obj.get("cliente_id").toString();
+		String nombre = obj.get("nombre").toString();
+		String apellidos = obj.get("apellidos").toString();
+		String DNI = obj.get("DNI").toString();
+		String email = obj.get("email").toString();
+		String password = obj.get("password").toString();
+		String nacionalidad = obj.get("nacionalidad").toString();
+		String telefono = obj.get("telefono").toString();
+		
+		Map<String,String> map= new HashMap<>();
+		map.put("Nombre", nombre);
+		map.put("Apellidos", apellidos);
+		map.put("DNI", DNI);
+		map.put("email", email);
+		map.put("Nacionalidad", nacionalidad);
+		map.put("Telefono", telefono);
+		
+		return new ModelAndView("checkin","todo", map );
+		
+		//Esto seria lo definitivo, pero para las pruebas dejamos de momento lo de arriba
+		/*if(cliente_id.isEmpty() || nombre.isEmpty() || DNI.isEmpty() || email.isEmpty() || 
+				password.isEmpty() || nacionalidad.isEmpty() || telefono.isEmpty()){
+			return new ModelAndView("checkin","todo",map );
+		}
+		else {
+			return new ModelAndView("recibirServicios");
+		}*/
+		
 		
 	}
 	//recibir servicios

@@ -52,7 +52,7 @@
 			<h3>Reservas en curso</h3>
           </div>
           
-          <form  action="/enviarReserva" method="get" style="width: 100%;">
+          <form  action="/cogerReserva" method="get" style="width: 100%;">
 	          <div class="row justify-content-center">
 	        		<div class="col-auto">
 	        			<div class="table-responsive-md text-center">
@@ -60,7 +60,7 @@
 	                            <thead>
 	                                <tr>
 	                                	<c:forEach var="num_reserva" items="${todo.num_reserva}">
-	                                    	<th> <a href="/index" >Número de reserva:</a> ${num_reserva}</th>
+	                                    	<th> <a href="/index" >Nï¿½mero de reserva:</a> ${num_reserva}</th>
 	                                	</c:forEach>
 	                                </tr>
 	                            </thead>
@@ -73,7 +73,7 @@
 	                                </tr>
 	                                <tr>
 	                                	<c:forEach var="habitacion" items="${todo.num_hab}">
-	                                		<td> Número de habitación : ${habitacion}</td>
+	                                		<td> Nï¿½mero de habitaciï¿½n : ${habitacion}</td>
 	                                	</c:forEach>
 	                                    
 	                                </tr>
@@ -95,6 +95,7 @@
 							</table>
 						</div>
 	        		</div>
+	        		 <input type="submit" value="Enviar">
 	        	</div>
            </form>
           

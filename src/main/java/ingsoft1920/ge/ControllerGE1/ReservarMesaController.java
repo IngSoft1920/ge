@@ -28,6 +28,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 public class ReservarMesaController {
 	
 	public static JsonObject restaurantes;
+	public static JsonObject horasDisponibles;
 	
 	@Autowired
 	 SesionBean sesion;
@@ -35,8 +36,8 @@ public class ReservarMesaController {
 	VerReservasBean reservas;
 	
 	//recibimos los posibles restaurantes¿no nos hace falta mandar el hotel?
-	@GetMapping("/recibirRestaurantes")
-	public static  ModelAndView recibirRestaurantes() throws Exception {
+	
+	public static  List<String> recibirRestaurantes() throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/infoRest", "GET");
 		
@@ -56,7 +57,7 @@ public class ReservarMesaController {
 		}
 		
 		restaurantes=obj;
-		return new ModelAndView("servicios","restaurantes", prueba);
+		return prueba;
 
 	}
 	

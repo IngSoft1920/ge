@@ -1,6 +1,7 @@
 package ingsoft1920.ge.ControllerGE1;
 
 import java.util.HashMap;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -97,31 +98,9 @@ public static JSONObject receivedJSON = new JSONObject();
 
 	@GetMapping("/cogerReserva")
 	public static String enviarComanda(@Valid@ModelAttribute("VerReservasBean") VerReservasBean mandar_reserva) {
-		System.out.print(mandar_reserva.toString());
+		System.out.print("HOLAAAAA"+mandar_reserva.toString());
 		return "reservaServicios";
 			
 	}
 	
-	//recibimos los datos de un cliente
-	public JsonObject datosCliente(@Valid @ModelAttribute("verReservasBean") VerReservasBean reservas) throws Exception {
-
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/datosCliente","POST");
-		JsonObject json= new JsonObject();
-		json.addProperty("reserva_id",reservas.getId_reserva());
-		
-		client.setRequestBody(json.toString());
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();
-			  }
-		
-		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
-		return obj;
-		
-		
-	}
-
 }

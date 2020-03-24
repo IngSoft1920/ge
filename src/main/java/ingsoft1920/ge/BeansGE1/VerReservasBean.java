@@ -3,6 +3,13 @@ package ingsoft1920.ge.BeansGE1;
 public class VerReservasBean {
 	
 	
+	@Override
+	public String toString() {
+		return "VerReservasBean [id_reserva=" + id_reserva + ", num_hab=" + num_hab + ", fecha_inicio=" + fecha_inicio
+				+ ", fecha_fin=" + fecha_fin + ", nombre_hotel=" + nombre_hotel + ", is_check_in=" + is_check_in + "]";
+	}
+
+
 	private int id_reserva;
 	private int num_hab;
 	private String fecha_inicio;

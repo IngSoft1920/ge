@@ -45,7 +45,7 @@ public class ServiciosController {
 	//recibir servicios
   
 	@GetMapping("/recibirServicios")
-	public static  ModelAndView recibirServicios() throws Exception {
+	public  ModelAndView recibirServicios() throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 
@@ -171,13 +171,12 @@ public class ServiciosController {
 		json.addProperty("hora", servicios.getHoras());
 		json.addProperty("cliente_id", sesion.getUsuarioID());
 		json.addProperty("lugar", (String)null);
-
-		//cosas que faltan
 		json.addProperty("numPersonas", servicios.getNumPersonas());
 		json.addProperty("idReserva", reservas.getId_reserva());
 		json.addProperty("platos", (String)null);
 		json.addProperty("items", (String)null);
 		json.addProperty("type", 1);
+		json.addProperty("nombre_restaurante", (String)null);
 		//IMPORTANTE:falta el nombre del restaurante al reservar una mesa
 
 		client.setRequestBody(json.toString());

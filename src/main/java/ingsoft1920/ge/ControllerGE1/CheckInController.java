@@ -95,7 +95,7 @@ public class CheckInController {
 	
 	public String enviarDatosCheckIn(@Valid@ModelAttribute("checkInBean") CheckInBean checkin) throws Exception {
 		
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/enviardatosCambiados", "POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/enviardatosCambiadosmasCheckIn", "POST");
 		
 		JsonObject json= new JsonObject();
 		//json.addProperty("reserva_id",reservas.getId_reserva());

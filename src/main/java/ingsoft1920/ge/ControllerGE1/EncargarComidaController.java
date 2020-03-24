@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
@@ -24,6 +25,7 @@ import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.EncargarComidaBean;
+import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 
@@ -35,7 +37,7 @@ public class EncargarComidaController {
 
 	@Autowired
 	EncargarComidaBean encargarComida;
-	
+	VerReservasBean reservas;
 	@Autowired
 	 SesionBean sesion;
 	
@@ -100,9 +102,39 @@ public class EncargarComidaController {
 	public static String enviarComanda(@Valid@ModelAttribute("encargarComidaBean") EncargarComidaBean comanda) {
 		System.out.print(comanda.toString());
 		return "encargarComidaAlfonso";
-			
 	}
 	
+	@PostMapping("/enviarComanda")
+	public String enviarPedidoFNB(@Valid@ModelAttribute("encargarComidaBean") EncargarComidaBean comanda) throws Exception {
+		
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/nuevoServicio", "POST");
+		JsonObject json= new JsonObject();
+		json.addProperty("servicio_id",sesion.getUsuarioID());
+		//json.addProperty("reserva_id",reservas.getId_reserva());
+		json.addProperty("fecha_hora","2020-03-15T20:15:00");
+		json.addProperty("num_clientes",0);
+		json.addProperty("tipoUbicacion",2);
+		json.addProperty("ubicacion","Mamma Mia");
+		
+		int[] habitaciones_id= new int[4]; 
+		habitaciones_id[0]=reservas.getNum_hab();
+		
+		json.addProperty("habitaciones_id",habitaciones_id.toString());
+		json.addProperty("platos", comanda.getPlatos().toString());
+		json.addProperty("items",comanda.getItems().toString());
+		
+		
+		client.setRequestBody(json.toString());
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();
+			  }
+		
+		return"servicios";
+	}
 	
 	
 

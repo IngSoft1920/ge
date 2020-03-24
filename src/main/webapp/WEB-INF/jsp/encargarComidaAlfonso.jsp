@@ -35,7 +35,9 @@
         </header>
         
         <div class="container">
+        	<div class="row">
 				<h3> Platos</h3>
+			</div>
 			
 			<form action="/enviarComanda" method="get">
 			<c:forEach var="platos" items="${todo.platos}">
@@ -52,6 +54,7 @@
 		    
 		    <input type="submit" value="Enviar">
 		 	</form>
+		 	
  		</div>
  		<div class="container">
 		 	<h2> Bebidas</h2>

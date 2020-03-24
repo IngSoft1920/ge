@@ -5,9 +5,9 @@
 <%@ page import="ingsoft1920.ge.ControllerGE1.*"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  >
 
-   <head>
+   <head >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"/>
 
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
    </head> 
     
-    <body>
+    <body >
         <style>
             .container {
                 margin-top: 20px;
@@ -38,12 +38,28 @@
             .body{
                 background-color: #4f5457;
             }
+            
+            #datos_reserva{
+                border-style: solid;
+                border-radius: 5px;
+                border-color: black;
+                width: 300px;
+                
+            }
+            
+            
+            
         </style>
 
 
-	<div style="margin-top: 50px; margin-bottom:35px; background-color: #B0C4DE; opacity: 60%;">
-		<h1 style="text-align: center; font-size: 50px; color:black; font-weight:bold; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
-	</div>
+	    <!-- Cabecera de la pagina -->
+        <header>
+            <div class="container">
+                <div class="row justify-content-center" >
+                    <h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
+                    </div> 
+                </div>
+        </header>
     
     
 				 
@@ -52,52 +68,38 @@
 			<h3>Reservas en curso</h3>
           </div>
           
-          <form  action="/cogerReserva" method="get" style="width: 100%;">
-	          <div class="row justify-content-center">
+          <div id="datos_reserva" class="row ml-5 m-2 p-3">
+	          <form  action="/cogerReserva" method="get" style="width: 100%;">
 	        		<div class="col-auto">
-	        			<div class="table-responsive-md text-center">
-		        			<table class="table table-dark table-borderless table-sm-sm">
-	                            <thead>
-	                                <tr>
-	                                	<c:forEach var="num_reserva" items="${todo.num_reserva}">
-	                                    	<th> <a href="/index" >Nï¿½mero de reserva:</a> ${num_reserva}</th>
-	                                	</c:forEach>
-	                                </tr>
-	                            </thead>
-								<tbody>
-	                                <tr>
-	                                	<c:forEach var="nombre" items="${todo.nombres}">
-	                                		<td> Nombre del hotel :  ${nombre}</td>
-	                                	</c:forEach>
-	                                    
-	                                </tr>
-	                                <tr>
-	                                	<c:forEach var="habitacion" items="${todo.num_hab}">
-	                                		<td> Nï¿½mero de habitaciï¿½n : ${habitacion}</td>
-	                                	</c:forEach>
-	                                    
-	                                </tr>
-	                                <tr>
-	                                    <c:forEach var="inicio" items="${todo.fecha_inicial}">
-	                                		<td> Fecha de inicio :  ${inicio}</td>
-	                                	</c:forEach>
-	                                    
-	                                </tr>
-	                                <tr>
-	                                    
-	                                		<td> Fecha de fin :  </td>
-	                                	
-	                                </tr>
-	                                
-	                                
-	                               
-	                            </tbody>
-							</table>
-						</div>
-	        		</div>
-	        		 <input type="submit" value="Enviar">
+                        <c:forEach var="num_reserva" items="${todo.num_reserva}">
+                            <p><input class="d-none" name="id_reserva" value="${num_reserva}"> <b>Número de reserva:</b> ${num_reserva}</p>
+                        </c:forEach>
+                        
+                        <c:forEach var="nombre" items="${todo.nombres}">
+                            <p><input class="d-none" name="nombre_hotel" value="${nombre}"> <b>Nombre del hotel:</b>  ${nombre}</p>
+                        </c:forEach>
+                        
+                        <c:forEach var="habitacion" items="${todo.num_hab}">
+                            <p><input class="d-none" name="num_hab" value="${habitacion}"> <b>Número de habitación:</b> ${habitacion}</p>
+                        </c:forEach>
+                        
+                        <c:forEach var="inicio" items="${todo.fecha_inicial}">
+                            <p><input class="d-none" name="fecha_inicio" value="${inicio}"> <b>Fecha de inicio:</b>  ${inicio}</p>
+                        </c:forEach>
+                        <p><input class="d-none" name="fecha_fin"><b> Fecha de fin:</b>  </p>
+                  </div>
+                  <div class="col-12">
+	        		 <input type="submit" value="Acceder">
+                  </div>
+                  </form>
+                  <div class="col">
+                 	 <a href="/checkout" class="btn btn-primary">Check-out</a>
+                  </div>
+                  <div class="col">
+                 	 <a href="/facturacion" class="btn btn-primary">Factura</a>
+                  </div>
 	        	</div>
-           </form>
+           
           
 <!--  
       <script>

@@ -73,7 +73,7 @@
                 <div class="col pb-3">              
 					<select name="servicio" id="tipoServicio">
                         <option value="">tipo de servicio</option>
-                        <c:forEach var="servicio" items="${servicios_de_un_hotel}">
+                        <c:forEach var="servicio" items="${muchas_cosas.servicios}">
                         	<option name=servicios value="${servicio}"> ${servicio} </option>
                         </c:forEach>
                         
@@ -133,7 +133,7 @@
                     <select id="nombreRestaurante" name="nombreRestaurante" >
                         <!--Aquí hay que mostar los nombres de los restaurantes que nos manden-->
                         <option value="">Nombre de restaurante</option>
-                        <c:forEach var="restaurante" items="${restaurantes}">
+                        <c:forEach var="restaurante" items="${muchas_cosas.restaurantes}">
                         	<option name=nombreRestaurante value="${restaurante}"> ${restaurante} </option>
                         </c:forEach>
                         
@@ -160,9 +160,9 @@
                    <input style="border-radius: 5px" type="date" id="fecha" name="fecha" max="31/12/2020">
                 </div>
                 <div class="col pb-3">
-                    <button value="Ver horas disponibles" onclick="mostrarHoras2()"> Ver horas</button>
+                    <input type="submit" value="Enviar">
                 </div>
-                 <input type="submit" value="Enviar">
+                 <button value="Ver horas disponibles" onclick="mostrarHoras2()"> Ver horas</button>
             </div>
             </form>
 			

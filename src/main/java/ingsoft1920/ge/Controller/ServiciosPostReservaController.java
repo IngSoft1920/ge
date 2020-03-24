@@ -1,6 +1,7 @@
 package ingsoft1920.ge.Controller;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -13,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -24,7 +25,6 @@ import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.ServiciosDisponiblesPostReservaBean;
 import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class ServiciosPostReservaController {
@@ -39,12 +39,20 @@ public class ServiciosPostReservaController {
 
 	List<ServiciosPostReservaBean> servicios;
 
-	MostrarServiciosPostReservaBean mostrarServiciosPostReservaBean = new MostrarServiciosPostReservaBean();
+	List<MostrarServiciosPostReservaBean> serviciosReservados = new ArrayList<MostrarServiciosPostReservaBean>();
 	
+	int hotelId;
+	int habitacionId;
+	String fechaInicio;
+	String fechaFin;
 	
 	@GetMapping("/serviciosExtras")	
-	public String mostarServiciosGet(Model model) throws Exception {
+	public String mostarServiciosGet(Model model, 
+			@RequestParam int hotelId, @RequestParam int habitacionId,
+			@RequestParam String fechaInicio, @RequestParam String fechaFin) throws Exception {
 
+		this.hotelId = hotelId; this.habitacionId = habitacionId;
+		this.fechaFin = fechaFin; this.fechaInicio = fechaInicio;
 		/*
 		 * [ { “id” : 1 , “nombre” : “piscina” , “precio”: 10 , “unidad” : “por_dia” },
 		 * { “id” : 2 , “nombre” : “restaurante” , “precio” : null , “unidad” : null } ]
@@ -68,44 +76,50 @@ public class ServiciosPostReservaController {
 
 		String response = arrayGrande.toString();
 /*
- * 		HttpClient serverServicios = new HttpClient(
-HttpClient.urlCM + "hotel/servicios/" + mostrarServiciosPostReservaBean.getHotel_id(), "GET");
+ * 		HttpClient serverServicios = new HttpClient(HttpClient.urlCM + "hotel/servicios/" + hotelId, "GET");
  */
 		JsonObject json = new JsonObject();
-		json.addProperty("hotel_id", mostrarServiciosPostReservaBean.getHotel_id()); // coger id_hotel de
-																						// mostarServiciosPostReservaBean
+		json.addProperty("hotel_id", hotelId); 
 /*
 		if (serverServicios.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverServicios.getResponseBody();
 		}
 */
 
-		Type tipo = new TypeToken<List<ServiciosPostReservaBean>>() {
-		}.getType();
+		Type tipo = new TypeToken<List<ServiciosPostReservaBean>>(){}.getType();
 		servicios = new Gson().fromJson(response, tipo);
 
 		model.addAttribute("servicios", servicios);
-		model.addAttribute("mostarServiciosPostReservaBean", mostrarServiciosPostReservaBean);
+		model.addAttribute("serviciosReservados", serviciosReservados);
 		model.addAttribute("sesionBean", sesionBean);
+		
+		System.out.println(new Gson().toJson(servicios.get(0)).toString());
 
 		for(int i=0; i<servicios.size(); i++) {
-		System.out.println(servicios.get(i));
+			System.out.println(servicios.get(i));
 		}
 		return "serviciosExtras";
 
 	}
 
 	@PostMapping("/serviciosExtras")
-	public String mostarServiciosPost(@Valid @ModelAttribute("mostrarServiciosPostReservaBean") 
-			MostrarServiciosPostReservaBean mostrarServiciosPostReservaBean,
+	public String mostarServiciosPost(@Valid @ModelAttribute("serviciosReservados") 
+			MostrarServiciosPostReservaBean servicio,
+			@RequestParam int hotelId, @RequestParam int habitacionId,
+			@RequestParam String fechaInicio, @RequestParam String fechaFin,
 			Model model) throws Exception {
-		// System.out.println(""+mostrarServiciosPostReservaBean.getHora()+"ID"+mostrarServiciosPostReservaBean.getHotel_id()+"Fecha"+mostrarServiciosPostReservaBean.getFecha()+"TIPO "+mostrarServiciosPostReservaBean.getTipoServicio()+"num personas"+mostrarServiciosPostReservaBean.getNumPersonas());
 		
-		model.addAttribute("servicios", servicios);
-		model.addAttribute("mostarServiciosPostReservaBean", mostrarServiciosPostReservaBean);
+		serviciosReservados.add(servicio);
+		
+		model.addAttribute("servicios", this.servicios);
+		model.addAttribute("serviciosReservados", serviciosReservados);
 		model.addAttribute("sesionBean", sesionBean);
-		
 		return "serviciosExtras";
+	}
+	
+	@PostMapping("/continuar")
+	public String mostrarServiciosPost(Model model) {
+		return "redirect:datos";
 	}
 
 }

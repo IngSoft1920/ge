@@ -277,7 +277,8 @@ public class BusquedaController {
 			model.addAttribute("hotelesDisponibles", hotelesDisponibles);
 			model.addAttribute("hoteles", hoteles);
 		}
-
+		this.busquedaBean.setFechaInicio(busquedaBean.getFechaInicio());
+		this.busquedaBean.setFechaFin(busquedaBean.getFechaFin());
 
 		model.addAttribute("ciudades", ciudades);
 		model.addAttribute("busquedaBean", busquedaBean);
@@ -292,50 +293,12 @@ public class BusquedaController {
 		
 		System.out.println("habitacionId: " + habitacionId + "; hotelId: " + hotelId+ ";comidas:"+comidas);
 		
-		/*
-         * {
-         *
-         *  "fecha_inicio":"yyyy-MM-dd"
-         *  "fecha_fin":"yyyy-MM-dd"
-         *  "precio":"1023124"
-         *  "hotel_id":"12"
-         *  "tipo":"lujo"
-         *  "cliente_id":"123456789"
-         *
-         * }
-         */
 		
-		/*
-		
-		crearReserva = new JsonObject();
-		crearReserva.addProperty("fecha_inicio", busquedaBean.getFechaInicio());
-		crearReserva.addProperty("fecha_fin", busquedaBean.getFechaFin());
-		boolean encontrado = false;
-		for (HotelBean hotel: hotelesDisponibles.getHoteles()) {
-			for (HabitacionBean habitacion: hotel.getHabitaciones()) {
-				if (habitacion.getTipo_hab_id() == habitacionId) {
-					crearReserva.addProperty("tipo", habitacion.getNombre());
-					crearReserva.addProperty("precio", habitacion.getPrecio_total());
-					crearReserva.addProperty("hotel_id", hotel.getId());
-					encontrado = true;
-					break;
-				}
-			}
-			if (encontrado) break;
-		}
-
-		crearReserva.addProperty("cliente_id", sesionBean.getUsuarioID());
-		
-		HttpClient server = new HttpClient(HttpClient.urlCM+"crearReserva", "POST");
-		// Añado los datos de la consulta
-		server.setRequestBody(crearReserva.toString());
-		
-		if (server.getResponseCode() == 404) {// Si encuentra el servidor
-			model.addAttribute("mensajeError", "La reserva no se ha podido realizar correctamente");
-			return "buscador";
-		}
-		*/
-		return "redirect:serviciosExtras";
+		return "redirect:serviciosExtras?"
+				+ "hotelId=" + hotelId
+				+ "&habitacionId=" + habitacionId
+				+ "&fechaInicio=" + busquedaBean.getFechaInicio()
+				+ "&fechaFin=" + busquedaBean.getFechaFin();
 		
 	}	
 }

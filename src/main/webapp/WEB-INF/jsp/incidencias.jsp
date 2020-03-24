@@ -49,7 +49,7 @@ label {
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
-		<form action="/informarIncidencia" method="get">
+		<form action="/informarIncidencia" method="get	">
 			<br> <label style="font-size: 18px; margin-right: 10px;">Asunto</label>
 			<select name="asunto" style="margin-top: 5px; margin-bottom: 10px">
 				<option id="LIMPIEZA">Limpieza</option>
@@ -58,13 +58,13 @@ label {
 			</select> <br> <label style="font-size: 18px; margin-right: 10px;">Mensaje</label><select
 				name="mensaje" id="eleccion"
 				style="margin-top: 5px; margin-bottom: 10px">
-				<option>Mensaje predeterminado 1 (por establecer)</option>
-				<option>Mensaje predeterminado 2 (por establecer))</option>
+				<option value=2>Mensaje predeterminado 1 (por establecer)</option>
+				<option value=3>Mensaje predeterminado 2 (por establecer))</option>
 				<option value=1>Otro...</option>
 			</select> <br>
- 
-			<textarea id="mensaje" class="form-control " cols="30" rows="5"
-				placeholder="Escribe tu mensaje" hidden></textarea>
+
+			<textarea id="mensaje" value="mensaje" class="form-control "
+				cols="30" rows="5" placeholder="Escribe tu mensaje" hidden></textarea>
 
 			<br> <input type="submit" value="Enviar"> <input
 				type="reset" value="Borrar">
@@ -85,6 +85,9 @@ label {
 			if (opcion == 1) {
 				//muestra el text area de mensaje
 				$('#mensaje').show();
+			}
+			else{
+				$('#mensaje').hide();
 			}
 		})
 	</script>

@@ -28,16 +28,17 @@ public class IncidenciasController {
 	final static Logger logger = LogManager.getLogger(IncidenciasController.class.getName());
 
 	Calendar calendario = Calendar.getInstance();
-	
+
 	@Autowired
 	SesionBean sesion;
 	VerReservasBean reservas;
 
 
 	//enviar incidencia
+	@PostMapping("/informarIncidencia")
 	public int enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
 			Model model) throws Exception {
-		
+
 		System.out.print(incidencias.toString());
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
@@ -50,12 +51,12 @@ public class IncidenciasController {
 				calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.DATE));
 		json.addProperty("hora", calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE));
 		json.addProperty("lugar", "H49");//habitacion de prueba, de momento solo se pueden enviar habitaciones
-		
-		
+
+
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
-		
+
 		if(respCode==200) {
 			client.getResponseBody();
 		}

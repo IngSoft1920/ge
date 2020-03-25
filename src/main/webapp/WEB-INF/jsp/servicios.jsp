@@ -162,7 +162,9 @@
                 <div class="col pb-3">
                     <input type="submit" value="Enviar">
                 </div>
+                <!--  
                  <button value="Ver horas disponibles" onclick="mostrarHoras2()"> Ver horas</button>
+                 -->
             </div>
             </form>
 			

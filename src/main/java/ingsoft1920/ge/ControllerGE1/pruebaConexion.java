@@ -1,6 +1,10 @@
 package ingsoft1920.ge.ControllerGE1;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +13,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonObject;
@@ -16,6 +21,7 @@ import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
+import ingsoft1920.ge.BeansGE1.IncidenciasBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -24,7 +30,13 @@ public class pruebaConexion {
 	@Autowired
 	SesionBean sesion;
 	VerReservasBean reservas;
+	static IncidenciasBean incidencias;
 
+	static Calendar calendario = Calendar.getInstance();
+	static Date fechaActual = new Date();
+	static DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+
+	
 	public static void main(String[]agrs) throws Exception {
 
 		//Calendar calendario = Calendar.getInstance();
@@ -42,7 +54,8 @@ public class pruebaConexion {
 //				}
 		//serviciosEnviar();
 		
-		checkinEnviar();
+		System.out.print("CODIGO  "+enviarIncidencias());
+		
 		
 	}
 	
@@ -91,8 +104,7 @@ public class pruebaConexion {
 		
 		
 	}
-	//recibir servicios
-	
+	//ENVIAR INCIDENCIA
 	public static  JsonObject serviciosEnviar() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
@@ -184,6 +196,31 @@ public class pruebaConexion {
 		
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
 		return obj;
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	public static int enviarIncidencias() throws Exception {
+
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
+
+		JsonObject json = new JsonObject();
+		json.addProperty("asunto","Limpieza");
+		json.addProperty("descripcion", "prueba");
+		json.addProperty("nombre_hotel", "hotel_prueba");
+		json.addProperty("fecha",formatoFecha.format(fechaActual));
+		json.addProperty("hora", calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE));
+		json.addProperty("lugar", "H43");//habitacion de prueba, de momento solo se pueden enviar habitaciones
+
+
+		client.setRequestBody(json.toString());
+
+		int respCode = client.getResponseCode();
+
+		if(respCode==200) {
+			client.getResponseBody();
+		}
+
+		return respCode;
 	}
 	
 

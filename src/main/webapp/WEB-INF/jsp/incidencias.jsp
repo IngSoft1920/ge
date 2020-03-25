@@ -10,6 +10,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<jsp:useBean id="bean" class="ingsoft1920.ge.BeansGE1.IncidenciasBean" />
+
 
 <body>
 	<style>
@@ -49,21 +51,25 @@ label {
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
-		<form action="/informarIncidencia" method="POST">
+		<form action="procesarIncidencias" method="get">
+
 			<br> <label style="font-size: 18px; margin-right: 10px;">Asunto</label>
 			<select name="asunto" style="margin-top: 5px; margin-bottom: 10px">
-				<option id="LIMPIEZA">Limpieza</option>
-				<option id="MANTENIMIENTO">Mantenimiento</option>
+				<option value="${bean.asunto}">Limpieza</option>
+				<option value="Mantenimiento">Mantenimiento</option>
 				<!-- De momento son los asuntos establecidos por DHO -->
+
 			</select> <br> <label style="font-size: 18px; margin-right: 10px;">Mensaje</label><select
-				name="mensaje" id="eleccion"
+				name="mensaje1" id="eleccion"
 				style="margin-top: 5px; margin-bottom: 10px">
-				<option value=2>Mensaje predeterminado 1 (por establecer)</option>
-				<option value=3>Mensaje predeterminado 2 (por establecer))</option>
-				<option value=1>Otro...</option>
+				<option value="Predeterminado1">Mensaje predeterminado 1
+					(por establecer)</option>
+				<option value="Predeterminado2">Mensaje predeterminado 2
+					(por establecer))</option>
+				<option value="Otro">Otro...</option>
 			</select> <br>
 
-			<textarea name="mensaje" value="mensaje" class="form-control "
+			<textarea id="mensaje2" name="mensaje2" class="form-control "
 				cols="30" rows="5" placeholder="Escribe tu mensaje" hidden></textarea>
 
 			<br> <input type="submit" value="Enviar"> <input
@@ -79,15 +85,11 @@ label {
 
 	<script>
 		$('#eleccion').change(function() {
-			//asigna el valor a la variable opcion
 			var opcion = $(this).val();
-			//si la opci�n es 1 (otro)
-			if (opcion == 1) {
-				//muestra el text area de mensaje
-				$('#mensaje').show();
-			}
-			else{
-				$('#mensaje').hide();
+			if (opcion == "Otro") {
+				$('#mensaje2').show();
+			} else {
+				$('#mensaje2').hide();
 			}
 		})
 	</script>

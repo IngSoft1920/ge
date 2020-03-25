@@ -1,10 +1,7 @@
 package ingsoft1920.ge.ControllerGE1;
 
 import java.util.Calendar;
-
-
 import javax.validation.Valid;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
-import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -62,6 +58,13 @@ public class IncidenciasController {
 		}
 
 		return respCode;
+	}
+	
+
+	@GetMapping("/procesarIncidencias")
+	public String index() {
+
+		return "procesarIncidencias";
 	}
 
 

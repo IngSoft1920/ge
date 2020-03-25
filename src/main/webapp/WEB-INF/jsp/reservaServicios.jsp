@@ -69,28 +69,10 @@
           </div>
           
           <div id="datos_reserva" class="row ml-5 m-2 p-3">
+            <c:forEach var="todo" items="${todo}">
 	          <form  action="/cogerReserva" method="get" style="width: 100%;">
-	        		<div class="col-auto">
-                        <c:forEach var="num_reserva" items="${todo.num_reserva}">
-                            <p><input class="d-none" name="id_reserva" value="${num_reserva}"> <b>Número de reserva:</b> ${num_reserva}</p>
-                        </c:forEach>
-                        
-                        <c:forEach var="nombre" items="${todo.nombres}">
-                            <p><input class="d-none" name="nombre_hotel" value="${nombre}"> <b>Nombre del hotel:</b>  ${nombre}</p>
-                        </c:forEach>
-                        
-                        <c:forEach var="habitacion" items="${todo.num_hab}">
-                            <p><input class="d-none" name="num_hab" value="${habitacion}"> <b>Número de habitación:</b> ${habitacion}</p>
-                        </c:forEach>
-                        
-                        <c:forEach var="inicio" items="${todo.fecha_inicial}">
-                            <p><input class="d-none" name="fecha_inicio" value="${inicio}"> <b>Fecha de inicio:</b>  ${inicio}</p>
-                        </c:forEach>
-                        <p><input class="d-none" name="fecha_fin"><b> Fecha de fin:</b>  </p>
-                  </div>
-                  <div class="col-12">
-	        		 <input type="submit" value="Acceder">
-                  </div>
+                <p>Numero de la habitacion</p> <p>${todo.num_reservas} </p>   
+                
                   </form>
                   <div class="col">
                  	 <a href="/checkout" class="btn btn-primary">Check-out</a>
@@ -99,7 +81,7 @@
                  	 <a href="/facturacion" class="btn btn-primary">Factura</a>
                   </div>
 	        	</div>
-           
+            </c:forEach>
           
 <!--  
       <script>

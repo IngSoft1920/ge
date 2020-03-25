@@ -90,6 +90,7 @@ public static JSONObject receivedJSON = new JSONObject();
 		map.put("fecha_inicial", fech_i);
 		map.put("fecha_final", fech_f);
 		map.put("nombres", nombres);
+	
 		
 		
 		return new ModelAndView("reservaServicios","todo", map);

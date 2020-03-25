@@ -49,7 +49,7 @@ label {
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
-		<form action="/informarIncidencia" method="get	">
+		<form action="/informarIncidencia" method="POST">
 			<br> <label style="font-size: 18px; margin-right: 10px;">Asunto</label>
 			<select name="asunto" style="margin-top: 5px; margin-bottom: 10px">
 				<option id="LIMPIEZA">Limpieza</option>
@@ -63,7 +63,7 @@ label {
 				<option value=1>Otro...</option>
 			</select> <br>
 
-			<textarea id="mensaje" value="mensaje" class="form-control "
+			<textarea name="mensaje" value="mensaje" class="form-control "
 				cols="30" rows="5" placeholder="Escribe tu mensaje" hidden></textarea>
 
 			<br> <input type="submit" value="Enviar"> <input
@@ -81,7 +81,7 @@ label {
 		$('#eleccion').change(function() {
 			//asigna el valor a la variable opcion
 			var opcion = $(this).val();
-			//si la opción es 1 (otro)
+			//si la opciï¿½n es 1 (otro)
 			if (opcion == 1) {
 				//muestra el text area de mensaje
 				$('#mensaje').show();

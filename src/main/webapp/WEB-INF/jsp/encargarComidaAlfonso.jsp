@@ -46,27 +46,34 @@
 		        		<input type="checkbox" name="platos" value="${platos}">${platos}</input> <br></br>
 		        	</div>
 		        	<div class="col">
-		        		 <input name=platos type="text"> Cantidad </input> <br></br>
+		        		 <input name="num_platos" type="number" value=0 min=0> Cantidad </input> <br></br>
 		        	 </div>
 		         </div>
 		
 		    </c:forEach>
 		    
-		    <input type="submit" value="Enviar">
-		 	</form>
+		    
+		 
 		 	
  		</div>
  		<div class="container">
 		 	<h2> Bebidas</h2>
 		 	
 		 	
-		    <c:forEach var="Servicios" items="${todo.item}">
-		        <h4>${Servicios} </h4>
-		         <input type="text"> Cantidad</input>
+		    <c:forEach var="item" items="${todo.item}">
+		        <h4>${item} </h4>
+		         <input type="checkbox" name="items" value="${item}"> Cantidad</input>
+		         </div>
+		        	<div class="col">
+		        		 <input name="num_items" type="number" value=0 min=0> Cantidad </input> <br></br>
+		        	 </div>
+		         </div>
 		
 		    </c:forEach>
 		    
-		    <button type=submit> Pedir </button>
+		     <input type="submit" value="Enviar">
+		 	</form>
+		    
 		 </div>
 		  <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

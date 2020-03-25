@@ -84,13 +84,15 @@
        
 
 
-      <div class="card" onclick="document.location = '/recibirServicios'">
+      <div class="card" onclick="document.location = '/prueba'">
         <div class="container", style="padding-top:20px">
           <a><b>Servicios</b></a> 
           <p>¡Gestione los servicios solicitados!</p> 
           <i class="far fa-address-card" style="color:white;"></i>
           
         </div>
+        
+        
       </div>
       
         <div class="card" onclick="document.location = '/incidencias'">
@@ -102,7 +104,7 @@
            
         </div>
       </div>
-      
+     
 
       </div>
 

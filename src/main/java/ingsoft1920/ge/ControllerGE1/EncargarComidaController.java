@@ -119,6 +119,7 @@ public class EncargarComidaController {
 		int[] habitaciones_id= new int[4]; 
 		habitaciones_id[0]=reservas.getNum_hab();
 		
+		
 		json.addProperty("habitaciones_id",habitaciones_id.toString());
 		json.addProperty("platos", comanda.getPlatos().toString());
 		json.addProperty("items",comanda.getItems().toString());

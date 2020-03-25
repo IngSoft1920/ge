@@ -20,6 +20,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import Objetillos.Reserva;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
@@ -55,46 +56,34 @@ public static JSONObject receivedJSON = new JSONObject();
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
 		//numero de reserva
 		JsonArray numeros_reservas= obj.get("id_estancia_lista").getAsJsonArray();
-		List<String> num_reserva= new LinkedList<>();
-		for (int i=0;i<numeros_reservas.size();i++) {
-			num_reserva.add(numeros_reservas.get(i).getAsString());
-		}
+		
 		//numero de habitacion
 		JsonArray numeros_habitaciones= obj.get("num_hab_lista").getAsJsonArray();
-		List<String> num_hab= new LinkedList<>();
-		for (int i=0;i<numeros_habitaciones.size();i++) {
-			num_hab.add(numeros_habitaciones.get(i).getAsString());
-		}
+		
+		
 		//fecha inicio
 		JsonArray inicio_fechas= obj.get("fecha_Inicio_Lista").getAsJsonArray();
-		List<String> fech_i= new LinkedList<>();
-		for (int i=0;i<inicio_fechas.size();i++) {
-			fech_i.add(inicio_fechas.get(i).getAsString());
-		}
+		
+		
 		//fecha final
 		JsonArray final_fechas= obj.get("fecha_Fin_Lista").getAsJsonArray();
-		List<String> fech_f= new LinkedList<>();
-		for (int i=0;i<final_fechas.size();i++) {
-			fech_f.add(final_fechas.get(i).getAsString());
-		}
+		
+		
 		//nombre hotel
 		JsonArray nombre_hoteles= obj.get("nombre_hotel_Lista").getAsJsonArray();
-		List<String> nombres= new LinkedList<>();
+		JsonArray estado= obj.get("estado").getAsJsonArray();
+		List<Reserva> reservas= new LinkedList<>();
 		for (int i=0;i<nombre_hoteles.size();i++) {
-			nombres.add(nombre_hoteles.get(i).getAsString());
+			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),estado.get(i).getAsString()));
 		}
 		
-		//mapa con todas las list
-		Map<String, List<String>> map= new HashMap<>();
-		map.put("num_reserva", num_reserva);
-		map.put("num_hab", num_hab);
-		map.put("fecha_inicial", fech_i);
-		map.put("fecha_final", fech_f);
-		map.put("nombres", nombres);
+		
+		
+		
 	
 		
 		
-		return new ModelAndView("reservaServicios","todo", map);
+		return new ModelAndView("reservaServicios","reservas", reservas);
 		
 	}
 

@@ -68,50 +68,36 @@
 			<h3>Reservas en curso</h3>
           </div>
           
-          <div id="datos_reserva" class="row ml-5 m-2 p-3">
-            <c:forEach var="todo" items="${todo}">
+          
+          
+           
+            <c:forEach var="reserva" items="${reservas}">
+            
 	          <form  action="/cogerReserva" method="get" style="width: 100%;">
-                <p>Numero de la habitacion</p> <p>${todo.num_reservas} </p>   
+	          
+	           <c:if test="${reserva.estado=='check in'}">
+	           
+                <input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador de Reserva: <p>${reserva.id_reserva}</p> </input> 
+                <input type=hidden name=num_hab value=${reserva.num_hab}>Numero de Habitacion:  <p>${reserva.num_hab}</p></input> 
+                <input type=hidden name=fecha_inicio value=${reserva.fecha_inicio}>Fecha de Inicio: <p>${reserva.fecha_inicio}</p></input>
+                <input type=hidden name=fecha_fin value=${reserva.fecha_fin}>Fecha de Fin: <p>${reserva.fecha_fin}</p></input>
+                <input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre del Hotel: <p>${reserva.nombre_hotel}</p></input>   
                 
+               
+                
+                <input type=submit value=Gestionar>
+                <button>Check Out</button>
+                 <button>Factura</button>
+                 
+                  </c:if>
                   </form>
-                  <div class="col">
-                 	 <a href="/checkout" class="btn btn-primary">Check-out</a>
-                  </div>
-                  <div class="col">
-                 	 <a href="/facturacion" class="btn btn-primary">Factura</a>
-                  </div>
-	        	</div>
+                  	
+ 
             </c:forEach>
           
-<!--  
-      <script>
-      const container = document.getElementById('container1');
-      const cards = [1,2,3,4];
-      
-      for(i=0; i<cards.length; i++){
-      cards[i] = `
-          <div class="row pl-3 pb-3">
-          <div class="col-md-6 pb-3" var="festival">
-                <div class="card" onclick="document.location = '/index'" style="width: 17rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Numero de reserva: </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Fecha de reserva:</h6>
-                        <p class="card-text">Nombre del Hotel:<br> N�mero de habitaci�n:</p>
-                        <a href="/checkout" class="btn btn-primary">Check-out</a>
-                        <a href="/facturacion" class="btn btn-primary">Factura</a>
-                    </div>
-                </div>
-            </div>
-            </div>`;
-    
-            container.innerHTML += cards[i];
+	</div> 
 
-      }
-
-            </script>
-      --> 
-
-		</div> 
+	
 		
 		
 		
@@ -124,19 +110,31 @@
         <div class="row pl-3 ">
             <h3> Reservas pendientes </h3>
         </div>
-        <div class="row pl-3 pb-3">
-            <div class="col-4">
-            <div class="card" onclick="document.location = '/index'" style="width: 17rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Numero de reserva: </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Fecha de reserva:</h6>
-                    <p class="card-text">Nombre del Hotel:<br> N�mero de habitaci�n:</p>
-                    <a href="/checkin" class="btn btn-primary" >Check-in</a>
-                </div>
-            </div>
-            </div>
+        
+         <c:forEach var="reserva" items="${reservas}">
             
-        </div>
+	          <form  action="/cogerReserva" method="get" style="width: 100%;">
+	          
+	           <c:if test='${reserva.estado=="reserva"}'>
+	           
+                <input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador de Reserva: <p>${reserva.id_reserva}</p> </input> 
+                <input type=hidden name=num_hab value=${reserva.num_hab}>Numero de Habitacion:  <p>${reserva.num_hab}</p></input> 
+                <input type=hidden name=fecha_inicio value=${reserva.fecha_inicio}>Fecha de Inicio: <p>${reserva.fecha_inicio}</p></input>
+                <input type=hidden name=fecha_fin value=${reserva.fecha_fin}>Fecha de Fin: <p>${reserva.fecha_fin}</p></input>
+                <input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre del Hotel: <p>${reserva.nombre_hotel}</p></input>   
+                
+                
+                
+                
+                <button>Check In</button>
+                 
+                 
+                 </c:if>
+                  </form>
+                  	
+ 
+            </c:forEach>
+        
         
     </div>
   		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

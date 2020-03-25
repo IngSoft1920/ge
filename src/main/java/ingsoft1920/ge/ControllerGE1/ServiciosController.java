@@ -37,7 +37,6 @@ public class ServiciosController {
 
 	@Autowired
 	ServiciosBean servicios;
-	@Autowired
 	SesionBean sesion;
 	VerReservasBean reservas;
 
@@ -189,6 +188,13 @@ public class ServiciosController {
 
 
 		return respCode;
+	}
+	@GetMapping("/prueba")
+	public String pruebaReservaBean() {
+		
+		System.out.print("HOLALALALALALALA"+reservas.getNum_hab());
+		
+		return "index";
 	}
 
 

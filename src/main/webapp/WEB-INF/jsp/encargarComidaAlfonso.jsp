@@ -43,7 +43,7 @@
 			<c:forEach var="platos" items="${todo.platos}">
 				<div class="row pl-5">
 					<div class="col justify-content-left">
-		        		<h1 name="platos" value="${platos}">${platos}</h1> <br></br>
+		        		<p name="platos" value="${platos}">${platos}</p> <br></br>
 		        	</div>
 		        	<div class="col">
 		        		 <input name="num_platos" type="number" value=0 min=0> Cantidad </input> <br></br>

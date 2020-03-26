@@ -5,20 +5,24 @@ package ingsoft1920.ge.ControllerGE1;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import java.util.LinkedList;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.BeansGE1.IncidenciasBean;
 import ingsoft1920.ge.ControllerGE1.VerReservasController;
 import ingsoft1920.ge.ControllerGE1.EncargarComidaController;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -55,7 +59,10 @@ public class Routing {
 	}
 	
 	@GetMapping("/incidencias")
-	public String incidencias() {
+	public String incidencias(Model model) {
+		
+		IncidenciasBean Incidencia = new IncidenciasBean(); //crear bean de incidencias
+		model.addAttribute("Incidencia", Incidencia); //añadir el bean al modelo
 
 		return "incidencias";
 	}

@@ -1,6 +1,8 @@
 package ingsoft1920.ge.ControllerGE1;
 
 import java.util.Calendar;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,39 +33,41 @@ public class IncidenciasController {
 
 
 	//enviar incidencia
-	@PostMapping("/informarIncidencia")
-	public int enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
-			Model model) throws Exception {
-
-		System.out.print(incidencias.toString());
-
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
-
-		JsonObject json = new JsonObject();
-		json.addProperty("asunto",incidencias.getAsunto());
-		json.addProperty("descripcion", incidencias.getMensaje());
-		json.addProperty("nombre_hotel", reservas.getNombre_hotel());
-		json.addProperty("fecha", calendario.get(Calendar.YEAR) + "-" +
-				calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.DATE));
-		json.addProperty("hora", calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE));
-		json.addProperty("lugar", "H49");//habitacion de prueba, de momento solo se pueden enviar habitaciones
-
-
-		client.setRequestBody(json.toString());
-
-		int respCode = client.getResponseCode();
-
-		if(respCode==200) {
-			client.getResponseBody();
-		}
-
-		return respCode;
-	}
+//	@PostMapping("/informarIncidencia")
+//	public int enviarIncidencias(@Valid @ModelAttribute("incidenciasBean") IncidenciasBean incidencias,
+//			Model model) throws Exception {
+//
+//		System.out.print(incidencias.toString());
+//
+//		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
+//
+//		JsonObject json = new JsonObject();
+//		json.addProperty("asunto",incidencias.getAsunto());
+//		json.addProperty("descripcion", incidencias.getMensaje());
+//		json.addProperty("nombre_hotel", reservas.getNombre_hotel());
+//		json.addProperty("fecha", calendario.get(Calendar.YEAR) + "-" +
+//				calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.DATE));
+//		json.addProperty("hora", calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE));
+//		json.addProperty("lugar", "H49");//habitacion de prueba, de momento solo se pueden enviar habitaciones
+//
+//
+//		client.setRequestBody(json.toString());
+//
+//		int respCode = client.getResponseCode();
+//
+//		if(respCode==200) {
+//			client.getResponseBody();
+//		}
+//
+//		return respCode;
+//	}
 	
 
 	@GetMapping("/procesarIncidencias")
-	public String index() {
-
+	public String index(@ModelAttribute("Incidencia") IncidenciasBean Incidencia, HttpServletRequest request) {
+		
+		System.out.println("PRUEBA   " + Incidencia.getAsunto());
+		
 		return "procesarIncidencias";
 	}
 

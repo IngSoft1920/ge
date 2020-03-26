@@ -1,8 +1,8 @@
 package ingsoft1920.ge.BeansGE1;
+import org.springframework.stereotype.Component;
 
-import org.springframework.context.annotation.Scope;
 
-@Scope
+@Component
 public class VerReservasBean {
 
 	private int id_reserva;

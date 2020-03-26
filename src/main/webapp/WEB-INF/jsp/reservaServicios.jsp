@@ -73,24 +73,24 @@
            
             <c:forEach var="reserva" items="${reservas}">
             
-	          <form  action="/cogerReserva" method="get" style="width: 100%;">
+	         
 	          
 	           <c:if test="${reserva.estado=='check in'}">
 	           
-                <input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador de Reserva: <p>${reserva.id_reserva}</p> </input> 
-                <input type=hidden name=num_hab value=${reserva.num_hab}>Numero de Habitacion:  <p>${reserva.num_hab}</p></input> 
-                <input type=hidden name=fecha_inicio value=${reserva.fecha_inicio}>Fecha de Inicio: <p>${reserva.fecha_inicio}</p></input>
-                <input type=hidden name=fecha_fin value=${reserva.fecha_fin}>Fecha de Fin: <p>${reserva.fecha_fin}</p></input>
-                <input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre del Hotel: <p>${reserva.nombre_hotel}</p></input>   
+           		 Identificador de Reserva: <p>${reserva.id_reserva}</p>  
+                Numero de Habitacion:  <p>${reserva.num_hab}</p>
+              	 Fecha de Inicio: <p>${reserva.fecha_inicio}</p>
+              	 Fecha de Fin: <p>${reserva.fecha_fin}</p>
+                Nombre del Hotel: <p>${reserva.nombre_hotel}</p>  
                 
                
                 
-                <input type=submit value=Gestionar>
+                <input type="submit" value="Gestionar" action="/gestionar/${reserva.id_reserva}" method="POST">
                 <button>Check Out</button>
                  <button>Factura</button>
                  
                   </c:if>
-                  </form>
+                 
                   	
  
             </c:forEach>

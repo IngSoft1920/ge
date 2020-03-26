@@ -55,15 +55,13 @@ public class pruebaConexion {
 //					System.out.println(servicios[i]);
 //				}
 		//serviciosEnviar();
-		
-		System.out.print("CODIGO  "+enviarIncidencias());
-		
+		checkinEnviar();
 		
 	}
 	
-	public static ModelAndView checkinEnviar() throws Exception {
+	public static String checkinEnviar() throws Exception {
 		//HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/"+reservas.getIdReserva(), "GET");
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/7", "GET");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/1", "GET");
 		
 		int respCode = client.getResponseCode();
 		
@@ -93,7 +91,7 @@ public class pruebaConexion {
 		map.put("Nacionalidad", nacionalidad);
 		map.put("Telefono", telefono);
 		
-		return new ModelAndView("checkin","todo", map );
+		return map.toString();
 		
 		//Esto seria lo definitivo, pero para las pruebas dejamos de momento lo de arriba
 		/*if(cliente_id.isEmpty() || nombre.isEmpty() || DNI.isEmpty() || email.isEmpty() || 

@@ -36,9 +36,12 @@ public class ServiciosController {
 
 
 	@Autowired
-	ServiciosBean servicios;
-	SesionBean sesion;
 	VerReservasBean reservas;
+	@Autowired
+	ServiciosBean servicios;
+	@Autowired
+	SesionBean sesion;
+	
 
 
 	//recibir servicios
@@ -189,6 +192,7 @@ public class ServiciosController {
 
 		return respCode;
 	}
+	
 	@GetMapping("/prueba")
 	public String pruebaReservaBean() {
 		

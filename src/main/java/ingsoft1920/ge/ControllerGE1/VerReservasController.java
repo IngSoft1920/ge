@@ -88,7 +88,7 @@ public static JSONObject receivedJSON = new JSONObject();
 	}
 
 	@GetMapping("/cogerReserva")
-	public static String enviarComanda(@Valid@ModelAttribute("VerReservasBean") VerReservasBean mandar_reserva) {
+	public static String enviarComanda(@Valid@ModelAttribute("reserva") VerReservasBean mandar_reserva) {
 		System.out.print("HOLAAAAA"+mandar_reserva.toString());
 		return "index";
 			

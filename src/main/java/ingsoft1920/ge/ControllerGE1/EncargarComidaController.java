@@ -101,7 +101,8 @@ public class EncargarComidaController {
 	@GetMapping("/enviarComanda")
 	public static String enviarComanda(@Valid@ModelAttribute("encargarComidaBean") EncargarComidaBean comanda) {
 		System.out.print(comanda.toString());
-		return "encargarComidaAlfonso";
+	
+		return "index";
 	}
 	
 	@PostMapping("/enviarComanda")
@@ -164,7 +165,7 @@ public class EncargarComidaController {
 		if(respCode==200) {
 			  resp=client.getResponseBody();
 			  }
-		
+		System.out.println("CODIGO RESP " + respCode);
 		return"servicios";
 	}
 	

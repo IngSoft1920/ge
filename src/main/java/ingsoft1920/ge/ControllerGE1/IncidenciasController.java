@@ -71,7 +71,7 @@ public class IncidenciasController {
 			client.getResponseBody();
 		}
 
-		System.out.println("CODIGO RESP " + respCode);
+		
 		
 		return "procesarIncidencias";
 	}

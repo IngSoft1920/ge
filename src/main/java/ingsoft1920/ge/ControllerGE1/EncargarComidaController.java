@@ -118,11 +118,42 @@ public class EncargarComidaController {
 		
 		int[] habitaciones_id= new int[4]; 
 		habitaciones_id[0]=reservas.getNum_hab();
+		int p=0;
+		int tamanoI=0;
+		for(int i=0;i<comanda.getNum_items().length;i++)
+		{
+			tamanoI=tamanoI+comanda.getNum_items()[i];
+		}
+		String[]pedidoitems=new String[tamanoI];
+		for(int i=0;i<comanda.getNum_items().length;i++)
+		{
+			
+			for(int j=comanda.getNum_items()[i];j!=0;j--)
+			{
+				pedidoitems[p]=comanda.getItems()[i];
+				p++;
+			}
+		}
+		int p2=0;
+		int tamanoP=0;
+		for(int i=0;i<comanda.getNum_platos().length;i++)
+		{
+			tamanoP=tamanoP+comanda.getNum_platos()[i];
+		}
+		String[]pedidoplatos=new String[tamanoP];
+		for(int i=0;i<comanda.getNum_platos().length;i++)
+		{
+			for(int j=comanda.getNum_platos()[i];j!=0;j--)
+			{
+				pedidoplatos[p2]=comanda.getPlatos()[i];
+				p2++;
+			}
+		}
 		
 		
 		json.addProperty("habitaciones_id",habitaciones_id.toString());
-		json.addProperty("platos", comanda.getPlatos().toString());
-		json.addProperty("items",comanda.getItems().toString());
+		json.addProperty("platos", pedidoplatos.toString());
+		json.addProperty("items",pedidoitems.toString());
 		
 		
 		client.setRequestBody(json.toString());

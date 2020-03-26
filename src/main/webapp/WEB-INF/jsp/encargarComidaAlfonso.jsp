@@ -35,18 +35,20 @@
         </header>
         
         <div class="container">
-        	<div class="row">
-				<h3> Platos</h3>
-			</div>
+        	
+        	
+				<h2> Platos</h2> 
+				<div class="row">
 			
+			</div>
 			<form action="/enviarComanda" method="get">
 			<c:forEach var="platos" items="${todo.platos}">
 				<div class="row pl-5">
 					<div class="col justify-content-left">
-		        		<p name="platos" value="${platos}">${platos}</p> <br></br>
+		        		<input type=hidden name="platos" value="${platos}">${platos}</input> <br></br>
 		        	</div>
 		        	<div class="col">
-		        		 <input name="num_platos" type="number" value=0 min=0> Cantidad </input> <br></br>
+		        		 <input name="num_platos" type="number" value=0 min=0>  </input> <br></br>
 		        	 </div>
 		         </div>
 		
@@ -57,24 +59,31 @@
 		 	
  		</div>
  		<div class="container">
+ 		
 		 	<h2> Bebidas</h2>
+		 	<div class="row">
 		 	
-		 	
+		 	</div>
 		    <c:forEach var="item" items="${todo.item}">
-		        <h4>${item} </h4>
-		         <h1 name="items" value="${item}"> Cantidad</h1>
-		         
+		    <div class="row pl-5">
+		        
+		        <div class="col justify-content-left">
+		         <input type=hidden name="items" value="${item}">${item}</input> <br></br>
+		         </div>
 		        	<div class="col">
-		        		 <input name="num_items" type="number" value=0 min=0> Cantidad </input> <br></br>
+		        		 <input name="num_items" type="number" value=0 min=0>  </input> <br></br>
 		        	 </div>
+		        </div>	 
 		        
 		
 		    </c:forEach>
 		    </div>
+			<div style="text-align:center;" >
 		     <input type="submit" value="Enviar">
+		    </div>
 		 	</form>
 		    
-		 
+	
 		  <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

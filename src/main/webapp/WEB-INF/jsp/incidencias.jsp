@@ -5,7 +5,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,17 +51,38 @@ label {
 
 	<!-- Parte de incidencias -->
 	<div class="aspecto2">
-		 <form:form action="procesarIncidencias" modelAttribute="Incidencia" method="get">
+		<form:form action="procesarIncidencias" modelAttribute="Incidencia"
+			method="post">
 
 			<label>Asunto</label>
-			<form:input name="asunto" path="asunto"/>
-			<br> <br>
-			<label>Mnesaje</label>
-			<form:input name="mensaje" path="mensaje"/>
-			<br> <br>
-			<input type="submit" value="Enviar"> <input
-			type="reset" value="Borrar">
-			</form:form> 
+			<form:select path="asunto"
+				style="margin-top: 5px; margin-bottom: 10px">
+				<option value="Limpieza">Limpieza</option>
+				<option value="Mantenimiento">Mantenimiento</option>
+				<!-- De momento son los asuntos establecidos por DHO -->
+			</form:select>
+			<%-- <form:input name="asunto" path="asunto" /> --%>
+			<br>
+			<br>
+			<label>Mensaje</label>
+			<form:select path="mensaje" id="eleccion"
+				style="margin-top: 5px; margin-bottom: 10px">
+				<option value="Predeterminado1">Mensaje predeterminado1
+					(por establecer)</option>
+				<option value="Predeterminado2">Mensaje predeterminado2
+					(por establecer))</option>
+				<option value="Otro">Otro...</option>
+			</form:select>
+			<br>
+		
+			<textarea id="mensaje2" name="mensaje" class="form-control "
+				cols="30" rows="5" placeholder="Escribe tu mensaje" hidden></textarea>
+				
+				<br>
+				
+			<input type="submit" value="Enviar">
+			<input type="reset" value="Borrar">
+		</form:form>
 
 
 

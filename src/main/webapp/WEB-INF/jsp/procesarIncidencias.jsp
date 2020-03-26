@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <style>
 .card {
-	background-color: lightsalmon;
+	background-color: #B0C4DE;
 	opacity: 60%;
 	border: 1px solid rgba(0, 0, 0, 0.8);
 	padding: 30px;
@@ -25,16 +25,16 @@
 
 
 </head>
-<body style="background: radial-gradient(beige, transparent);">
+<body style="background: white;">
 	<jsp:useBean id="bean" class="ingsoft1920.ge.BeansGE1.IncidenciasBean" />
-	
+
 
 
 
 	<div class="card">
-		<b>¡Incidencia enviada con éxito!</b> <br> <br>
-		El asunto es ${Incidencia.asunto} con mensaje ${Incidencia.mensaje}
-		<% out.print("ASUNTOBEAN: " + bean.getAsunto());%>
+		<b>¡Incidencia enviada con éxito!</b> <br> <br> 
+		Asunto:${Incidencia.asunto} <br> 
+		Mensaje: ${Incidencia.mensaje}
 		<%-- <%
 			String asunto = (String) request.getParameter("asunto");
 			String asunto1 = (String) request.getParameter("asunto1");

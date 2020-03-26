@@ -56,7 +56,7 @@ public class pruebaConexion {
 //				}
 		//serviciosEnviar();
 		
-		System.out.print("CODIGO  "+enviarIncidencias());
+		//System.out.print("CODIGO  "+enviarIncidencias());
 		
 		
 	}
@@ -207,7 +207,7 @@ public class pruebaConexion {
 
 		JsonObject json = new JsonObject();
 		json.addProperty("asunto","Limpieza");
-		json.addProperty("descripcion", "prueba");
+		json.addProperty("descripcion", "PRUEBA2");
 		json.addProperty("nombre_hotel", "hotel_prueba");
 		json.addProperty("fecha",formatoFecha.format(fechaActual));
 		json.addProperty("hora", calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE));

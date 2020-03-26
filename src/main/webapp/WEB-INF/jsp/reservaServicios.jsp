@@ -67,9 +67,6 @@
 		<div class="row pl-3">
 			<h3>Reservas en curso</h3>
           </div>
-          
-          
-          
            
             <c:forEach var="reserva" items="${reservas}">
             
@@ -77,17 +74,18 @@
 	          
 	           <c:if test="${reserva.estado=='check in'}">
 	           
-           		 Identificador de Reserva: <p>${reserva.id_reserva}</p>  
-                Numero de Habitacion:  <p>${reserva.num_hab}</p>
-              	 Fecha de Inicio: <p>${reserva.fecha_inicio}</p>
-              	 Fecha de Fin: <p>${reserva.fecha_fin}</p>
-                Nombre del Hotel: <p>${reserva.nombre_hotel}</p>  
+           		 <h5>Identificador de Reserva:</h5>   ${reserva.id_reserva}
+                <h5>Numero de Habitacion:</h5>    ${reserva.num_hab}
+              	 <h5>Fecha de Inicio:</h5>   ${reserva.fecha_inicio}
+              	<h5> Fecha de Fin:</h5>   ${reserva.fecha_fin}
+               <h5> Nombre del Hotel: </h5>  ${reserva.nombre_hotel} <br></br>
                 
+                
+                <form action="/gestionar/${reserva.id_reserva}" method="POST">
+               <input type="submit" value="Gestionar">
+    			
+				</form>
                
-                
-                <input type="submit" value="Gestionar" action="/gestionar/${reserva.id_reserva}" method="POST">
-                <button>Check Out</button>
-                 <button>Factura</button>
                  
                   </c:if>
                  
@@ -96,13 +94,6 @@
             </c:forEach>
           
 	</div> 
-
-	
-		
-		
-		
-	
-     
 
             
         <!-- Realiza tu reserva -->
@@ -113,9 +104,9 @@
         
          <c:forEach var="reserva" items="${reservas}">
             
-	          <form  action="/cogerReserva" method="get" style="width: 100%;">
+	         
 	          
-	           <c:if test='${reserva.estado=="reserva"}'>
+	           <c:if test="${reserva.estado=='reserva'}">
 	           
                 <input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador de Reserva: <p>${reserva.id_reserva}</p> </input> 
                 <input type=hidden name=num_hab value=${reserva.num_hab}>Numero de Habitacion:  <p>${reserva.num_hab}</p></input> 
@@ -126,11 +117,13 @@
                 
                 
                 
-                <button>Check In</button>
+            <form action="/checkin/{id}" method="POST">
+               <input type="submit" value="Check In">    			
+				</form>
                  
                  
                  </c:if>
-                  </form>
+               
                   	
  
             </c:forEach>

@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
@@ -30,6 +32,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 @Controller
 public class VerReservasController {
 public static JSONObject receivedJSON = new JSONObject();
+public static Reserva reservilla;
 	
 @Autowired
  SesionBean sesion;
@@ -78,18 +81,57 @@ public static JSONObject receivedJSON = new JSONObject();
 		}
 		
 		
-		
-		
-	
-		
-		
 		return new ModelAndView("reservaServicios","reservas", reservas);
 		
 	}
 
-	@GetMapping("/cogerReserva")
-	public static String enviarComanda(@Valid@ModelAttribute("reserva") VerReservasBean mandar_reserva) {
-		System.out.print("HOLAAAAA"+mandar_reserva.toString());
+	@PostMapping("/gestionar/{id}")
+	public String enviarComanda(@PathVariable("id") int id) throws Exception {
+		
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
+		JsonObject json= new JsonObject();
+		json.addProperty("id_cliente", "1");
+		
+		client.setRequestBody(json.toString());
+		
+		int respCode = client.getResponseCode();
+		
+		String resp="";
+		if(respCode==200) {
+			  resp=client.getResponseBody();
+			  }
+		
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+		//numero de reserva
+		JsonArray numeros_reservas= obj.get("id_estancia_lista").getAsJsonArray();
+		
+		//numero de habitacion
+		JsonArray numeros_habitaciones= obj.get("num_hab_lista").getAsJsonArray();
+		
+		
+		//fecha inicio
+		JsonArray inicio_fechas= obj.get("fecha_Inicio_Lista").getAsJsonArray();
+		
+		
+		//fecha final
+		JsonArray final_fechas= obj.get("fecha_Fin_Lista").getAsJsonArray();
+		
+		
+		//nombre hotel
+		JsonArray nombre_hoteles= obj.get("nombre_hotel_Lista").getAsJsonArray();
+		//estado hotel
+		JsonArray estado= obj.get("estado").getAsJsonArray();
+		
+		int cont=0;
+		boolean salir= false;
+		for(int i=0;i<estado.size();i++) {
+			if (numeros_reservas.get(i).getAsInt()==id && salir==false) {
+				cont=i;salir=true;
+			}
+			
+		}
+		Reserva res= new Reserva(numeros_reservas.get(cont).getAsInt(),numeros_habitaciones.get(cont).getAsInt(),inicio_fechas.get(cont).getAsString(),final_fechas.get(cont).getAsString(),nombre_hoteles.get(cont).getAsString(),estado.get(cont).getAsString());
+		reservilla=res;
 		return "index";
 			
 	}

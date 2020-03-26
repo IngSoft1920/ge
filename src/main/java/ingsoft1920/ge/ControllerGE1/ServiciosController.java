@@ -196,7 +196,7 @@ public class ServiciosController {
 	@GetMapping("/prueba")
 	public String pruebaReservaBean() {
 		
-		System.out.print("HOLALALALALALALA"+reservas.getNum_hab());
+		System.out.print(VerReservasController.reservilla.toString());
 		
 		return "index";
 	}

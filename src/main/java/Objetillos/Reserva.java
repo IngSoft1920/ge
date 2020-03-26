@@ -7,6 +7,12 @@ public class Reserva {
 	private String fecha_fin;
 	private String nombre_hotel;
 	private String estado;
+	
+	@Override
+	public String toString() {
+		return "Reserva [id_reserva=" + id_reserva + ", num_hab=" + num_hab + ", fecha_inicio=" + fecha_inicio
+				+ ", fecha_fin=" + fecha_fin + ", nombre_hotel=" + nombre_hotel + ", estado=" + estado + "]";
+	}
 	public Reserva(int id_reserva, int num_hab, String fecha_inicio, String fecha_fin, String nombre_hotel,
 			String estado) {
 		super();

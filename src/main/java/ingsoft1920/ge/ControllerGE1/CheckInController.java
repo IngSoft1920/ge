@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,22 +20,27 @@ import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 import com.google.gson.*;
 
+import Objetillos.Cliente;
+import Objetillos.Reserva;
+
 @Controller
 public class CheckInController {
-	
+	public int id_cliente;
+	public String id_reserva;
 	final static Logger logger = LogManager.getLogger(CheckInController.class.getName());
 	
 	@Autowired
-	//VerReservasBean reservas;
 	SesionBean sesion;
 	
 	
 	//enviar check-in
-	@PostMapping("/envioCheckIn")
-	public ModelAndView checkinEnviar() throws Exception {
-		//HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/"+reservas.getIdReserva(), "GET");
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/7", "GET");
+	@PostMapping("/checkin/{id}")
+	public ModelAndView checkinEnviar(@PathVariable("id") String id) throws Exception {
+		id_reserva=id;
 		
+		//HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/"+id, "GET");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/getCliente/1", "GET");
+		System.out.print("HOLAAAAA");
 		int respCode = client.getResponseCode();
 		
 		String resp ="";
@@ -46,7 +52,7 @@ public class CheckInController {
 		
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
 
-		String cliente_id = obj.get("cliente_id").toString();
+		int cliente_id = obj.get("cliente_id").getAsInt();
 		String nombre = obj.get("nombre").toString();
 		String apellidos = obj.get("apellidos").toString();
 		String DNI = obj.get("DNI").toString();
@@ -55,55 +61,51 @@ public class CheckInController {
 		String nacionalidad = obj.get("nacionalidad").toString();
 		String telefono = obj.get("telefono").toString();
 		
-		Map<String,String> map= new HashMap<>();
-		map.put("Nombre", nombre);
-		map.put("Apellidos", apellidos);
-		map.put("DNI", DNI);
-		map.put("email", email);
-		map.put("Nacionalidad", nacionalidad);
-		map.put("Telefono", telefono);
-		
-		return new ModelAndView("checkin","todo", map );
+		id_cliente=cliente_id;
+		Cliente cliente= new Cliente(cliente_id,nombre,apellidos,DNI,email,password,nacionalidad,telefono);
+		System.out.print(cliente.toString());
 		
 		//Esto seria lo definitivo, pero para las pruebas dejamos de momento lo de arriba
-		/*if(cliente_id.isEmpty() || nombre.isEmpty() || DNI.isEmpty() || email.isEmpty() || 
+		if( nombre.isEmpty() || DNI.isEmpty() || email.isEmpty() || 
 				password.isEmpty() || nacionalidad.isEmpty() || telefono.isEmpty()){
-			return new ModelAndView("checkin","todo",map );
+			return new ModelAndView("checkInAlfonso","cliente",cliente);
 		}
 		else {
-		
-			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/confirmarCheckin", "POST");
+			
+			HttpClient clien= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/confirmarCheckin", "POST");
 			
 			JsonObject json= new JsonObject();
-			json.addProperty("reserva_id",reservas.getId_reserva());
+			json.addProperty("reserva_id",id);
 		
-			client.setRequestBody(json.toString());
+			clien.setRequestBody(json.toString());
 			
-			int respCode = client.getResponseCode();
+			int responseCode = clien.getResponseCode();
 		
-			String resp ="";
-			System.out.println(respCode+"\n");
-			if(respCode==200)
+			String response ="";
+			System.out.print(response);
+			if(responseCode==200)
 			{
-				resp=client.getResponseBody();
+				response=clien.getResponseBody();
 			}
-			return new ModelAndView("recibirServicios");
-		}*/
-		
-		
+			return new ModelAndView("checkInAlfonso");
+		}
 	}
-	
-	public String enviarDatosCheckIn(@Valid@ModelAttribute("checkInBean") CheckInBean checkin) throws Exception {
 		
+		
+	
+	@PostMapping("/confirmarCheckin")
+	public String enviarDatosCheckIn(@Valid@ModelAttribute("checkInBean") CheckInBean checkin) throws Exception {
+		System.out.print(checkin.toString());
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/enviardatosCambiadosmasCheckIn", "POST");
 		
 		JsonObject json= new JsonObject();
-		//json.addProperty("reserva_id",reservas.getId_reserva());
-		json.addProperty("cliente_id",sesion.getUsuarioID());
+		json.addProperty("reserva_id",id_reserva);
+		json.addProperty("cliente_id",id_cliente);
 		json.addProperty("nombre",checkin.getNombre());
 		json.addProperty("apellidos",checkin.getApellidos());
 		json.addProperty("DNI",checkin.getDNI());
 		json.addProperty("email",checkin.getEmail());
+		json.addProperty("password",checkin.getPassword());
 		json.addProperty("nacionalidad",checkin.getNacionalidad());
 		json.addProperty("telefono",checkin.getTelefono());
 	
@@ -117,7 +119,7 @@ public class CheckInController {
 		{
 			resp=client.getResponseBody();
 		}
-		return "reservaServicios";
+		return "index";
 		
 		
 		

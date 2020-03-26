@@ -1,26 +1,27 @@
-package ingsoft1920.ge.BeansGE1;
+package Objetillos;
 
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
+public class Cliente {
+	
+	@Override
+	public String toString() {
+		return "Cliente [cliente_id=" + cliente_id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", DNI=" + DNI
+				+ ", email=" + email + ", password=" + password + ", nacionalidad=" + nacionalidad + ", telefono="
+				+ telefono + "]";
+	}
 
-@Component
-public class CheckInBean {
+	private int cliente_id ;
 	private String nombre;
-	private String apellidos;
-	private String DNI;
-	private String email;
-	private String password; 
-	private String nacionalidad;
-	private String telefono ;
+	private String apellidos ;
 	
-	
-	public CheckInBean() {
+	public Cliente() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CheckInBean(String nombre, String apellidos, String dNI, String email, String password, String nacionalidad,
-			String telefono) {
+	
+	public Cliente(int cliente_id, String nombre, String apellidos, String dNI, String email, String password,
+			String nacionalidad, String telefono) {
 		super();
+		this.cliente_id = cliente_id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		DNI = dNI;
@@ -28,6 +29,13 @@ public class CheckInBean {
 		this.password = password;
 		this.nacionalidad = nacionalidad;
 		this.telefono = telefono;
+	}
+
+	public int getCliente_id() {
+		return cliente_id;
+	}
+	public void setCliente_id(int cliente_id) {
+		this.cliente_id = cliente_id;
 	}
 	public String getNombre() {
 		return nombre;
@@ -71,8 +79,11 @@ public class CheckInBean {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
-	
-	
+
+	private String DNI;
+	private String email;
+	private String password;
+	private String nacionalidad;
+	private String telefono ;
 
 }

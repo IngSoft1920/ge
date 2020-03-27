@@ -22,6 +22,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -31,7 +32,17 @@ public class ServiciosController {
 	public static String[] servicios_nombre;
 	public static int[] servicios_id;
 	public static List<String> servicios_reservados;
+	public static List<String> fechas_reservadas;
 
+	
+	public static List<String> renewServicios;
+	public static List<String> renewRestaurantes;
+	public static List<String> renewServiciosReservados;
+	public static List<String> renewFechasReservadas;
+	public static List<String> renewHorasRestaurantes;
+	public static List<String> renewHorasServicios;
+
+	
 	final static Logger logger = LogManager.getLogger(ServiciosController.class.getName());
 
 
@@ -84,11 +95,35 @@ public class ServiciosController {
 		}
 		servicios_id=ides;
 		ReservarMesaController.horasDisponibles();
+		servicios_reservados=this.recibirServiciosReservados().get("reservas");
+		fechas_reservadas=this.recibirServiciosReservados().get("fechas");
+		
 		Map<String,List<String>> map= new HashMap<>();
 		map.put("servicios", serviciosList);
 		map.put("restaurantes", ReservarMesaController.recibirRestaurantes());
 		map.put("servicos_reservados", servicios_reservados);
+		map.put("fechas_reservadas", fechas_reservadas);
 		map.put("horasRestaurantes", ReservarMesaController.horasDisponibles);
+
+		
+		////////////////////HARDCODED mientras no nos llegan datos///////////////////////
+		List<String> hardcode = new LinkedList<String>();
+		hardcode.add("14:00");
+		hardcode.add("15:00");
+		hardcode.add("16:00");
+		hardcode.add("17:00");
+		map.put("horasServicios",hardcode);
+		///////////////////////////////////////////
+		
+
+		///////To reload servicios page and still get data 
+		renewServicios = map.get("servicios");
+		renewRestaurantes = map.get("restaurantes");
+		renewServiciosReservados = map.get("servicos_reservados");
+		renewFechasReservadas= map.get("fechas_reservadas");
+		renewHorasRestaurantes= map.get("horasRestaurantes");
+		renewHorasServicios= map.get("horasServicios");
+		//////
 		
 		return new ModelAndView("servicios","muchas_cosas", map);
 	}
@@ -126,14 +161,15 @@ public class ServiciosController {
 
 
 	//recibir servicios reservados por un cliente
-	public  List<String> recibirServiciosReservados() throws Exception {
+	public  Map<String,List<String>> recibirServiciosReservados() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
-
-		//enviar id_cliente e id_reserva
+		
 		JsonObject json = new JsonObject();
 		 //coger id_usuario de la sesionBean
-		json.addProperty("id_estancia", VerReservasController.reservilla.getId_reserva()); //coger id_reserva de VerReservasBean
+		json.addProperty("id_estancia", 27);
+		json.addProperty("id_cliente", 1);
+		
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
@@ -150,8 +186,22 @@ public class ServiciosController {
 		for (int i=0;i<reservas_hechas.size();i++) {
 			reservas.add(reservas_hechas.get(i).getAsString());
 		}
-		this.servicios_reservados= reservas;
-		return reservas;
+		JsonArray reservas_fechas= obj.get("fecha").getAsJsonArray();//los nombres me los he inventado
+
+		List<String> fechas= new LinkedList<>();
+		for (int i=0;i<reservas_fechas.size();i++) {
+			fechas.add(reservas_fechas.get(i).getAsString());
+		}
+		
+		
+		Map<String,List<String>> map= new HashMap<>();
+		map.put("reservas", reservas);
+		map.put("fechas", fechas);
+		//System.out.println(reservas);
+		//System.out.println(fechas);
+        //System.out.println((JsonObject) JsonParser.parseString(resp)); //both reservas & fechas
+        
+		return map;
 	}
 
 
@@ -195,12 +245,21 @@ public class ServiciosController {
 		return respCode;
 	}
 	
-	@GetMapping("/prueba")
-	public String pruebaReservaBean() {
+	@GetMapping("/enviarServicios")
+	public ModelAndView pruebaReservaBean(@Valid@ModelAttribute("ServiciosBean") ServiciosBean reserva_servicios) throws Exception{
+		Map<String,List<String>> map= new HashMap<>();
+
+		map.put("servicios", renewServicios);
+		map.put("restaurantes", renewRestaurantes);
+		map.put("servicos_reservados", renewServiciosReservados);
+		map.put("horasRestaurantes", renewHorasRestaurantes);
+		map.put("horasServicios",renewHorasServicios);
+		map.put("fechas_reservadas",renewFechasReservadas);
+
 		
-		System.out.print(VerReservasController.reservilla.toString());
-		
-		return "index";
+		System.out.print(reserva_servicios.toString()); //reservar servicios bean
+		return new ModelAndView("servicios","muchas_cosas", map);
+
 	}
 
 

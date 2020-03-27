@@ -1,13 +1,17 @@
 package ingsoft1920.ge.ControllerGE1;
 
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -86,9 +90,20 @@ public class ReservarMesaController {
 		}
 	
 	@GetMapping("/enviarReserva")
-	public static String enviarComanda(@Valid@ModelAttribute("ReservarMesaBean") ReservarMesaBean reserva_mesa) {
-		System.out.print(reserva_mesa.toString());
-		return "servicios";
+	public static ModelAndView enviarComanda(@Valid@ModelAttribute("ReservarMesaBean") ReservarMesaBean reserva_mesa) throws Exception{
+	
+		Map<String,List<String>> map= new HashMap<>();
+
+		map.put("servicios", ServiciosController.renewServicios);
+		map.put("restaurantes", ServiciosController.renewRestaurantes);
+		map.put("servicos_reservados", ServiciosController.renewServiciosReservados);
+		map.put("horasRestaurantes", ServiciosController.renewHorasRestaurantes);
+		map.put("horasServicios",ServiciosController.renewHorasServicios);
+		
+		
+		
+		System.out.print(reserva_mesa.toString()); //reservar mesa bean
+		return new ModelAndView("servicios","muchas_cosas", map);
 			
 	}
 

@@ -7,14 +7,7 @@
 
 <script>
 
-function backButton(){
-var pageName = window.location.href;
 
-if(pageName=="http://localhost:7004/index" || pageName=="http://localhost:7004/home"){
-    document.getElementById('backbut').style.visibility = 'hidden';
-}
-console.log(pageName);
-}
 
 </script>
 <head>
@@ -36,6 +29,19 @@ console.log(pageName);
 	<div class="topCabecera">
 		<ul id="buttonCabecera">
 			<div class="menu1Cabecera">
+			<li><button id="backbut" value="back" onclick="history.back()" style="
+    	    float:left;
+    	    margin-top: 5px;
+    	    margin-right:15px;
+    	    color: white;
+    	    border-radius: 50%;
+    	    border: none;
+    	    background: #b8b078;
+    	    font-family: cursive;
+    	    width: 30px;
+    	    height:30px;
+    	    text-align: center;">&#8249;
+    	    </button></li>
 				<li><a href="/"><img src="/imagenes/LogoHotel.jpg" /></li>
 			</div>
 
@@ -116,8 +122,17 @@ console.log(pageName);
 					document.getElementById("redirigir6").style.display = "inline-block";
 				
 				}
-				
-			}			
+				backButton();
+			}
+			
+			function backButton(){
+				var pageName = window.location.href;
+
+				if(pageName=="http://localhost:7004/index" || pageName=="http://localhost:7004/home" || pageName=="http://localhost:7004/"){
+				    document.getElementById('backbut').style.visibility = 'hidden';
+				}
+				console.log(pageName);
+				}
 			
 			</script>
 

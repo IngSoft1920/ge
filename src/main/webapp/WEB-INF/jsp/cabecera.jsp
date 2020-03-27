@@ -54,6 +54,11 @@ console.log(pageName);
 				</div>
 			</div>
 
+			<div class="menu1Cabecera">
+				<div id="redirigir5">
+					<li><a href="/login"> <i class="fa fa-pencil"> </i>Historial</li>
+				</div>
+			</div>
 
 			<div class="menu1Cabecera">
 				<div id="redirigir3">
@@ -68,6 +73,12 @@ console.log(pageName);
 					<li><a href="/servicios"> <i class="fa fa-glass"> </i>Servicios</li>
 				</div>
 			</div>
+			
+			<div class="menu1Cabecera">
+				<div id="redirigir6">
+					<li><a href="/misReservas"><i class="fa fa-pencil"> </i>Historial</li>
+				</div>
+			</div>
 
 			<script type="text/javascript">			
 			
@@ -80,21 +91,29 @@ console.log(pageName);
 					
 					document.getElementById("redirigir2").style.display = "inline-block";
 					
+					document.getElementById("redirigir5").style.display = "inline-block";
+					
 
 					document.getElementById("redirigir3").style.display = "none";
 					
 					document.getElementById("redirigir4").style.display = "none";
 					
+					document.getElementById("redirigir6").style.display = "none";
+					
 				} else {
 					document.getElementById("redirigir1").style.display = "none";
 					
 					
-					document.getElementById("redirigir2").style.display = "none";					
+					document.getElementById("redirigir2").style.display = "none";
+
+					document.getElementById("redirigir5").style.display = "none";
 
 
 					document.getElementById("redirigir3").style.display = "inline-block";
 					
 					document.getElementById("redirigir4").style.display = "inline-block";
+
+					document.getElementById("redirigir6").style.display = "inline-block";
 				
 				}
 				
@@ -123,14 +142,14 @@ console.log(pageName);
 							<button class="botonMyHotel">Registrarse</button>
 					</a>
 					</span> <span class="popuptext" id="UserPopup"> <br>
-						!BIENVENIDO ${sesionBean.usuario}!<br> Disfruta de esta
+						¡BIENVENIDO ${sesionBean.usuario}!<br> Disfruta de esta
 						experiencia con nosotros <br> <a href="/reservas"
 						value="reservas">
 							<button class="botonMyHotel">Mis Reservas</button>
 					</a> <a href="/servicios" value="servicios">
 							<button class="botonMyHotel">Mis Servicios</button>
 					</a>
-						<button class="botonMyHotel">Cerrar sesiï¿½n</button>
+						<button class="botonMyHotel">Cerrar sesion</button>
 
 					</span>
 				</div> <script>

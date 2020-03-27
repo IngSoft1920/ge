@@ -165,7 +165,10 @@ public class pruebaConexion {
 		for (int i=0;i<reservas_fechas.size();i++) {
 			fechas.add(reservas_fechas.get(i).getAsString());
 		}
-	
+		System.out.println(reservas);
+		System.out.println(fechas);
+        System.out.println((JsonObject) JsonParser.parseString(resp)); //both reservas & fechas
+        
 		return reservas;
 	}
 	

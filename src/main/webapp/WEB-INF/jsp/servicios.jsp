@@ -23,7 +23,7 @@
 	
 	    .grid-container {
 			    display: grid;
-			    grid-template-columns: auto;
+			    grid-template-columns: auto auto;
 			    justify-content: center;
 			    width:100%;
 	    }
@@ -32,8 +32,10 @@
 			    opacity: 95%;
 			    border: 2px solid rgba(0, 0, 0, 0.8);
 			    padding: 30px;
-			    width: 260px;
+			    width: 280px;
 			    margin-top:20px;
+			    margin-left: 50px;
+    			margin-right: 50px;
 	    }
         .container {
                 margin-top: 20px;
@@ -228,10 +230,13 @@
 
 			       <div class="grid-container">
 			
-			 <c:forEach var="horas" items="${muchas_cosas.horasServicios}">
+			 <c:forEach var="reservas" items="${muchas_cosas.servicos_reservados}" varStatus="loop">
+			 
 			        <div class="card">
-			          <a><b>Servicio Reservado: ${horas} </b></a> 
-			          <p name=hora value="${horas}">¡ ${horas} !</p> 
+			          
+			         <b name=tipoServicio value="${reservas}"> Servicio Reservado: ${reservas}</b>
+			         <p>Fecha de reserva: ${muchas_cosas.fechas_reservadas[loop.count]}</p> 
+			          
 			      </div>
 			</c:forEach>
 			      

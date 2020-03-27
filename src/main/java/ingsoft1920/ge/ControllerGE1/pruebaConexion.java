@@ -59,7 +59,8 @@ public class pruebaConexion {
 //					System.out.println(servicios[i]);
 //				}
 		//serviciosEnviar();
-		horasDisponibles();
+		
+		r();
 		
 	}
 	
@@ -132,6 +133,42 @@ public class pruebaConexion {
 
 
 	}
+	
+	public static  List<String> r() throws Exception {
+
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
+		
+		JsonObject json = new JsonObject();
+		 //coger id_usuario de la sesionBean
+		json.addProperty("id_estancia", 27);
+		json.addProperty("id_cliente", 1);
+		
+		client.setRequestBody(json.toString());
+
+		int respCode = client.getResponseCode();
+
+		String resp="";
+		if(respCode==200) {
+			resp=client.getResponseBody();
+		}
+
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+		JsonArray reservas_hechas= obj.get("nombreServicio").getAsJsonArray();//los nombres me los he inventado
+
+		List<String> reservas= new LinkedList<>();
+		for (int i=0;i<reservas_hechas.size();i++) {
+			reservas.add(reservas_hechas.get(i).getAsString());
+		}
+		JsonArray reservas_fechas= obj.get("fecha").getAsJsonArray();//los nombres me los he inventado
+
+		List<String> fechas= new LinkedList<>();
+		for (int i=0;i<reservas_fechas.size();i++) {
+			fechas.add(reservas_fechas.get(i).getAsString());
+		}
+	
+		return reservas;
+	}
+	
 	public  static JsonObject reservasEnviar() throws Exception {
 
 		//receivedJSON.put("datosReserva", "Datos de su reserva");

@@ -1,26 +1,26 @@
 package ingsoft1920.ge.BeansGE1;
 
 import org.springframework.stereotype.Component;
+
 import org.springframework.web.context.annotation.SessionScope;
 
 @Component
 @SessionScope
 public class IncidenciasBean {
 	
-	private String idReserva;
-	private String Asunto;
+	
+	private String asunto;
 	private String mensaje;
-	public String getIdReserva() {
-		return idReserva;
-	}
-	public void setIdReserva(String idReserva) {
-		this.idReserva = idReserva;
-	}
+	
 	public String getAsunto() {
-		return Asunto;
+		return asunto;
+	}
+	@Override
+	public String toString() {
+		return "IncidenciasBean [asunto=" + asunto + ", mensaje=" + mensaje + "]";
 	}
 	public void setAsunto(String asunto) {
-		Asunto = asunto;
+		this.asunto = asunto;
 	}
 	public String getMensaje() {
 		return mensaje;
@@ -28,18 +28,15 @@ public class IncidenciasBean {
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
-	public IncidenciasBean(String idReserva, String asunto, String mensaje) {
+	public IncidenciasBean(String asunto, String mensaje) {
 		super();
-		this.idReserva = idReserva;
-		Asunto = asunto;
+		this.asunto = asunto;
 		this.mensaje = mensaje;
 	}
 	public IncidenciasBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 	
 	
 

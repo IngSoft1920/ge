@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 //Con la etiqueta component especificamos que esta clase es un Bean 
 @Component
 public class LoginBean {
-	String usuario;
+	String email;
 	String password;
 	String method = "login";
 	int id;
@@ -17,24 +17,24 @@ public class LoginBean {
 	
 	public boolean checkCamposValidos() {
 		boolean resultado = true;
-		if (usuario.isEmpty()) {
+		if (email.isEmpty()) {
 			resultado = false;
 		} else if (password.isEmpty()) {
 			resultado = false;
-		} else if (!usuario.isEmpty()) {
+		} else if (!email.isEmpty()) {
 			int contador = 0; 
-			for (int i = 0; i < usuario.length(); i++) {
-				if (usuario.charAt(i) == '@') {
+			for (int i = 0; i < email.length(); i++) {
+				if (email.charAt(i) == '@') {
 					contador++;
 				}
 			}
 			if (contador == 0 || contador > 1) {
 				resultado = false;
-			} else if (!usuario.contains(".")) {
+			} else if (!email.contains(".")) {
 				resultado = false;
 			}
-			String temporal = usuario.substring(usuario.indexOf('@') + 1, usuario.length());
-			if (!temporal.contains(".") || usuario.charAt(usuario.indexOf('@') + 1) == '.') {
+			String temporal = email.substring(email.indexOf('@') + 1, email.length());
+			if (!temporal.contains(".") || email.charAt(email.indexOf('@') + 1) == '.') {
 				resultado = false;
 			} else {
 				for (int j = 0; j < temporal.length(); j++) {
@@ -49,13 +49,13 @@ public class LoginBean {
 		}
 		return resultado;
 	}
-
-	public String getUsuario() {
-		return usuario;
+	
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

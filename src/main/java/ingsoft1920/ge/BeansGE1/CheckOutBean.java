@@ -26,6 +26,12 @@ public class CheckOutBean {
 		super();
 		this.horaSalida = horaSalida;
 	}
+	public String getIdReserva() {
+		return idReserva;
+	}
+	public void setIdReserva(String idReserva) {
+		this.idReserva = idReserva;
+	}
 	
 	
 }

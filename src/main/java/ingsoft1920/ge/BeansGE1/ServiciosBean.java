@@ -7,23 +7,17 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 public class ServiciosBean {
 	
-	private String idReserva;
-	
-	public String getIdReserva() {
-		return idReserva;
-	}
-	public void setIdReserva(String idReserva) {
-		this.idReserva = idReserva;
-	}
-	private String servicio;
+	private String tipoServicio;
 	private String fecha;
+	private String hora;
+	private int numPersonas;
 	
 	
-	public String getServicio() {
-		return servicio;
+	public String getTipoServicio() {
+		return tipoServicio;
 	}
-	public void setServicio(String servicio) {
-		this.servicio = servicio;
+	public void setTipoServicio(String tipoServicio) {
+		this.tipoServicio = tipoServicio;
 	}
 	public String getFecha() {
 		return fecha;
@@ -31,17 +25,28 @@ public class ServiciosBean {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	
-	public ServiciosBean(String idReserva, String servicio, String fecha) {
+	public String getHoras() {
+		return hora;
+	}
+	public void setHoras(String hora) {
+		this.hora = hora;
+	}
+	public int getNumPersonas() {
+		return numPersonas;
+	}
+	public void setNumPersonas(int numPersonas) {
+		this.numPersonas = numPersonas;
+	}
+	public ServiciosBean(String tipoServicio, String fecha, String horas, int numPersonas) {
 		super();
-		this.idReserva = idReserva;
-		this.servicio = servicio;
+		this.tipoServicio = tipoServicio;
 		this.fecha = fecha;
+		this.hora = hora;
+		this.numPersonas = numPersonas;
 	}
-	public ServiciosBean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
+	
+	
 	
 	
 

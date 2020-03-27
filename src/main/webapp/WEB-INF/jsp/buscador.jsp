@@ -1,3 +1,6 @@
+
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -13,184 +16,23 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.buscador {
-	height: auto;
-	width: 1000px;
-	margin: 0 auto;
-	display: inline;
-	font-family: Arial;
-	font-size: 15px;
-	float: center;
-	padding: 20 px;
-	overflow: hidden;
-	background-size: cover;
-	background-attachment: fixed;
-	position: relative;
-}
 
-h2 {
-	text-align: center;
-	font-family: Oldtown, fantasy;
-	font-size: 50px;
-}
+<link rel="stylesheet" type="text/css" href="/css/buscador.css"
+	media="screen" />
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet">
 
-.postbuscar {
-	text-align: center;
-	font-family: Oldtown, fantasy;
-	font-size: 20px;
-}
-
-.buscar {
-	display: inline;
-	Line-Height: 30px;
-}
-
-.columna {
-	float: left;
-	width: 22%;
-	padding: 15px;
-	text-align: center;
-}
-
-@media screen and (max-width: 600px) {
-	.columna {
-		width: 100%;
-	}
-}
-
-fila {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-h3 {
-	font-family: Oldtown, fantasy;
-	Line-Height: 5px;
-	font-size: 25px;
-}
-
-input[type=date] {
-	width: 100%;
-	padding: 15px 22px;
-	margin: 10px 5px;
-	border: none;
-	background-color: #B0E0E6;
-}
-
-input[type=date]:focus {
-	background-color: #87CEFA;
-	border: 5 px;
-}
-
-select {
-	font-family: Oldtown, fantasy;
-	font-size: 15px;
-	width: 100%;
-	padding: 15px 22px;
-	margin: 10px 5px;
-	border: none;
-	color: white;
-	background-color: #B0E0E6;
-}
-
-input[type=button] {
-	font-family: Oldtown, fantasy;
-	font-size: 25px;
-	width: 100%;
-	padding: 15px 22px;
-	margin: 10px 5px;
-	border-color: black;
-	background-color: #B0E0E6;
-}
-
-input[type=submit] {
-	font-family: Oldtown, fantasy;
-	font-size: 25px;
-	width: 100%;
-	padding: 15px 22px;
-	margin: 10px 5px;
-	border-color: black;
-	background-color: #B0E0E6;
-}
-
-div {
-	margin: -10px -7px -10px -5px;
-}
-
-.contenido {
-	background-color: #B0C4DE;
-}
-
-ul {
-	margin-left: -40px;
-}
-
-li {
-	list-style: none;
-}
-
-.encabecadohotel {
-	background-color: #DAD5D5;
-}
-
-.rehabitacion {
-	background-color: #CDCDF7;
-}
-
-.habitacion {
-	overflow: hidden;
-	background-size: cover;
-	background-attachment: fixed;
-	position: relative;
-	margin-top: 30px;
-}
-
-.columnaHabitacion {
-	float: left;
-	width: 22%;
-	padding: 15px;
-	text-align: center;
-}
-
-button {
-	font-family: Oldtown, fantasy;
-	font-size: 15px;
-	width: 100%;
-	padding: 15px 22px;
-	margin: 10px 5px;
-	background-color: #B0E0E6;
-	text-align: center;
-	color: white;
-	margin: auto;
-	border-color: black;
-}
-
-#panel {
-	display: none;
-}
-
-.habitacionTipo {
-	font-family: Oldtown, fantasy;
-	font-size: 25px;
-	line-height: 50pt;
-}
-
-ul.habitacion {
-	margin: 15px 15px;
-}
-
-tarifas {
-	margin-top: -40px;
-}
-</style>
 </head>
 
 <div class="contenido">
-	<form:form method="POST" action="buscador"
+
+	<form:form method="POST" action=""
 		modelAttribute="busquedaBean">
 		<div class="buscador">
+			<br>
+			<br>
+			<br>
 			<br>
 			<div class="buscar">
 				<h2>Encuentra tu mejor oportunidad:</h2>
@@ -199,44 +41,86 @@ tarifas {
 				</p>
 				<br>
 			</div>
+			<div class="espacio"></div>
 
 
-			<div class="fila">
-				<div class="columna">
-					<h3>Fecha inicio</h3>
-					<form:input type="date" name="fechaInicio" path="fechaInicio" />
+			<div class="recogerBuscar">
+				<div class="fila">
+
+					
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<form><input type="text" name="fechaInicio" path="fechaInicio"
+								placeholder="Entrada" onfocus="(this.type='date')"
+								onblur="(this.type='text')" required>
+								</form>
+						</div>
+					</div>
+
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<form:input type="text" name="fechaFin" path="fechaFin"
+								placeholder="Salida" onfocus="(this.type='date')"
+								onblur="(this.type='text')" />
+						</div>
+					</div>
+					
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-map-marker"></i>
+							</div>
+							<select name="ciudad">
+								<option value="">Ciudad</option>
+								<c:forEach items="${ciudades}" var="ciudad">
+									<option value="${ciudad}">${ciudad}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+
+
+					<div class="columna">
+						<div class="input_photo">
+							<div class="icon">
+								<i class="fa fa-search"></i>
+							</div>
+							<select name="hotel">
+								<option value="">Hotel</option>
+								<c:forEach items="${hoteles}" var="hotel">
+									<option value="${hotel.nombre}">${hotel.nombre}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+					
+
+
+					<div class="columna">
+						<div class="buttonSearch">
+							<input type="submit" id="search" value="Search">
+
+						</div>
+					</div>
+					
 				</div>
-
-				<div class="columna">
-					<h3>Fecha salida</h3>
-					<form:input type="date" name="fechaFin" path="fechaFin" />
-				</div>
-
-
-				<div class="columna">
-
-					<h3>Ciudad</h3>
-					<select name="ciudad">
-						<option value="">(Opcional)</option>
-						<c:forEach items="${busquedaBean.ciudades}" var="ciudad">
-							<option value="${ciudad}">${ciudad}</option>
-						</c:forEach>
-					</select>
-				</div>
-
-				<div class="columna">
-					<h3>Hotel</h3>
-					<select name="hotel">
-						<option value="">(Opcional)</option>
-						<c:forEach items="${busquedaBean.hoteles}" var="hotel">
-							<option value="${hotel}">${hotel}</option>
-						</c:forEach>
-					</select>
-				</div>
-
-
-
+				
 			</div>
+			<div class="garantizado">
+			<div class="icon"><i class="fa fa-plus"></i></div>
+
+			<pre style= color:white>
+<b>	MEJOR PRECIO
+	GARANTIZADO</b>
+			</pre>
+			</div>
+			<br> <br> <br> <br> <br> <br> <br>
 		</div>
 		<br>
 		<br>
@@ -245,167 +129,143 @@ tarifas {
 		<br>
 		<br>
 		<br>
-		<br>
-
-		<div class="buttonSearch">
-			<input type="submit" id="search" value="Search">
-
-		</div>
-
 	</form:form>
+	<br> <br> <br> <br> <br> <br> <br>
 
 </div>
 
 
-<br>
-<br>
 
+<ul class="list">
 
-<ul id="list">
-
-	<c:forEach items="${hotelesDisponiblesBean.hoteles}" var="hotel">
+	<c:forEach items="${hotelesDisponibles.hoteles}" var="hotel">
 		<div class="rehabitacion">
-			<li>
+		<br>
+		<br>
+			<li class="list2">
 				<div class="encabecadohotel">
-					<h2 style="display: inline">Hotel ${hotel.nombre}</h2>
-					<h2 style="display: inline">en ${hotel.ciudad}</h2>
+					<h2 style="display: center">Hotel ${hotel.nombre} en ${hotel.ciudad}</h2>
 				</div>
 
 				<div class="habitacion">
 					<div class="columnaHabitacion">
-						<h3>Habitaciones:</h3>
+					
+					<div class="mitadColumnaHabitacion">
+					<h3>Habitaciones:</h3>	
+					<br>
+					<div class="imagenHabitacionGrande">
+<img src="/imagenes/habitacion.jpg" />
+</div>
+									
 
+						</div>			
+								
+
+				<div class="mitadColumnaHabitacion">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 						<c:forEach items="${hotel.habitaciones}" var="habitacion">
 
 							<div class="habitacionTipo">
 								<ul class="habitacion">
-
-
-									<li class="habitacionLI">${habitacion.tipo}</li>
+									<li class="habitacionLI">${habitacion.nombre}</li>
+									<br>
 								</ul>
 							</div>
 
 						</c:forEach>
-					</div>
-
-					<div class="columnaHabitacion">
-
-						<h3>Tarifas:</h3>
-						<c:forEach items="${hotel.habitaciones}" var="habitacion">
-							<div class="habitacionTipo">
-								<ul class="habitacion">
-
-									<li class="habitacionLI">${habitacion.tarifa}</li>
-								</ul>
-							</div>
-
-						</c:forEach>
-
-					</div>
-					<!--  
-					<div class="columnaHabitacion">
-
-						<h3>¿Comida?</h3>
-
 						
-
-						<div class="tarifas">
-
-
-							<ul>
-								<li>
-
-									<form method="POST" action="reservarTarifa">
-
-										<button value="cero">+0 extra: alojamiento</button>
-
-										<input type="hidden" name="optionComida" value=" 0 " />
-
-
-										<c:forEach items="${hotel.habitaciones}" var="habitacion">
-											<input type="hidden" name="habitacionId"
-												value="${habitacion.getId()}" />
-
-										</c:forEach>
-
-									</form>
-								</li>
-
-								<li>
-
-									<form method="POST" action="reservarTarifa">
-
-										<button value="desayuno">+ ${hotel.desayuno} extra:
-											alojamiento + desayuno</button>
-
-										<input type="hidden" name="optionComida"
-											value="${hotel.getDesayuno()}" />
-
-										<c:forEach items="${hotel.habitaciones}" var="habitacion">
-											<input type="hidden" name="habitacionId"
-												value="${habitacion.getId()}" />
-										</c:forEach>
-
-									</form>
-								</li>
-
-
-								<li>
-									<form method="POST" action="reservarTarifa">
-
-										<button value="pensionCompleta">+
-											${hotel.pensionCompleta} extra: pension completa</button>
-
-										<input type="hidden" name="optionComida"
-											value="${hotel.getPensionCompleta()}" />
-
-										<c:forEach items="${hotel.habitaciones}" var="habitacion">
-											<input type="hidden" name="habitacionId"
-												value="${habitacion.getId()}" />
-										</c:forEach>
-									</form>
-
-								</li>
-							</ul>
-
 						</div>
-
-						
-				</div>
-					<div class="columnaHabitacion">
-						<h3>Régimen de Comidas:</h3>
 					</div>
+
 					<div class="columnaHabitacion">
-						<h3>Reservar:</h3>
-					</div>-->
+<div class="mitadColumnaHabitacion">
+						<h3>Tarifas:</h3>
+						<br>
+						<div class="imagenHabitacionGrande">
+<img src="/imagenes/hotelpeople.jpg" />
+</div>
+	</div>
+	
+	<div class="mitadColumnaHabitacion">
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+						<c:forEach items="${hotel.habitaciones}" var="habitacion">
+						
+							<div class="habitacionTipo">
+								<ul class="habitacion">
+
+									<li class="habitacionLI">${habitacion.precio_total}
+									<br>
+									<br>
+									</li>
+									
+								</ul>
+							</div>
+
+						</c:forEach>
+						</div>
+						
+
+					</div>
+					
+					
+	<div class="mitadComida">				
+	<br>
+									<h3>Comidas:</h3>
+									</div>
+									
+					<br>
+				
 					<c:forEach items="${hotel.habitaciones}" var="habitacion">
+							<div class="bucle">
 						<form:form method="POST" action="reservar">
 							<div class="columnaHabitacion">
-									<select name="comidas">
-										<option value="+0, sólo alojamiento">+0, sólo
-											alojamiento</option>
-										<option value="+${hotel.desayuno}, alojamiento y desayuno">+${hotel.desayuno},
-											alojamiento y desayuno</option>
-										<option value="+${hotel.pensionCompleta}, pensión completa">+${hotel.pensionCompleta},
-											pensión completa</option>
-									</select>
+
+				<div class="selectComidas">							
+						
+								<select name="comidas">
+									<option value="+0, sólo alojamiento">+0, sólo
+										alojamiento</option>
+									<option value="+15, alojamiento y desayuno">+15,
+										alojamiento y desayuno</option>
+									<option value="+30, pensión completa">+30, pensión
+										completa</option>
+								</select>
+								</div>
+							
 							</div>
 
 							<div class="columnaHabitacion">
 								<div class="habitacionTipo">
 									<ul class="habitacion">
 										<input type="hidden" name="habitacionId"
-											value="${habitacion.getId()}" />
+											value="${habitacion.tipo_hab_id}" />
+										<input type="hidden" name="hotelId" value="${hotel.id }" />
+										
 										<input type="submit" value="Reservar" />
 									</ul>
 								</div>
 							</div>
+							
+
 						</form:form>
+						</div>
 					</c:forEach>
+					
 				</div>
 			</li>
 		</div>
 	</c:forEach>
+	
 </ul>
 
 
@@ -424,6 +284,25 @@ tarifas {
 </html>
 
 <!-- 
+
+<div class="imagenHabitacionGrande">
+<img src="/imagenes/habitacion.jpg" />
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="columnaHabitacion">
 	<br>

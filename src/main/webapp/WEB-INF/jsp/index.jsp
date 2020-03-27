@@ -23,22 +23,23 @@
 
     .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     padding: 10px;
     justify-content: center;
     width:100%;
     text-align: center;
+    position: absolute;
     }
     .card {
-    background-color: #B0C4DE;
-    opacity: 80%;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    background-color: #333;
+    opacity: 95%;
+    border: 3px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
-    margin-top: 90px;
+    margin-top: 180px;
     margin-left: 60px;
     margin-right: 60px;
-    height: 70%;
+    height: 50%;
     }
     
     a{
@@ -54,6 +55,12 @@
     color:white;
     font-size: 20px;
     }
+    .imagensilla{
+    width: 105%;
+    height: 100%;
+    position: absolute;
+    opacity: 85%;
+    }
     </style>
     
    
@@ -68,36 +75,36 @@
  
     <body >
 
-
+<img class="imagensilla" src="/imagenes/fondo2.jpg">
        <div class="grid-container">
-       <div class="card" onclick="document.location = '/reservas'">
-        <div class="container", style="padding-top:20px">
-          <a><b>Reservas</b></a> 
-          <p>¡Acceda para gestionar su reserva!</p> 
-<i class="far fa-address-card" style="color:white; size:20px;"></i>
+       
+       
+       
+       
+       
 
-          
-        </div>
-      </div>
-      
 
       <div class="card" onclick="document.location = '/servicios'">
         <div class="container", style="padding-top:20px">
           <a><b>Servicios</b></a> 
-          <p>¡Acceda para gestionar y reportar los servicios solicitados!</p> 
+          <p>¡Gestione los servicios solicitados!</p> 
+          <i class="far fa-address-card" style="color:white;"></i>
+          
         </div>
+        
+        
       </div>
       
         <div class="card" onclick="document.location = '/incidencias'">
         <div class="container", style="padding-top:20px">
-          <a href="/incidencias"><b>Incidencias</b></a> 
+          <a><b>Incidencias</b></a> 
           <p>¡Acceda para gestionar y reportar los servicios solicitados!</p>
-          <i class="far fa-edit"></i>
+          <i class="far fa-edit" style="color:white;"></i>
 
            
         </div>
       </div>
-      
+     
 
       </div>
 

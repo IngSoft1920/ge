@@ -7,40 +7,41 @@ import org.springframework.stereotype.Component;
 @Component
 public class HabitacionBean {
 	
-	private String tipo;
-	private double tarifa;
-	private int id;
+	private String nombre;
+	private int precio_total;
+	private int tipo_hab_id;
 	
 	public HabitacionBean () {}
 	
-	public HabitacionBean (String tipo, double tarifa, int id) {
-		this.tipo = tipo;
-		this.tarifa = tarifa;
-		this.id = id;
+	public HabitacionBean (String tipo, int tarifa, int id) {
+		this.nombre = tipo;
+		this.precio_total = tarifa;
+		this.tipo_hab_id = id;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public double getTarifa() {
-		return tarifa;
+	public int getPrecio_total() {
+		return precio_total;
 	}
 
-	public void setTarifa(double tarifa) {
-		this.tarifa = tarifa;
+	public void setPrecio_total(int precio_total) {
+		this.precio_total = precio_total;
 	}
 
-	public int getId() {
-		return id;
+	public int getTipo_hab_id() {
+		return tipo_hab_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setTipo_hab_id(int tipo_hab_id) {
+		this.tipo_hab_id = tipo_hab_id;
 	}
-	
+
+
 }

@@ -1,27 +1,24 @@
 package ingsoft1920.ge.ControllerGE1;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 
-import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import Objetillos.Cliente;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 //import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
-import com.google.gson.*;
-
-import Objetillos.Cliente;
-import Objetillos.Reserva;
 
 @Controller
 public class CheckInController {
@@ -78,7 +75,7 @@ public class CheckInController {
 			int responseCode = clien.getResponseCode();
 		
 			String response ="";
-			System.out.print(responseCode);
+			//System.out.print(responseCode);
 			if(responseCode==200)
 			{
 				response=clien.getResponseBody();

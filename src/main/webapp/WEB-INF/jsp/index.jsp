@@ -36,7 +36,7 @@
     border: 3px solid rgba(0, 0, 0, 0.8);
     padding: 30px;
     width: 250px;
-    margin-top: 180px;
+    margin-top: 160px;
     margin-left: 60px;
     margin-right: 60px;
     height: 50%;
@@ -104,10 +104,24 @@
            
         </div>
       </div>
-     
 
       </div>
 
+                      <!-- Boton de reservas -->
 
+                    <div style="margin-top:500px;width:100%;justify-content:center; display:flex;" onclick="document.location = '/recibirReservas'">
+                   <input type="button" value="Reservas en curso" style="background-color: #333; 
+					  border: 3px solid rgba(0, 0, 0, 0.8);
+					  color: white;
+					  padding: 20px;
+					  text-align: center;
+					  text-decoration: none;
+					  display: inline-block;
+					  font-size: 16px;
+					  cursor: pointer;border-radius: 50%;
+					  opacity:70%;
+					  position:relative">
+             	    </div>
+               
     </body>
 </html>

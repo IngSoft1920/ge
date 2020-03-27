@@ -142,7 +142,7 @@ console.log(pageName);
 							<button class="botonMyHotel">Registrarse</button>
 					</a>
 					</span> <span class="popuptext" id="UserPopup"> <br>
-						¡BIENVENIDO ${sesionBean.usuario}!<br> Disfruta de esta
+						BIENVENIDO ${sesionBean.usuario}<br> Disfruta de esta
 						experiencia con nosotros <br> <a href="/reservas"
 						value="reservas">
 							<button class="botonMyHotel">Mis Reservas</button>

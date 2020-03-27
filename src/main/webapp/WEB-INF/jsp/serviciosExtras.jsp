@@ -29,7 +29,7 @@
 
 	<div class="ServiciosZona">
 	<div class="tituloServicios">
-	¿QUIERE ALGUN SERVICIO MAS? <img src="/imagenes/thankyou.gif">
+	DESEA ALGUN SERVICIO MAS... <img src="/imagenes/thankyou.gif">
 	</div>
 	</div>
 
@@ -44,8 +44,8 @@
 
 					<div class="imagenfila">
 						<img src="/imagenes/${servicio.nombre}.jpg">
-						<div class="centrarTodo">¡Aprovecha nuestras instalaciones
-							como ${servicio.nombre} y disfruta!</div>
+						<div class="centrarTodo">Aprovecha nuestras instalaciones
+							como ${servicio.nombre} y disfruta</div>
 
 						<div class="centrarTodo3">
 							<select name="numPersonas">

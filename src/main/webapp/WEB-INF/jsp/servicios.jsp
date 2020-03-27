@@ -235,7 +235,7 @@
 			        <div class="card">
 			          
 			         <b name=tipoServicio value="${reservas}"> Servicio Reservado: ${reservas}</b>
-			         <p>Fecha de reserva: ${muchas_cosas.fechas_reservadas[loop.count]}</p> 
+			         <p>Fecha de reserva: ${muchas_cosas.fechas_reservadas[loop.count - 1]}</p> 
 			          
 			      </div>
 			</c:forEach>

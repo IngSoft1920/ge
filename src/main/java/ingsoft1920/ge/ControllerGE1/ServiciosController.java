@@ -144,7 +144,7 @@ public class ServiciosController {
 		}
 
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
-		JsonArray reservas_hechas= obj.get("reservas_hechas").getAsJsonArray();//los nombres me los he inventado
+		JsonArray reservas_hechas= obj.get("nombreServicio").getAsJsonArray();//los nombres me los he inventado
 
 		List<String> reservas= new LinkedList<>();
 		for (int i=0;i<reservas_hechas.size();i++) {

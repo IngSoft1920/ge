@@ -142,7 +142,7 @@
                     
                 </div>
                 <div class="col pb-3">
-                     <select name="num_personas">
+                     <select name="numPersonas">
                          <option value="0">Número de personas:</option>
                          <option value="1">1</option>
                          <option value="2">2</option>
@@ -159,26 +159,25 @@
                 <div class="col pb-3">
                    <input style="border-radius: 5px" type="date" id="fecha" name="fecha" max="31/12/2020">
                 </div>
-                <div class="col pb-3">
-                    <input type="submit" value="Enviar">
+                <div id="horas2" class="col pb-3" >
+                    <select id="hora" name="hora">
+                    	<option value="">Horas disponibles</option>
+                        <c:forEach var="horas" items="${muchas_cosas.horasRestaurantes}">
+                        	<option name=hora value="${horas}"> ${horas} </option>
+                        </c:forEach>
+                    </select>
                 </div>
-                <!--  
-                 <button value="Ver horas disponibles" onclick="mostrarHoras2()"> Ver horas</button>
-                 -->
-            </div>
+                </div>
+                <div class="row ">
+
+	                 <!-- Boton de reservar -->
+	                <div class="col pt-3">
+	                    <input type="submit" value="Reservar">
+	                </div>
+                </div>
+            
             </form>
 			
-			
-			<!-- Lista de horas -->
-            <div class="row" >
-                <div id="horas2" class="col" style="display: none">
-                    <input type="time"  min="09:00" max="18:00" value="12:00">
-                </div>
-                <!-- Boton de reservar -->
-                <div id="reservar2" class="col" style="display: none">
-                    <input type="submit" value="Reservar">
-                </div>
-            </div>
         
 		
 	</div>
@@ -199,22 +198,15 @@
         
        
 	</div>
+	
+	<!--  Parte de reservas realizadas -->
+	
+	
         
     
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-        
-        <script type="application/javascript">
-        	$( "#boton1" ).click(function() {
-        	  $( "#mostrar" ).show( "slow" );
-        	});
-             function mostarHoras2(){
-                $('#horas2').show();
-                $('#reservar2').show();
-             }
-          
-			</script>
-       
+   
         </body>
 </html>

@@ -225,7 +225,7 @@ public class BusquedaController {
 			jarr.add(jobj);
 
 			String response = jarr.toString();
-			/*
+		/*	
 			HttpClient server = new HttpClient(
 					HttpClient.urlCM+"hotel/disponibles?" + 
 					"fecha_inicio=" + busquedaBean.getFechaInicio() +

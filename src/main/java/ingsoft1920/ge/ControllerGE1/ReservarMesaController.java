@@ -3,6 +3,7 @@ package ingsoft1920.ge.ControllerGE1;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
+import ingsoft1920.ge.ControllerGE1.VerReservasController;
 
 @Controller
 public class ReservarMesaController {
@@ -111,19 +113,18 @@ public class ReservarMesaController {
 			
 		public String serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa) throws Exception{
 				
-			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
+			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 			JsonObject json = new JsonObject();
-			json.addProperty("tipoServicio",mesa.getTipoServicio());//se puede mandar el servicio en vez del id??
-			json.addProperty("fecha",mesa.getFecha() );
+			json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
+			json.addProperty("fecha", mesa.getFecha());
 			json.addProperty("hora", mesa.getHora());
-			json.addProperty("cliente_id", sesion.getUsuarioID());
-			//falta el lugar,¿como?
-			
-			//cosas que faltan
-			json.addProperty("numPersonas", mesa.getNumPersonas());
-			json.addProperty("idReserva", reservas.getId_reserva());
-			json.addProperty("platos", (String)null);
-			json.addProperty("items", (String)null);
+			json.addProperty("cliente_id", 1);
+			json.addProperty("lugar", "me da igual");
+			json.addProperty("num_personas", 1);
+			json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
+			json.addProperty("tipoServicio", 2);
+			json.addProperty("hora_salida", "18:50");
+			json.addProperty("restaurante ", "tostus");
 			
 			
 			client.setRequestBody(json.toString());

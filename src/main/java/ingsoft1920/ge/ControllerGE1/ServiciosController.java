@@ -167,7 +167,7 @@ public class ServiciosController {
 		
 		JsonObject json = new JsonObject();
 		 //coger id_usuario de la sesionBean
-		json.addProperty("id_estancia", 27);
+		json.addProperty("id_estancia", VerReservasController.reservilla.getId_reserva());
 		json.addProperty("id_cliente", 1);
 		
 		client.setRequestBody(json.toString());
@@ -209,7 +209,7 @@ public class ServiciosController {
 
 	public int reservarServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos) throws Exception{
 
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicios", "POST");
 
 		//Para averiguar el identificador del servicio liamos todo esto
 		int id_servicio_dho=0;
@@ -220,17 +220,15 @@ public class ServiciosController {
 		}
 
 		JsonObject json = new JsonObject();
-		json.addProperty("id_servicio", id_servicio_dho);//se puede mandar el servicio en vez del id??
+		json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
 		json.addProperty("fecha", servicios.getFecha());
 		json.addProperty("hora", servicios.getHoras());
-		json.addProperty("cliente_id", sesion.getUsuarioID());
-		json.addProperty("lugar", (String)null);
-		json.addProperty("numPersonas", servicios.getNumPersonas());
-		json.addProperty("idReserva", reservas.getId_reserva());
-		json.addProperty("platos", (String)null);
-		json.addProperty("items", (String)null);
-		json.addProperty("type", 1);
-		json.addProperty("nombre_restaurante", (String)null);
+		json.addProperty("cliente_id", 1);
+		json.addProperty("lugar", "donde sea");
+		json.addProperty("num_personas", servicios.getNumPersonas());
+		json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
+		json.addProperty("tipoServicio", 1);
+		json.addProperty("hora_salida", "18:50");
 		//IMPORTANTE:falta el nombre del restaurante al reservar una mesa
 
 		client.setRequestBody(json.toString());

@@ -26,6 +26,7 @@ import com.google.gson.JsonParser;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
+import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -68,56 +69,12 @@ public class pruebaConexion {
 		//HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/"+reservas.getIdReserva(), "GET");
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/1", "GET");
 		
-		int respCode = client.getResponseCode();
-		
-		String resp ="";
-		System.out.println(respCode+"\n");
-		if(respCode==200)
-		{
-			resp=client.getResponseBody();
-		}
-		System.out.println(resp.toString());
-		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
-
-		String cliente_id = obj.get("cliente_id").toString();
-		String nombre = obj.get("nombre").toString();
-		String apellidos = obj.get("apellidos").toString();
-		String DNI = obj.get("DNI").toString();
-		String email = obj.get("email").toString();
-		String password = obj.get("password").toString();
-		String nacionalidad = obj.get("nacionalidad").toString();
-		String telefono = obj.get("telefono").toString();
-		
-		Map<String,String> map= new HashMap<>();
-		map.put("Nombre", nombre);
-		map.put("Apellidos", apellidos);
-		map.put("DNI", DNI);
-		map.put("email", email);
-		map.put("Nacionalidad", nacionalidad);
-		map.put("Telefono", telefono);
-		
-		return map.toString();
-		
-		//Esto seria lo definitivo, pero para las pruebas dejamos de momento lo de arriba
-		/*if(cliente_id.isEmpty() || nombre.isEmpty() || DNI.isEmpty() || email.isEmpty() || 
-				password.isEmpty() || nacionalidad.isEmpty() || telefono.isEmpty()){
-			return new ModelAndView("checkin","todo",map );
-		}
-		else {
-			return new ModelAndView("recibirServicios");
-		}*/
-		
 		
 	}
-	//ENVIAR INCIDENCIA
-	public static  JsonObject serviciosEnviar() throws Exception {
+	//recibir servicios reservados por un cliente
+	public static  ModelAndView recibirServiciosReservados() throws Exception {
 
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
-
-		//enviar nombre del hotel
-		JsonObject json = new JsonObject();
-		json.addProperty("nombre_Hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
-		client.setRequestBody(json.toString());
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7000/hotel/ge", "GET");
 
 		int respCode = client.getResponseCode();
 
@@ -125,13 +82,9 @@ public class pruebaConexion {
 		if(respCode==200) {
 			resp=client.getResponseBody();
 		}
-		System.out.println(resp);
-		JsonObject objeto = (JsonObject) JsonParser.parseString(resp);
-		System.out.print(objeto.toString());
+		
 
-		return objeto;
-
-
+		return new ModelAndView("login");
 	}
 	
 	public static  List<String> r() throws Exception {
@@ -196,14 +149,15 @@ public class pruebaConexion {
 	}
 
 	//recibir servicios reservados por un cliente
-	public static JsonObject recibirServicios() throws Exception {
+	public static  List<String> r() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
-
-		//enviar id_cliente e id_reserva
+		
 		JsonObject json = new JsonObject();
-		json.addProperty("id_cliente", 1); //coger id_usuario de la sesionBean
-		json.addProperty("id_estancia",13); //coger id_reserva de VerReservasBean
+		 //coger id_usuario de la sesionBean
+		json.addProperty("id_estancia", 27);
+		json.addProperty("id_cliente", 1);
+		
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
@@ -214,84 +168,76 @@ public class pruebaConexion {
 		}
 
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+		JsonArray reservas_hechas= obj.get("nombreServicio").getAsJsonArray();//los nombres me los he inventado
 
-		//		JsonArray fechas= obj.get("fecha").getAsJsonArray();
-		//		String[] fecha= new String[fechas.size()];
-		//		for(int i=0;i<fecha.length;i++) {
-		//			fecha[i]=fechas.get(i).getAsString();	
-		//		}
+		List<String> reservas= new LinkedList<>();
+		for (int i=0;i<reservas_hechas.size();i++) {
+			reservas.add(reservas_hechas.get(i).getAsString());
+		}
+		JsonArray reservas_fechas= obj.get("fecha").getAsJsonArray();//los nombres me los he inventado
 
-		return obj;
+		List<String> fechas= new LinkedList<>();
+		for (int i=0;i<reservas_fechas.size();i++) {
+			fechas.add(reservas_fechas.get(i).getAsString());
+		}
+	
+		return reservas;
 	}
+	public static int reservarServicios() throws Exception{
 
-	public static JsonObject recibirPlatos() throws Exception {
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/platosRest", "POST");
-		JsonObject json= new JsonObject();
-		json.addProperty("rest_nom","Mamma Mia" );
-		
-		client.setRequestBody(json.toString());
-		
-		int respCode = client.getResponseCode();
-		
-		String resp="";
-		if(respCode==200) {
-			  resp=client.getResponseBody();
-			  }
-		
-		JsonObject obj = (JsonObject) JsonParser.parseString(resp); 
-		return obj;
-	}
-	/////////////////////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////////////////////////////////
-	public static int enviarIncidencias() throws Exception {
-
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 
 		JsonObject json = new JsonObject();
-		json.addProperty("asunto","Limpieza");
-		json.addProperty("descripcion", "PRUEBA2");
-		json.addProperty("nombre_hotel", "hotel_prueba");
-		json.addProperty("fecha",formatoFecha.format(fechaActual));
-		json.addProperty("hora", calendario.get(Calendar.HOUR_OF_DAY) + ":" + calendario.get(Calendar.MINUTE));
-		json.addProperty("lugar", "H43");//habitacion de prueba, de momento solo se pueden enviar habitaciones
-
+		json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
+		json.addProperty("fecha", "2020-03-10");
+		json.addProperty("hora", "18:30");
+		json.addProperty("cliente_id", 1);
+		json.addProperty("lugar", "en mi puta casa");
+		json.addProperty("num_personas", 1);
+		json.addProperty("id_reserva", 27);
+		json.addProperty("tipoServicio", 1);
+		json.addProperty("hora_salida", "18:50");
+	
 
 		client.setRequestBody(json.toString());
-
 		int respCode = client.getResponseCode();
-
-		if(respCode==200) {
+		System.out.println(respCode+"\n");
+		if(respCode==200)
+		{
 			client.getResponseBody();
 		}
 
+
 		return respCode;
 	}
-	public static  JsonObject horasDisponibles() throws Exception {
-		
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/checkReservRest", "POST");
-		
+	
+	public static void reservarMesa() throws Exception{
+			
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 		JsonObject json = new JsonObject();
-		  json.addProperty("rest_nom", "Mamma Mia");
-		  json.addProperty("capacidad", 4);
-		  json.addProperty("fecha", "2020-02-24");
-		  
-		  
+		
+		json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
+		json.addProperty("fecha", "2020-03-10");
+		json.addProperty("hora", "18:30");
+		json.addProperty("cliente_id", 1);
+		json.addProperty("lugar", "me cago en todo");
+		json.addProperty("num_personas", 1);
+		json.addProperty("id_reserva", 27);
+		json.addProperty("tipoServicio", 2);
+		json.addProperty("hora_salida", "18:50");
+		json.addProperty("restaurante ", "tostus");
+		
+		
 		client.setRequestBody(json.toString());
-		
 		int respCode = client.getResponseCode();
-		
-		System.out.print(respCode+"\n");
-		String resp="";
-		if(respCode==200) {
-			 resp= client.getResponseBody();}
-		
-		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
-		JsonArray items= obj.get("horas_disp").getAsJsonArray();
-		List<String> item= new LinkedList<>();
-		for (int i=0;i<items.size();i++) {
-			item.add(items.get(i).getAsString());
+		System.out.println(respCode+"\n");
+		if(respCode==200)
+		{
+			client.getResponseBody();
 		}
 		
-		return obj;
-		}
+		
+	}
+	
+	
 }

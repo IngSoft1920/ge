@@ -41,9 +41,9 @@ public class CheckOutController {
 	@PostMapping("/checkout/{id}")
 	public  String checkoutEnviar(@PathVariable("id") int id ) throws Exception {
 		
-		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/envioCheckOut", "POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/confirmarCheckout", "POST");
 		JsonObject json = new JsonObject();
-		json.addProperty("idReserva",id);
+		json.addProperty("reserva_id",id);
 		
 		
 		client.setRequestBody(json.toString());
@@ -55,7 +55,7 @@ public class CheckOutController {
 		}
 		
 		
-		return "login";
+		return "index";
 	}
 	
 

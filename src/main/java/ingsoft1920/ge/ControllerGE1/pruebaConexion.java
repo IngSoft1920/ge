@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -17,12 +19,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.CheckInBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
+import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -55,7 +59,7 @@ public class pruebaConexion {
 //					System.out.println(servicios[i]);
 //				}
 		//serviciosEnviar();
-		checkinEnviar();
+		horasDisponibles();
 		
 	}
 	
@@ -222,6 +226,32 @@ public class pruebaConexion {
 
 		return respCode;
 	}
-	
-
+	public static  JsonObject horasDisponibles() throws Exception {
+		
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/checkReservRest", "POST");
+		
+		JsonObject json = new JsonObject();
+		  json.addProperty("rest_nom", "Mamma Mia");
+		  json.addProperty("capacidad", 4);
+		  json.addProperty("fecha", "2020-02-24");
+		  
+		  
+		client.setRequestBody(json.toString());
+		
+		int respCode = client.getResponseCode();
+		
+		System.out.print(respCode+"\n");
+		String resp="";
+		if(respCode==200) {
+			 resp= client.getResponseBody();}
+		
+		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
+		JsonArray items= obj.get("horas_disp").getAsJsonArray();
+		List<String> item= new LinkedList<>();
+		for (int i=0;i<items.size();i++) {
+			item.add(items.get(i).getAsString());
+		}
+		
+		return obj;
+		}
 }

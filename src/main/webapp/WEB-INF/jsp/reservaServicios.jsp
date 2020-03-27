@@ -85,6 +85,16 @@
                <input type="submit" value="Gestionar">
     			
 				</form>
+				  
+                <form action="/checkout/${reserva.id_reserva}" method="POST">
+               <input type="submit" value="Check Out">
+    			
+				</form>
+				  
+                
+               <input type="submit" value="Factura">
+    			
+				
                
                  
                   </c:if>
@@ -117,7 +127,7 @@
                 
                 
                 
-            <form action="/checkin/{id}" method="POST">
+            <form action="/checkin/${reserva.id_reserva}" method="POST">
                <input type="submit" value="Check In">    			
 				</form>
                  

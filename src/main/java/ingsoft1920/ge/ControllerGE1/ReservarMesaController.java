@@ -3,24 +3,18 @@ package ingsoft1920.ge.ControllerGE1;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import javax.validation.Valid;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.BeansGE1.EncargarComidaBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
-import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -28,7 +22,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 public class ReservarMesaController {
 	
 	public static JsonObject restaurantes;
-	public static JsonObject horasDisponibles;
+	public static List<String> horasDisponibles;
 	
 	@Autowired
 	 SesionBean sesion;
@@ -62,7 +56,6 @@ public class ReservarMesaController {
 	}
 	
 	//mandamos un restaurante, el num de personas y la fecha y nos devuelven las horas disponibles
-	@GetMapping("/horasRestaurante")
 	public static  JsonObject horasDisponibles() throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/checkReservRest", "POST");
@@ -83,12 +76,12 @@ public class ReservarMesaController {
 			 resp= client.getResponseBody();}
 		
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
-		JsonArray items= obj.get("fecha_reserva").getAsJsonArray();
+		JsonArray items= obj.get("horas_disp").getAsJsonArray();
 		List<String> item= new LinkedList<>();
 		for (int i=0;i<items.size();i++) {
 			item.add(items.get(i).getAsString());
 		}
-		
+		horasDisponibles=item;
 		return obj;
 		}
 	

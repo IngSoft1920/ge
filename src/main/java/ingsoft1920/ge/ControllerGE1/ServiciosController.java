@@ -83,10 +83,12 @@ public class ServiciosController {
 			ides[i]=ids.get(i).getAsInt();	
 		}
 		servicios_id=ides;
+		ReservarMesaController.horasDisponibles();
 		Map<String,List<String>> map= new HashMap<>();
 		map.put("servicios", serviciosList);
 		map.put("restaurantes", ReservarMesaController.recibirRestaurantes());
 		map.put("servicos_reservados", servicios_reservados);
+		map.put("horasRestaurantes", ReservarMesaController.horasDisponibles);
 		
 		return new ModelAndView("servicios","muchas_cosas", map);
 	}
@@ -130,8 +132,8 @@ public class ServiciosController {
 
 		//enviar id_cliente e id_reserva
 		JsonObject json = new JsonObject();
-		json.addProperty("id_cliente", sesion.getUsuarioID()); //coger id_usuario de la sesionBean
-		json.addProperty("id_estancia", reservas.getId_reserva()); //coger id_reserva de VerReservasBean
+		 //coger id_usuario de la sesionBean
+		json.addProperty("id_estancia", VerReservasController.reservilla.getId_reserva()); //coger id_reserva de VerReservasBean
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();

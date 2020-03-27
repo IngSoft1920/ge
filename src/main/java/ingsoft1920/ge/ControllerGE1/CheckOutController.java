@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -37,15 +38,12 @@ public class CheckOutController {
 	 SesionBean sesion;
 	
 	//enviar check-out
-	@PostMapping("/envioCheckOut")
-	public  String checkoutEnviar(@Valid @ModelAttribute("checkOutBean") CheckOutBean checkoutBean,
-			Model model) throws Exception {
+	@PostMapping("/checkout/{id}")
+	public  String checkoutEnviar(@PathVariable("id") int id ) throws Exception {
 		
 		HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/envioCheckOut", "POST");
 		JsonObject json = new JsonObject();
-		json.addProperty("usuarioID", sesion.getUsuarioID());
-		json.addProperty("idReserva", checkout.getIdReserva());
-		json.addProperty("horaSalida", checkout.getHoraSalida());
+		json.addProperty("idReserva",id);
 		
 		
 		client.setRequestBody(json.toString());
@@ -57,19 +55,8 @@ public class CheckOutController {
 		}
 		
 		
-		return "";
-	}
-	@GetMapping("/checkout")
-	public  String checkInEnviar(Model model) {
-        model.addAttribute("sesionBean", sesion);
-
-		return "checkout";
+		return "login";
 	}
 	
-	public static Object beanToJson(Object bean) {
-		Gson gson = new Gson();
-		String JSON = gson.toJson(bean);	
-		return JSON;
-	}
 
 }

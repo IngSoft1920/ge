@@ -68,7 +68,7 @@ div.center {
 			Apellidos: <input type="text" name="apellidos"  /><br></br>
 			DNI: <input type="text" name="DNI"  /><br></br>
 			Email: <input type="text" name="email" /><br></br>
-			Password: <input type="text" name="password"  /><br></br>
+			Password: <input type="password" name="password"  /><br></br>
 			Nacionalidad: <input type="text" name="nacionalidad"/><br></br>
 			Telefono: <input type="text" name="telefono" /><br></br>
 			

@@ -27,6 +27,12 @@
 <body>
 
 
+	<div class="ServiciosZona">
+	<div class="tituloServicios">
+	DESEA ALGUN SERVICIO MAS... <img src="/imagenes/thankyou.gif">
+	</div>
+	</div>
+
 	<div class="fila_1">
 
 		<c:forEach items="${servicios}" var="servicio">
@@ -38,8 +44,8 @@
 
 					<div class="imagenfila">
 						<img src="/imagenes/${servicio.nombre}.jpg">
-						<div class="centrarTodo">�Aprovecha nuestras instalaciones
-							como ${servicio.nombre} y disfruta!</div>
+						<div class="centrarTodo">Aprovecha nuestras instalaciones
+							como ${servicio.nombre} y disfruta</div>
 
 						<div class="centrarTodo3">
 							<select name="numPersonas">
@@ -61,9 +67,11 @@
 							<input type="text" name="fecha" placeholder="Fecha"
 								onfocus="(this.type='date')" onblur="(this.type='text')" />
 						</div>
-
+						
+						<div class="centrarTodo2">
 						<input type="submit" id="reservar" value="Reservar" />
-
+						</div>
+						
 					</div>
 
 				</div>

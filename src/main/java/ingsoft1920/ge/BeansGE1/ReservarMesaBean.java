@@ -8,7 +8,8 @@ public class ReservarMesaBean {
 	private String nombreRestaurante;
 	private String fecha;
 	private String hora;
-	
+	private int numPersonas;
+	private static String tipoServicio= "reservarMesa";
 	
 	public String getHora() {
 		return hora;
@@ -22,8 +23,7 @@ public class ReservarMesaBean {
 	public static void setTipoServicio(String tipoServicio) {
 		ReservarMesaBean.tipoServicio = tipoServicio;
 	}
-	private int numPersonas;
-	private static String tipoServicio= "reservarMesa";
+	
 	
 	public String getNombreRestaurante() {
 		return nombreRestaurante;
@@ -45,7 +45,7 @@ public class ReservarMesaBean {
 	}
 	@Override
 	public String toString() {
-		return "ReservarMesaBean [nombreRestaurante=" + nombreRestaurante + ",fecha=" + fecha + "]";
+		return "ReservarMesaBean [nombreRestaurante=" + nombreRestaurante + ",fecha=" + fecha + ",numPersonas=" + numPersonas + ",hora=" + hora + "]";
 	}
 	public ReservarMesaBean() {
 		super();

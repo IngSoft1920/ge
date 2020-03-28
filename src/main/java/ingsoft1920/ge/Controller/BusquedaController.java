@@ -298,11 +298,11 @@ public class BusquedaController {
 		
 		//System.out.println("habitacionId: " + habitacionId + "; hotelId: " + hotelId+ ";comidas:"+comidas);
 		
-		System.out.println(reserva.getHotel_id());
-		System.out.println(reserva.getHabitacion_id());
-		System.out.println(reserva.getFecha_inicio());
-		System.out.println(reserva.getFecha_fin());
-		System.out.println(reserva.getTarifa());
+		this.reserva.setHotel_id(reserva.getHotel_id());
+		this.reserva.setHabitacion_id(reserva.getHabitacion_id());
+		this.reserva.setFecha_inicio(reserva.getFecha_inicio());
+		this.reserva.setFecha_fin(reserva.getFecha_fin());
+		this.reserva.setTarifa(reserva.getTarifa());
 		
 		return "redirect:serviciosExtras";
 		

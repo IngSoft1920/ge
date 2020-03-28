@@ -47,6 +47,7 @@ public class ServiciosPostReservaController {
 	@GetMapping("/serviciosExtras")	
 	public String mostarServiciosGet(Model model) throws Exception {
 		
+		System.out.println(reserva.getFecha_inicio());
 		/*
 		 * [ { “id” : 1 , “nombre” : “piscina” , “precio”: 10 , “unidad” : “por_dia” },
 		 * { “id” : 2 , “nombre” : “restaurante” , “precio” : null , “unidad” : null } ]
@@ -87,11 +88,6 @@ public class ServiciosPostReservaController {
 		model.addAttribute("serviciosReservados", serviciosReservados);
 		model.addAttribute("sesionBean", sesionBean);
 		
-		System.out.println(new Gson().toJson(servicios.get(0)).toString());
-
-		for(int i=0; i<servicios.size(); i++) {
-			System.out.println(servicios.get(i));
-		}
 		return "serviciosExtras";
 
 	}

@@ -9,6 +9,7 @@ public class MostrarServiciosPostReservaBean {
 	private int numPersonas;
 	private String fecha;
 	private String hora;
+	private int id;
 	private int hotel_id;
 	private double precio;
 	
@@ -48,6 +49,13 @@ public class MostrarServiciosPostReservaBean {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 	
 

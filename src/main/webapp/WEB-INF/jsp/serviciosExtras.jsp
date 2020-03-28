@@ -66,6 +66,7 @@
 						</div>
 						<input type="hidden" name="precio" value="${servicio.precio}">
 						<input type="hidden" name="tipoServicio" value="${servicio.nombre}">
+						<input type="hidden" name="id" value="${servicio.id}">
 						
 						<div class="centrarTodo2">
 						<input type="submit" id="reservar" value="Reservar" />

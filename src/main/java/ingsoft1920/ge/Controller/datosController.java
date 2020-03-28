@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import ingsoft1920.ge.Beans.LoginBean;
+import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.ReservaHotel;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.Beans.SignupBean;
@@ -35,7 +36,7 @@ public class datosController {
 	public String opcionesAutentificacion(Model model) throws Exception {
 		
 		if (sesionBean.getUsuarioID() != -1) {
-			reservaCliente();
+			reservaHabitacion();
 			
 			return "redirect:misReservas";
 		}
@@ -44,7 +45,7 @@ public class datosController {
 
 	}
 	
-	public void reservaCliente () throws Exception {
+	public void reservaHabitacion () throws Exception {
 		/*
 		 * Se envía la reserva 
 		 * 
@@ -79,6 +80,38 @@ public class datosController {
 		JsonObject reserva_id = new Gson().fromJson(response, JsonObject.class);
 		
 		reserva.resetReserva();
+	}
+	
+	public void reservaServicios (int cliente_id) throws Exception {
+		
+		/*
+		 * Formato de servicios
+		 * 
+		 * { 
+  		 *		"lugar":String 
+  		 *		"id_servicioHotel":int
+  		 *		"fecha": Date
+  		 *		"hora": Time
+  		 *		"cliente_id":int
+		 * }
+		 */
+		
+		HttpClient server = new HttpClient(HttpClient.urlDHO + "recibirServicio", "POST");
+		
+		for(MostrarServiciosPostReservaBean s: reserva.getServicios()) {
+			
+			JsonObject json_reserva = new JsonObject();
+			json_reserva.addProperty("lugar", s.getTipoServicio());
+			json_reserva.addProperty("id_servicioHotel", s.getId());
+			json_reserva.addProperty("fecha", s.getFecha());
+			json_reserva.addProperty("hora", s.getHora());
+			json_reserva.addProperty("cliente_id", cliente_id);
+			
+			server.setRequestBody(json_reserva.toString());
+			server.getResponseCode();
+		}
+		
+		
 	}
 	
 	@GetMapping("/reservaLogin")
@@ -121,7 +154,9 @@ public class datosController {
 					sesionBean.setUsuario(loginBean.getEmail().split("@")[0]);
 					
 					
-					reservaCliente();
+					reservaHabitacion();
+					reservaServicios(sesionBean.getUsuarioID());
+					reserva.resetReserva();
 					resultado = "redirect:misReservas";
 				}
 			} else { //Conexión con el servidor fallida
@@ -189,7 +224,9 @@ public class datosController {
 					sesionBean.setUsuarioID(id);
 					sesionBean.setUsuario(signupBean.getEmail().split("@")[0]);
 					
-					reservaCliente();
+					reservaHabitacion();
+					reservaServicios(sesionBean.getUsuarioID());
+					reserva.resetReserva();
 					resultado = "redirect:misReservas";
 				}
 			} else { //Conexión con el servidor fallida
@@ -244,6 +281,9 @@ public class datosController {
 			response = server.getResponseBody();
 		}
 		JsonObject reserva_cliente = new Gson().fromJson(response, JsonObject.class);
+		
+		System.out.println(response);
+		reservaServicios(reserva_cliente.get("cliente_id").getAsInt());
 		
 		reserva.resetReserva();
 		

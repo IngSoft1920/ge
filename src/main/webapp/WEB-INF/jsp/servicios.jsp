@@ -27,6 +27,18 @@
 			    justify-content: center;
 			    width:100%;
 	    }
+	    
+	    .container {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding: 10px;
+                border-color: black;
+                border-style: solid;
+                background-color: #333;
+                opacity: 80%;
+                text-align: center;
+                color: #b8b070;
+            }
 	    .card {
 			    background-color: #B0C4DE;
 			    opacity: 95%;
@@ -37,14 +49,7 @@
 			    margin-left: 50px;
     			margin-right: 50px;
 	    }
-        .container {
-                margin-top: 20px;
-                margin-bottom: 30px;
-                padding: 10px;
-                background-color: #B0C4DE;
-                opacity: 80%;
-                text-align: center;
-            }
+        
         
         label {
             	font-size: 20px

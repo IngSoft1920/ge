@@ -24,6 +24,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class datosController {
+	public int ALFONSO;
 	final static Logger logger = LogManager.getLogger(MisReservasController.class.getName());
 
 	@Autowired
@@ -283,7 +284,9 @@ public class datosController {
 		JsonObject reserva_cliente = new Gson().fromJson(response, JsonObject.class);
 		
 		reservaServicios(reserva_cliente.get("cliente_id").getAsInt());
-		
+		int alfonso = reserva_cliente.get("cliente_id").getAsInt();
+		System.out.println(alfonso);
+		ALFONSO=alfonso;
 		reserva.resetReserva();
 		
 		return "redirect:";

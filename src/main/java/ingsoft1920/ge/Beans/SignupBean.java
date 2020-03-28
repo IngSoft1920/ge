@@ -15,6 +15,7 @@ public class SignupBean {
 	String password;
 	String verificacionPassword;
 	int id;
+	String method = "signup";
 	
 
 	// En un bean siempre es necesario el constructor vacio
@@ -136,6 +137,18 @@ public class SignupBean {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	public void setVerificacionPassword(String verificacionPassword) {
+		this.verificacionPassword = verificacionPassword;
 	}
 
 }

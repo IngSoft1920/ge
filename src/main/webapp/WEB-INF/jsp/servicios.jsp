@@ -20,43 +20,63 @@
 
     <body>
 	<style>
-        .container {
+	
+	    .grid-container {
+			    display: grid;
+			    grid-template-columns: auto auto;
+			    justify-content: center;
+			    width:100%;
+	    }
+	    
+	    .container {
                 margin-top: 20px;
                 margin-bottom: 20px;
                 padding: 10px;
-                background-color: #B0C4DE;
+                border-color: black;
+                border-style: solid;
+                background-color: #333;
                 opacity: 80%;
                 text-align: center;
+                color: #b8b070;
             }
+	    .card {
+			    background-color: #B0C4DE;
+			    opacity: 95%;
+			    border: 2px solid rgba(0, 0, 0, 0.8);
+			    padding: 30px;
+			    width: 280px;
+			    margin-top:20px;
+			    margin-left: 50px;
+    			margin-right: 50px;
+	    }
+        
         
         label {
-            font-size: 20px
+            	font-size: 20px
         }
 
         li span {
-            color: #fff;
-            border: 1px solid #ccc;
-            background-color: #808080;
-            margin-right: 10px;
-            padding: 0 2px;
-            border-radius: 4px;
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
-            -o-border-radius: 4px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.8em;
-            cursor: pointer;
+	            color: #fff;
+	            border: 1px solid #ccc;
+	            background-color: #808080;
+	            margin-right: 10px;
+	            padding: 0 2px;
+	            border-radius: 4px;
+	            -moz-border-radius: 4px;
+	            -webkit-border-radius: 4px;
+	            -o-border-radius: 4px;
+	            border-radius: 4px;
+	            font-weight: bold;
+	            font-size: 0.8em;
+	            cursor: pointer;
         }
         </style>
 
 	<!-- Cabecera de la pagina -->
         <header>
-            <div class="container">
-                <div class="row justify-content-center" >
+                <div class="row justify-content-center" style="margin-top: 80px; background: #B0C4DE; margin-bottom:30px;">
                     <h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios</h1>
                     </div> 
-                </div>
         </header>
 	<!-- Parte reserva de servicios -->
 
@@ -68,7 +88,7 @@
 		
         
         <!-- Lista de servicios -->
-          <form method="get" style="width: 100%;" action="serviciosGet">
+          <form method="get" style="width: 100%;" action="/enviarServicios">
             <div class="row ">
                 <div class="col pb-3">              
 					<select name="servicio" id="tipoServicio">
@@ -83,8 +103,9 @@
                     
                 </div>
                 <div class="col pb-3">
-                     <select name="num_personas">
-                         <option value="0">Número de personas:</option><option value="1">1</option>
+                     <select name="numPersonas">
+                         <option value="0">Número de personas:</option>
+                         <option value="1">1</option>
                          <option value="2">2</option>
                          <option value="3">3</option>
                          <option value="4">4</option>
@@ -99,20 +120,22 @@
                 <div class="col pb-3">
                    <input style="border-radius: 5px" type="date" id="fecha_reserva" max="31/12/2020">
                 </div>
-                <div class="col pb-3">
-                    <button id="boton1"> Ver horas </button>
+                
+                 <div id="horas2" class="col pb-3" >
+                    <select id="hora" name="hora">
+                    	<option value="">Horas disponibles</option>
+                        <c:forEach var="horas" items="${muchas_cosas.horasServicios}">
+                        	<option name=hora value="${horas}"> ${horas} </option>
+                        </c:forEach>
+                    </select>
                 </div>
-            </div>
-			
-			<!-- Lista de horas -->
-            <div id="mostrar" style="display: none" class="row" >
-                <div id="horas1" class="col" >
-                    <input type="time"  min="09:00" max="18:00" value="12:00">
-                </div>
-                <!-- Boton de reservar -->
-                <div id="reservar1" class="col">
-                    <input type="submit" value="Reservar">
-                </div>
+                
+                
+                	                 <!-- Boton de reservar -->
+	                <div class="col pb-3">
+	                    <input type="submit" value="Reservar" class="btn btn-light" style="margin-bottom:15px; border: 3px solid darkseagreen">
+	                </div>
+	                
             </div>
         
 	</form>	
@@ -142,7 +165,7 @@
                     
                 </div>
                 <div class="col pb-3">
-                     <select name="num_personas">
+                     <select name="numPersonas">
                          <option value="0">Número de personas:</option>
                          <option value="1">1</option>
                          <option value="2">2</option>
@@ -159,26 +182,25 @@
                 <div class="col pb-3">
                    <input style="border-radius: 5px" type="date" id="fecha" name="fecha" max="31/12/2020">
                 </div>
-                <div class="col pb-3">
-                    <input type="submit" value="Enviar">
+                <div id="horas2" class="col pb-3" >
+                    <select id="hora" name="hora">
+                    	<option value="">Horas disponibles</option>
+                        <c:forEach var="horas" items="${muchas_cosas.horasRestaurantes}">
+                        	<option name=hora value="${horas}"> ${horas} </option>
+                        </c:forEach>
+                    </select>
                 </div>
-                <!--  
-                 <button value="Ver horas disponibles" onclick="mostrarHoras2()"> Ver horas</button>
-                 -->
-            </div>
+                
+                	                 <!-- Boton de reservar -->
+	                <div class="col pb-3">
+	                    <input type="submit" value="Reservar" class="btn btn-light" style="border: 3px solid darkseagreen">
+	                </div>
+                </div>
+
+
+            
             </form>
 			
-			
-			<!-- Lista de horas -->
-            <div class="row" >
-                <div id="horas2" class="col" style="display: none">
-                    <input type="time"  min="09:00" max="18:00" value="12:00">
-                </div>
-                <!-- Boton de reservar -->
-                <div id="reservar2" class="col" style="display: none">
-                    <input type="submit" value="Reservar">
-                </div>
-            </div>
         
 		
 	</div>
@@ -191,7 +213,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <a  href=/recibirPlatos class="btn btn-light" type="button"> Ver menú</a>
+                <a  href=/recibirPlatos class="btn btn-light" type="button" style="border: 3px solid darkseagreen"> Ver menú</a>
                 <!--Debe redirigir a una pagina similar a la de food and beverage-->
             </div>
             
@@ -199,6 +221,38 @@
         
        
 	</div>
+	
+	
+	
+	        <!-- Parte de servicios reservados -->
+	
+	
+		<div class="container">
+		<div class="row justify-content-center pb-3 ">
+            <h3>Servicios reservados</h3>
+                    </div>
+
+
+			       <div class="grid-container">
+			
+			 <c:forEach var="reservas" items="${muchas_cosas.servicos_reservados}" varStatus="loop">
+			 
+			        <div class="card">
+			          
+			         <b name=tipoServicio value="${reservas}"> Servicio Reservado: ${reservas}</b>
+			         <p>Fecha de reserva: ${muchas_cosas.fechas_reservadas[loop.count - 1]}</p> 
+			          
+			      </div>
+			</c:forEach>
+			      
+			      </div>
+      
+      
+	</div>
+	
+	<!--  Parte de reservas realizadas -->
+	
+	
         
     
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
@@ -214,7 +268,7 @@
                 $('#reservar2').show();
              }
           
-			</script>
+		</script>
        
         </body>
 </html>

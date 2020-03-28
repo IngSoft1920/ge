@@ -1,13 +1,19 @@
 package ingsoft1920.ge.ControllerGE1;
 
 
+import java.util.HashMap;
+
 import java.util.LinkedList;
+
 import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -17,6 +23,8 @@ import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
+import ingsoft1920.ge.ControllerGE1.VerReservasController;
+import ingsoft1920.ge.ControllerGE1.ServiciosController;
 
 @Controller
 public class ReservarMesaController {
@@ -85,30 +93,40 @@ public class ReservarMesaController {
 		return obj;
 		}
 	
-	@GetMapping("/enviarReserva")
-	public static String enviarComanda(@Valid@ModelAttribute("ReservarMesaBean") ReservarMesaBean reserva_mesa) {
-		System.out.print(reserva_mesa.toString());
-		return "servicios";
+	
+	public static ModelAndView enviarComanda(@Valid@ModelAttribute("ReservarMesaBean") ReservarMesaBean reserva_mesa) throws Exception{
+	
+		Map<String,List<String>> map= new HashMap<>();
+
+		map.put("servicios", ServiciosController.renewServicios);
+		map.put("restaurantes", ServiciosController.renewRestaurantes);
+		map.put("servicos_reservados", ServiciosController.renewServiciosReservados);
+		map.put("horasRestaurantes", ServiciosController.renewHorasRestaurantes);
+		map.put("horasServicios",ServiciosController.renewHorasServicios);
+		
+		
+		
+		System.out.print(reserva_mesa.toString()); //reservar mesa bean
+		return new ModelAndView("servicios","muchas_cosas", map);
 			
 	}
 
 	//reservar servicios a DHO
-			
-		public String serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa) throws Exception{
+	@GetMapping("/enviarReserva")	
+		public ModelAndView serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa) throws Exception{
 				
-			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
+			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 			JsonObject json = new JsonObject();
-			json.addProperty("tipoServicio",mesa.getTipoServicio());//se puede mandar el servicio en vez del id??
-			json.addProperty("fecha",mesa.getFecha() );
+			json.addProperty("id_servicio",1 );
+			json.addProperty("fecha", mesa.getFecha());
 			json.addProperty("hora", mesa.getHora());
-			json.addProperty("cliente_id", sesion.getUsuarioID());
-			//falta el lugar,¿como?
-			
-			//cosas que faltan
-			json.addProperty("numPersonas", mesa.getNumPersonas());
-			json.addProperty("idReserva", reservas.getId_reserva());
-			json.addProperty("platos", (String)null);
-			json.addProperty("items", (String)null);
+			json.addProperty("cliente_id", 1);
+			json.addProperty("lugar", "Mamma Mia");
+			json.addProperty("num_personas", 1);
+			json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
+			json.addProperty("tipoServicio", 2);
+			json.addProperty("hora_salida", "18:50");
+			json.addProperty("restaurante ", "Mamma Mia");
 			
 			
 			client.setRequestBody(json.toString());
@@ -119,7 +137,15 @@ public class ReservarMesaController {
 				client.getResponseBody();
 			}
 			
+			Map<String,List<String>> map= new HashMap<>();
+
+			map.put("servicios", ServiciosController.renewServicios);
+			map.put("restaurantes", ServiciosController.renewRestaurantes);
+			map.put("servicos_reservados", ServiciosController.recibirServiciosReservados());
+			map.put("horasRestaurantes", ServiciosController.renewHorasRestaurantes);
+			map.put("horasServicios",ServiciosController.renewHorasServicios);
 			
-			return "";
+			
+			return new ModelAndView("servicios","muchas_cosas",map);
 		}
 }

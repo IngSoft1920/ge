@@ -27,6 +27,7 @@ import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
+import ingsoft1920.ge.Beans.ReservaHotel;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -35,8 +36,10 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 public class BusquedaController {
 	final static Logger logger = LogManager.getLogger(BusquedaController.class.getName());
 	
-	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
+	
+	@Autowired
+	ReservaHotel reserva;
 
 	List<String> ciudades;
 	List<HotelBean> hoteles;
@@ -141,7 +144,7 @@ public class BusquedaController {
 			if (!ciudades.contains(h.getCiudad()))
 				ciudades.add(h.getCiudad());
 		}
- 		
+		
 		model.addAttribute("ciudades", ciudades);
 		model.addAttribute("hoteles", hoteles);
 		model.addAttribute("busquedaBean",busquedaBean);
@@ -209,7 +212,7 @@ public class BusquedaController {
 			jarr.add(jobj);
 
 			jobj = new JsonObject();
-			jobj.addProperty("hotel_id", 2);
+			jobj.addProperty("hotel_id", 5);
 			arrhab = new JsonArray();
 			objhab = new JsonObject();
 			objhab.addProperty("tipo_hab_id", 1);
@@ -225,7 +228,7 @@ public class BusquedaController {
 			jarr.add(jobj);
 
 			String response = jarr.toString();
-			/*
+		/*	
 			HttpClient server = new HttpClient(
 					HttpClient.urlCM+"hotel/disponibles?" + 
 					"fecha_inicio=" + busquedaBean.getFechaInicio() +
@@ -250,32 +253,34 @@ public class BusquedaController {
 						hotel.getNombre().compareTo(busquedaBean.getHotel()) == 0)
 						.collect(Collectors.toList());
 			}
+			if (!disponibles.isEmpty()) {
+				JsonArray habitaciones = new Gson().fromJson(response, JsonArray.class);
+				for (JsonElement je: habitaciones) {
+					JsonObject jo = je.getAsJsonObject();
+					int hotel_id = jo.get("hotel_id").getAsInt();
+					Optional<HotelBean> maybe = disponibles.stream().filter(hotel -> hotel.getId() == hotel_id).findFirst();
+					if (!maybe.isPresent()) continue;
+					HotelBean h = maybe.get();
+					h.setHabitaciones(new Gson().fromJson(jo.get("habitaciones"), new TypeToken<List<HabitacionBean>>(){}.getType()));
+				}
+				hotelesDisponibles = new HotelesDisponiblesBean();
+				hotelesDisponibles.setHoteles(
+						disponibles.stream()
+						.filter(hotel -> hotel.getHabitaciones().size() > 0)
+						.collect(Collectors.toList()));
 
-			JsonArray habitaciones = new Gson().fromJson(response, JsonArray.class);
-			for (JsonElement je: habitaciones) {
-				JsonObject jo = je.getAsJsonObject();
-				int hotel_id = jo.get("hotel_id").getAsInt();
-				Optional<HotelBean> maybe = disponibles.stream().filter(hotel -> hotel.getId() == hotel_id).findFirst();
-				if (!maybe.isPresent()) continue;
-				HotelBean h = maybe.get();
-				h.setHabitaciones(new Gson().fromJson(jo.get("habitaciones"), new TypeToken<List<HabitacionBean>>(){}.getType()));
+				if(hotelesDisponibles.getHoteles().size() == 0) {
+					model.addAttribute("error", "No hay habitaciones disponibles");
+					model.addAttribute("ciudades", ciudades);
+					model.addAttribute("busquedaBean", busquedaBean);
+					model.addAttribute("sesionBean", sesionBean);
+					return "buscador";
+				}
+
+				model.addAttribute("hotelesDisponibles", hotelesDisponibles);
+				model.addAttribute("hoteles", hoteles);
+				model.addAttribute("reserva", reserva);
 			}
-			
-			hotelesDisponibles.setHoteles(
-					disponibles.stream()
-					.filter(hotel -> hotel.getHabitaciones().size() > 0)
-					.collect(Collectors.toList()));
-			
-			if(hotelesDisponibles.getHoteles().size() == 0) {
-				model.addAttribute("error", "No hay habitaciones disponibles");
-				model.addAttribute("ciudades", ciudades);
-				model.addAttribute("busquedaBean", busquedaBean);
-				model.addAttribute("sesionBean", sesionBean);
-				return "buscador";
-			}
-			
-			model.addAttribute("hotelesDisponibles", hotelesDisponibles);
-			model.addAttribute("hoteles", hoteles);
 		}
 		this.busquedaBean.setFechaInicio(busquedaBean.getFechaInicio());
 		this.busquedaBean.setFechaFin(busquedaBean.getFechaFin());
@@ -287,18 +292,19 @@ public class BusquedaController {
 	}
 
 	@PostMapping("/reservar")
-	public String reservarPost(@Valid @ModelAttribute("habitacionId") int habitacionId,
-			@Valid @ModelAttribute("comidas") String comidas, @Valid @ModelAttribute("hotelId") int hotelId,
+	public String reservarPost(@Valid @ModelAttribute("reserva") ReservaHotel reserva ,
+			@Valid @ModelAttribute("comidas") String comidas,
 			Model model) throws Exception{
 		
-		System.out.println("habitacionId: " + habitacionId + "; hotelId: " + hotelId+ ";comidas:"+comidas);
+		//System.out.println("habitacionId: " + habitacionId + "; hotelId: " + hotelId+ ";comidas:"+comidas);
 		
+		this.reserva.setHotel_id(reserva.getHotel_id());
+		this.reserva.setHabitacion_id(reserva.getHabitacion_id());
+		this.reserva.setFecha_inicio(reserva.getFecha_inicio());
+		this.reserva.setFecha_fin(reserva.getFecha_fin());
+		this.reserva.setTarifa(reserva.getTarifa());
 		
-		return "redirect:serviciosExtras?"
-				+ "hotelId=" + hotelId
-				+ "&habitacionId=" + habitacionId
-				+ "&fechaInicio=" + busquedaBean.getFechaInicio()
-				+ "&fechaFin=" + busquedaBean.getFechaFin();
+		return "redirect:serviciosExtras";
 		
 	}	
 }

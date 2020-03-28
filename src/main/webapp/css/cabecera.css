@@ -64,19 +64,27 @@
  display:none;
  }
  
- a:link{
+  #redirigir5{
+ display:none;
+ }
+ 
+  #redirigir6{
+ display:none;
+ }
+ 
+.topCabecera a:link{
   color: #b8b078;
   text-decoration: none;
  }
-  a:visited{
+.topCabecera a:visited{
   color: #b8b078;
   text-decoration: none;
  }
-  a:active{
+.topCabecera a:active{
   color: white;
  text-decoration: none;
  }
- img {
+.topCabecera img{
   display: inline-block;
 }
 
@@ -86,10 +94,8 @@
     opacity: 1;
     width: 100%;
     top: 0;
-    z-index: 1;    
-    
+    z-index: 1;        
 }
-
 
 
 .popup {

@@ -22,6 +22,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -31,19 +32,18 @@ public class ServiciosController {
 	public static String[] servicios_nombre;
 	public static int[] servicios_id;
 	public static List<String> servicios_reservados;
+	public static List<String> fechas_reservadas;
 
-	final static Logger logger = LogManager.getLogger(ServiciosController.class.getName());
-
-
-	@Autowired
-	VerReservasBean reservas;
-	@Autowired
-	ServiciosBean servicios;
-	@Autowired
-	SesionBean sesion;
 	
+	public static List<String> renewServicios;
+	public static List<String> renewRestaurantes;
+	public static List<String> renewServiciosReservados;
+	public static List<String> renewFechasReservadas;
+	public static List<String> renewHorasRestaurantes;
+	public static List<String> renewHorasServicios;
 
-
+	
+	final static Logger logger = LogManager.getLogger(ServiciosController.class.getName());
 	//recibir servicios
   
 	@GetMapping("/recibirServicios")
@@ -53,7 +53,7 @@ public class ServiciosController {
 
 		//enviar nombre del hotel
 		JsonObject json = new JsonObject();
-		json.addProperty("nombre_Hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
+		json.addProperty("nombre_Hotel", VerReservasController.reservilla.getNombre_hotel());//habria que cogerlo de VerReservasBean, ¿como?
 		
 		client.setRequestBody(json.toString());
 
@@ -84,11 +84,35 @@ public class ServiciosController {
 		}
 		servicios_id=ides;
 		ReservarMesaController.horasDisponibles();
+		servicios_reservados=this.recibirServiciosReservados();
+		//fechas_reservadas=this.recibirServiciosReservados().get("fechas");
+		
 		Map<String,List<String>> map= new HashMap<>();
 		map.put("servicios", serviciosList);
 		map.put("restaurantes", ReservarMesaController.recibirRestaurantes());
 		map.put("servicos_reservados", servicios_reservados);
+		map.put("fechas_reservadas", fechas_reservadas);
 		map.put("horasRestaurantes", ReservarMesaController.horasDisponibles);
+
+		
+		////////////////////HARDCODED mientras no nos llegan datos///////////////////////
+		List<String> hardcode = new LinkedList<String>();
+		hardcode.add("14:00");
+		hardcode.add("15:00");
+		hardcode.add("16:00");
+		hardcode.add("17:00");
+		map.put("horasServicios",hardcode);
+		///////////////////////////////////////////
+		
+
+		///////To reload servicios page and still get data 
+		renewServicios = map.get("servicios");
+		renewRestaurantes = map.get("restaurantes");
+		renewServiciosReservados = map.get("servicos_reservados");
+		//renewFechasReservadas= map.get("fechas_reservadas");
+		renewHorasRestaurantes= map.get("horasRestaurantes");
+		renewHorasServicios= map.get("horasServicios");
+		//////
 		
 		return new ModelAndView("servicios","muchas_cosas", map);
 	}
@@ -126,14 +150,15 @@ public class ServiciosController {
 
 
 	//recibir servicios reservados por un cliente
-	public  List<String> recibirServiciosReservados() throws Exception {
+	public static  List<String> recibirServiciosReservados() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
-
-		//enviar id_cliente e id_reserva
+		
 		JsonObject json = new JsonObject();
 		 //coger id_usuario de la sesionBean
-		json.addProperty("id_estancia", VerReservasController.reservilla.getId_reserva()); //coger id_reserva de VerReservasBean
+		json.addProperty("id_estancia", VerReservasController.reservilla.getId_reserva());
+		json.addProperty("id_cliente", 1);
+		
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
@@ -144,43 +169,55 @@ public class ServiciosController {
 		}
 
 		JsonObject obj = (JsonObject) JsonParser.parseString(resp);
-		JsonArray reservas_hechas= obj.get("reservas_hechas").getAsJsonArray();//los nombres me los he inventado
+		JsonArray reservas_hechas= obj.get("nombreServicio").getAsJsonArray();//los nombres me los he inventado
 
 		List<String> reservas= new LinkedList<>();
 		for (int i=0;i<reservas_hechas.size();i++) {
 			reservas.add(reservas_hechas.get(i).getAsString());
 		}
-		this.servicios_reservados= reservas;
+		JsonArray reservas_fechas= obj.get("fecha").getAsJsonArray();//los nombres me los he inventado
+
+		List<String> fechas= new LinkedList<>();
+		for (int i=0;i<reservas_fechas.size();i++) {
+			fechas.add(reservas_fechas.get(i).getAsString());
+		}
+		
+		
+		Map<String,List<String>> map= new HashMap<>();
+		map.put("reservas", reservas);
+		map.put("fechas", fechas);
+		//System.out.println(reservas);
+		//System.out.println(fechas);
+        //System.out.println((JsonObject) JsonParser.parseString(resp)); //both reservas & fechas
+        
 		return reservas;
 	}
 
 
 	//reservar servicios
+	@GetMapping("/enviarServicios")
+	public ModelAndView reservarServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos) throws Exception{
 
-	public int reservarServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos) throws Exception{
-
-		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservar_servicio", "POST");
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 
 		//Para averiguar el identificador del servicio liamos todo esto
-		int id_servicio_dho=0;
+		/*int id_servicio_dho=0;
 		for (int i=0;i<servicios_id.length;i++) {
 			if(servicios_nombre[i].equals(servicios.getTipoServicio())) {
 				id_servicio_dho=servicios_id[i];
 			}
-		}
-
+		}*/
+		System.out.print(servicos.getTipoServicio());
 		JsonObject json = new JsonObject();
-		json.addProperty("id_servicio", id_servicio_dho);//se puede mandar el servicio en vez del id??
-		json.addProperty("fecha", servicios.getFecha());
-		json.addProperty("hora", servicios.getHoras());
-		json.addProperty("cliente_id", sesion.getUsuarioID());
-		json.addProperty("lugar", (String)null);
-		json.addProperty("numPersonas", servicios.getNumPersonas());
-		json.addProperty("idReserva", reservas.getId_reserva());
-		json.addProperty("platos", (String)null);
-		json.addProperty("items", (String)null);
-		json.addProperty("type", 1);
-		json.addProperty("nombre_restaurante", (String)null);
+		json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
+		json.addProperty("fecha", servicos.getFecha());
+		json.addProperty("hora", servicos.getHoras());
+		json.addProperty("cliente_id", 1);
+		json.addProperty("lugar", "donde sea");
+		json.addProperty("num_personas", servicos.getNumPersonas());
+		json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
+		json.addProperty("tipoServicio", 1);
+		json.addProperty("hora_salida", "18:50");
 		//IMPORTANTE:falta el nombre del restaurante al reservar una mesa
 
 		client.setRequestBody(json.toString());
@@ -190,17 +227,35 @@ public class ServiciosController {
 		{
 			client.getResponseBody();
 		}
+		
+		Map<String,List<String>> map= new HashMap<>();
+
+		map.put("servicios", renewServicios);
+		map.put("restaurantes", renewRestaurantes);
+		map.put("servicos_reservados", recibirServiciosReservados());
+		map.put("horasRestaurantes", renewHorasRestaurantes);
+		map.put("horasServicios",renewHorasServicios);
+		map.put("fechas_reservadas",renewFechasReservadas);
 
 
-		return respCode;
+		return new ModelAndView("servicios","muchas_cosas",map);
 	}
 	
-	@GetMapping("/prueba")
-	public String pruebaReservaBean() {
+	
+	public ModelAndView pruebaReservaBean(@Valid@ModelAttribute("ServiciosBean") ServiciosBean reserva_servicios) throws Exception{
+		Map<String,List<String>> map= new HashMap<>();
+
+		map.put("servicios", renewServicios);
+		map.put("restaurantes", renewRestaurantes);
+		map.put("servicos_reservados", renewServiciosReservados);
+		map.put("horasRestaurantes", renewHorasRestaurantes);
+		map.put("horasServicios",renewHorasServicios);
+		map.put("fechas_reservadas",renewFechasReservadas);
+
 		
-		System.out.print(VerReservasController.reservilla.toString());
-		
-		return "index";
+		System.out.print(reserva_servicios.toString()); //reservar servicios bean
+		return new ModelAndView("servicios","muchas_cosas", map);
+
 	}
 
 

@@ -2,14 +2,14 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<jsp:include page="cabecera.jsp"></jsp:include>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="cabecera.jsp"></jsp:include>
+
 
 
 <title>Datos Personales</title>
@@ -61,24 +61,26 @@
 	<div class="row">
 		<div class="column">
 			<h2>Introduzca su correo:</h2>
-			<form autocomplete="off">
-				<label for="email">Email:</label> <input type="text" id="email"
+			<form:form method="POST" action="reservaAnonima" autocomplete="off">
+				<label for="email">Email:</label> 
+				<input type="text" id="email"
 					name="email">
-			</form>
+				<input type="submit" value="Confirmar" >
+			</form:form>
 		</div>
 		<div class="column2"></div>
 		<div class="column">
 			<h2>Registrese en la web</h2>
-			<a href="/signup" value="signup">
-				<button class="botonMyHotel">Registrarse</button>
-			</a>
+			<form:form action="reservaSignup" method="GET" >
+				<input type="submit" value="Sign Up" >
+			</form:form>
 		</div>
 		<div class="column3"></div>
 		<div class="column">
 			<h2>Inicie sesión</h2>
-			<a href="/login" value="login">
-				<button class="botonMyHotel">Log In</button>
-			</a>
+			<form:form action="reservaLogin" method="GET" >
+				<input type="submit" value="Log In" >
+			</form:form>
 		</div>
 	</div>
 

@@ -1,6 +1,3 @@
-
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -27,6 +24,12 @@
 <body>
 
 
+	<div class="ServiciosZona">
+	<div class="tituloServicios">
+	DESEA ALGUN SERVICIO MAS... <img src="/imagenes/thankyou.gif">
+	</div>
+	</div>
+
 	<div class="fila_1">
 
 		<c:forEach items="${servicios}" var="servicio">
@@ -34,12 +37,12 @@
 			<form:form method="POST" modelAttribute="serviciosReservados"
 				action="">
 				<div class="mitad_fila">
-					<h3 name="tipoServicio" value="${servicio.nombre}">${servicio.nombre}</h3>
+					<h3>${servicio.nombre}</h3>
 
 					<div class="imagenfila">
 						<img src="/imagenes/${servicio.nombre}.jpg">
-						<div class="centrarTodo">�Aprovecha nuestras instalaciones
-							como ${servicio.nombre} y disfruta!</div>
+						<div class="centrarTodo">Aprovecha nuestras instalaciones
+							como ${servicio.nombre} y disfruta</div>
 
 						<div class="centrarTodo3">
 							<select name="numPersonas">
@@ -61,9 +64,14 @@
 							<input type="text" name="fecha" placeholder="Fecha"
 								onfocus="(this.type='date')" onblur="(this.type='text')" />
 						</div>
-
+						<input type="hidden" name="precio" value="${servicio.precio}">
+						<input type="hidden" name="tipoServicio" value="${servicio.nombre}">
+						<input type="hidden" name="id" value="${servicio.id}">
+						
+						<div class="centrarTodo2">
 						<input type="submit" id="reservar" value="Reservar" />
-
+						</div>
+						
 					</div>
 
 				</div>
@@ -77,9 +85,7 @@
 	<br>
 
 	<div class="botonUltimo">
-		<form:form method="POST" action="continuar">
-			<input type="submit" value="Continuar con la reserva"/>
-		</form:form>
+		<a href="datos"><button> Continuar con la Reserva </button></a>
 	</div>
 
 </body>

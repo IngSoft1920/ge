@@ -46,6 +46,11 @@ public class ServiciosBean {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "ServiciosBean [tipoServicio=" + tipoServicio + ",fecha=" + fecha + ",numPersonas=" + numPersonas + ",hora=" + hora + "]";
+	}
+	
 	
 	
 	

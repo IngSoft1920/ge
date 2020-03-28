@@ -52,7 +52,7 @@ position: relative;
 .centrarTodo{
 	 position: absolute;
     top: 20%;
-    left: 20%;
+    left: 10%;
 	color:white;
 	font-size: 50px;
 	font-weight: 600;
@@ -62,7 +62,7 @@ position: relative;
 .centrarTodo3{
 	 position: absolute;
     top: 60%;
-    left: 20%;
+    left: 40%;
     transform: translate(-50%, -50%);
 	color:white;
 	font-weight: 600;
@@ -85,7 +85,7 @@ position: relative;
 .centrarTodo4{
 	 position: absolute;
     top: 60%;
-    left: 40%;
+    left: 60%;
     transform: translate(-50%, -50%);
 	color:white;
 	font-weight: 600;
@@ -157,7 +157,7 @@ position: relative;
 	
 }
 
-.botonUltimo button{
+.botonUltimo input[type=submit]{
 	background-color: #b8b078;
 	font-family: Georgia;
 	color:white;

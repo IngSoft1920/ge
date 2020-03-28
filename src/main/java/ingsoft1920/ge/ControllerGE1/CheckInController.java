@@ -36,7 +36,7 @@ public class CheckInController {
 
 		// HttpClient client= new
 		// HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/"+id, "GET");
-		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/getCliente/1", "GET");
+		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/getCliente/"+id_reserva, "GET");
 		System.out.print("HOLAAAAA");
 		int respCode = client.getResponseCode();
 

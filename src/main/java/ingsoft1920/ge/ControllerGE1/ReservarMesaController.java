@@ -117,16 +117,16 @@ public class ReservarMesaController {
 				
 			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 			JsonObject json = new JsonObject();
-			json.addProperty("id_servicio",2 );
+			json.addProperty("id_servicio",1 );
 			json.addProperty("fecha", mesa.getFecha());
 			json.addProperty("hora", mesa.getHora());
 			json.addProperty("cliente_id", 1);
-			json.addProperty("lugar", "me da igual");
+			json.addProperty("lugar", "Mamma Mia");
 			json.addProperty("num_personas", 1);
 			json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 			json.addProperty("tipoServicio", 2);
 			json.addProperty("hora_salida", "18:50");
-			json.addProperty("restaurante ", "tostus");
+			json.addProperty("restaurante ", "Mamma Mia");
 			
 			
 			client.setRequestBody(json.toString());

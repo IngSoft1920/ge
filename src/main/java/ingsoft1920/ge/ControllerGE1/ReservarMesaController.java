@@ -2,6 +2,7 @@ package ingsoft1920.ge.ControllerGE1;
 
 
 import java.util.HashMap;
+
 import java.util.LinkedList;
 
 import java.util.List;
@@ -23,6 +24,7 @@ import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
 import ingsoft1920.ge.ControllerGE1.VerReservasController;
+import ingsoft1920.ge.ControllerGE1.ServiciosController;
 
 @Controller
 public class ReservarMesaController {
@@ -91,7 +93,7 @@ public class ReservarMesaController {
 		return obj;
 		}
 	
-	@GetMapping("/enviarReserva")
+	
 	public static ModelAndView enviarComanda(@Valid@ModelAttribute("ReservarMesaBean") ReservarMesaBean reserva_mesa) throws Exception{
 	
 		Map<String,List<String>> map= new HashMap<>();
@@ -110,10 +112,10 @@ public class ReservarMesaController {
 	}
 
 	//reservar servicios a DHO
-			
-		public String serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa) throws Exception{
+	@GetMapping("/enviarReserva")	
+		public ModelAndView serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa) throws Exception{
 				
-			HttpClient client= new HttpClient("piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
+			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 			JsonObject json = new JsonObject();
 			json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
 			json.addProperty("fecha", mesa.getFecha());
@@ -135,7 +137,15 @@ public class ReservarMesaController {
 				client.getResponseBody();
 			}
 			
+			Map<String,List<String>> map= new HashMap<>();
+
+			map.put("servicios", ServiciosController.renewServicios);
+			map.put("restaurantes", ServiciosController.renewRestaurantes);
+			map.put("servicos_reservados", ServiciosController.recibirServiciosReservados());
+			map.put("horasRestaurantes", ServiciosController.renewHorasRestaurantes);
+			map.put("horasServicios",ServiciosController.renewHorasServicios);
 			
-			return "";
+			
+			return new ModelAndView("servicios","muchas_cosas",map);
 		}
 }

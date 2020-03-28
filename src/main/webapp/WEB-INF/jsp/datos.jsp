@@ -61,10 +61,12 @@
 	<div class="row">
 		<div class="column">
 			<h2>Introduzca su correo:</h2>
-			<form autocomplete="off">
-				<label for="email">Email:</label> <input type="text" id="email"
+			<form:form method="POST" action="reservaAnonima" autocomplete="off">
+				<label for="email">Email:</label> 
+				<input type="text" id="email"
 					name="email">
-			</form>
+				<input type="submit" value="Confirmar" >
+			</form:form>
 		</div>
 		<div class="column2"></div>
 		<div class="column">

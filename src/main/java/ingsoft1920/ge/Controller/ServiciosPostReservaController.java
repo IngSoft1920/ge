@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -22,6 +21,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
+import ingsoft1920.ge.Beans.ReservaHotel;
 import ingsoft1920.ge.Beans.ServiciosDisponiblesPostReservaBean;
 import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
@@ -36,23 +36,17 @@ public class ServiciosPostReservaController {
 	@Autowired
 	SesionBean sesionBean;
 	
+	@Autowired 
+	ReservaHotel reserva;
+	
 
 	List<ServiciosPostReservaBean> servicios;
 
 	List<MostrarServiciosPostReservaBean> serviciosReservados = new ArrayList<MostrarServiciosPostReservaBean>();
 	
-	int hotelId;
-	int habitacionId;
-	String fechaInicio;
-	String fechaFin;
-	
 	@GetMapping("/serviciosExtras")	
-	public String mostarServiciosGet(Model model, 
-			@RequestParam int hotelId, @RequestParam int habitacionId,
-			@RequestParam String fechaInicio, @RequestParam String fechaFin) throws Exception {
-
-		this.hotelId = hotelId; this.habitacionId = habitacionId;
-		this.fechaFin = fechaFin; this.fechaInicio = fechaInicio;
+	public String mostarServiciosGet(Model model) throws Exception {
+		
 		/*
 		 * [ { “id” : 1 , “nombre” : “piscina” , “precio”: 10 , “unidad” : “por_dia” },
 		 * { “id” : 2 , “nombre” : “restaurante” , “precio” : null , “unidad” : null } ]
@@ -79,7 +73,7 @@ public class ServiciosPostReservaController {
  * 		HttpClient serverServicios = new HttpClient(HttpClient.urlCM + "hotel/servicios/" + hotelId, "GET");
  */
 		JsonObject json = new JsonObject();
-		json.addProperty("hotel_id", hotelId); 
+		json.addProperty("hotel_id", reserva.getHotel_id()); 
 /*
 		if (serverServicios.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverServicios.getResponseBody();
@@ -105,21 +99,16 @@ public class ServiciosPostReservaController {
 	@PostMapping("/serviciosExtras")
 	public String mostarServiciosPost(@Valid @ModelAttribute("serviciosReservados") 
 			MostrarServiciosPostReservaBean servicio,
-			@RequestParam int hotelId, @RequestParam int habitacionId,
-			@RequestParam String fechaInicio, @RequestParam String fechaFin,
 			Model model) throws Exception {
 		
-		serviciosReservados.add(servicio);
+		reserva.getServicios().add(servicio);
+		
+		
 		
 		model.addAttribute("servicios", this.servicios);
 		model.addAttribute("serviciosReservados", serviciosReservados);
 		model.addAttribute("sesionBean", sesionBean);
 		return "serviciosExtras";
-	}
-	
-	@PostMapping("/continuar")
-	public String mostrarServiciosPost(Model model) {
-		return "redirect:datos";
 	}
 
 }

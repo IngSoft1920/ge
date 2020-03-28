@@ -227,11 +227,12 @@
 				
 					<c:forEach items="${hotel.habitaciones}" var="habitacion">
 							<div class="bucle">
-						<form:form method="POST" action="reservar">
+						<form:form method="POST" action="reservar"
+							modelAttribute="reserva">
 							<div class="columnaHabitacion">
 
 				<div class="selectComidas">							
-						
+								
 								<select name="comidas">
 									<option value="+0, sólo alojamiento">+0, sólo
 										alojamiento</option>
@@ -240,17 +241,20 @@
 									<option value="+30, pensión completa">+30, pensión
 										completa</option>
 								</select>
-								</div>
+								</div> 
 							
 							</div>
-
+							
+							<input type="hidden" name="habitacion_id"
+									value="${habitacion.tipo_hab_id}" />
+							<input type="hidden" name="hotel_id" value="${hotel.id}" />
+							<input type="hidden" name="fecha_inicio" value="${busquedaBean.fechaInicio}" />
+							<input type="hidden" name="fecha_fin" value="${busquedaBean.fechaFin}" />
+							<input type="hidden" name="tarifa" value="${habitacion.precio_total}" />
+							
 							<div class="columnaHabitacion">
 								<div class="habitacionTipo">
-									<ul class="habitacion">
-										<input type="hidden" name="habitacionId"
-											value="${habitacion.tipo_hab_id}" />
-										<input type="hidden" name="hotelId" value="${hotel.id }" />
-										
+									<ul class="habitacion">										
 										<input type="submit" value="Reservar" />
 									</ul>
 								</div>

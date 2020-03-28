@@ -1,6 +1,3 @@
-
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -40,7 +37,7 @@
 			<form:form method="POST" modelAttribute="serviciosReservados"
 				action="">
 				<div class="mitad_fila">
-					<h3 name="tipoServicio" value="${servicio.nombre}">${servicio.nombre}</h3>
+					<h3>${servicio.nombre}</h3>
 
 					<div class="imagenfila">
 						<img src="/imagenes/${servicio.nombre}.jpg">
@@ -67,6 +64,8 @@
 							<input type="text" name="fecha" placeholder="Fecha"
 								onfocus="(this.type='date')" onblur="(this.type='text')" />
 						</div>
+						<input type="hidden" name="precio" value="${servicio.precio}">
+						<input type="hidden" name="tipoServicio" value="${servicio.nombre}">
 						
 						<div class="centrarTodo2">
 						<input type="submit" id="reservar" value="Reservar" />
@@ -85,9 +84,7 @@
 	<br>
 
 	<div class="botonUltimo">
-		<form:form method="POST" action="continuar">
-			<input type="submit" value="Continuar con la reserva"/>
-		</form:form>
+		<a href="datos"><button> Continuar con la Reserva </button></a>
 	</div>
 
 </body>

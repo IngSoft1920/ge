@@ -15,13 +15,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
+import ingsoft1920.ge.ControllerGE1.VerReservasController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
@@ -48,6 +47,7 @@ public class IncidenciasController {
 		if (mensaje_enviado.startsWith("Otro")) {
 			mensaje_enviado = mensaje_enviado.replaceFirst("Otro,", ""); // se quita la parte de 'otro'
 			System.out.println("SE METE   " + mensaje_enviado);
+			System.out.println("HOTEL   " + VerReservasController.reservilla.getNombre_hotel());
 		}
 
 		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
@@ -55,8 +55,8 @@ public class IncidenciasController {
 		JsonObject json = new JsonObject();
 		json.addProperty("asunto", Incidencia.getAsunto());
 		json.addProperty("descripcion", mensaje_enviado);
-		// json.addProperty("nombre_hotel", reservas.getNombre_hotel());
-		json.addProperty("nombre_hotel", "hotel_prueba");
+		json.addProperty("nombre_hotel", VerReservasController.reservilla.getNombre_hotel());
+		//json.addProperty("nombre_hotel", "hotel_prueba");
 		json.addProperty("fecha", formatoFecha.format(fechaActual));
 		json.addProperty("hora", formatoHora.format(fechaActual));
 		json.addProperty("lugar", "H49");// habitacion de prueba, de momento solo se pueden enviar habitaciones

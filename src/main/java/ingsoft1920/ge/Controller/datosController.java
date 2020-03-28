@@ -282,7 +282,6 @@ public class datosController {
 		}
 		JsonObject reserva_cliente = new Gson().fromJson(response, JsonObject.class);
 		
-		System.out.println(response);
 		reservaServicios(reserva_cliente.get("cliente_id").getAsInt());
 		
 		reserva.resetReserva();

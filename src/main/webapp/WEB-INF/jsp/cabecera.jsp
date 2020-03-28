@@ -68,7 +68,7 @@
 
 			<div class="menu1Cabecera">
 				<div id="redirigir3">
-					<li><a href="/reservas"> <i class="fa fa-book"> </i>Mis
+					<li><a href="/recibirReservas"> <i class="fa fa-book"> </i>Mis
 							Reservas</li>
 				</div>
 			</div>

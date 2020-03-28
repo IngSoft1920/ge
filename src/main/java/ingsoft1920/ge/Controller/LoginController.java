@@ -88,6 +88,9 @@ public class LoginController {
 				response = server.getResponseBody();
 				objetoJson = new Gson().fromJson(response, JsonObject.class);
 				int id = objetoJson.get("id").getAsInt();
+				
+				datosController.setALFONSO(id);
+				
 				if (id == -1) { //Usuario no registrado. Mandamos de vuelta a la página de login
 					model.addAttribute("loginBean", loginBean);
 					model.addAttribute("mensajeError","El usuario no existe");

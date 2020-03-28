@@ -24,7 +24,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class datosController {
-	public int ALFONSO;
+	public static int ALFONSO;
 	final static Logger logger = LogManager.getLogger(MisReservasController.class.getName());
 
 	@Autowired
@@ -144,13 +144,17 @@ public class datosController {
 			if (server.getResponseCode() == 200) {//Conectado con el servidor
 				response = server.getResponseBody();
 				objetoJson = new Gson().fromJson(response, JsonObject.class);
+				System.out.print("AQUIIIIIIIIIIII"+objetoJson.toString());
 				int id = objetoJson.get("id").getAsInt();
+				
+				ALFONSO=id;
 				if (id == -1) { //Usuario no registrado. Mandamos de vuelta a la página de login
 					model.addAttribute("loginBean", loginBean);
 					model.addAttribute("mensajeError","El usuario no existe");
 					resultado = "login";
 				} else { //Usuario existente y login exitoso
 					loginBean.setId(id);
+					
 					sesionBean.setUsuarioID(id);
 					sesionBean.setUsuario(loginBean.getEmail().split("@")[0]);
 					
@@ -174,6 +178,14 @@ public class datosController {
 		return resultado;
 	}
 	
+	public static int getALFONSO() {
+		return ALFONSO;
+	}
+
+	public static void setALFONSO(int aLFONSO) {
+		ALFONSO = aLFONSO;
+	}
+
 	@GetMapping("/reservaSignup")
 	public String signupGet(Model model) {
 

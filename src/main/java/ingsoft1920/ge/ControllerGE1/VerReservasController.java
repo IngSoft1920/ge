@@ -27,6 +27,7 @@ import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
+import ingsoft1920.ge.Controller.datosController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
@@ -45,8 +46,8 @@ public static Reserva reservilla;
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
 		JsonObject json= new JsonObject();
-		json.addProperty("id_cliente", "1");
-		
+		json.addProperty("id_cliente", datosController.ALFONSO);
+		System.out.print("HOLALALALALALALA"+datosController.ALFONSO);
 		client.setRequestBody(json.toString());
 		
 		int respCode = client.getResponseCode();

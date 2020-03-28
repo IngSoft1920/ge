@@ -144,7 +144,7 @@ public class BusquedaController {
 			if (!ciudades.contains(h.getCiudad()))
 				ciudades.add(h.getCiudad());
 		}
- 		
+		
 		model.addAttribute("ciudades", ciudades);
 		model.addAttribute("hoteles", hoteles);
 		model.addAttribute("busquedaBean",busquedaBean);
@@ -212,7 +212,7 @@ public class BusquedaController {
 			jarr.add(jobj);
 
 			jobj = new JsonObject();
-			jobj.addProperty("hotel_id", 2);
+			jobj.addProperty("hotel_id", 5);
 			arrhab = new JsonArray();
 			objhab = new JsonObject();
 			objhab.addProperty("tipo_hab_id", 1);

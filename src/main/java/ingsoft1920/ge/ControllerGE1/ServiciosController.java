@@ -44,17 +44,6 @@ public class ServiciosController {
 
 	
 	final static Logger logger = LogManager.getLogger(ServiciosController.class.getName());
-
-
-	@Autowired
-	VerReservasBean reservas;
-	@Autowired
-	ServiciosBean servicios;
-	@Autowired
-	SesionBean sesion;
-	
-
-
 	//recibir servicios
   
 	@GetMapping("/recibirServicios")
@@ -64,7 +53,7 @@ public class ServiciosController {
 
 		//enviar nombre del hotel
 		JsonObject json = new JsonObject();
-		json.addProperty("nombre_Hotel", "hotel_prueba");//habria que cogerlo de VerReservasBean, ¿como?
+		json.addProperty("nombre_Hotel", VerReservasController.reservilla.getNombre_hotel());//habria que cogerlo de VerReservasBean, ¿como?
 		
 		client.setRequestBody(json.toString());
 
@@ -212,20 +201,20 @@ public class ServiciosController {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 
 		//Para averiguar el identificador del servicio liamos todo esto
-		int id_servicio_dho=0;
+		/*int id_servicio_dho=0;
 		for (int i=0;i<servicios_id.length;i++) {
 			if(servicios_nombre[i].equals(servicios.getTipoServicio())) {
 				id_servicio_dho=servicios_id[i];
 			}
-		}
-
+		}*/
+		System.out.print(servicos.getTipoServicio());
 		JsonObject json = new JsonObject();
 		json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
-		json.addProperty("fecha", servicios.getFecha());
-		json.addProperty("hora", servicios.getHoras());
+		json.addProperty("fecha", servicos.getFecha());
+		json.addProperty("hora", servicos.getHoras());
 		json.addProperty("cliente_id", 1);
 		json.addProperty("lugar", "donde sea");
-		json.addProperty("num_personas", servicios.getNumPersonas());
+		json.addProperty("num_personas", servicos.getNumPersonas());
 		json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 		json.addProperty("tipoServicio", 1);
 		json.addProperty("hora_salida", "18:50");

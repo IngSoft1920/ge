@@ -17,7 +17,6 @@ import com.google.gson.JsonObject;
 import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
-import ingsoft1920.ge.Model.UsuarioModel;
 
 /*
  *Con esta anotacion establecemos que esta clase es un controlador. 

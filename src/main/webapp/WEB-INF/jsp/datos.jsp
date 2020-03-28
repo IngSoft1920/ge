@@ -71,16 +71,16 @@
 		<div class="column2"></div>
 		<div class="column">
 			<h2>Registrese en la web</h2>
-			<a href="/signup" value="signup">
-				<button class="botonMyHotel">Registrarse</button>
-			</a>
+			<form:form action="reservaSignup" method="GET" >
+				<input type="submit" value="Sign Up" >
+			</form:form>
 		</div>
 		<div class="column3"></div>
 		<div class="column">
 			<h2>Inicie sesión</h2>
-			<a href="/login" value="login">
-				<button class="botonMyHotel">Log In</button>
-			</a>
+			<form:form action="reservaLogin" method="GET" >
+				<input type="submit" value="Log In" >
+			</form:form>
 		</div>
 	</div>
 

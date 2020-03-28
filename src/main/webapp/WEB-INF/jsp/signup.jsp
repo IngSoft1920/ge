@@ -22,7 +22,7 @@
 		<br>
 		<h1>${mensajeError}</h1>
 	</div>
-	<form:form method="POST" action="signup" modelAttribute="signupBean">
+	<form:form method="POST" action="${signup.method}" modelAttribute="signupBean">
 		<br>
 		<br>
 		<label>Nombre</label>

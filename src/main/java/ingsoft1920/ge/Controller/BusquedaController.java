@@ -36,7 +36,6 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 public class BusquedaController {
 	final static Logger logger = LogManager.getLogger(BusquedaController.class.getName());
 	
-	@Autowired
 	HotelesDisponiblesBean hotelesDisponibles;
 	
 	@Autowired
@@ -264,7 +263,7 @@ public class BusquedaController {
 					HotelBean h = maybe.get();
 					h.setHabitaciones(new Gson().fromJson(jo.get("habitaciones"), new TypeToken<List<HabitacionBean>>(){}.getType()));
 				}
-
+				hotelesDisponibles = new HotelesDisponiblesBean();
 				hotelesDisponibles.setHoteles(
 						disponibles.stream()
 						.filter(hotel -> hotel.getHabitaciones().size() > 0)

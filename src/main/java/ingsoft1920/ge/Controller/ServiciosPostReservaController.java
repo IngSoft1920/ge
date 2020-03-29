@@ -50,8 +50,8 @@ public class ServiciosPostReservaController {
 		
 		System.out.println(reserva.getFecha_inicio());
 		/*
-		 * [ { “id” : 1 , “nombre” : “piscina” , “precio”: 10 , “unidad” : “por_dia” },
-		 * { “id” : 2 , “nombre” : “restaurante” , “precio” : null , “unidad” : null } ]
+		 * [ { “id” : 1 , “nombre” : “piscina” , “precio”: 10 , “unidad_medida” : “por_dia” },
+		 * { “id” : 2 , “nombre” : “restaurante” , “precio” : null , “unidad_medida” : null } ]
 		 */
 
 		JsonArray arrayGrande = new JsonArray();
@@ -60,14 +60,14 @@ public class ServiciosPostReservaController {
 		ejemplo.addProperty("id", 1);
 		ejemplo.addProperty("nombre", "piscina");
 		ejemplo.addProperty("precio", 10);
-		ejemplo.addProperty("unidad", "por_dia");
+		ejemplo.addProperty("unidad_medida", "por_dia");
 		arrayGrande.add(ejemplo);
 
 		ejemplo = new JsonObject();
 		ejemplo.addProperty("id", 2);
 		ejemplo.addProperty("nombre", "spa");
 		ejemplo.addProperty("precio", 30);
-		ejemplo.addProperty("unidad", "por_sesión");
+		ejemplo.addProperty("unidad_medida", "por_sesión");
 		arrayGrande.add(ejemplo);
 
 		String response = arrayGrande.toString();

@@ -63,6 +63,7 @@
 				grid-column-start: 1;
 				grid-column-end: 5;
 			}
+			
 </style>
 
 	<!-- Cabecera de la pagina -->
@@ -100,10 +101,10 @@
 				<option value="Otro">Otro...</option>
 			</form:select>
 			<br>
-		
+			<div class="row justify-content-center ml-5">
 			<textarea id="mensaje2" name="mensaje" class="form-control "
-				cols="30" rows="5" placeholder="Escribe tu mensaje" hidden></textarea>
-				
+				 rows="5" placeholder="Escribe tu mensaje"  style="display:none; width: 300px;"></textarea>
+			</div>
 				<br>
 				
 			<input type="submit" value="Enviar">
@@ -147,9 +148,7 @@
 		crossorigin="anonymous"></script>
 		 
 	<!-- Scripts de estilo -->	 
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-        
+     
 
 	<script>
 		$('#eleccion').change(function() {

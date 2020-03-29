@@ -20,28 +20,39 @@
 
     <body>
 	<style>
-	
-	    .grid-container {
-			    display: grid;
-			    grid-template-columns: auto auto;
-			    justify-content: center;
-			    width:100%;
-	    }
-	    
-	    .container {
-                margin-top: 20px;
-                margin-bottom: 20px;
-                padding: 10px;
-                border-color: black;
-                border-style: solid;
-                background-color: #333;
-                opacity: 80%;
-                text-align: center;
-                color: #b8b070;
-            }
+	.grid-container {
+		display: grid;
+		grid-template-columns: auto auto;
+		justify-content: center;
+		width:100%;
+		}
+		
+	.container {
+		 margin-top: 20px;
+		 margin-bottom: 20px;
+		 padding: 10px;
+		 border-color: black;
+		 border-style: solid;
+		 background-color: #333;
+		 opacity: 85%;
+		 text-align: center;
+		 color: #b8b070;
+		 }
+                
+     #cabecera{
+	            background-color: #333;
+	            opacity: 90%;
+	            border-top-style: solid;
+	            border-bottom-style: solid;
+	            border-color: black;
+	            color: #b8b070;
+	            margin-top: 80px; 
+	            margin-bottom: 30px;
+	        }
 	    .card {
-			    background-color: #B0C4DE;
-			    opacity: 95%;
+	    		color: #b8b070;
+			    background-color: #333;
+			    opacity: 90%;
 			    border: 2px solid rgba(0, 0, 0, 0.8);
 			    padding: 30px;
 			    width: 280px;
@@ -73,11 +84,11 @@
         </style>
 
 	<!-- Cabecera de la pagina -->
-        <header>
-                <div class="row justify-content-center" style="margin-top: 80px; background: #B0C4DE; margin-bottom:30px;">
-                    <h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios</h1>
-                    </div> 
-        </header>
+        <head>
+        	<div id="cabecera" class="row justify-content-center">
+        		<h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Servicios</h1>
+        	</div> 
+        </head>
 	<!-- Parte reserva de servicios -->
 
 	<div class="container">

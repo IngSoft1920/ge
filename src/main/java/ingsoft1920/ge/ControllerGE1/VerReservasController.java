@@ -3,17 +3,15 @@ package ingsoft1920.ge.ControllerGE1;
 import java.util.HashMap;
 
 
+
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
-import javax.validation.Valid;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,9 +22,6 @@ import com.google.gson.JsonParser;
 
 import Objetillos.Reserva;
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
-import ingsoft1920.ge.BeansGE1.ServiciosBean;
-import ingsoft1920.ge.BeansGE1.VerReservasBean;
 import ingsoft1920.ge.Controller.datosController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -47,7 +42,6 @@ public static Reserva reservilla;
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
 		JsonObject json= new JsonObject();
 		json.addProperty("id_cliente", datosController.ALFONSO);
-		System.out.print("HOLALALALALALALA"+datosController.ALFONSO);
 		client.setRequestBody(json.toString());
 		
 		int respCode = client.getResponseCode();
@@ -91,7 +85,7 @@ public static Reserva reservilla;
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
 		JsonObject json= new JsonObject();
-		json.addProperty("id_cliente", "1");
+		json.addProperty("id_cliente", datosController.ALFONSO);
 		
 		client.setRequestBody(json.toString());
 		
@@ -133,6 +127,7 @@ public static Reserva reservilla;
 		}
 		Reserva res= new Reserva(numeros_reservas.get(cont).getAsInt(),numeros_habitaciones.get(cont).getAsInt(),inicio_fechas.get(cont).getAsString(),final_fechas.get(cont).getAsString(),nombre_hoteles.get(cont).getAsString(),estado.get(cont).getAsString());
 		reservilla=res;
+		System.out.print(res.toString());
 		return "index";
 			
 	}

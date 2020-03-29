@@ -25,11 +25,12 @@ import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.ServiciosBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
+import ingsoft1920.ge.Controller.datosController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class ServiciosController {
-	public static String[] servicios_nombre;
+	public static List<String> servicios_nombre;
 	public static int[] servicios_id;
 	public static List<String> servicios_reservados;
 	public static List<String> fechas_reservadas;
@@ -70,12 +71,12 @@ public class ServiciosController {
 		JsonArray nombres= obj.get("servicios_disponibles_nombre").getAsJsonArray();
 		
 		List<String> serviciosList= new LinkedList<>();
-		System.out.print(nombres.size());
+		
 		
 		for(int i=0;i<nombres.size();i++) {
 			serviciosList.add(nombres.get(i).getAsString());	
 		}
-		
+		servicios_nombre=serviciosList;
 		//igual pero con los identificadores de los servicios
 		JsonArray ids= obj.get("servicios_disponibles_id").getAsJsonArray();
 		int[] ides= new int[ids.size()];
@@ -124,12 +125,13 @@ public class ServiciosController {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosHoras", "POST");
 		
 		int id_servicio=0;
-		for (int i=0;i<servicios_nombre.length;i++) {
+		for (int i=0;i<servicios_nombre.size();i++) {
 			
-			if(servicios.getTipoServicio().equals(servicios_nombre[i])) {
+			if(servicios.getTipoServicio().equals(servicios_nombre.get(i))) {
 				id_servicio=servicios_id[i];
 				
 		}}
+		System.out.print(servicios.getTipoServicio());
 		JsonObject json = new JsonObject();
 		
 		json.addProperty("servicio_id",id_servicio);
@@ -207,12 +209,12 @@ public class ServiciosController {
 				id_servicio_dho=servicios_id[i];
 			}
 		}*/
-		System.out.print(servicos.getTipoServicio());
+		System.out.print("------------------>"+servicos.getTipoServicio());
 		JsonObject json = new JsonObject();
 		json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
 		json.addProperty("fecha", servicos.getFecha());
 		json.addProperty("hora", servicos.getHoras());
-		json.addProperty("cliente_id", 1);
+		json.addProperty("cliente_id", datosController.ALFONSO);
 		json.addProperty("lugar", "donde sea");
 		json.addProperty("num_personas", servicos.getNumPersonas());
 		json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());

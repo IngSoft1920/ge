@@ -72,14 +72,14 @@ public class ServiciosPostReservaController {
 
 		String response = arrayGrande.toString();
 
-		HttpClient serverServicios = new HttpClient(HttpClient.urlCM + "hotel/servicios/" + reserva.getHotel_id(), "GET");
+		/*HttpClient serverServicios = new HttpClient(HttpClient.urlCM + "hotel/servicios/" + reserva.getHotel_id(), "GET");*/
 
 		JsonObject json = new JsonObject();
 		json.addProperty("hotel_id", reserva.getHotel_id()); 
 
-		if (serverServicios.getResponseCode() == 200) {// Si encuentra el servidor
+		/*if (serverServicios.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverServicios.getResponseBody();
-		}
+		}*/
 
 
 		Type tipo = new TypeToken<List<ServiciosPostReservaBean>>(){}.getType();

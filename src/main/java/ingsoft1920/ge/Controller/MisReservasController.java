@@ -90,19 +90,20 @@ public class MisReservasController {
 
 		String response = arrayGrande.toString();*/
 
-		
-		 HttpClient serverReservas = new HttpClient( HttpClient.urlCM +"reserva/cliente/" + sesionBean.getUsuarioID(), "GET");
-		 
 
-		
-		 JsonObject json = new JsonObject();
-		 json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean 
-		
-		
+		HttpClient serverReservas = new HttpClient( HttpClient.urlCM +"reserva/cliente/" + sesionBean.getUsuarioID(), "GET");
+
+
+
+		JsonObject json = new JsonObject();
+		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean 
+
+
 		String response ="";
 		if (serverReservas.getResponseCode() == 200) {// Si encuentra el servidor
-		  response = serverReservas.getResponseBody(); }
-		 
+			response = serverReservas.getResponseBody(); 
+		}
+
 		JsonArray obj = (JsonArray) JsonParser.parseString(response);	
 		
 		List<ReservaGE2> reservas= new LinkedList<>();

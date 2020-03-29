@@ -25,6 +25,7 @@ import ingsoft1920.ge.Beans.ReservaHotel;
 import ingsoft1920.ge.Beans.ServiciosDisponiblesPostReservaBean;
 import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class ServiciosPostReservaController {
@@ -70,16 +71,16 @@ public class ServiciosPostReservaController {
 		arrayGrande.add(ejemplo);
 
 		String response = arrayGrande.toString();
-/*
- * 		HttpClient serverServicios = new HttpClient(HttpClient.urlCM + "hotel/servicios/" + hotelId, "GET");
- */
+
+		HttpClient serverServicios = new HttpClient(HttpClient.urlCM + "hotel/servicios/" + reserva.getHotel_id(), "GET");
+
 		JsonObject json = new JsonObject();
 		json.addProperty("hotel_id", reserva.getHotel_id()); 
-/*
+
 		if (serverServicios.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverServicios.getResponseBody();
 		}
-*/
+
 
 		Type tipo = new TypeToken<List<ServiciosPostReservaBean>>(){}.getType();
 		servicios = new Gson().fromJson(response, tipo);

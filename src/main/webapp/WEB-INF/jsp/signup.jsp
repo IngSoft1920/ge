@@ -3,29 +3,26 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 
+<script>
+  function mostrarContrasena(){
+      var tipo = document.getElementById("password");
+      if(tipo.type == "password"){
+          tipo.type = "text";
+      }else{
+          tipo.type = "password";
+      }
+  }
+</script>
+
 <html>
-<head>Signup
-</head>
-<body style="text-align: center; background-color: skyblue">
+<head>signup</head>
+<body style="text-align: center; background-color: #A6A3A2">
 	<div>
 		<!-- Podemos acceder a tipos basicos (String, int...) mediante esta etiqueta -->
+		<br>
 		<h1>${mensajeError}</h1>
 	</div>
-	<form:form method="POST" action="signup" modelAttribute="signupBean">
-		<label>Nombre de usuario</label>
-		<form:input type="text" name="usuario" path="usuario" />
-		<br>
-		<br>
-		<label>Correo electronico</label>
-		<form:input type="text" name="email" path="email" />
-		<br>
-		<br>
-		<label>Contrasena</label>
-		<form:input type="password" name="password" path="password" />
-		<br>
-		<br>
-		<label>Dni</label>
-		<form:input type="dni" name="dni" path="dni" />
+	<form:form method="POST" action="${signup.method}" modelAttribute="signupBean">
 		<br>
 		<br>
 		<label>Nombre</label>
@@ -36,8 +33,29 @@
 		<form:input type="text" name="apellidos" path="apellidos" />
 		<br>
 		<br>
-		<label>Repetir contrasena </label>
-		<form:input type="verificacionPassword" name="verificacionPassword" path="verificacionPassword" />
+		<label>DNI</label>
+		<form:input type="text" name="DNI" path="DNI" />
+		<br>
+		<br>
+		<label>Email</label>
+		<form:input type="text" name="email" path="email" />
+		<br>
+		<br>
+		<label>Telefono</label>
+		<form:input type="text" name="telefono" path="telefono" />
+		<br>
+		<br>
+		<label>Nacionalidad</label>
+		<form:input type="text" name="nacionalidad" path="nacionalidad" />
+		<br>
+		<br>
+		<label >Password</label>
+		<form:input type="password" name="password" path="password" />
+		<button class="btn btn-primary" type="button" onclick="mostrarContrasena()">Mostrar</button>
+		<br>
+		<br>
+		<label>Repite password</label>
+		<form:input type="password" name="verificacionPassword" path="verificacionPassword" />
 		<br>
 		<br>
 		<input type="submit" value="Registrar">

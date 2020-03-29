@@ -25,6 +25,7 @@
   		<a href="#" onclick ="toggleHistorial()">Historial</a>
 	</div>
 	<form:form method="POST" action="misReservas" modelAttribute="mostarReservasBean">
+	
 	<div class="toggle">
 	<div id ="misreservas">
 	<c:forEach items="${reservas}" var="reserva">
@@ -32,12 +33,12 @@
 			<p class="hotel">
 				Hotel ${reserva.hotel_id} <span class="fecha">De
 					${reserva.fecha_entrada} a ${reserva.fecha_salida} </span>
-				<button class="factura" name="button" value="factura">Ver
-					factura</button>
+				<span class="factura" name="button" value="factura">Ver
+					factura</span>
 			</p>
 			<p class="habitacion">
 				Habitación: ${reserva.tipo_hab} <span class="tarifa">Tarifa:${reserva.importe}</span><span class="regimen">Régimen:${reserva.regimen}</span>
-			<button onclick="toggle()" class ="cambiarReserva">Cambiar reserva</button>
+			<span onclick="toggle()" class ="cambiarReserva">Cambiar reserva</span>
 		</div>
 	</c:forEach>
 	</div>
@@ -46,15 +47,16 @@
 	<c:forEach items="${reservas}" var="reserva">
 
 		<div class="historial">
-			<p>Hotel ${reserva.hotel_id}</p>
-
-			<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}
+			<span>Hotel ${reserva.hotel_id}</span>
 			<button class="factura" name="button" value="factura">Ver
 					factura</button>
+
+			<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}
 			</p>
-			<p>Habitación: ${reserva.tipo_hab}</p>
+			<span>Habitación: ${reserva.tipo_hab}</span>
+			<div class="clasificacion">
 			<form method="POST" action="valorar" name="valoracionId">
-				<div class="clasificacion">
+				
 					<input id="radio1" type="radio" name="estrellas" value="5">
 					<label for="radio1">&#9733</label> 
 					<input id="radio2" type="radio" name="estrellas" value="4"> 
@@ -67,10 +69,12 @@
 					<label for="radio5">&#9733</label> 
 				
 					<button type="submit" class="botonClasificacion">Enviar</button>
-					</div>
+				
 			</form>
+			</div>
 		</div>
 	</c:forEach>
+	</div></div>
 	</form:form>
 	</div>
 	</div>
@@ -110,7 +114,7 @@
 		<h1>¿Está seguro de que quiere cancelar la reserva?</h1>
 
 		<button class="SI" type="submit" class="btn">SI</button>
-		<button class="NO" type="submit">NO</button>
+		<button class="NO" onclick="toggleCancelar()" type="submit">NO</button>
 	</div>
 
 	<script>

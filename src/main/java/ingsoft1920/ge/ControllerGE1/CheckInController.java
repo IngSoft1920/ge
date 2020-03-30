@@ -34,7 +34,7 @@ public class CheckInController {
 	public ModelAndView checkinEnviar(@PathVariable("id") int id) throws Exception {
 		id_reserva = id;
 
-		// HttpClient client= new
+		/*// HttpClient client= new
 		// HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/cliente/"+id, "GET");
 		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/reserva/getCliente/"+id_reserva, "GET");
 	
@@ -63,7 +63,7 @@ public class CheckInController {
 
 		} catch (Exception e) {
 			return new ModelAndView("checkInAlfonso");
-		}
+		}*/
 		HttpClient clien = new HttpClient("http://piedrafita.ls.fi.upm.es:7001/confirmarCheckin", "POST");
 
 		JsonObject json = new JsonObject();

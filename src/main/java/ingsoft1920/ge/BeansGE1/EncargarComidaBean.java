@@ -1,5 +1,7 @@
 package ingsoft1920.ge.BeansGE1;
 
+import java.util.Arrays;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -8,56 +10,55 @@ import org.springframework.web.context.annotation.SessionScope;
 
 public class EncargarComidaBean {
 	
-	private String pedido;
-	private String nombreRestaurante;
-	private int numPersonas;
+	private static String tipoServicio= "encargarComida";
+	private String[] platos;
+	private String[] items;
+	private int[] num_items;
+	private int[] num_platos;
 	
-	private String idReserva;
-
-	public String getPedido() {
-		return pedido;
+	
+	public String[] getPlatos() {
+		return platos;
 	}
-
-	public void setPedido(String pedido) {
-		this.pedido = pedido;
+	public void setPlatos(String[] platos) {
+		this.platos = platos;
 	}
-
-	public String getNombreRestaurante() {
-		return nombreRestaurante;
+	public String[] getItems() {
+		return items;
 	}
-
-	public void setNombreRestaurante(String nombreRestaurante) {
-		this.nombreRestaurante = nombreRestaurante;
+	public void setItems(String[] items) {
+		this.items = items;
 	}
-
-	public int getNumPersonas() {
-		return numPersonas;
+	public int[] getNum_items() {
+		return num_items;
 	}
-
-	public void setNumPersonas(int numPersonas) {
-		this.numPersonas = numPersonas;
+	public void setNum_items(int[] num_items) {
+		this.num_items = num_items;
 	}
-
-	public String getIdReserva() {
-		return idReserva;
+	public int[] getNum_platos() {
+		return num_platos;
 	}
-
-	public void setIdReserva(String idReserva) {
-		this.idReserva = idReserva;
+	public void setNum_platos(int[] num_platos) {
+		this.num_platos = num_platos;
 	}
-
-	public EncargarComidaBean(String pedido, String nombreRestaurante, int numPersonas, String idReserva) {
+	@Override
+	public String toString() {
+		return "EncargarComidaBean [platos=" + Arrays.toString(platos) + ", items=" + Arrays.toString(items)
+				+ ", num_items=" + Arrays.toString(num_items) + ", num_platos=" + Arrays.toString(num_platos) + "]";
+	}
+	public EncargarComidaBean(String[] platos, String[] items, int[] num_items, int[] num_platos) {
 		super();
-		this.pedido = pedido;
-		this.nombreRestaurante = nombreRestaurante;
-		this.numPersonas = numPersonas;
-		this.idReserva = idReserva;
+		this.platos = platos;
+		this.items = items;
+		this.num_items = num_items;
+		this.num_platos = num_platos;
 	}
-
 	public EncargarComidaBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 	
 	

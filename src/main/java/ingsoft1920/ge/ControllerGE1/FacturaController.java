@@ -39,7 +39,7 @@ public class FacturaController {
 //		else {
 //			resp="ERROR:Formato invalido";
 //		}
-		model.addAttribute("sesionBean", sesion);
+        model.addAttribute("sesionBean", sesion);
 
 		return "facturacion";
 

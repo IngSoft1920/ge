@@ -11,37 +11,46 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     </header>
-    <body style="margin-top:60px">
+    <body>
     <style>
         .container {
                 margin-top: 20px;
                 margin-bottom: 20px;
                 padding: 10px;
-                background-color: #B0C4DE;
-                opacity: 80%;
+                border-color: black;
+                border-style: solid;
+                background-color: #333;
+                opacity: 85%;
                 text-align: center;
+                color: #b8b070;
             }
-        
-        
+            
+             #cabecera{
+	            background-color: #333;
+	            opacity: 90%;
+	            border-top-style: solid;
+	            border-bottom-style: solid;
+	            border-color: black;
+	            color: #b8b070;
+	            margin-top: 80px; 
+	            margin-bottom: 30px;
+	        }
         </style>
     
     <!-- Cabecera de la pagina -->
-        <header>
-            <div class="container">
-                <div class="row justify-content-center" >
-                    <h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Encargar comida</h1>
-                    </div> 
-                </div>
-        </header>
+        <head>
+        	<div  id="cabecera" class="row justify-content-center" >
+        		<h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Encargar comida</h1>
+        	</div>     
+        </head>
         
+        <form action="/enviarComanda" method="get">
         <div class="container">
         	
         	
 				<h2> Platos</h2> 
-				<div class="row">
+				
 			
-			</div>
-			<form action="/enviarComanda" method="get">
 			<c:forEach var="platos" items="${todo.platos}">
 				<div class="row pl-5">
 					<div class="col justify-content-left">
@@ -81,7 +90,7 @@
 			<div style="text-align:center;" >
 		     <input type="submit" value="Enviar">
 		    </div>
-		 	</form>
+		</form>
 		    
 	
 		  <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>

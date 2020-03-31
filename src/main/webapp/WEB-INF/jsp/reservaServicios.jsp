@@ -22,9 +22,24 @@
                 margin-top: 20px;
                 margin-bottom: 20px;
                 padding: 10px;
-                background-color: #B0C4DE;
-                opacity: 80%;
+                border-color: black;
+                border-style: solid;
+                background-color: #333;
+                opacity: 85%;
+                text-align: center;
+                color: #b8b070;
             }
+            
+             #cabecera{
+	            background-color: #333;
+	            opacity: 90%;
+	            border-top-style: solid;
+	            border-bottom-style: solid;
+	            border-color: black;
+	            color: #b8b070;
+	            margin-top: 80px; 
+	            margin-bottom: 30px;
+	        }
             
             .card{
                 background-color: #B0C4DE;
@@ -53,13 +68,11 @@
 
 
 	    <!-- Cabecera de la pagina -->
-        <header>
-            <div class="container">
-                <div class="row justify-content-center" >
-                    <h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
-                    </div> 
-                </div>
-        </header>
+        <head>
+        	<div id="cabecera" class="row justify-content-center" >
+        		<h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Reservas</h1>
+        	</div> 
+        </head>
     
     
 				 

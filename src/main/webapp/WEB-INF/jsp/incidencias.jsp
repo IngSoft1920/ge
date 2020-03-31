@@ -7,50 +7,77 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
+	<header>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    </header>
+
+
+
 
 <jsp:useBean id="bean" class="ingsoft1920.ge.BeansGE1.IncidenciasBean" />
 
 
 <body>
 	<style>
-.aspecto {
-	margin: 20px;
-	padding: 10px;
-	background-color: #B0C4DE;
-	opacity: 80%;
-	text-align: center;
-	margin-top: 0px;
-}
+ 			.container {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding: 10px;
+                border-color: black;
+                border-style: solid;
+                background-color: #333;
+                opacity: 85%;
+                text-align: center;
+                color: #b8b070;
+            }
+            
+             #cabecera{
+	            background-color: #333;
+	            opacity: 90%;
+	            border-top-style: solid;
+	            border-bottom-style: solid;
+	            border-color: black;
+	            color: #b8b070;
+	            margin-top: 80px; 
+	            margin-bottom: 30px;
+	        }
+         
 
-.aspecto2 {
-	text-align: center;
-	margin-top: 60px;
-	margin: 20px;
-	padding: 10px;
-	background-color: #B0C4DE;
-	opacity: 80%;
-}
-
-label {
-	font-size: 20px
-}
-
-.parte1 {
-	grid-column-start: 1;
-	grid-column-end: 5;
-}
+			.aspecto2 {
+				text-align: center;
+				margin-top: 60px;
+				margin: 20px;
+				padding: 10px;
+				background-color: #B0C4DE;
+				opacity: 80%;
+			}
+			
+			label {
+				font-size: 20px
+			}
+			
+			.parte1 {
+				grid-column-start: 1;
+				grid-column-end: 5;
+			}
+			
 </style>
 
 	<!-- Cabecera de la pagina -->
-	<div style="margin-top: 40px; background-color: #B0C4DE; opacity: 60%;">
-		<h1
-			style="text-align: center; font-size: 50px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Incidencias</h1>
-	</div>
-
+	<head>
+       <div id="cabecera" class="row justify-content-center">
+          <h1 style="font-size: 50px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Incidencias</h1>
+        </div> 
+     </head>
 	<!-- Parte de incidencias -->
-	<div class="aspecto2">
+	<div class="container">
+		<div class="row justify-content-center pb-3 ">
+            <h3>Procesa tu incidencia</h3>
+        </div>
+        
 		<form:form action="procesarIncidencias" modelAttribute="Incidencia"
 			method="post">
 
@@ -74,10 +101,10 @@ label {
 				<option value="Otro">Otro...</option>
 			</form:select>
 			<br>
-		
+			<div class="row justify-content-center ml-5">
 			<textarea id="mensaje2" name="mensaje" class="form-control "
-				cols="30" rows="5" placeholder="Escribe tu mensaje" hidden></textarea>
-				
+				 rows="5" placeholder="Escribe tu mensaje"  style="display:none; width: 300px;"></textarea>
+			</div>
 				<br>
 				
 			<input type="submit" value="Enviar">
@@ -119,6 +146,9 @@ label {
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 		crossorigin="anonymous"></script>
+		 
+	<!-- Scripts de estilo -->	 
+     
 
 	<script>
 		$('#eleccion').change(function() {

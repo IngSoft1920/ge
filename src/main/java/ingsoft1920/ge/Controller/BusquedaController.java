@@ -228,7 +228,7 @@ public class BusquedaController {
 			jarr.add(jobj);
 
 			String response = jarr.toString();
-		/*	
+		
 			HttpClient server = new HttpClient(
 					HttpClient.urlCM+"hotel/disponibles?" + 
 					"fecha_inicio=" + busquedaBean.getFechaInicio() +
@@ -236,7 +236,7 @@ public class BusquedaController {
 
 			if (server.getResponseCode() == 200) {
 				response = server.getResponseBody();
-			}*/
+			}
 
 			List<HotelBean> disponibles = hoteles;
 

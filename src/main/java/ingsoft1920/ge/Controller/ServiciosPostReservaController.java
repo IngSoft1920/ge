@@ -25,6 +25,7 @@ import ingsoft1920.ge.Beans.ReservaHotel;
 import ingsoft1920.ge.Beans.ServiciosDisponiblesPostReservaBean;
 import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class ServiciosPostReservaController {
@@ -49,8 +50,8 @@ public class ServiciosPostReservaController {
 		
 		System.out.println(reserva.getFecha_inicio());
 		/*
-		 * [ { “id” : 1 , “nombre” : “piscina” , “precio”: 10 , “unidad” : “por_dia” },
-		 * { “id” : 2 , “nombre” : “restaurante” , “precio” : null , “unidad” : null } ]
+		 * [ { “id” : 1 , “nombre” : “piscina” , “precio”: 10 , “unidad_medida” : “por_dia” },
+		 * { “id” : 2 , “nombre” : “restaurante” , “precio” : null , “unidad_medida” : null } ]
 		 */
 
 		JsonArray arrayGrande = new JsonArray();
@@ -59,27 +60,27 @@ public class ServiciosPostReservaController {
 		ejemplo.addProperty("id", 1);
 		ejemplo.addProperty("nombre", "piscina");
 		ejemplo.addProperty("precio", 10);
-		ejemplo.addProperty("unidad", "por_dia");
+		ejemplo.addProperty("unidad_medida", "por_dia");
 		arrayGrande.add(ejemplo);
 
 		ejemplo = new JsonObject();
 		ejemplo.addProperty("id", 2);
 		ejemplo.addProperty("nombre", "spa");
 		ejemplo.addProperty("precio", 30);
-		ejemplo.addProperty("unidad", "por_sesión");
+		ejemplo.addProperty("unidad_medida", "por_sesión");
 		arrayGrande.add(ejemplo);
 
 		String response = arrayGrande.toString();
-/*
- * 		HttpClient serverServicios = new HttpClient(HttpClient.urlCM + "hotel/servicios/" + hotelId, "GET");
- */
+
+		/*HttpClient serverServicios = new HttpClient(HttpClient.urlCM + "hotel/servicios/" + reserva.getHotel_id(), "GET");*/
+
 		JsonObject json = new JsonObject();
 		json.addProperty("hotel_id", reserva.getHotel_id()); 
-/*
-		if (serverServicios.getResponseCode() == 200) {// Si encuentra el servidor
+
+		/*if (serverServicios.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverServicios.getResponseBody();
-		}
-*/
+		}*/
+
 
 		Type tipo = new TypeToken<List<ServiciosPostReservaBean>>(){}.getType();
 		servicios = new Gson().fromJson(response, tipo);

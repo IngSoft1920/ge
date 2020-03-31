@@ -157,7 +157,7 @@ position: relative;
 	
 }
 
-.botonUltimo input[type=submit]{
+.botonUltimo button{
 	background-color: #b8b078;
 	font-family: Georgia;
 	color:white;

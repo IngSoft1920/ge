@@ -8,11 +8,11 @@ public class ServiciosPostReservaBean {
 	private int id;
 	private String nombre;
 	private double precio;
-	private String unidad;
+	private String unidad_medida;
 
 	@Override
 	public String toString() {
-		return "ServiciosPostReservaBean [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", unidad=" + unidad
+		return "ServiciosPostReservaBean [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", unidad=" + unidad_medida
 				+ "]";
 	}
 
@@ -41,11 +41,11 @@ public class ServiciosPostReservaBean {
 	}
 
 	public String getUnidad() {
-		return unidad;
+		return unidad_medida;
 	}
 
-	public void setUnidad(String unidad) {
-		this.unidad = unidad;
+	public void setUnidad(String unidad_medida) {
+		this.unidad_medida = unidad_medida;
 	}
 
 }

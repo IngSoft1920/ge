@@ -5,16 +5,13 @@
 
 <html>
 
-<script>
-
-
-
-</script>
 <head>
 
 <title>Home Page</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" type="text/css" href="/css/cabecera.css"
 	media="screen" />
 <link
@@ -38,51 +35,63 @@
     	    border: none;
     	    background: #b8b078;
     	    font-family: cursive;
-    	    width: 30px;
-    	    height:30px;
+    	    width: auto;
+    	    height:auto;
     	    text-align: center;">&#8249;
     	    </button></li>
-				<li><a href="/"><img src="/imagenes/LogoHotel.jpg" /></li>
+				<li class="imagenLogo"><a href="/"><img src="/imagenes/LogoHotel.jpg"/></li>
 			</div>
 
-
+		<div class="menuCabeceraGlobal1">
 			<div class="menu1Cabecera">
 				<div id="redirigir1">
+				<div class="p1">
 					<li><a href="/login"> <i class="fa fa-book"> </i>Mis
 							Reservas</li>
+				</div>
 				</div>
 			</div>
 
 
 			<div class="menu1Cabecera">
 				<div id="redirigir2">
+				<div class="p2">
 					<li><a href="/login"> <i class="fa fa-glass"> </i>Servicios</li>
+					</div>
 				</div>
 			</div>
 
 			<div class="menu1Cabecera">
 				<div id="redirigir5">
+				<div class="p3">
 					<li><a href="/login"> <i class="fa fa-pencil"> </i>Historial</li>
+					</div>
 				</div>
 			</div>
 
 			<div class="menu1Cabecera">
-				<div id="redirigir3">
+				<div id="redirigir3">	
+				<div class="p1">			
 					<li><a href="/recibirReservas"> <i class="fa fa-book"> </i>Mis
 							Reservas</li>
+					</div>
 				</div>
 			</div>
 
 
 			<div class="menu1Cabecera">
-				<div id="redirigir4">
+				<div id="redirigir4">				
+				<div class="p2">
 					<li><a href="/servicios"> <i class="fa fa-glass"> </i>Servicios</li>
+					</div>
 				</div>
 			</div>
 			
 			<div class="menu1Cabecera">
 				<div id="redirigir6">
+				<div class="p3">
 					<li><a href="/misReservas"><i class="fa fa-pencil"> </i>Historial</li>
+					</div>
 				</div>
 			</div>
 
@@ -136,20 +145,26 @@
 			
 			</script>
 
+		</div>
 
 
-
-			<li id="menu2Cabecera"><a href="/"> <i class="fa fa-list"></i>
+			<li id="menu2Cabecera">
+			<div class="p4">
+			<a href="/"> <i class="fa fa-list"></i>
 					Inicio
+			</div>
 			</a></li>
 
 
 			<li id="menu2Cabecera">
 
 				<div class="popup" onclick="myHotel()">
-
-					<i class="fa fa-users"></i> MyAccount <span class="popuptext"
-						id="myPopup"> <br> Accede a tu cuenta o registrate y
+				<div class="p5">
+					<i class="fa fa-users"></i> MyAccount
+					</div>
+					 <span class="popuptext" id="myPopup">
+						
+						 <br> Accede a tu cuenta o registrate y
 						obten descuentos <br> <br> <a href="/login"
 						value="login">
 							<button class="botonMyHotel">Log In</button>

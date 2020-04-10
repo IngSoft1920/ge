@@ -6,28 +6,19 @@
   padding: 20;
   overflow: hidden;
   background-color: #333;  
+  width: 99%;  
+ display: inline-block;
 
  }
  
 #buttonCabecera li {
- display: inline;
-
+	 list-style:none;
  }
- 
-#buttonCabecera li img{
-  display: inline-block;
- float: left;
- padding: 0px; 
- border: 1px;
- height: 40;
- width: 90;
- 
-}
 
 #menu2Cabecera{
   display: inline-block;
  font-family: Arial;
- font-size: 18px;
+ font-size:1vw;
  float: right;
  padding: 10px;
   color:#b8b078;
@@ -35,14 +26,13 @@
  }
  
  .menu1Cabecera{
-   /*display: inline-block;*/
+  display: inline-block;
  font-family: Arial;
- font-size: 18px;
+ font-size:1vw;
  float: left;
  padding: 10px;
   color:#b8b078;
   margin-left: 10px;
- /*display:none;*/
 
  }
  
@@ -84,8 +74,82 @@
   color: white;
  text-decoration: none;
  }
-.topCabecera img{
+
+#buttonCabecera ul{
+	 list-style:none;	
+}
+
+ #buttonCabecera li img{
   display: inline-block;
+   height: auto;
+ 	max-width: 40%;
+ float: left;
+ padding: 0px; 
+}
+
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+   #buttonCabecera li img{  
+    max-width: 20%;
+  	height: auto;
+  	display: inline-block;
+ float: left;
+ padding: 0px; 
+ position: relative;
+    margin-left: -10%;
+ 
+  }
+  #buttonCabecera ul{
+  display:inline-block;
+  float:left;
+  }
+  
+  #menu2Cabecera{
+  float:right;
+   margin-left: -80%;
+  }
+  
+  .p1{
+  float:left;
+   margin-left: -250%;
+   font-size: 2vw;
+  }
+  
+   .p2{
+  float:left;
+   margin-left: -380%;
+   font-size: 2vw;
+  }
+  
+     .p3{
+  float:left;
+   margin-left: -470%;
+   font-size: 2vw;
+  }
+  
+  .p5{
+   float:left;
+   margin-left: -300%;
+   font-size: 2vw;
+  }
+  
+  .p4{
+   float:left;
+   margin-left: -400%;
+   font-size: 2vw;
+  }
+  
+  .menuCabeceraGlobal1{
+   margin-right: -100%;
+  }
+  
+  .popup .popuptext{
+    max-width: 100px;  
+  } 
+  
+  .botonMyHotel{
+  	max-width: 70%;  
+  }
 }
 
 .topCabecera{
@@ -94,7 +158,7 @@
     opacity: 1;
     width: 100%;
     top: 0;
-    z-index: 1;        
+    z-index: 1;    
 }
 
 
@@ -122,7 +186,6 @@
   left: 80%;
   margin-left: -80px;
   top:10%;
- 
   
 }
 
@@ -156,10 +219,22 @@
 }
 
 
+header{
+	width:100%;
+	margin:auto;
+}
+
+body{
+width: 100%;
+padding-top: 50px;
+margin:auto;
+}
+
+
+
 .botonMyHotel{
 	font-family: Oldtown, fantasy;
-	font-size: 15px;
-	width: 40%;
+	font-size:1vw;
 	padding: 15px 22px;
 	margin: 10px 10px;
 	background-color: #b8b078;
@@ -173,7 +248,7 @@
 .botonMyMenu{
 	
 	font-family: Oldtown, fantasy;
-	font-size: 15px;
+	font-size:1vw;
 	width: 80%;
 	padding: 15px 22px;
 	margin: 10px 10px;
@@ -185,13 +260,4 @@
 	
 }
 
-header{
-	width:100%;
-	margin:auto;
-}
 
-body{
-width: 100%;
-padding-top: 50px;
-margin:auto;
-}

@@ -42,25 +42,20 @@
 	        }
             
             .card{
-                background-color: #B0C4DE;
+                background-color: #333;
+                opacity: 90%;
+                border-style: solid;
                 border-color: black; 
+                margin-bottom: 30px;
+                padding:15px;
             }
 
-            .parte1 {
-                grid-column-start: 1;
-                grid-column-end: 5;
-            }
+            
             .body{
                 background-color: #4f5457;
             }
             
-            #datos_reserva{
-                border-style: solid;
-                border-radius: 5px;
-                border-color: black;
-                width: 300px;
-                
-            }
+            
             
             
             
@@ -76,45 +71,38 @@
     
     
 				 
-    <div class="container" id="container1">
+    <div class="container">
 		<div class="row pl-3">
 			<h3>Reservas en curso</h3>
-          </div>
-           
-            <c:forEach var="reserva" items="${reservas}">
-            
-	         
-	          
-	           <c:if test="${reserva.estado=='check in'}">
-	           
-           		 <h5>Identificador de Reserva:</h5>   ${reserva.id_reserva}
-                <h5>Numero de Habitacion:</h5>    ${reserva.num_hab}
-              	 <h5>Fecha de Inicio:</h5>   ${reserva.fecha_inicio}
-              	<h5> Fecha de Fin:</h5>   ${reserva.fecha_fin}
-               <h5> Nombre del Hotel: </h5>  ${reserva.nombre_hotel} <br></br>
-                
-                
-                <form action="/gestionar/${reserva.id_reserva}" method="POST">
-               <input type="submit" value="Gestionar">
-    			
-				</form>
-				  
-                <form action="/checkout/${reserva.id_reserva}" method="POST">
-               <input type="submit" value="Check Out">
-    			
-				</form>
-				  
-                
-               <input type="submit" value="Factura">
-    			
-				
-               
-                 
-                  </c:if>
-                 
-                  	
- 
-            </c:forEach>
+		</div>
+		
+		<div class="row">
+			<c:forEach var="reserva" items="${reservas}">
+				<c:if test="${reserva.estado=='check in'}">
+					<div class="col-xl-4 col-md-6 col-sm-12">
+						<div class="card">
+							<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre del Hotel: <p>${reserva.nombre_hotel}</p>
+							<input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador de Reserva: <p>${reserva.id_reserva}</p> 
+							<input type=hidden name=num_hab value=${reserva.num_hab}>Numero de Habitacion:  <p>${reserva.num_hab}</p>
+							<input type=hidden name=fecha_inicio value=${reserva.fecha_inicio}>
+							<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
+							
+							<form action="/gestionar/${reserva.id_reserva}" method="POST">
+								<input type="submit" value="Gestionar">
+							</form>
+							
+							<form action="/checkout/${reserva.id_reserva}" method="POST">
+                               <input type="submit" value="Check Out">
+                           </form>
+                           
+                           <form action="">
+                            	<input type="submit" value="Factura">
+                           </form>
+                       </div>
+                   </div>
+                </c:if>
+		  </c:forEach>
+		 </div>
           
 	</div> 
 
@@ -125,31 +113,26 @@
             <h3> Reservas pendientes </h3>
         </div>
         
-         <c:forEach var="reserva" items="${reservas}">
-            
-	         
-	          
-	           <c:if test="${reserva.estado=='reserva'}">
-	           
-                <input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador de Reserva: <p>${reserva.id_reserva}</p> </input> 
-                <input type=hidden name=num_hab value=${reserva.num_hab}>Numero de Habitacion:  <p>${reserva.num_hab}</p></input> 
-                <input type=hidden name=fecha_inicio value=${reserva.fecha_inicio}>Fecha de Inicio: <p>${reserva.fecha_inicio}</p></input>
-                <input type=hidden name=fecha_fin value=${reserva.fecha_fin}>Fecha de Fin: <p>${reserva.fecha_fin}</p></input>
-                <input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre del Hotel: <p>${reserva.nombre_hotel}</p></input>   
-                
-                
-                
-                
-            <form action="/checkin/${reserva.id_reserva}" method="POST">
-               <input type="submit" value="Check In">    			
-				</form>
-                 
-                 
-                 </c:if>
-               
-                  	
- 
-            </c:forEach>
+       
+        <div class="row">
+             <c:forEach var="reserva" items="${reservas}">
+	             <c:if test="${reserva.estado=='check out'}">
+		             <div class="col-xl-4 col-md-6 col-sm-12">
+		             	<div class="card">
+		             		<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre del Hotel: <p>${reserva.nombre_hotel}</p>
+		             		<input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador de Reserva: <p>${reserva.id_reserva}</p> 
+		             		<input type=hidden name=num_hab value=${reserva.num_hab}>Numero de Habitacion:  <p>${reserva.num_hab}</p>
+		             		<input type=hidden name=fecha_inicio value=${reserva.fecha_inicio}>
+		             		<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
+		             		
+		             		<form action="/checkin/${reserva.id_reserva}" method="POST">
+		             			<input type="submit" value="Check In">
+		             		</form>
+		             	</div>
+		             </div>
+	             </c:if>
+             </c:forEach>
+       </div>
         
         
     </div>

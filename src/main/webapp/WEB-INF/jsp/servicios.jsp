@@ -100,20 +100,17 @@
         
         <!-- Lista de servicios -->
           <form method="get" style="width: 100%;" action="/enviarServicios">
-            <div class="row ">
-                <div class="col pb-3">              
+            <div class="row">
+                <div class="col-xl-3 col-l-4 col-sm-6 pb-3">              
 					<select name="servicio" id="tipoServicio">
                         <option value="">tipo de servicio</option>
                         <c:forEach var="servicio" items="${muchas_cosas.servicios}">
                         	<option name=servicios value="${servicio}"> ${servicio} </option>
                         </c:forEach>
-                        
-				
-        
                     </select> 
                     
                 </div>
-                <div class="col pb-3">
+                <div class="col-xl-3 col-l-4 col-sm-6 pb-3">
                      <select name="numPersonas">
                          <option value="0">Número de personas:</option>
                          <option value="1">1</option>
@@ -128,11 +125,11 @@
                          <option value="10">10</option>
                     </select>
                 </div>
-                <div class="col pb-3">
+                <div class="col-xl-3 col-l-4 col-sm-6 pb-3">
                    <input style="border-radius: 5px" type="date" id="fecha_reserva" max="31/12/2020">
                 </div>
                 
-                 <div id="horas2" class="col pb-3" >
+                 <div class="col-xl-3 col-l-4 col-sm-6 pb-3">
                     <select id="hora" name="hora">
                     	<option value="">Horas disponibles</option>
                         <c:forEach var="horas" items="${muchas_cosas.horasServicios}">
@@ -143,7 +140,7 @@
                 
                 
                 	                 <!-- Boton de reservar -->
-	                <div class="col pb-3">
+	                <div class="col">
 	                    <input type="submit" value="Reservar" class="btn btn-light" style="margin-bottom:15px; border: 3px solid darkseagreen">
 	                </div>
 	                
@@ -163,7 +160,7 @@
         <!-- Lista de servicios -->
         <form  action="/enviarReserva" method="get" style="width: 100%;">
             <div class="row">
-                <div class="col pb-3">
+                <div class="col-xl-3 col-l-4 col-sm-6 pb-3">
                     <select id="nombreRestaurante" name="nombreRestaurante" >
                         <!--Aquí hay que mostar los nombres de los restaurantes que nos manden-->
                         <option value="">Nombre de restaurante</option>
@@ -175,7 +172,7 @@
                     </select> 
                     
                 </div>
-                <div class="col pb-3">
+                <div class="col-xl-3 col-l-4 col-sm-6 pb-3">
                      <select name="numPersonas">
                          <option value="0">Número de personas:</option>
                          <option value="1">1</option>
@@ -190,10 +187,10 @@
                          <option value="10">10</option>
                     </select>
                 </div>
-                <div class="col pb-3">
+                <div class="col-xl-3 col-l-4 col-sm-6 pb-3">
                    <input style="border-radius: 5px" type="date" id="fecha" name="fecha" max="31/12/2020">
                 </div>
-                <div id="horas2" class="col pb-3" >
+                <div class="col-xl-3 col-l-4 col-sm-6 pb-3" >
                     <select id="hora" name="hora">
                     	<option value="">Horas disponibles</option>
                         <c:forEach var="horas" items="${muchas_cosas.horasRestaurantes}">
@@ -203,7 +200,7 @@
                 </div>
                 
                 	                 <!-- Boton de reservar -->
-	                <div class="col pb-3">
+	                <div class="col">
 	                    <input type="submit" value="Reservar" class="btn btn-light" style="border: 3px solid darkseagreen">
 	                </div>
                 </div>
@@ -270,16 +267,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         
-        <script type="application/javascript">
-        	$( "#boton1" ).click(function() {
-        	  $( "#mostrar" ).show( "slow" );
-        	});
-             function mostarHoras2(){
-                $('#horas2').show();
-                $('#reservar2').show();
-             }
-          
-		</script>
+        
+        
        
-        </body>
+    </body>
 </html>

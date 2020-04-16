@@ -1,41 +1,21 @@
 
+#todoJunto{
+ font-family: Arial; 
+  color:#b8b078;	
+}
 
-
-#buttonCabecera {
-  margin: 0;
-  padding: 20;
-  overflow: hidden;
-  background-color: #333;  
-  width: 99%;  
- display: inline-block;
-
+#todoJunto a:link{
+  color: #b8b078;
+  text-decoration: none;
  }
- 
-#buttonCabecera li {
-	 list-style:none;
+#todoJunto a:visited{
+  color: #b8b078;
+  text-decoration: none;
  }
-
-#menu2Cabecera{
-  display: inline-block;
- font-family: Arial;
- font-size:1vw;
- float: right;
- padding: 10px;
-  color:#b8b078;
-  margin-left: 10px;
+#todoJunto a:active{
+  color: white;
+ text-decoration: none;
  }
- 
- .menu1Cabecera{
-  display: inline-block;
- font-family: Arial;
- font-size:1vw;
- float: left;
- padding: 10px;
-  color:#b8b078;
-  margin-left: 10px;
-
- }
- 
   
  #redirigir1{
  display:none;
@@ -62,95 +42,59 @@
  display:none;
  }
  
-.topCabecera a:link{
-  color: #b8b078;
+
+#ul_de_cabecera_izq{
+  overflow: hidden;
+}
+
+#ul_de_cabecera_izq li{
+	 list-style:none;
+ 	padding: 10px;
+}
+
+#ul_de_cabecera_izq ul{
+	 list-style:none;
+}
+
+
+#ul_de_cabecera_dch{
+  overflow: hidden;
+}
+
+#ul_de_cabecera_dch li{
+	 list-style:none;	 
+ 	padding: 10px;
+}
+
+#ul_de_cabecera_dch ul{
+	 list-style:none;
+}
+
+#botonModal{
+	
+ font-family: Arial; 
+  color:#b8b078;
+  margin-top: -8px;  
   text-decoration: none;
- }
-.topCabecera a:visited{
-  color: #b8b078;
-  text-decoration: none;
- }
-.topCabecera a:active{
-  color: white;
- text-decoration: none;
- }
-
-#buttonCabecera ul{
-	 list-style:none;	
 }
 
- #buttonCabecera li img{
-  display: inline-block;
-   height: auto;
- 	max-width: 40%;
- float: left;
- padding: 0px; 
+
+#modalBotones{
+	font-family: Arial;
+	background-color: #b8b078;
+	text-align: center;
+	color: white;	
+	border:none;
 }
 
-@media only screen and (max-width:620px) {
-  /* For mobile phones: */
-   #buttonCabecera li img{  
-    max-width: 20%;
-  	height: auto;
-  	display: inline-block;
- float: left;
- padding: 0px; 
- position: relative;
-    margin-left: -10%;
- 
-  }
-  #buttonCabecera ul{
-  display:inline-block;
-  float:left;
-  }
-  
-  #menu2Cabecera{
-  float:right;
-   margin-left: -80%;
-  }
-  
-  .p1{
-  float:left;
-   margin-left: -250%;
-   font-size: 2vw;
-  }
-  
-   .p2{
-  float:left;
-   margin-left: -380%;
-   font-size: 2vw;
-  }
-  
-     .p3{
-  float:left;
-   margin-left: -470%;
-   font-size: 2vw;
-  }
-  
-  .p5{
-   float:left;
-   margin-left: -300%;
-   font-size: 2vw;
-  }
-  
-  .p4{
-   float:left;
-   margin-left: -400%;
-   font-size: 2vw;
-  }
-  
-  .menuCabeceraGlobal1{
-   margin-right: -100%;
-  }
-  
-  .popup .popuptext{
-    max-width: 100px;  
-  } 
-  
-  .botonMyHotel{
-  	max-width: 70%;  
-  }
-}
+#modalTexto{
+	font-family: Arial;
+	color: #b8b078;
+	text-align: center;
+	text-transform: uppercase;
+}  
+
+
 
 .topCabecera{
     position: fixed;
@@ -159,6 +103,57 @@
     width: 100%;
     top: 0;
     z-index: 1;    
+}
+
+
+header{
+	width:100%;
+	margin:auto;
+}
+
+body{
+width: 100%;
+padding-top: 50px;
+margin:auto;
+}
+
+
+
+
+
+
+
+/**
+  .botonMyHotel{
+  	max-width: 70%;  
+  }
+
+.botonMyHotel{
+	font-family: Oldtown, fantasy;
+	font-size:1vw;
+	padding: 15px 22px;
+	margin: 10px 10px;
+	background-color: #b8b078;
+	text-align: center;
+	color: white;
+	margin-left: 10px;
+	border: none;
+	
+}
+
+.botonMyMenu{
+	
+	font-family: Oldtown, fantasy;
+	font-size:1vw;
+	width: 80%;
+	padding: 15px 22px;
+	margin: 10px 10px;
+	background-color: #b8b078;
+	text-align: center;
+	color: white;
+	margin-left: 10px;
+	border: none;
+	
 }
 
 
@@ -219,45 +214,114 @@
 }
 
 
-header{
-	width:100%;
-	margin:auto;
+  
+  .popup .popuptext{
+    max-width: 100px;  
+  } 
+
+ 
+#menu2Cabecera{
+  display: inline-block;
+ font-family: Arial;
+ font-size:1vw;
+ float: right;
+ padding: 10px;
+  color:#b8b078;
+  margin-left: 10px;
+ }
+
+  
+  .menuCabeceraGlobal1{
+   margin-right: -100%;
+  }
+  
+  
+#buttonCabecera {
+  margin: 0;
+  padding: 20;
+  overflow: hidden;
+  background-color: #333;  
+  width: 99%;  
+ display: inline-block;
+
+ }
+ 
+#buttonCabecera li {
+	 list-style:none;
+ }
+
+
+ .menu1Cabecera{
+ font-family: Arial;
+ font-size:1vw;
+ float: left;
+ padding: 10px;
+  color:#b8b078;
+  margin-left: 10px;
+
+ }
+ 
+ #buttonCabecera ul{
+	 list-style:none;	
 }
 
-body{
-width: 100%;
-padding-top: 50px;
-margin:auto;
+
+
+
+ #buttonCabecera li img{
+  display: inline-block;
+   height: auto;
+ 	max-width: 40%;
+ float: left;
+ padding: 0px; 
 }
 
-
-
-.botonMyHotel{
-	font-family: Oldtown, fantasy;
-	font-size:1vw;
-	padding: 15px 22px;
-	margin: 10px 10px;
-	background-color: #b8b078;
-	text-align: center;
-	color: white;
-	margin-left: 10px;
-	border: none;
-	
-}
-
-.botonMyMenu{
-	
-	font-family: Oldtown, fantasy;
-	font-size:1vw;
-	width: 80%;
-	padding: 15px 22px;
-	margin: 10px 10px;
-	background-color: #b8b078;
-	text-align: center;
-	color: white;
-	margin-left: 10px;
-	border: none;
-	
-}
-
-
+@media only screen and (max-width:620px) {
+  For mobile phones: 
+   #buttonCabecera li img{  
+    max-width: 20%;
+  	height: auto;
+  	display: inline-block;
+ float: left;
+ padding: 0px; 
+ position: relative;
+    margin-left: -10%;
+ 
+  }
+  #buttonCabecera ul{
+  display:inline-block;
+  float:left;
+  }
+  
+  
+  
+  .p1{
+  float:left;
+   margin-left: -250%;
+   font-size: 2vw;
+  }
+  
+   .p2{
+  float:left;
+   margin-left: -380%;
+   font-size: 2vw;
+  }
+  
+     .p3{
+  float:left;
+   margin-left: -470%;
+   font-size: 2vw;
+  }
+  
+  .p5{
+   float:left;
+   margin-left: -300%;
+   font-size: 2vw;
+  }
+  
+  .p4{
+   float:left;
+   margin-left: -400%;
+   font-size: 2vw;
+  }
+**/

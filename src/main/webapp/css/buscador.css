@@ -139,17 +139,21 @@ input[type=submit] {
 	margin-top: 300px;
 }
 
-.recogerBuscar{
-	
-	display: block;
-	float:left;
-	border: 3px solid black;
-	box-sizing: border-box;
-	position: relative;
-  	left: 12%;
-block-size: inherit;
-background-color: #4f5457;
-  
+
+#lista_hoteles{
+	background-color: #DAD5D5;
+}
+
+
+#encabecadohotel{
+	background-color: #b8b078;
+	color: white;
+	 border-style: double;
+  border-color: white;	
+  border-width: 10px;
+    text-transform: uppercase;    
+	font-family: Georgia;
+	text-align:center;
 }
 
 
@@ -164,21 +168,83 @@ li {
 	list-style: none;
 }
 
-.rehabitacion {
-	background-color: #DAD5D5;
 
-}
-.encabecadohotel {
-	background-color;
-	color: #b8b078;
-	 border-style: double;
-  border-color: white;	
-  border-width: 10px;
+
+.imagenHabitacionGrande img{
+  display: inline-block;
+ float: left;
+ padding: 0px; 
+height: 150px;
+width: 180px;
 }
 
+.selectComidas select{
+		width: 100%;	
+	border: none;
+	background-color: #b8b078;
+	font-size: 15px;	
+	color: black;
+	display:inline;
+	font-family: Georgia;
+	font-weight:bold; 
+}
+
+h3{
+font-family: Georgia; 
+font-weight:bold; 
+font-size: 30px; 
+color: #b8b078; 
+text-shadow: -1px 0 #292b2c, 0 1px #292b2c, 1px 0 #292b2c, 0 -1px #292b2c, -2px 2px 0 #292b2c, 2px 2px 0 #292b2c, 1px 1px #292b2c, 2px 2px #292b2c, 3px 3px #292b2c, 4px 4px #292b2c, 5px 5px #292b2c, 6px 6px #292b2c, 7px 7px #292b2c, 8px 8px #292b2c, 9px 9px #292b2c;
+
+}
+
+.habitacionTipo li{	
+font-family: Georgia; 
+font-weight:bold; 
+}
+
+.SubmitTipo input[type=submit]{	
+	
+	font-family: Georgia;
+	color:white;
+	font-weight:bold; 
+	font-size: 15px;
+	/*width: 40%;
+	height: 6%;
+	padding: 15px 22px;*/
+	/*margin: 5px 10px;
+	margin-top: -20px;*/
+	border: none;
+	border-color: none;
+	background-color: none;
+	
+}
 
 
-.habitacion {
+ /*
+ 
+ 
+.recogerBuscar{
+	
+	display: block;
+	float:left;
+	border: 3px solid black;
+	box-sizing: border-box;
+	position: relative;
+  	left: 12%;
+block-size: inherit;
+background-color: #4f5457;
+  
+}
+ 
+ 
+ .habitacionTipo {
+	font-family: Georgia;
+	font-size: 20px;
+	line-height: 10pt;
+}
+
+ .habitacion {
 	overflow: hidden;
 	background-size: cover;
 	background-attachment: fixed;
@@ -186,7 +252,8 @@ li {
 	margin-top: 30px;
 }
 
-.columnaHabitacion {
+ 
+ .columnaHabitacion {
 	float: left;
 	width: 22%;
 	padding: 10px;
@@ -211,70 +278,7 @@ li {
 
 	}
 
-
-
-
-.imagenHabitacionGrande img{
-  display: inline-block;
- float: left;
- padding: 0px; 
-height: 150px;
-width: 180px;
-}
-
-.selectComidas select{
-		width: 100%;	
-	/*margin: 10px 20px;*/
-	border: none;
-	background-color: #b8b078;
-	font-size: 15px;	
-	color: white;
-	display:inline;
-}
-
-.mitadComida h3{
-		
-	font-size: 25px;
-}
-
-
-
-
-.bucle{
-	/*line-height: 1pt;*/
-	/*display: inline-block;*/
-	display: inline;
-}
-
-
-.habitacionTipo {
-	font-family: Georgia;
-	font-size: 20px;
-	line-height: 10pt;
-}
-
-.habitacion ul{
-	/*margin: 15px 15px;*/
-}
-
-.habitacion input[type=submit]{
-	
-	
-	font-family: Georgia;
-	color:white;
-	font-size: 15px;
-	width: 40%;
-	height: 6%;
-	/*padding: 15px 22px;*/
-	/*margin: 5px 10px;*/
-	margin-top: -20px;
-	border: none;
-	border-color: none;
-	background-color: none;
-	
-}
-
- /*
+ 
  
  .input_photo{
 	width: 75%;

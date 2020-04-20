@@ -148,39 +148,44 @@
 </div>
 
 
-
-<ul class="list">
+<div class="container-fluid" id="lista_hoteles">
+<ul>
 
 	<c:forEach items="${hotelesDisponibles.hoteles}" var="hotel">
-		<div class="rehabitacion">
+	
+	
+	
 		<br>
 		<br>
-			<li class="list2">
-				<div class="encabecadohotel">
+			<li>
+				<div class="container-fluid" id="encabecadohotel">
+				<br>
 					<h2 style="display: center">Hotel ${hotel.nombre} en ${hotel.ciudad}</h2>
-				</div>
-
-				<div class="habitacion">
-					<div class="columnaHabitacion">
-					
-					<div class="mitadColumnaHabitacion">
-					<h3>Habitaciones:</h3>	
 					<br>
-					<div class="imagenHabitacionGrande">
-<img src="/imagenes/habitacion.jpg" />
-</div>
+				</div>
+				
+		<div class="row" id="fila_general">
+		
+					<div class="col-md">
+					<br>
+					<br>
+						<div class="row" id="fila_dentrode">
+												
+								<div class="col-md">
+								<h3>Habitaciones:</h3>	
+								<br>
+								<div class="imagenHabitacionGrande d-none d-lg-block">
+								<img src="/imagenes/habitacion.jpg" />
+								</div>
 									
 
-						</div>			
+							</div>			
 								
 
-				<div class="mitadColumnaHabitacion">
 				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
+					<div class="col-md">
+					<br>
+					<br>
 						<c:forEach items="${hotel.habitaciones}" var="habitacion">
 
 							<div class="habitacionTipo">
@@ -191,26 +196,33 @@
 							</div>
 
 						</c:forEach>
-						
 						</div>
-					</div>
+						</div>
+						</div>
+					
+					
+					
+					
+					
 
-					<div class="columnaHabitacion">
-<div class="mitadColumnaHabitacion">
-						<h3>Tarifas:</h3>
+					<div class="col-md">
+					<br>
+					<br>
+					
+					
+						<div class="row" id="fila_dentrode">
+					
+							<div class="col-md">
+								<h3>Tarifas:</h3>
+								<br>
+								<div class="imagenHabitacionGrande  d-none d-lg-block">
+									<img src="/imagenes/hotelpeople.jpg" />
+								</div>
+							</div>
+					<br>
+							<div class="col-md">
 						<br>
-						<div class="imagenHabitacionGrande">
-<img src="/imagenes/hotelpeople.jpg" />
-</div>
-	</div>
-	
-	<div class="mitadColumnaHabitacion">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+				<br>
 						<c:forEach items="${hotel.habitaciones}" var="habitacion">
 						
 							<div class="habitacionTipo">
@@ -227,24 +239,25 @@
 						</c:forEach>
 						</div>
 						
-
+					</div>
 					</div>
 					
-					
-	<div class="mitadComida">				
-	<br>
+					<div class="col-md">
+					<br>
+					<br>
+							<div id="tituloComida">							
 									<h3>Comidas:</h3>
+									<br>
 									</div>
 									
-					<br>
-				
+						<div class="row">
 					<c:forEach items="${hotel.habitaciones}" var="habitacion">
 							<div class="bucle">
 						<form:form method="POST" action="reservar"
 							modelAttribute="reserva">
-							<div class="columnaHabitacion">
-
-				<div class="selectComidas">							
+							<div class="row">
+							<div class="col-md">
+								<div class="selectComidas">							
 								
 								<select name="comidas">
 									<option value="+0, sólo alojamiento">+0, sólo
@@ -254,9 +267,9 @@
 									<option value="+30, pensión completa">+30, pensión
 										completa</option>
 								</select>
+								</div>
 								</div> 
 							
-							</div>
 							
 							<input type="hidden" name="habitacion_id"
 									value="${habitacion.tipo_hab_id}" />
@@ -265,25 +278,27 @@
 							<input type="hidden" name="fecha_fin" value="${busquedaBean.fechaFin}" />
 							<input type="hidden" name="tarifa" value="${habitacion.precio_total}" />
 							
-							<div class="columnaHabitacion">
-								<div class="habitacionTipo">
-									<ul class="habitacion">										
-										<input type="submit" value="Reservar" />
-									</ul>
+							<div class="col-md">
+								<div class="SubmitTipo">									
+										<input type="submit" value="Reservar"/>
 								</div>
-							</div>
+								</div>
 							
+							</div>
 
 						</form:form>
 						</div>
 					</c:forEach>
+					</div>
 					
+							</div>
 				</div>
 			</li>
-		</div>
+		
 	</c:forEach>
-	
+
 </ul>
+</div>
 
 
 <script>
@@ -299,6 +314,9 @@
 
 </body>
 </html>
+
+
+
 
 <!-- 
 

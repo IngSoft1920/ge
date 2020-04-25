@@ -150,8 +150,7 @@
 			var cancelar = document.getElementById('cancelar');
 			cancelar.classList.toggle('active');
 			var noClick = document.getElementById('noClick');
-			noClick.classList.toggle('active');
-			
+			noClick.classList.toggle('active');			
 		}
 		
 		function toggleReserva() {

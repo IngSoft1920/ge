@@ -17,12 +17,12 @@
 
 
 
-<body>
+<body> 
 	<div class="blanco"></div>
+	<div id="ocultar">
 
 	<h3>Escoga una de las siguientes opciones para confirmar su
 		reserva</h3>
-
 
 	<div class="row">
 		<div class="column">
@@ -52,6 +52,8 @@
 	</div>
 	
 	<div class="espacio2"> </div>
+		</div>
+	
 		
 		<div class="container" id="container_resumen">
 		
@@ -110,4 +112,14 @@
 	<br> <br>
 
 </body>
+<script>
+
+
+window.onload = function() {
+	if(${sesionBean.usuarioID} != -1)
+		var ocultar = document.getElementById('ocultar');
+		ocultar.classList.toggle('active');
+	};
+
+</script>
 </html>

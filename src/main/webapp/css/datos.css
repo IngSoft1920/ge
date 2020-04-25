@@ -17,14 +17,14 @@
 
 .column2 {
 	border-left: 6px solid #b8b078;
-	height: 200px;
+	height: 117px;
 	position: absolute;
 	left: 33%;
 }
 
 .column3 {
 	border-left: 6px solid #b8b078;
-	height: 200px;
+	height: 117px;
 	position: absolute;
 	left: 66%;
 }
@@ -38,7 +38,7 @@
 
 
 .espacio2{
-	margin-top: 150px;	
+	margin-top: 51px;	
 }
 
 #container_resumen{
@@ -64,6 +64,13 @@ font-size: 30px;
   margin: 25;
   font: italic 100px Georgia, Serif;
 font-size: 20px; 
+}
+
+
+#ocultar.active{
+	position: absolute;
+	top:-500px;
+	visibility:hidden;
 }
 
 

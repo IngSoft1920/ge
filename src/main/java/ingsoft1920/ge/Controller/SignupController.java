@@ -43,7 +43,7 @@ public class SignupController {
 
 		SignupBean signupBean = new SignupBean(); // Creamos una bean de signup con sus respectivos atributos.
 		model.addAttribute("signupBean", signupBean); // Añadimos el bean creado al modelo
-		model.addAttribute("mensajeError", "Hola");
+		model.addAttribute("mensajeError", "");
 		return "signup"; // Vista que debemos ver signup.jsp
 	}
 

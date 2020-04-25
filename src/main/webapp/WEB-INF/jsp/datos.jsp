@@ -102,6 +102,11 @@
 		<br>
 		</div>	
 		
+		
+		<form:form action="reservaLogin" method="GET" >
+				<input type="submit" value="Confirmar reserva para usuario logeado" >
+		</form:form>
+		
 	<br> <br>
 
 </body>

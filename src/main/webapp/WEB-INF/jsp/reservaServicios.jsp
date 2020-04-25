@@ -136,8 +136,9 @@
 							value=${reserva.fecha_inicio}> <input type=hidden
 							name=fecha_fin value=${reserva.fecha_fin}>
 
-						<form action="/checkin/${reserva.id_reserva}" method="POST"
-							onsubmit="return comprobarFecha()">
+						<%-- <form action="completarCheckin" method="POST"
+							onsubmit="return comprobarFecha()"> --%>
+					  <form action="/checkin/${reserva.id_reserva}" method="POST">  
 							<input type="submit" value="Check In">
 						</form>
 					</div>
@@ -177,7 +178,7 @@
 				alert('No se puede hacer check in e una reserva que no sea para hoy');
 			}
 		}
-	}}
+	}
 </script>
 
 

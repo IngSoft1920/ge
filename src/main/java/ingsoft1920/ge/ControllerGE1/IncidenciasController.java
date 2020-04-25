@@ -72,7 +72,7 @@ public class IncidenciasController {
 		return "procesarIncidencias";
 	}
 
-	// CODIGO DE PRUEBA ABAJO no borrar
+	// CODIGO DE PRUEBA ABAJO
 	// @RequestMapping("/procesarIncidencias")
 	// public String index(@ModelAttribute("Incidencia") IncidenciasBean Incidencia,
 	// HttpServletRequest request) {

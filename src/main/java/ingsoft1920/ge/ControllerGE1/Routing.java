@@ -66,6 +66,9 @@ public class Routing {
 
 		return "incidencias";
 	}
+	
+
+	
 //	@GetMapping("/recibirPlatos")
 //	public String onload() throws Exception {
 //		EncargarComidaController.recibirPlatos();

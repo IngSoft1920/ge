@@ -109,15 +109,12 @@
 		<br>
 		</div>	
 		
-<<<<<<< HEAD
+
 		<br>
 		<div class="container" id="container_boton">
-		<i class="fa fa-shopping-cart"></i>
-		<form:form action="reservaLogin" method="GET" >
-=======
-		
+		<i class="fa fa-shopping-cart"></i>		
 		<form:form action="reservaConfirm" method="POST" >
->>>>>>> develop
+
 				<input type="submit" value="Confirmar reserva para usuario logeado" >
 		</form:form>
 		</div>

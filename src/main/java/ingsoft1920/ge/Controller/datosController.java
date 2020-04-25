@@ -2,6 +2,7 @@ package ingsoft1920.ge.Controller;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,13 +15,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
+import Objetillos.ReservaGE2;
 import ingsoft1920.ge.Beans.BusquedaBean;
+import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
@@ -40,59 +45,15 @@ public class datosController {
 	
 	@Autowired 
 	ReservaHotel reserva;
+	MostrarServiciosPostReservaBean servicios;
+	HotelBean hotel;
+	HabitacionBean habitacion;
 	
-	List<String> ciudades;
-	List<HotelBean> hoteles;
-	
-	BusquedaBean busquedaBean = new BusquedaBean();
 	
 	@GetMapping("/datos")
 	public String opcionesAutentificacion(Model model) throws Exception {
 		
 		JsonArray arrayGrande = new JsonArray();
-
-
-		JsonObject ejemplo = new JsonObject();
-		ejemplo.addProperty("id", 1);
-		ejemplo.addProperty("nombre", "Sol Creciente");
-		ejemplo.addProperty("descripcion", "Calurosa Experiencia");
-		ejemplo.addProperty("estrellas", 4);
-		ejemplo.addProperty("continente", "Europa");
-		ejemplo.addProperty("pais", "España");
-		ejemplo.addProperty("ciudad", "Madrid");
-		ejemplo.addProperty("direccion", "Calle Gran Vía, 21");
-		JsonArray ejemploArr = new JsonArray();
-		JsonObject ejemploCat = new JsonObject();
-		ejemploCat.addProperty("categoria_id", 1);
-		ejemploCat.addProperty("nombre", "pet-friendly");
-		ejemploArr.add(ejemploCat);
-		ejemploCat = new JsonObject();
-		ejemploCat.addProperty("categoria_id", 2);
-		ejemploCat.addProperty("nombre", "adult-only");
-		ejemploArr.add(ejemploCat);
-		ejemplo.add("categorias", ejemploArr);
-		arrayGrande.add(ejemplo);
-
-		ejemplo = new JsonObject();
-		ejemplo.addProperty("id", 2);
-		ejemplo.addProperty("nombre", "Luna Creciente");
-		ejemplo.addProperty("descripcion", "Curiosa Experiencia");
-		ejemplo.addProperty("estrellas", 3);
-		ejemplo.addProperty("continente", "Europa");
-		ejemplo.addProperty("pais", "España");
-		ejemplo.addProperty("ciudad", "Albacete");
-		ejemplo.addProperty("direccion", "Calle Cuenca es mejor, 21");
-		ejemploArr = new JsonArray();
-		ejemploCat = new JsonObject();
-		ejemploCat.addProperty("categoria_id", 1);
-		ejemploCat.addProperty("nombre", "pet-friendly");
-		ejemploArr.add(ejemploCat);
-		ejemploCat = new JsonObject();
-		ejemploCat.addProperty("categoria_id", 3);
-		ejemploCat.addProperty("nombre", "caga-y-vete");
-		ejemploArr.add(ejemploCat);
-		ejemplo.add("categorias", ejemploArr);
-		arrayGrande.add(ejemplo);
 
 		String response = arrayGrande.toString();
 
@@ -101,7 +62,10 @@ public class datosController {
 			response = serverCiudades.getResponseBody();
 		}
 
-		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
+		
+/**
+ * 
+ * 		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
 		hoteles = new Gson().fromJson(response, tipo);
 
 		ciudades = new ArrayList<String>();
@@ -112,13 +76,70 @@ public class datosController {
 		
 		System.out.println(ciudades.get(0));
 		
+		JsonObject json = new JsonObject();
+		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean 
+
+		
+		JsonArray obj = (JsonArray) JsonParser.parseString(response);
+		
+		JsonArray jarr = new JsonArray();
+		JsonObject jobj = new JsonObject();
+		jobj.addProperty("hotel_id", reserva.getHotel_id());
+		jobj.addProperty("tipo_hab_id", reserva.getHabitacion_id());
+		jobj.addProperty("fecha_inicio", reserva.getFecha_inicio());
+		jobj.addProperty("fecha_fin", reserva.getFecha_fin());
+		jobj.addProperty("tarifa", reserva.getTarifa());
+		jobj.addProperty("regimen_comidas", reserva.getRegimen_comidas());
+		jarr.add(jobj);
+		
+		System.out.print(reserva.getHotel_id());
+		System.out.print(reserva.getTarifa());
+		System.out.print(reserva.getFecha_fin());
+		**/
+		/**
+		JsonArray obj = (JsonArray) JsonParser.parseString(response);	
+		
+		List<ReservaGE2> reserva= new LinkedList<>();
+		for (int i=0;i<obj.size();i++) {
+			reserva.add(new ReservaGE2(obj.get(i).getAsJsonObject().get("reserva_id").getAsInt(), 
+					obj.get(i).getAsJsonObject().get("hotel_id").getAsInt(),
+					obj.get(i).getAsJsonObject().get("tipo_hab_id").getAsInt(),
+					obj.get(i).getAsJsonObject().get("importe").getAsInt(),
+					obj.get(i).getAsJsonObject().get("regimen").getAsString(),
+					obj.get(i).getAsJsonObject().get("fecha_entrada").getAsString(),
+					obj.get(i).getAsJsonObject().get("fecha_salida").getAsString()));
+		}
+
+
+		model.addAttribute("servicios", servicios);
+		
+		
 		model.addAttribute("ciudades", ciudades);
 		model.addAttribute("hoteles", hoteles);
 		model.addAttribute("busquedaBean",busquedaBean);
+		
+**/
+		
+		System.out.print(habitacion.getNombre());
+		System.out.print(hotel.getNombre());
+		System.out.print(reserva.getFecha_fin());
+		
+		
+	
+		model.addAttribute("habitacion", habitacion);
+		
+		model.addAttribute("hotel", hotel);
+		
+		model.addAttribute("servicios", servicios);
+		
+		model.addAttribute("reservas", reserva);
+
 		model.addAttribute("sesionBean", sesionBean);
 
 		
 		return "datos";
+		
+		
 
 	}
 	

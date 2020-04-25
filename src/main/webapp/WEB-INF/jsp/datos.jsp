@@ -80,30 +80,32 @@
 			<h2>Inicie sesión</h2>
 			<form:form action="reservaLogin" method="GET" >
 				<input type="submit" value="Log In" >
-				
-				<select name="ciudad">
-								<option value="">Ciudad</option>
-								<c:forEach items="${ciudades}" var="ciudad">
-									<option value="${ciudad}">${ciudad}</option>
-								</c:forEach>
-							</select>
 			</form:form>
 				
 		</div>
 	</div>
 	
 		
-		${busquedaBean.fechaInicio}
+				
+		${hotel.nombre}
 		
-						<form:form method="GET" action="reservaLogin" modelAttribute="busquedaBean">
-						${busquedaBean.fechaInicio}
-		<select name="ciudad">
-								<option value="">Ciudad</option>
-								<c:forEach items="${ciudades}" var="ciudad">
-									<option value="${ciudad}">${ciudad}</option>
-								</c:forEach>
-							</select>
-		</form:form>
+		${habitacion.nombre}
+		
+		${reservas.fecha_inicio}
+		${reservas.fecha_fin}
+		${reservas.regimen_comidas}
+		${reservas.tarifa}	
+		
+		${servicios.tipoServicio}
+		${servicios.numPersonas}
+		${servicios.fecha}
+		${servicios.hora}
+		${servicios.precio}	
+		
+		
+				
+			
+		
 	
 		<form:form method="POST" action="" modelAttribute="hotelBean">
 				${nombre}

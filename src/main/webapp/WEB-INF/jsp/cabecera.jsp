@@ -204,12 +204,12 @@
       <div class="container-fluid">
       <div class="row">
       <div class="col">
-      <form:form action="reservaLogin" method="GET" >
+      <form:form action="login" method="GET" >
         <button type="submit" class="btn btn-primary" id="modalBotones" value="Log In">Log In</button>
 		</form:form>
        </div>
        <div class="col"> 
-       <form:form action="reservaSignup" method="GET" >
+       <form:form action="signup" method="GET" >
         	<button type="submit" class="btn btn-primary" id="modalBotones" value="Sign Up">Registrarse</button>
 		</form:form>
         </div>

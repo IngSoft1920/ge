@@ -392,4 +392,15 @@ public class datosController {
 		
 		return "redirect:";
 	}
+	
+	@PostMapping("/reservaConfirm")
+	public String confirmPost() throws Exception {
+
+		String resultado = "";
+		reservaHabitacion();
+		reservaServicios(sesionBean.getUsuarioID());
+		reserva.resetReserva();
+		resultado = "redirect:misReservas";
+		return resultado;
+	}
 }

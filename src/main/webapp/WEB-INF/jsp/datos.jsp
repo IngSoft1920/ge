@@ -110,7 +110,7 @@
 		</div>	
 		
 		
-		<form:form action="reservaLogin" method="GET" >
+		<form:form action="reservaConfirm" method="POST" >
 				<input type="submit" value="Confirmar reserva para usuario logeado" >
 		</form:form>
 		

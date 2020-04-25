@@ -266,6 +266,8 @@
 										alojamiento y desayuno</option>
 									<option value="3">+30, pensión
 										completa</option>
+									<option value="3">+45, todo
+										incluído</option>
 								</form:select>
 								</div>
 								</div> 

@@ -279,7 +279,7 @@ public class datosController {
 		json_reserva.addProperty("fecha_entrada", reserva.getFecha_inicio());
 		json_reserva.addProperty("fecha_salida", reserva.getFecha_fin());
 		json_reserva.addProperty("importe", reserva.getTarifa());
-		json_reserva.addProperty("regimen", "no_aplica");
+		json_reserva.addProperty("regimen", reserva.regimen());
 		json_reserva.addProperty("numero_acompanantes", 1);
 		
 		String response = "";

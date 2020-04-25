@@ -5,16 +5,21 @@
 
 <html>
 
-<script>
-
-
-
-</script>
 <head>
 
 <title>Home Page</title>
 <meta charset="utf-8">
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" type="text/css" href="/css/cabecera.css"
 	media="screen" />
 <link
@@ -22,14 +27,22 @@
 	rel="stylesheet">
 </head>
 
-<header> </header>
+<header>
 
-<body onload="myRegistro()" onload="backButton()">
+<nav class="navbar fixed-top navbar-expand-md bg-dark navbar-dark" id="todoJunto">
+	
+				<a class="navbar-brand" href="/"><img class="img-fluid" src="/imagenes/LogoHotel.jpg"/></a>
+		
+		 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-	<div class="topCabecera">
-		<ul id="buttonCabecera">
-			<div class="menu1Cabecera">
-			<li><button id="backbut" value="back" onclick="history.back()" style="
+<div class="collapse navbar-collapse" id="navbarCollapse">
+		
+		<ul class="navbar-nav" id="ul_de_cabecera_izq">		
+
+			<li class="nav-item">
+			<button id="backbut" value="back" onclick="history.back()" style="
     	    float:left;
     	    margin-top: 5px;
     	    margin-right:15px;
@@ -38,53 +51,61 @@
     	    border: none;
     	    background: #b8b078;
     	    font-family: cursive;
-    	    width: 30px;
-    	    height:30px;
+    	    width: auto;
+    	    height:auto;
     	    text-align: center;">&#8249;
     	    </button></li>
-				<li><a href="/"><img src="/imagenes/LogoHotel.jpg" /></li>
-			</div>
 
 
-			<div class="menu1Cabecera">
+				<li class="nav-item">
+				<a href="/login">
 				<div id="redirigir1">
-					<li><a href="/login"> <i class="fa fa-book"> </i>Mis
-							Reservas</li>
-				</div>
-			</div>
+					 <i class="fa fa-book"> </i>Mis
+							Reservas	
+				</div>	
+				</a>
+				</li>
 
-
-			<div class="menu1Cabecera">
-				<div id="redirigir2">
-					<li><a href="/login"> <i class="fa fa-glass"> </i>Servicios</li>
-				</div>
-			</div>
-
-			<div class="menu1Cabecera">
-				<div id="redirigir5">
-					<li><a href="/login"> <i class="fa fa-pencil"> </i>Historial</li>
-				</div>
-			</div>
-
-			<div class="menu1Cabecera">
-				<div id="redirigir3">
-					<li><a href="/recibirReservas"> <i class="fa fa-book"> </i>Mis
-							Reservas</li>
-				</div>
-			</div>
-
-
-			<div class="menu1Cabecera">
-				<div id="redirigir4">
-					<li><a href="/servicios"> <i class="fa fa-glass"> </i>Servicios</li>
-				</div>
-			</div>
+				<li class="nav-item">
+					<a href="/login">
+				<div id="redirigir2"> <i class="fa fa-glass"> </i>Servicios				
+					</div>
+						</a>
+				</li>
+				
+				<li class="nav-item">
+					<a href="/login">
+				<div id="redirigir5"> <i class="fa fa-pencil"> </i>Historial
+					</div>
+					</a>
+				</li>
 			
-			<div class="menu1Cabecera">
-				<div id="redirigir6">
-					<li><a href="/misReservas"><i class="fa fa-pencil"> </i>Historial</li>
-				</div>
-			</div>
+				<li class="nav-item">
+					<a href="/recibirReservas"> 
+				<div id="redirigir3">
+						<i class="fa fa-book"> </i>Mis
+							Reservas
+					</div>
+					</a>
+				</li>
+		
+
+				<li class="nav-item">
+				
+					<a href="/servicios">
+				<div id="redirigir4"> <i class="fa fa-glass"> </i>Servicios
+					</div>
+					</a>
+				</li>
+			
+				<li class="nav-item">
+				
+					<a href="/misReservas">
+				<div id="redirigir6"><i class="fa fa-pencil"> </i>Historial
+					</div>
+					</a>
+				</li>
+				
 
 			<script type="text/javascript">			
 			
@@ -135,57 +156,117 @@
 				}
 			
 			</script>
+			
+	
+		</ul>
+		
+		
+		
+		
+		
+		
+		<ul class="navbar-nav ml-auto" id="ul_de_cabecera_dch">
+		
 
 
 
-
-			<li id="menu2Cabecera"><a href="/"> <i class="fa fa-list"></i>
+			<li class="nav-item">
+			
+  <!-- Trigger the modal with a button -->
+  
+  <button type="button" class="btn btn-link" id="botonModal"><i class="fa fa-users"></i> MyAccount</button>
+			</li>
+			
+						<li class="nav-item">
+			<a href="/"> <i class="fa fa-list"></i>
 					Inicio
-			</a></li>
-
-
-			<li id="menu2Cabecera">
-
-				<div class="popup" onclick="myHotel()">
-
-					<i class="fa fa-users"></i> MyAccount <span class="popuptext"
-						id="myPopup"> <br> Accede a tu cuenta o registrate y
-						obten descuentos <br> <br> <a href="/login"
-						value="login">
-							<button class="botonMyHotel">Log In</button>
-					</a> <a href="/signup" value="signup">
-							<button class="botonMyHotel">Registrarse</button>
 					</a>
-					</span> <span class="popuptext" id="UserPopup"> <br>
-						BIENVENIDO ${sesionBean.usuario}<br> Disfruta de esta
-						experiencia con nosotros <br> <a href="/reservas"
-						value="reservas">
-							<button class="botonMyHotel">Mis Reservas</button>
-					</a> <a href="/servicios" value="servicios">
-							<button class="botonMyHotel">Mis Servicios</button>
-					</a>
-						<button class="botonMyHotel">Cerrar sesion</button>
-
-					</span>
-				</div> <script>
-						function myHotel() {
-							var sessiones = '${sesionBean.usuario}';
-							if (sessiones == "LogIn" || sessiones == "") {
-								var popup = document.getElementById("myPopup");
-								popup.classList.toggle("show");
-							} else {
-								var popup = document
-										.getElementById("UserPopup");
-								popup.classList.toggle("show");
-							}
-						}
-</script>
-
 			</li>
 
-		</ul>
 
+		</ul>
 	</div>
+	</nav>
+
+  
+  <!-- Modal Si no hemos iniciado sesion -->
+  <div class="modal fade" id="myModal" role="dialog">
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTexto">Accede a tu cuenta o registrate y
+						obten descuentos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container-fluid">
+      <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-primary" id="modalBotones">Log In</button>
+       </div>
+       <div class="col"> 
+        <button type="button" class="btn btn-primary" id="modalBotones">Registrarse</button>
+        </div>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <!-- Modal Si hemos iniciado sesion-->
+  <div class="modal fade" id="userPopup" role="dialog">
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTexto">BIENVENIDO ${sesionBean.usuario}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+       <div class="container-fluid">
+      <div class="row">
+      <div class="col">       
+        <button type="button" class="btn btn-primary" id="modalBotones">Mis Reservas</button>
+        </div>
+         <div class="col"> 
+        <button type="button" class="btn btn-primary" id="modalBotones">Mis Servicios</button>      
+        </div>
+         <div class="col">   
+        <button type="button" class="btn btn-primary" id="modalBotones">Cerrar sesion</button>        
+        </div>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  </div>  
+  <script>
+  
+$(document).ready(function(){
+	var sessiones = '${sesionBean.usuario}';
+	if (sessiones == "LogIn" || sessiones == "") {
+		  $("#botonModal").click(function(){
+		    $("#myModal").modal();   });	
+	}else{
+		 $("#botonModal").click(function(){
+		$("#userPopup").modal();  });
+	}
+});
+</script>
+  
+
+</header>
+
+<body onload="myRegistro()" onload="backButton()">
+
+
 </body>
 
 

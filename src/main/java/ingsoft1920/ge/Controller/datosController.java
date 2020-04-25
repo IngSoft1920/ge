@@ -1,6 +1,7 @@
 package ingsoft1920.ge.Controller;
 
 import java.lang.reflect.Type;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,8 +46,14 @@ public class datosController {
 	
 	@Autowired 
 	ReservaHotel reserva;
+	
+	@Autowired 
 	MostrarServiciosPostReservaBean servicios;
+	
+	@Autowired 
 	HotelBean hotel;
+	
+	@Autowired 
 	HabitacionBean habitacion;
 	
 	
@@ -121,8 +128,9 @@ public class datosController {
 **/
 		
 		System.out.print(habitacion.getNombre());
-		System.out.print(hotel.getNombre());
+		System.out.print(hotel.getCiudad());
 		System.out.print(reserva.getFecha_fin());
+		System.out.print(servicios.getFecha());
 		
 		
 	

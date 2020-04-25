@@ -86,56 +86,53 @@
 	</div>
 	
 		
+		<div class="container" id="container_resumen">
+		
+		<div class="row">				
+		<h3> Hotel: ${hotel.nombre} </h3>
+		</div>
+		
+		<div class="row">	
+		<h3> Tipo de habitacion: ${habitacion.nombre} </h3>
+		</div>
+		
+		<div class="row">	
+		<h3> Fecha de estancia: ${reservas.fecha_inicio} -	${reservas.fecha_fin} </h3>
+		</div>
+		
+		<div class="row">	
+		<h3> Regimen comidas: ${reservas.regimen_comidas} </h3>
+		</div>		
+		
+	<c:forEach items="${servicios}" var="servicio">
+		<div class="row">	
+		<h3> Servicios contratados: ${servicio.tipoServicio} </h3>
+		</div>
+		
+		<div class="row">	
+		<h3> Numero de personas para ${servicio.tipoServicio}: ${servicio.numPersonas} </h3>
+		</div>
+		
+		<div class="row">	
+		<h3> Fecha: ${servicio.fecha} </h3>
+		</div>
+		
+		<div class="row">	
+		<h3> Hora: ${servicio.hora} </h3>
+		</div>
+		
+		<div class="row">	
+		<h3> Precio: ${servicio.precio}	</h3>
+		</div>	
+	</c:forEach>
+		
+		<div class="row">	
+		<h3> Tarifa Total: ${reservas.tarifa}	</h3>
+		</div>
 				
-		${hotel.nombre}
-		
-		${habitacion.nombre}
-		
-		${reservas.fecha_inicio}
-		${reservas.fecha_fin}
-		${reservas.regimen_comidas}
-		${reservas.tarifa}	
-		
-		${servicios.tipoServicio}
-		${servicios.numPersonas}
-		${servicios.fecha}
-		${servicios.hora}
-		${servicios.precio}	
-		
-		
-				
-			
+		</div>	
 		
 	
-		<form:form method="POST" action="" modelAttribute="hotelBean">
-				${nombre}
-			</form:form>
-			
-			<form:form method="POST" action="" modelAttribute="habitacionBean">
-				${nombre}
-			</form:form>
-			
-				<form:form method="POST" action="" modelAttribute="reservaHotel">			
-				${fecha_inicio}
-				${fecha_fin}
-				${regimen_comidas}
-				${tarifa}		
-		
-				</form:form>
-				
-				
-
-				
-				<form:form method="POST" action="" modelAttribute="mostrarServiciosPostReservaBean">
-				<p>
-				HOLA
-				${tipoServicio}
-				${numPersonas}
-				${fecha}
-				${hora}
-				${precio}
-				</p>
-				</form:form>
 
 </body>
 </html>

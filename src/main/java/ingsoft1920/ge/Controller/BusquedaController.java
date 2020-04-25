@@ -295,6 +295,11 @@ public class BusquedaController {
 	public String reservarPost(@Valid @ModelAttribute("reserva") ReservaHotel reserva ,
 			Model model) throws Exception{
 		
+		System.out.println("Nombre habit " + reserva.getNombre_habitacion());
+		System.out.println("Nombre hotel " + reserva.getNombre_hotel());
+		
+		this.reserva.setNombre_habitacion(reserva.getNombre_habitacion());
+		this.reserva.setNombre_hotel(reserva.getNombre_hotel());
 		this.reserva.setHotel_id(reserva.getHotel_id());
 		this.reserva.setHabitacion_id(reserva.getHabitacion_id());
 		this.reserva.setFecha_inicio(reserva.getFecha_inicio());

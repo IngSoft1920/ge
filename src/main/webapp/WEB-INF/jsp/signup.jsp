@@ -16,7 +16,7 @@
 	<form method="POST" action="${signup.method}"
 		modelAttribute="signupBean">
 		<fieldset>
-		<br><br><br><br><br><br><br><br>
+		<br>
 			<legend>REGISTRO</legend>
 			<br>
 			<p style="font-size: 30px; color: red; font-family: 'Courier New'">${mensajeError}</p>

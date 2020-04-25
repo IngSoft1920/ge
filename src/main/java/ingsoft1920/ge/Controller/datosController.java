@@ -36,11 +36,6 @@ public class datosController {
 	@GetMapping("/datos")
 	public String opcionesAutentificacion(Model model) throws Exception {
 		
-		if (sesionBean.getUsuarioID() != -1) {
-			reservaHabitacion();
-			
-			return "redirect:misReservas";
-		}
 		
 		return "datos";
 

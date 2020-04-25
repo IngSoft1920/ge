@@ -293,16 +293,14 @@ public class BusquedaController {
 
 	@PostMapping("/reservar")
 	public String reservarPost(@Valid @ModelAttribute("reserva") ReservaHotel reserva ,
-			@Valid @ModelAttribute("comidas") String comidas,
 			Model model) throws Exception{
-		
-		//System.out.println("habitacionId: " + habitacionId + "; hotelId: " + hotelId+ ";comidas:"+comidas);
 		
 		this.reserva.setHotel_id(reserva.getHotel_id());
 		this.reserva.setHabitacion_id(reserva.getHabitacion_id());
 		this.reserva.setFecha_inicio(reserva.getFecha_inicio());
 		this.reserva.setFecha_fin(reserva.getFecha_fin());
 		this.reserva.setTarifa(reserva.getTarifa());
+		this.reserva.setRegimen_comidas(reserva.getRegimen_comidas());
 		
 		return "redirect:serviciosExtras";
 		

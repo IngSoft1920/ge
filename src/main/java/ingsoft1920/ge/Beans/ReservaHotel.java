@@ -30,7 +30,28 @@ public class ReservaHotel {
 		fecha_fin = "";
 		tarifa = 0;
 		servicios.clear();
+		regimen_comidas = 0;
 	}
+	
+	/*
+	 * Función que devuelve la información del régimen de comidas
+	 * para CM
+	 */
+	public String regimen () {
+		switch (regimen_comidas) {
+		case 1:
+			return "no_aplica";
+		case 2:
+			return "media_pensión";
+		case 3:
+			return "pensión_completa";
+		case 4: 
+			return "todo_incluido";
+		default:
+			return "no_aplica";
+		}
+	}
+	
 	
 	
 	public ReservaHotel() {

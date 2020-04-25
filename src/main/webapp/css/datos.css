@@ -90,4 +90,18 @@ font-size: 15px;
   color: white;  
 }
 
+#container_boton i{
+	 color: white; 
+}
+
+#container_boton input[type=submit]{
+	background-color: #b8b078;
+	opacity: 0.8;
+	border-radius: 35px 35px 35px 35px;
+	box-shadow: 5px 10px;	
+	width: 40%;	
+	border: none;
+	color:white;	
+}
+
 

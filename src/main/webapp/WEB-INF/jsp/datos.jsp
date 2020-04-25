@@ -58,11 +58,11 @@
 		<br>
 		
 		<div class="row" id="row_resumen">				
-		<h3> Hotel: </h3> <h2>${hotel.nombre} </h2>
+		<h3> Hotel: </h3> <h2>${reservas.nombre_hotel} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> Tipo de habitacion: </h3> <h2>${habitacion.nombre} </h2>
+		<h3> Tipo de habitacion: </h3> <h2>${reservas.nombre_habitacion} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	

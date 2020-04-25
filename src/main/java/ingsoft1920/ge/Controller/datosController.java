@@ -47,15 +47,6 @@ public class datosController {
 	@Autowired 
 	ReservaHotel reserva;
 	
-	@Autowired 
-	MostrarServiciosPostReservaBean servicios;
-	
-	@Autowired 
-	HotelBean hotel;
-	
-	@Autowired 
-	HabitacionBean habitacion;
-	
 	
 	@GetMapping("/datos")
 	public String opcionesAutentificacion(Model model) throws Exception {
@@ -127,18 +118,8 @@ public class datosController {
 		
 **/
 		
-		System.out.print(habitacion.getNombre());
-		System.out.print(hotel.getCiudad());
 		System.out.print(reserva.getFecha_fin());
-		System.out.print(servicios.getFecha());
-		
-		
-	
-		model.addAttribute("habitacion", habitacion);
-		
-		model.addAttribute("hotel", hotel);
-		
-		model.addAttribute("servicios", servicios);
+		System.out.print(reserva.getNombre_habitacion());
 		
 		model.addAttribute("reservas", reserva);
 
@@ -176,6 +157,7 @@ public class datosController {
 		json_reserva.addProperty("importe", reserva.getTarifa());
 		json_reserva.addProperty("regimen", "no_aplica");
 		json_reserva.addProperty("numero_acompanantes", 1);
+		
 		
 		String response = "";
 		HttpClient server = new HttpClient(HttpClient.urlCM + "reserva", "POST");

@@ -12,6 +12,8 @@ public class ReservaHotel {
 
 	private int hotel_id;
 	private int habitacion_id;
+	private String nombre_hotel;
+	private String nombre_habitacion;
 	private String fecha_inicio;
 	private String fecha_fin;
 	private int tarifa;
@@ -112,5 +114,21 @@ public class ReservaHotel {
 
 	public void setRegimen_comidas(int regimen_comidas) {
 		this.regimen_comidas = regimen_comidas;
+	}
+
+	public String getNombre_hotel() {
+		return nombre_hotel;
+	}
+
+	public void setNombre_hotel(String nombre_hotel) {
+		this.nombre_hotel = nombre_hotel;
+	}
+
+	public String getNombre_habitacion() {
+		return nombre_habitacion;
+	}
+
+	public void setNombre_habitacion(String nombre_habitacion) {
+		this.nombre_habitacion = nombre_habitacion;
 	}
 }

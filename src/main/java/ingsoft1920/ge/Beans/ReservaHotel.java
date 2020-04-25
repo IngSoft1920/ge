@@ -15,6 +15,7 @@ public class ReservaHotel {
 	private String fecha_inicio;
 	private String fecha_fin;
 	private int tarifa;
+	private int regimen_comidas;
 	
 	private List<MostrarServiciosPostReservaBean> servicios;
 	
@@ -83,5 +84,12 @@ public class ReservaHotel {
 	public void setServicios(List<MostrarServiciosPostReservaBean> servicios) {
 		this.servicios = servicios;
 	}
-	
+
+	public int getRegimen_comidas() {
+		return regimen_comidas;
+	}
+
+	public void setRegimen_comidas(int regimen_comidas) {
+		this.regimen_comidas = regimen_comidas;
+	}
 }

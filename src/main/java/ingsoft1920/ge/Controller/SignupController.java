@@ -105,6 +105,8 @@ public class SignupController {
 			objetoJson.addProperty("nacionalidad", signupBean.getNacionalidad());
 			objetoJson.addProperty("password", signupBean.getPassword());
 			String response = "";
+			
+			System.out.println(objetoJson.toString());
 
 			// Mandar usuario registrado correctamente a la base de datos
 
@@ -113,6 +115,13 @@ public class SignupController {
 			if (server.getResponseCode() == 200) { //Conexión con el servidor exitosa
 				response = server.getResponseBody();
 				objetoJson = new Gson().fromJson(response, JsonObject.class);
+				
+				if (objetoJson.get("id") == null) {
+					model.addAttribute("signupBean", signupBean);
+					model.addAttribute("mensajeError", objetoJson.get("error").getAsString());
+					return "signup";
+				}
+				
 				int id = objetoJson.get("id").getAsInt();
 				datosController.setALFONSO(id);
 				

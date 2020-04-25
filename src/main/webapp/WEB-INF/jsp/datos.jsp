@@ -9,48 +9,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
+<link rel="stylesheet" type="text/css" href="/css/datos.css"
+	media="screen" />
+	
 <title>Datos Personales</title>
 </head>
-<style>
-* {
-	box-sizing: border-box;
-}
 
-.blanco {
-	position: relative;
-	margin-top: 100px;
-}
 
-.column {
-	float: left;
-	width: 33%;
-	padding: 10px;
-	background-color: #ccc;
-}
 
-.column2 {
-	border-left: 6px solid #b8b078;
-	height: 200px;
-	position: absolute;
-	left: 33%;
-}
-
-.column3 {
-	border-left: 6px solid #b8b078;
-	height: 200px;
-	position: absolute;
-	left: 66%;
-}
-
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-</style>
 <body>
 	<div class="blanco"></div>
 
@@ -85,54 +51,58 @@
 		</div>
 	</div>
 	
+	<div class="espacio2"> </div>
 		
 		<div class="container" id="container_resumen">
 		
-		<div class="row">				
-		<h3> Hotel: ${hotel.nombre} </h3>
+		<br>
+		
+		<div class="row" id="row_resumen">				
+		<h3> Hotel: </h3> <h2>${hotel.nombre} </h2>
 		</div>
 		
-		<div class="row">	
-		<h3> Tipo de habitacion: ${habitacion.nombre} </h3>
+		<div class="row" id="row_resumen">	
+		<h3> Tipo de habitacion: </h3> <h2>${habitacion.nombre} </h2>
 		</div>
 		
-		<div class="row">	
-		<h3> Fecha de estancia: ${reservas.fecha_inicio} -	${reservas.fecha_fin} </h3>
+		<div class="row" id="row_resumen">	
+		<h3> Fecha de estancia: </h3> <h2>${reservas.fecha_inicio} -	${reservas.fecha_fin} </h2>
 		</div>
 		
-		<div class="row">	
-		<h3> Regimen comidas: ${reservas.regimen_comidas} </h3>
+		<div class="row" id="row_resumen">	
+		<h3> Regimen comidas: </h3> <h2> ${reservas.regimen_comidas} </h2>
 		</div>		
 		
-	<c:forEach items="${servicios}" var="servicio">
-		<div class="row">	
-		<h3> Servicios contratados: ${servicio.tipoServicio} </h3>
+	
+		<div class="row" id="row_resumen">	
+		<h3> Servicios contratados: </h3> <h2> ${servicio.tipoServicio} </h2>
 		</div>
 		
-		<div class="row">	
-		<h3> Numero de personas para ${servicio.tipoServicio}: ${servicio.numPersonas} </h3>
+		<div class="row" id="row_resumen">	
+		<h3> Numero de personas para ${servicio.tipoServicio}: </h3> <h2> ${servicio.numPersonas} </h2> 
 		</div>
 		
-		<div class="row">	
-		<h3> Fecha: ${servicio.fecha} </h3>
+		<div class="row" id="row_resumen">	
+		<h3> Fecha: </h3> <h2> ${servicio.fecha} </h2> 
 		</div>
 		
-		<div class="row">	
-		<h3> Hora: ${servicio.hora} </h3>
+		<div class="row" id="row_resumen">	
+		<h3> Hora: </h3> <h2> ${servicio.hora} </h2> 
 		</div>
 		
-		<div class="row">	
-		<h3> Precio: ${servicio.precio}	</h3>
+		<div class="row" id="row_resumen">	
+		<h3> Precio: </h3> <h2> ${servicio.precio} </h2>	
 		</div>	
-	</c:forEach>
+	
 		
-		<div class="row">	
-		<h3> Tarifa Total: ${reservas.tarifa}	</h3>
+		<div class="row" id="row_resumen">	
+		<h3> Tarifa Total: </h3> <h2> ${reservas.tarifa} </h2>	
 		</div>
 				
+		<br>
 		</div>	
 		
-	
+	<br> <br>
 
 </body>
 </html>

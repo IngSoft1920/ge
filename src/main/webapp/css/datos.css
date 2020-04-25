@@ -44,6 +44,8 @@
 #container_resumen{
 	background-color: #b8b078;
 	opacity: 0.8;
+	border-radius: 35px 35px 35px 35px;
+	box-shadow: 5px 10px;
 }
 
 #container_resumen:hover{
@@ -56,16 +58,25 @@
   text-align: left;
   font: italic bold 100px Georgia, Serif;
   /*text-shadow: -4px 3px 0 #b8b078, -14px 7px 0 #0a0e27;*/
-font-size: 30px; 
+font-size: 20px; 
 }
 
 #row_resumen h2{	
 	color: white;
   margin: 25;
   font: italic 100px Georgia, Serif;
-font-size: 20px; 
+font-size: 15px; 
 }
 
+#container_resumen hr{
+   border:none;
+  height: 20px;
+	height: 50px;
+	margin-top: 0;
+	border-bottom: 1px solid white;
+	box-shadow: 0 20px 20px -20px white;
+  margin: -50px auto 10px; 
+}
 
 #ocultar.active{
 	position: absolute;
@@ -75,6 +86,8 @@ font-size: 20px;
 
 
 
-
+#container_resumen i{  
+  color: white;  
+}
 
 

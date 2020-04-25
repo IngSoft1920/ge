@@ -12,6 +12,10 @@
 <link rel="stylesheet" type="text/css" href="/css/datos.css"
 	media="screen" />
 	
+	<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet">
+	
 <title>Datos Personales</title>
 </head>
 
@@ -60,45 +64,46 @@
 		<br>
 		
 		<div class="row" id="row_resumen">				
-		<h3> Hotel: </h3> <h2>${reservas.nombre_hotel} </h2>
+		<h3> <i class="fa fa-header"></i> Hotel: </h3> <h2>${reservas.nombre_hotel} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> Tipo de habitacion: </h3> <h2>${reservas.nombre_habitacion} </h2>
+		<h3> <i class="fa fa-key"></i> Tipo de habitacion: </h3> <h2>${reservas.nombre_habitacion} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> Fecha de estancia: </h3> <h2>${reservas.fecha_inicio} -	${reservas.fecha_fin} </h2>
+		<h3> <i class="fa fa-calendar"></i> Fecha de estancia: </h3> <h2>${reservas.fecha_inicio} -	${reservas.fecha_fin} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> Regimen comidas: </h3> <h2> ${reservas.regimen_comidas} </h2>
+		<h3> <i class="fa fa-cutlery"></i> Regimen comidas: </h3> <h2> ${reservas.regimen_comidas} </h2>
 		</div>		
 		
+	<hr>
 	
 		<div class="row" id="row_resumen">	
-		<h3> Servicios contratados: </h3> <h2> ${servicio.tipoServicio} </h2>
+		<h3> <i class="fa fa-glass"></i> Servicios contratados: </h3> <h2> ${servicio.tipoServicio} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> Numero de personas para ${servicio.tipoServicio}: </h3> <h2> ${servicio.numPersonas} </h2> 
+		<h3> <i class="fa fa-sort-numeric-desc"></i>  Numero de personas para ${servicio.tipoServicio}: </h3> <h2> ${servicio.numPersonas} </h2> 
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> Fecha: </h3> <h2> ${servicio.fecha} </h2> 
+		<h3> <i class="fa fa-calendar"></i> Fecha: </h3> <h2> ${servicio.fecha} </h2> 
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> Hora: </h3> <h2> ${servicio.hora} </h2> 
+		<h3> <i class="fa fa-clock-o"></i> Hora: </h3> <h2> ${servicio.hora} </h2> 
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> Precio: </h3> <h2> ${servicio.precio} </h2>	
+		<h3> <i class="fa fa-money"></i> Precio: </h3> <h2> ${servicio.precio} </h2>	
 		</div>	
 	
-		
+	<hr>	
 		<div class="row" id="row_resumen">	
-		<h3> Tarifa Total: </h3> <h2> ${reservas.tarifa} </h2>	
+		<h3> <i class="fa fa-credit-card"></i> Tarifa Total: </h3> <h2> ${reservas.tarifa} </h2>	
 		</div>
 				
 		<br>

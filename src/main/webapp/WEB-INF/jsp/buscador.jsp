@@ -259,14 +259,14 @@
 							<div class="col-md">
 								<div class="selectComidas">							
 								
-								<select name="comidas">
-									<option value="+0, sólo alojamiento">+0, sólo
+								<form:select name="comidas" path="regimen_comidas">
+									<option value="1">+0, sólo
 										alojamiento</option>
-									<option value="+15, alojamiento y desayuno">+15,
+									<option value="2">+15,
 										alojamiento y desayuno</option>
-									<option value="+30, pensión completa">+30, pensión
+									<option value="3">+30, pensión
 										completa</option>
-								</select>
+								</form:select>
 								</div>
 								</div> 
 							

@@ -38,7 +38,7 @@
 							<p class="hotel">
 								Hotel ${reserva.hotel_id} <span class="fecha">De
 									${reserva.fecha_entrada} a ${reserva.fecha_salida} </span> <a
-									href="https://docs.google.com/viewer?srcid=1goqsQoI22pJ5uJ6oDy6okMzTnl1ZQUhK&pid=explorer&efh=false&a=v&chrome=false&embedded=true"
+									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}"
 									target="_blank" class="factura">Ver factura</a>
 							</p>
 							<p class="habitacion">
@@ -59,8 +59,8 @@
 
 						<div class="historial">
 							<span>Hotel ${reserva.hotel_id}</span>
-							<button class="factura" name="button" value="factura">Ver
-								factura</button>
+							<a href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}"
+									target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
 							<span>Habitación: ${reserva.tipo_hab_id}</span>

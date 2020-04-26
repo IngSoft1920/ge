@@ -164,7 +164,7 @@ public class BusquedaController {
 	public String buscarPost(@Valid @ModelAttribute("busquedaBean") BusquedaBean busquedaBean,
 			Model model) throws Exception{
 
-		if (busquedaBean.checkCamposValidos()) {
+		//if (busquedaBean.checkCamposValidos()) {
 
 			/* Será interesante para el futuro
 			List<HotelBean> list = hotelesDisponibles.getHoteles().stream()
@@ -300,7 +300,7 @@ public class BusquedaController {
 				model.addAttribute("hoteles", hoteles);
 				model.addAttribute("reserva", reserva);
 			}
-		}
+		//}
 		this.busquedaBean.setFechaInicio(busquedaBean.getFechaInicio());
 		this.busquedaBean.setFechaFin(busquedaBean.getFechaFin());
 

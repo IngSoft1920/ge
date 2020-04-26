@@ -139,6 +139,9 @@ public class BusquedaController {
 		if (serverCiudades.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverCiudades.getResponseBody();
 		}
+		
+		if (response.length() <= 1)
+			response = arrayGrande.toString();
 
 		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
 		hoteles = new Gson().fromJson(response, tipo);
@@ -216,7 +219,7 @@ public class BusquedaController {
 			jarr.add(jobj);
 
 			jobj = new JsonObject();
-			jobj.addProperty("hotel_id", 5);
+			jobj.addProperty("hotel_id", 2);
 			arrhab = new JsonArray();
 			objhab = new JsonObject();
 			objhab.addProperty("tipo_hab_id", 1);
@@ -241,8 +244,16 @@ public class BusquedaController {
 			if (server.getResponseCode() == 200) {
 				response = server.getResponseBody();
 			}
+			
+			if (response.length() == 2)
+				response = jarr.toString();
 
+
+			System.out.println(jarr.toString());
+			
 			List<HotelBean> disponibles = hoteles;
+			
+			System.out.println(disponibles.size());
 
 			if (busquedaBean.getCiudad() != "") {
 				disponibles = disponibles.stream()
@@ -257,6 +268,9 @@ public class BusquedaController {
 						hotel.getNombre().compareTo(busquedaBean.getHotel()) == 0)
 						.collect(Collectors.toList());
 			}
+			
+			
+			
 			if (!disponibles.isEmpty()) {
 				JsonArray habitaciones = new Gson().fromJson(response, JsonArray.class);
 				for (JsonElement je: habitaciones) {
@@ -267,6 +281,7 @@ public class BusquedaController {
 					HotelBean h = maybe.get();
 					h.setHabitaciones(new Gson().fromJson(jo.get("habitaciones"), new TypeToken<List<HabitacionBean>>(){}.getType()));
 				}
+				
 				hotelesDisponibles = new HotelesDisponiblesBean();
 				hotelesDisponibles.setHoteles(
 						disponibles.stream()

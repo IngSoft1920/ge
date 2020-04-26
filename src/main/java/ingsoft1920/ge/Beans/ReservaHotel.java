@@ -15,13 +15,13 @@ public class ReservaHotel {
 	private String nombre_hotel;
 	private String nombre_habitacion;
 	
-	private String cliente;
-	private int anonimo; // anonimo = 1, no anonimo = 0;
+	private String cliente = "";
 	private String fecha_inicio;
 	private String fecha_fin;
 	
 	private int tarifa;
 	private double precio_total;
+	private String pagado;
 	
 	private String regimen;
 	private int regimen_comidas;
@@ -44,7 +44,6 @@ public class ReservaHotel {
 		nombre_hotel = "";
 		nombre_habitacion = "";
 		cliente = "";
-		anonimo = -1;
 		precio_total = 0.0;
 		precio_regimen_comidas = 0.0;
 	}
@@ -154,14 +153,6 @@ public class ReservaHotel {
 		this.cliente = cliente;
 	}
 
-	public int getAnonimo() {
-		return anonimo;
-	}
-
-	public void setAnonimo(int anonimo) {
-		this.anonimo = anonimo;
-	}
-
 	public double getPrecio_total() {
 		return precio_total;
 	}
@@ -184,5 +175,13 @@ public class ReservaHotel {
 
 	public void setRegimen(String regimen) {
 		this.regimen = regimen;
+	}
+
+	public String getPagado() {
+		return pagado;
+	}
+
+	public void setPagado(String pagado) {
+		this.pagado = pagado;
 	}
 }

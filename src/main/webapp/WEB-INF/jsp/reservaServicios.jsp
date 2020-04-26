@@ -132,7 +132,7 @@
 						<input type=hidden name=num_hab value=${reserva.num_hab}>Numero
 						de Habitacion:
 						<p>${reserva.num_hab}</p>
-						<input type=hidden id=fecha_inicio name=fecha_inicio
+						<input  id=fecha_inicio name=fecha_inicio
 							value=${reserva.fecha_inicio}> <input type=hidden
 							name=fecha_fin value=${reserva.fecha_fin}>
 
@@ -168,8 +168,10 @@
 	function comprobarFecha() {
 		var hoy = new Date();
 
-		var fechainicial = document.getElementById("fecha_inicio").value;
+	    var fechainicial = document.getElementById("fecha_inicio").value;
 
+	//	alert(fechainicial);
+		
 		//fecha actual
 		var dd = hoy.getDate();
 		var mm = hoy.getMonth() + 1;
@@ -183,7 +185,7 @@
 		fecha_actual = yyyy + '-' + mm + '-' + dd;
 
 		if (fechainicial > fecha_actual) {
-			alert('No se puede hacer check in de una reserva que no sea para hoy');
+			alert('No se puede hacer check in hasta el dia: ' +  fechainicial);
 			event.preventDefault();
 		}
 	}

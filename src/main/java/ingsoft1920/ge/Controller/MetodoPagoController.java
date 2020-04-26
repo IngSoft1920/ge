@@ -122,7 +122,7 @@ public class MetodoPagoController {
 		json_reserva.addProperty("importe", reserva.getTarifa());
 		json_reserva.addProperty("regimen", "no_aplica");
 		json_reserva.addProperty("numero_acompanantes", 1);
-		json_reserva.addProperty("pagado", reserva.getPagado());
+		json_reserva.addProperty("metodo_pago", reserva.getPagado());
 		
 		
 		
@@ -166,6 +166,7 @@ public class MetodoPagoController {
 		json_reserva.addProperty("importe", reserva.getTarifa());
 		json_reserva.addProperty("regimen", reserva.regimen());
 		json_reserva.addProperty("numero_acompanantes", 1);
+		json_reserva.addProperty("metodo_pago", reserva.getPagado());
 		
 		String response = "";
 		HttpClient server = new HttpClient(HttpClient.urlCM + "reserva/anonima", "POST");

@@ -100,6 +100,7 @@ public class ServiciosPostReservaController {
 		
 		reserva.getServicios().add(servicio);
 		
+		reserva.setPrecio_total(reserva.getPrecio_total() + (servicio.getPrecio() * servicio.getNumPersonas()));
 		
 		
 		model.addAttribute("servicios", this.servicios);

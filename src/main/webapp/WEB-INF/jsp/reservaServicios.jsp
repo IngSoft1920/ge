@@ -99,7 +99,7 @@
 						</form>
 
 						<form action="">
-							<input type="submit" value="Factura">
+							<input type="submit" value="Factura" onclick="fact()">
 						</form>
 					</div>
 				</div>
@@ -109,6 +109,12 @@
 
 </div>
 
+<script>
+function fact(){
+	var idCliente = "<%=ingsoft1920.ge.ControllerGE1.VerReservasController.idString%>";
+	window.location.replace("http://piedrafita.ls.fi.upm.es:7001/download/f/" + idCliente)
+}
+</script>
 
 <!-- Realiza tu reserva -->
 <div class="container">

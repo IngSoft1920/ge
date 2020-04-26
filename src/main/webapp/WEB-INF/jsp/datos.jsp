@@ -9,54 +9,24 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
+<link rel="stylesheet" type="text/css" href="/css/datos.css"
+	media="screen" />
+	
+	<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet">
+	
 <title>Datos Personales</title>
 </head>
-<style>
-* {
-	box-sizing: border-box;
-}
 
-.blanco {
-	position: relative;
-	margin-top: 100px;
-}
 
-.column {
-	float: left;
-	width: 33%;
-	padding: 10px;
-	background-color: #ccc;
-}
 
-.column2 {
-	border-left: 6px solid #b8b078;
-	height: 200px;
-	position: absolute;
-	left: 33%;
-}
-
-.column3 {
-	border-left: 6px solid #b8b078;
-	height: 200px;
-	position: absolute;
-	left: 66%;
-}
-
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-</style>
-<body>
+<body> 
 	<div class="blanco"></div>
+	<div id="ocultar">
 
 	<h3>Escoga una de las siguientes opciones para confirmar su
 		reserva</h3>
-
 
 	<div class="row">
 		<div class="column">
@@ -81,8 +51,85 @@
 			<form:form action="reservaLogin" method="GET" >
 				<input type="submit" value="Log In" >
 			</form:form>
+				
 		</div>
 	</div>
+	
+	<div class="espacio2"> </div>
+		</div>
+	
+		
+		<div class="container" id="container_resumen">
+		
+		<br>
+		
+		<div class="row" id="row_resumen">				
+		<h3> <i class="fa fa-header"></i> Hotel: </h3> <h2>${reservas.nombre_hotel} </h2>
+		</div>
+		
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-key"></i> Tipo de habitacion: </h3> <h2>${reservas.nombre_habitacion} </h2>
+		</div>
+		
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-calendar"></i> Fecha de estancia: </h3> <h2>${reservas.fecha_inicio} -	${reservas.fecha_fin} </h2>
+		</div>
+		
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-cutlery"></i> Regimen comidas: </h3> <h2> ${reservas.regimen_comidas} </h2>
+		</div>		
+		
+	<hr>
+	
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-glass"></i> Servicios contratados: </h3> <h2> ${servicio.tipoServicio} </h2>
+		</div>
+		
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-sort-numeric-desc"></i>  Numero de personas para ${servicio.tipoServicio}: </h3> <h2> ${servicio.numPersonas} </h2> 
+		</div>
+		
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-calendar"></i> Fecha: </h3> <h2> ${servicio.fecha} </h2> 
+		</div>
+		
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-clock-o"></i> Hora: </h3> <h2> ${servicio.hora} </h2> 
+		</div>
+		
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-money"></i> Precio: </h3> <h2> ${servicio.precio} </h2>	
+		</div>	
+	
+	<hr>	
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-credit-card"></i> Tarifa Total: </h3> <h2> ${reservas.tarifa} </h2>	
+		</div>
+				
+		<br>
+		</div>	
+		
+
+		<br>
+		<div class="container" id="container_boton">
+		<i class="fa fa-shopping-cart"></i>		
+		<form:form action="reservaConfirm" method="POST" >
+
+				<input type="submit" value="Confirmar reserva para usuario logeado" >
+		</form:form>
+		</div>
+		
+	<br> <br>
 
 </body>
+<script>
+
+
+window.onload = function() {
+	if(${sesionBean.usuarioID} != -1)
+		var ocultar = document.getElementById('ocultar');
+		ocultar.classList.toggle('active');
+	};
+
+</script>
 </html>

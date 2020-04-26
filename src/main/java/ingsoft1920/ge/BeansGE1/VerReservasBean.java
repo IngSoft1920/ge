@@ -10,6 +10,9 @@ public class VerReservasBean {
 	private String fecha_inicio;
 	private String fecha_fin;
 	private String nombre_hotel;
+	
+	private int tarjeta_credito;
+	
 	@Override
 	public String toString() {
 		return "VerReservasBean [id_reserva=" + id_reserva + ", num_hab=" + num_hab + ", fecha_inicio=" + fecha_inicio

@@ -56,7 +56,7 @@ public class MisReservasController {
 	MostarReservasBean mostarReservasBean = new MostarReservasBean();
 
 	@GetMapping("/misReservas")
-	public ModelAndView mostrarReservasGet() throws Exception {
+	public String mostrarReservasGet(Model model) throws Exception {
 
 		/*
 		 * [ { reserva_id : 21, hotel_id : 1 , tipo_hab : “normal”, regimen :
@@ -119,8 +119,11 @@ public class MisReservasController {
 
 		
 
-		return new ModelAndView("misReservas","Listareserva", reservas);
+		//return new ModelAndView("misReservas","Listareserva", reservas);
+			model.addAttribute("Listareserva", reservas);
+			model.addAttribute("sesionBean", sesionBean);
 
+		return "misReservas";
 	}
 	
 	@PostMapping("/misReservas")
@@ -160,6 +163,7 @@ public class MisReservasController {
 
 	return "redirect:/misReservas";
 	}
+	
 
 
 }

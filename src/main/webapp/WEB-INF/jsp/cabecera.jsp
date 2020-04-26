@@ -204,10 +204,14 @@
       <div class="container-fluid">
       <div class="row">
       <div class="col">
-        <button type="button" class="btn btn-primary" id="modalBotones">Log In</button>
+      <form:form action="login" method="GET" >
+        <button type="submit" class="btn btn-primary" id="modalBotones" value="Log In">Log In</button>
+		</form:form>
        </div>
        <div class="col"> 
-        <button type="button" class="btn btn-primary" id="modalBotones">Registrarse</button>
+       <form:form action="signup" method="GET" >
+        	<button type="submit" class="btn btn-primary" id="modalBotones" value="Sign Up">Registrarse</button>
+		</form:form>
         </div>
         </div>
         </div>
@@ -231,14 +235,20 @@
       
        <div class="container-fluid">
       <div class="row">
-      <div class="col">       
-        <button type="button" class="btn btn-primary" id="modalBotones">Mis Reservas</button>
+      <div class="col">
+      <form:form action="misReservas" method="GET" >
+        <button type="submit" class="btn btn-primary" id="modalBotones" value="Mis Reservas">Mis Reservas</button>
+		</form:form>       
         </div>
-         <div class="col"> 
-        <button type="button" class="btn btn-primary" id="modalBotones">Mis Servicios</button>      
+         <div class="col">
+         <form:form action="servicios" method="GET" >
+        <button type="submit" class="btn btn-primary" id="modalBotones" value="Mis servicios">Mis Servicios</button>      
+		</form:form>
         </div>
-         <div class="col">   
-        <button type="button" class="btn btn-primary" id="modalBotones">Cerrar sesion</button>        
+         <div class="col">
+         <form:form action="logout" method="GET" >
+        <button type="submit" class="btn btn-primary" id="modalBotones"value="Cerrar Sesion">Cerrar sesión</button>        
+		</form:form>
         </div>
         </div>
         </div>

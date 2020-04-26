@@ -313,7 +313,7 @@ public class datosController {
 		reservaHabitacion();
 		reservaServicios(sesionBean.getUsuarioID());
 		reserva.resetReserva();
-		resultado = "redirect:misReservas";
+		resultado = "redirect:reservar/metodopago";
 		return resultado;
 	}
 }

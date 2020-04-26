@@ -31,10 +31,12 @@
 	<br>
 	<br>
 	<div class="row">
-		
+	
+		<form:form action="/pagoEfectivo" method="GET" >
 		<div class="col" id="col_primer">
 		<input type="submit" id="pagar" value="Pagar en efectivo">
 		</div>
+		</form:form>
 		
 		
 		<div class="col" id="col_segundo">
@@ -80,10 +82,13 @@
               </div>
               
 		  </div>
-		  <br>
+		  <br>	
+		  		
+		  		<form:form action="/pagoTarjeta" method="GET" >
 		         <div class="row ">
                   <input type="submit"  class="btn btn-warning btn-block" value="PAGAR" />
-          </div>
+         		 </div>
+         		 </form:form>
 		</form>
 
 		

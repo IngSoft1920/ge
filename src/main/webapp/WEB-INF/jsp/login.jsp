@@ -24,8 +24,7 @@
 	
 	
 	<div class="center">
-	<form method="POST" action="${loginBean.method}"
-		modelAttribute="loginBean">
+	<form method="POST" action="${loginBean.method}" modelAttribute="loginBean">
 		<fieldset>
 		<div class="cabeza">
 			<legend>LOG IN</legend>

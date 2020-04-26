@@ -41,12 +41,13 @@ public class datosController {
 		JsonArray arrayGrande = new JsonArray();
 
 		reserva.getServicios();
+		/*
 		String response = "";
 
 		HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"hotel/ge", "GET");
 		if (serverCiudades.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverCiudades.getResponseBody();
-		}
+		}*/
 		
 		System.out.print(reserva.getFecha_fin());
 		System.out.print(reserva.getNombre_habitacion());

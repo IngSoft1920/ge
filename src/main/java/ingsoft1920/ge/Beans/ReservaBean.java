@@ -7,7 +7,7 @@ public class ReservaBean {
 
 	private int reserva_id;
 	private int hotel_id;
-	private int tipo_hab_id;
+	private String tipo_hab;
 	private int importe;
 	private String regimen;
 	private String fecha_entrada;
@@ -62,19 +62,19 @@ public class ReservaBean {
 	}
 
 	
-	public int getTipo_hab_id() {
-		return tipo_hab_id;
-	}
-
-	public void setTipo_hab_id(int tipo_hab_id) {
-		this.tipo_hab_id = tipo_hab_id;
-	}
-
 	@Override
 	public String toString() {
-		return "ReservaBean [reserva_id=" + reserva_id + ", hotel_id=" + hotel_id + ", tipo_hab_id=" + tipo_hab_id
+		return "ReservaBean [reserva_id=" + reserva_id + ", hotel_id=" + hotel_id + ", tipo_hab_id=" + tipo_hab
 				+ ", regimen=" + regimen + ", importe=" + importe + ", fecha_entrada=" + fecha_entrada
 				+ ", fecha_salida=" + fecha_salida + "]";
+	}
+
+	public String getTipo_hab() {
+		return tipo_hab;
+	}
+
+	public void setTipo_hab(String tipo_hab) {
+		this.tipo_hab = tipo_hab;
 	}
 
 }

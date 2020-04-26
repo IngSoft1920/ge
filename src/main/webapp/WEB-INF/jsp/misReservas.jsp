@@ -42,7 +42,7 @@
 									target="_blank" class="factura">Ver factura</a>
 							</p>
 							<p class="habitacion">
-								Habitación: ${reserva.tipo_hab_id} <span class="tarifa">Tarifa:${reserva.importe}</span>
+								Habitación: ${reserva.tipo_hab} <span class="tarifa">Tarifa:${reserva.importe}</span>
 								<span class="regimen">Régimen:${reserva.regimen}</span>
 							</p>
 
@@ -63,7 +63,7 @@
 									target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-							<span>Habitación: ${reserva.tipo_hab_id}</span>
+							<span>Habitación: ${reserva.tipo_hab}</span>
 							<div class="clasificacion">
 								<form method="POST" action="valorar" name="valoracionId">
 

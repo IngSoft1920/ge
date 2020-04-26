@@ -140,7 +140,7 @@
 						<c:if test="${reserva.fecha_inicio=='2020-04-26'}">
 						<%-- <form action="completarCheckin" method="POST"
 							onsubmit="return comprobarFecha()">--%>
-							 <form action="/checkin/${reserva.id_reserva}" method="POST">   
+							 <form action="/checkin/completarCheckin" method="POST">   
 							<input type="submit" value="Check In">
 						</form>
 						</c:if>

@@ -120,7 +120,7 @@
 
 	<div class="row">
 		<c:forEach var="reserva" items="${reservas}">
-			<c:if test="${reserva.estado=='check out'}">
+			<c:if test="${reserva.estado=='reserva'}">
 				<div class="col-xl-4 col-md-6 col-sm-12">
 					<div class="card">
 						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre

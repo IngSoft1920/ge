@@ -45,10 +45,9 @@
 								Habitación: ${reserva.tipo_hab_id} <span class="tarifa">Tarifa:${reserva.importe}</span>
 								<span class="regimen">Régimen:${reserva.regimen}</span>
 							</p>
-
-
-							<form action="/cancelar/${reserva.reserva_id}" method="POST"><input class="cambiarReserva" type="submit" class="btn"
-								value="Cancelar reserva">
+							<p class="cambiarReserva" onclick="<c:set var="output" scope="session" value="${reserva.reserva_id}"/>; toggle()" class="btn">Cambiar reserva </p>
+							<!--<form action="/cancelar/${reserva.reserva_id}" method="POST"><input class="cambiarReserva" type="submit" class="btn"
+								value="Cancelar reserva">-->
 							</form>
 						</div>
 					</c:forEach>
@@ -122,23 +121,16 @@
 	<div id="cancelar">
 		<span class="close" onclick="toggleCancelar()">&times;</span>
 		<h1>¿Está seguro de que quiere cancelar la reserva?</h1>
-		<c:forEach var="reserva" items="${reservas}">
-
-		</c:forEach>
-		<form:form method="POST" action="cancelar"
+		<form:form method="POST" action="/cancelar/${output}"
 			modelAttribute="reservaBean">
-			<c:forEach var="reserva" items="${reservas}">
-				<c:set var="id" value="${reserva.reserva_id}" />
-
-				<c:if test="${id<0}">
-					<input class="SI" type="submit" class="btn" value="SI">
-				</c:if>
-			</c:forEach>
+			<button class="SI" type="submit" class="btn" value="SI">SI</button>
 		</form:form>
 		<button class="NO" onclick="toggleCancelar()">NO</button>
 	</div>
 
 	<script>
+	 var name1 = "<c:out value='${pageScope.name1}' />"
+	 
 		function toggle(){
 			var blur = document.getElementById('blur');
 			blur.classList.toggle('active');
@@ -167,11 +159,11 @@
 			historial.classList.toggle('active');
 		}
 		
-		function cambiarId(id){
-			var int = id * -1;
-			return int;
-		}
-		
+		function changeName1(newName) {
+		      name1 = newName;
+		      return true;
+		    }
+	
 		
 	</script>
 

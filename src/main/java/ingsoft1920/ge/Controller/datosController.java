@@ -40,7 +40,7 @@ public class datosController {
 		
 		JsonArray arrayGrande = new JsonArray();
 
-		String response = arrayGrande.toString();
+		reserva.getServicios();
 
 		HttpClient serverCiudades = new HttpClient(HttpClient.urlCM+"hotel/ge", "GET");
 		if (serverCiudades.getResponseCode() == 200) {// Si encuentra el servidor

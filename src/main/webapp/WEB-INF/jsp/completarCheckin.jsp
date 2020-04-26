@@ -93,7 +93,7 @@ label {
 				<input type="submit" value="Siguiente">
 			</form>
 
-	<</c:forEach>
+	</c:forEach>
 	</div>
 
 

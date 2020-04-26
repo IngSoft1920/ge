@@ -23,6 +23,13 @@
 
 <body> 
 	<div class="blanco"></div>
+	
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>DESCUENTO</strong> Obten un 5% de descuento registrandote
+  </div>
+	
+	
 	<div id="ocultar">
 
 	<h3>Escoga una de las siguientes opciones para confirmar su

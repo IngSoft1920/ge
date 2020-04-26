@@ -104,4 +104,7 @@ font-size: 15px;
 	color:white;	
 }
 
-
+.alert {
+   width:40%;   
+   background-color: #b8b078; 
+}

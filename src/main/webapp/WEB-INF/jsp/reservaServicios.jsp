@@ -125,10 +125,10 @@
 					<div class="card">
 						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre
 						del Hotel:
-						<p>${reserva.nombre_hotel}</p>
+						<p>PRUEBA</p>
 						<input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador
 						de Reserva:
-						<p>${reserva.id_reserva}</p>
+						<p>2222</p>
 						<input type=hidden name=num_hab value=${reserva.num_hab}>Numero
 						de Habitacion:
 						<p>${reserva.num_hab}</p>
@@ -140,7 +140,7 @@
 						<c:if test="${reserva.fecha_inicio=='2020-04-26'}">
 						<%-- <form action="completarCheckin" method="POST"
 							onsubmit="return comprobarFecha()">--%>
-							 <form action="/checkin/completarCheckin" method="POST">   
+							 <form action="/checkin/${reserva.id_reserva}" method="POST">   
 							<input type="submit" value="Check In">
 						</form>
 						</c:if>

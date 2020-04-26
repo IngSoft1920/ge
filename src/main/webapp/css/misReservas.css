@@ -444,9 +444,36 @@ hr{
 	float: right;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	font-size:14px;s
+	font-size:14px;
 }
 #close{
 	color:white;
+}
+
+
+#modificar {
+	visibility: hidden;
+	position:relative;
+	opacity:0;
+	transition: 0.5s;
+	right:0px;
+	left:0px;
+	top:0px;
+}
+
+#modificar.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.modificar {
+	margin-bottom:5px;
+	background-color: #4f5457;
+	border: 1px solid black;
+	overflow: hidden;
+	color:white;
+	padding:5px;
 }
 

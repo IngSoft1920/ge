@@ -44,6 +44,10 @@ public class BusquedaController {
 	List<String> ciudades;
 	List<HotelBean> hoteles;
 	
+	// Array auxiliar que guarda los precios inventados del régimen de comida (por dias y personas)
+	double[] precios = new double[] {0, 15, 30, 34};
+	String[] regimen = new String[] {"Sólo alojamiento", "Media pensión", "Pensión completa", "Todo incluido"};
+	
 	BusquedaBean busquedaBean = new BusquedaBean();
 	@Autowired
 	SesionBean sesionBean;
@@ -135,6 +139,9 @@ public class BusquedaController {
 		if (serverCiudades.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverCiudades.getResponseBody();
 		}
+		
+		if (response.length() <= 1)
+			response = arrayGrande.toString();
 
 		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
 		hoteles = new Gson().fromJson(response, tipo);
@@ -212,7 +219,7 @@ public class BusquedaController {
 			jarr.add(jobj);
 
 			jobj = new JsonObject();
-			jobj.addProperty("hotel_id", 5);
+			jobj.addProperty("hotel_id", 2);
 			arrhab = new JsonArray();
 			objhab = new JsonObject();
 			objhab.addProperty("tipo_hab_id", 1);
@@ -237,8 +244,16 @@ public class BusquedaController {
 			if (server.getResponseCode() == 200) {
 				response = server.getResponseBody();
 			}
+			
+			if (response.length() == 2)
+				response = jarr.toString();
 
+
+			System.out.println(jarr.toString());
+			
 			List<HotelBean> disponibles = hoteles;
+			
+			System.out.println(disponibles.size());
 
 			if (busquedaBean.getCiudad() != "") {
 				disponibles = disponibles.stream()
@@ -253,6 +268,9 @@ public class BusquedaController {
 						hotel.getNombre().compareTo(busquedaBean.getHotel()) == 0)
 						.collect(Collectors.toList());
 			}
+			
+			
+			
 			if (!disponibles.isEmpty()) {
 				JsonArray habitaciones = new Gson().fromJson(response, JsonArray.class);
 				for (JsonElement je: habitaciones) {
@@ -263,6 +281,7 @@ public class BusquedaController {
 					HotelBean h = maybe.get();
 					h.setHabitaciones(new Gson().fromJson(jo.get("habitaciones"), new TypeToken<List<HabitacionBean>>(){}.getType()));
 				}
+				
 				hotelesDisponibles = new HotelesDisponiblesBean();
 				hotelesDisponibles.setHoteles(
 						disponibles.stream()
@@ -306,6 +325,12 @@ public class BusquedaController {
 		this.reserva.setFecha_fin(reserva.getFecha_fin());
 		this.reserva.setTarifa(reserva.getTarifa());
 		this.reserva.setRegimen_comidas(reserva.getRegimen_comidas());
+		
+		// Añade el precio del régimen de comidas pasándolo de precio por dia a precio total
+		this.reserva.setPrecio_regimen_comidas(busquedaBean.getNumeroDias()*precios[reserva.getRegimen_comidas()-1]);
+		this.reserva.setRegimen(regimen[reserva.getRegimen_comidas()-1]);
+		
+		this.reserva.setPrecio_total(reserva.getTarifa() + this.reserva.getPrecio_regimen_comidas());
 		
 		return "redirect:serviciosExtras";
 		

@@ -25,7 +25,6 @@ import ingsoft1920.ge.Beans.ReservaHotel;
 import ingsoft1920.ge.Beans.ServiciosDisponiblesPostReservaBean;
 import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
-import ingsoft1920.ge.HttpClient.HttpClient;
 
 @Controller
 public class ServiciosPostReservaController {
@@ -100,6 +99,7 @@ public class ServiciosPostReservaController {
 		
 		reserva.getServicios().add(servicio);
 		
+		reserva.setPrecio_total(reserva.getPrecio_total() + servicio.getPrecio());
 		
 		
 		model.addAttribute("servicios", this.servicios);

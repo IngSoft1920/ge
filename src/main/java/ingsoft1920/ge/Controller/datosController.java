@@ -46,64 +46,6 @@ public class datosController {
 		if (serverCiudades.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverCiudades.getResponseBody();
 		}
-
-		
-/**
- * 
- * 		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
-		hoteles = new Gson().fromJson(response, tipo);
-
-		ciudades = new ArrayList<String>();
-		for (HotelBean h: hoteles) {
-			if (!ciudades.contains(h.getCiudad()))
-				ciudades.add(h.getCiudad());
-		}
-		
-		System.out.println(ciudades.get(0));
-		
-		JsonObject json = new JsonObject();
-		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean 
-
-		
-		JsonArray obj = (JsonArray) JsonParser.parseString(response);
-		
-		JsonArray jarr = new JsonArray();
-		JsonObject jobj = new JsonObject();
-		jobj.addProperty("hotel_id", reserva.getHotel_id());
-		jobj.addProperty("tipo_hab_id", reserva.getHabitacion_id());
-		jobj.addProperty("fecha_inicio", reserva.getFecha_inicio());
-		jobj.addProperty("fecha_fin", reserva.getFecha_fin());
-		jobj.addProperty("tarifa", reserva.getTarifa());
-		jobj.addProperty("regimen_comidas", reserva.getRegimen_comidas());
-		jarr.add(jobj);
-		
-		System.out.print(reserva.getHotel_id());
-		System.out.print(reserva.getTarifa());
-		System.out.print(reserva.getFecha_fin());
-		**/
-		/**
-		JsonArray obj = (JsonArray) JsonParser.parseString(response);	
-		
-		List<ReservaGE2> reserva= new LinkedList<>();
-		for (int i=0;i<obj.size();i++) {
-			reserva.add(new ReservaGE2(obj.get(i).getAsJsonObject().get("reserva_id").getAsInt(), 
-					obj.get(i).getAsJsonObject().get("hotel_id").getAsInt(),
-					obj.get(i).getAsJsonObject().get("tipo_hab_id").getAsInt(),
-					obj.get(i).getAsJsonObject().get("importe").getAsInt(),
-					obj.get(i).getAsJsonObject().get("regimen").getAsString(),
-					obj.get(i).getAsJsonObject().get("fecha_entrada").getAsString(),
-					obj.get(i).getAsJsonObject().get("fecha_salida").getAsString()));
-		}
-
-
-		model.addAttribute("servicios", servicios);
-		
-		
-		model.addAttribute("ciudades", ciudades);
-		model.addAttribute("hoteles", hoteles);
-		model.addAttribute("busquedaBean",busquedaBean);
-		
-**/
 		
 		System.out.print(reserva.getFecha_fin());
 		System.out.print(reserva.getNombre_habitacion());
@@ -114,9 +56,6 @@ public class datosController {
 
 		
 		return "datos";
-		
-		
-
 	}
 	
 	public void reservaHabitacion () throws Exception {

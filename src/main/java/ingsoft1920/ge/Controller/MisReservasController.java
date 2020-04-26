@@ -110,11 +110,7 @@ public class MisReservasController {
 
 		HttpClient serverReservas = new HttpClient( HttpClient.urlCM +"reserva/cliente/" + sesionBean.getUsuarioID(), "GET");
 
-		JsonObject json = new JsonObject();
-		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean 
-
-
-		String response ="";
+		String response = "";
 		if (serverReservas.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverReservas.getResponseBody(); 
 		}
@@ -155,15 +151,62 @@ public class MisReservasController {
 		
 		return "misReservas";
 	}
+	
 	@PostMapping("/valorar")
 	public String valorarPost(@Valid @ModelAttribute("nota") int nota,
+			@Valid @ModelAttribute("hotel_id") int hotel_id,
 			@Valid @ModelAttribute("cabecera") String cabecera,
 			@Valid @ModelAttribute("comentario") String comentario,
-			Model model) {
-
+			Model model) throws Exception{
+		/*
+		{
+			  "cliente_id" :1,
+			  "hotel_id" : 2,
+			  "cabecera" : “Muy bueno”,
+			  "cuerpo" : “Maravilloso…”,
+			  "nota" : 5
+		}
+		*/
+		
+		JsonObject valoracion = new JsonObject();
+		valoracion.addProperty("cliente_id", sesionBean.getUsuarioID());
+		valoracion.addProperty("hotel_Id", hotel_id);
+		valoracion.addProperty("cabecera", cabecera);
+		valoracion.addProperty("comentario", comentario);
+		valoracion.addProperty("nota", nota);
+		
 		logger.info("Valoración recibida correctamente." + nota);
 		
+		String response = "";
+		HttpClient server = new HttpClient(HttpClient.urlCM+"valoracion", "POST");
+		server.setRequestBody(valoracion.toString());
+		if (server.getResponseCode() == 200) {
+			response = server.getResponseBody();
+		}
 		
+		
+		return "redirect:misReservas";
+	}
+	
+	
+	@PostMapping("/funciona")
+	public String funciona(@Valid @ModelAttribute("hotel_id") int hotel_id, 
+			@Valid @ModelAttribute("cabecera") String cabecera,
+			@Valid @ModelAttribute("comentario") String comentario, 
+			@Valid @ModelAttribute("nota") String nota,
+			Model model) throws Exception {
+		System.out.println(hotel_id);
+		System.out.println(cabecera);
+		System.out.println(comentario);
+		System.out.println(nota);
+		
+		return "redirect:misReservas";
+	}
+	
+	@PostMapping("/estrellas")
+	public String funciona(@Valid @ModelAttribute("estrellas") int estrellas, 
+			Model model) throws Exception {
+		System.out.print(estrellas);
 		
 		return "redirect:misReservas";
 	}

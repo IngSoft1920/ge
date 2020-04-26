@@ -39,11 +39,24 @@ hr{
 	font: Georgia, Serif;
 }
 
-/**
-.vl{
-	border-left:1px solid black;
-	height: auto;
-	margin-top: 0;
-	box-shadow: 0 20px 20px -20px black;
-  margin: -50px auto 10px; 
-}**/
+
+#col_primer h3{
+	color: black;
+	font: 100px Georgia, Serif;
+	font-size: 30px;
+	text-align: center;
+}
+
+#pagar{
+    width: 200px;
+    height: 200px;
+    padding: 10px 16px;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 1.33;
+    align:center;
+    margin-left: 30%;
+}
+
+
+

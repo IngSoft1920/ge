@@ -135,12 +135,15 @@
 						<input  id=fecha_inicio name=fecha_inicio
 							value=${reserva.fecha_inicio}> <input type=hidden
 							name=fecha_fin value=${reserva.fecha_fin}>
-
-						<form action="completarCheckin" method="POST"
-							onsubmit="return comprobarFecha()">
-							<%--  <form action="/checkin/${reserva.id_reserva}" method="POST">   --%>
+							
+						
+						<c:if test="${reserva.fecha_inicio=='2020-04-26'}">
+						<%-- <form action="completarCheckin" method="POST"
+							onsubmit="return comprobarFecha()">--%>
+							 <form action="/checkin/${reserva.id_reserva}" method="POST">   
 							<input type="submit" value="Check In">
 						</form>
+						</c:if>
 					</div>
 				</div>
 			</c:if>

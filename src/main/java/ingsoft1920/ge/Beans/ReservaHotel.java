@@ -14,12 +14,17 @@ public class ReservaHotel {
 	private int habitacion_id;
 	private String nombre_hotel;
 	private String nombre_habitacion;
-	private String fecha_inicio;
-	private String fecha_fin;
-	private int tarifa;
-	private int regimen_comidas;
+	
 	private String cliente;
 	private int anonimo; // anonimo = 1, no anonimo = 0;
+	private String fecha_inicio;
+	private String fecha_fin;
+	
+	private int tarifa;
+	private double precio_total;
+	
+	private int regimen_comidas;
+	private double precio_regimen_comidas;
 	
 	private List<MostrarServiciosPostReservaBean> servicios;
 	
@@ -39,6 +44,7 @@ public class ReservaHotel {
 		nombre_habitacion = "";
 		cliente = "";
 		anonimo = -1;
+		precio_total = 0.0;
 	}
 	
 	/*
@@ -152,5 +158,13 @@ public class ReservaHotel {
 
 	public void setAnonimo(int anonimo) {
 		this.anonimo = anonimo;
+	}
+
+	public double getPrecio_total() {
+		return precio_total;
+	}
+
+	public void setPrecio_total(double precio_total) {
+		this.precio_total = precio_total;
 	}
 }

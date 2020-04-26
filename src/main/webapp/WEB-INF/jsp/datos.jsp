@@ -79,31 +79,55 @@
 		<h3> <i class="fa fa-cutlery"></i> Regimen comidas: </h3> <h2> ${reserva.regimen_comidas} </h2>
 		</div>		
 		
-	<hr>
-	
 		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-glass"></i> Servicios contratados: </h3> <h2> ${servicio.tipoServicio} </h2>
-		</div>
+		<h3> <i class="fa fa-cutlery"></i> Precio Habitación: </h3> <h2> ${reserva.tarifa} </h2>
+		</div>		
 		
-		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-sort-numeric-desc"></i>  Numero de personas para ${servicio.tipoServicio}: </h3> <h2> ${servicio.numPersonas} </h2> 
-		</div>
-		
-		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-calendar"></i> Fecha: </h3> <h2> ${servicio.fecha} </h2> 
-		</div>
-		
-		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-clock-o"></i> Hora: </h3> <h2> ${servicio.hora} </h2> 
-		</div>
-		
-		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-money"></i> Precio: </h3> <h2> ${servicio.precio} </h2>	
-		</div>	
+		<c:forEach items="${reserva.servicios}" var="servicio">
+
+			<hr>
+
+			<div class="row" id="row_resumen">
+				<h3>
+					<i class="fa fa-glass"></i> Servicios contratados:
+				</h3>
+				<h2>${servicio.tipoServicio}</h2>
+			</div>
+
+			<div class="row" id="row_resumen">
+				<h3>
+					<i class="fa fa-sort-numeric-desc"></i> Numero de personas para
+					${servicio.tipoServicio}:
+				</h3>
+				<h2>${servicio.numPersonas}</h2>
+			</div>
+
+			<div class="row" id="row_resumen">
+				<h3>
+					<i class="fa fa-calendar"></i> Fecha:
+				</h3>
+				<h2>${servicio.fecha}</h2>
+			</div>
+
+			<div class="row" id="row_resumen">
+				<h3>
+					<i class="fa fa-clock-o"></i> Hora:
+				</h3>
+				<h2>${servicio.hora}</h2>
+			</div>
+
+			<div class="row" id="row_resumen">
+				<h3>
+					<i class="fa fa-money"></i> Precio:
+				</h3>
+				<h2>${servicio.precio}</h2>
+			</div>
+
+		</c:forEach>
 	
 	<hr>	
 		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-credit-card"></i> Tarifa Total: </h3> <h2> ${reserva.tarifa} </h2>	
+		<h3> <i class="fa fa-credit-card"></i> Tarifa Total: </h3> <h2> ${reserva.precio_total} </h2>	
 		</div>
 				
 		<br>

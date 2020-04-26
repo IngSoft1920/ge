@@ -306,6 +306,7 @@ public class BusquedaController {
 		this.reserva.setFecha_fin(reserva.getFecha_fin());
 		this.reserva.setTarifa(reserva.getTarifa());
 		this.reserva.setRegimen_comidas(reserva.getRegimen_comidas());
+		this.reserva.setPrecio_total(reserva.getTarifa());
 		
 		return "redirect:serviciosExtras";
 		

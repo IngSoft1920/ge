@@ -15,7 +15,6 @@
 
 <body style="background-color:#b8b078">
 
-	<div class="blanco"></div>
 	<div>
 		<!-- Podemos acceder a tipos basicos (String, int...) mediante esta etiqueta -->
 		<br>
@@ -25,7 +24,6 @@
 	
 	<div class="center">
 	<form method="POST" action="${loginBean.method}" modelAttribute="loginBean">
-		<fieldset>
 		<div class="cabeza">
 			<legend>LOG IN</legend>
 		</div>
@@ -45,7 +43,6 @@
 		<div class="container" id="container_boton">
 		<input type="submit" value="Entrar">
 		</div>
-		</fieldset>
 	</form>
 
 

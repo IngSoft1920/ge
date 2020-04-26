@@ -4,27 +4,26 @@
 }
 
 .blanco {
-	margin-top: 100px;
+	margin-top: 400px;
 }
 
 .center{
-	bottom: -200px;
-	position:fixed;
-	padding:400;
-	margin:280;
+	text-align: center;
+	margin:120;
+	padding: 100;
 }
 
 .cabeza{
+	text-align: center;
 	color: #0a0e27;
- 	text-align: center;
   	font: italic bold 100px Georgia, Serif;
-	font-size: 50px; 
-	margin:40px
+	font-size: 50px;
+	margin: 20;
 }
 
 .contenido{
 	color: #0a0e27;
- 	text-align: left;
+ 	text-align: center;
   	font: italic bold 100px Georgia, Serif;
 	font-size: 25px; 
 	margin: 10px;

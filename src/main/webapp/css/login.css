@@ -4,7 +4,6 @@
 }
 
 .blanco {
-	position: relative;
 	margin-top: 100px;
 }
 
@@ -28,7 +27,7 @@
  	text-align: left;
   	font: italic bold 100px Georgia, Serif;
 	font-size: 25px; 
-	margin: 10px;'
+	margin: 10px;
 }
 
 .row:after {

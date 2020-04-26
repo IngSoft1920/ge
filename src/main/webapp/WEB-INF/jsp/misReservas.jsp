@@ -39,7 +39,7 @@
 					<c:forEach items="${reservas_pendientes}" var="reserva">
 						<div class="reserva">
 							<p class="hotel">
-								Hotel ${reserva.hotel_id} <span class="fecha">De
+								Hotel ${reserva.hotel_nombre} <span class="fecha">De
 									${reserva.fecha_entrada} a ${reserva.fecha_salida} </span> <a
 									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}"
 									target="_blank" class="factura">Ver factura</a>
@@ -60,7 +60,7 @@
 					<c:forEach items="${reservas_finalizadas}" var="reserva">
 
 						<div class="historial">
-							<span>Hotel ${reserva.hotel_id}</span>
+							<span>Hotel ${reserva.hotel_nombre}</span>
 							<a href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}"
 									target="_blank" class="factura">Ver factura</a>
 

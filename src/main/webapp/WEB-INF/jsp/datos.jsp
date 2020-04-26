@@ -64,19 +64,19 @@
 		<br>
 		
 		<div class="row" id="row_resumen">				
-		<h3> <i class="fa fa-header"></i> Hotel: </h3> <h2>${reservas.nombre_hotel} </h2>
+		<h3> <i class="fa fa-header"></i> Hotel: </h3> <h2>${reserva.nombre_hotel} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-key"></i> Tipo de habitacion: </h3> <h2>${reservas.nombre_habitacion} </h2>
+		<h3> <i class="fa fa-key"></i> Tipo de habitacion: </h3> <h2>${reserva.nombre_habitacion} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-calendar"></i> Fecha de estancia: </h3> <h2>${reservas.fecha_inicio} -	${reservas.fecha_fin} </h2>
+		<h3> <i class="fa fa-calendar"></i> Fecha de estancia: </h3> <h2>${reserva.fecha_inicio} -	${reserva.fecha_fin} </h2>
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-cutlery"></i> Regimen comidas: </h3> <h2> ${reservas.regimen_comidas} </h2>
+		<h3> <i class="fa fa-cutlery"></i> Regimen comidas: </h3> <h2> ${reserva.regimen_comidas} </h2>
 		</div>		
 		
 	<hr>
@@ -103,7 +103,7 @@
 	
 	<hr>	
 		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-credit-card"></i> Tarifa Total: </h3> <h2> ${reservas.tarifa} </h2>	
+		<h3> <i class="fa fa-credit-card"></i> Tarifa Total: </h3> <h2> ${reserva.tarifa} </h2>	
 		</div>
 				
 		<br>

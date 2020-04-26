@@ -1,0 +1,49 @@
+
+.espacio{
+		margin-top: 200px;	
+}
+
+#conatiner_todo h2{
+		color: black;
+	font: italic bold 100px Georgia, Serif;
+	font-size: 50px;
+	text-align: center;
+}
+
+hr{
+	 border:none;
+  height: 20px;
+	height: 50px;
+	margin-top: 0;
+	border-bottom: 1px solid black;
+	box-shadow: 0 20px 20px -20px black;
+  margin: -50px auto 10px; 
+	
+}
+
+#col_segundo h3{
+	color: black;
+	font: 100px Georgia, Serif;
+	font-size: 30px;
+	text-align: center;
+}
+
+#tarjetaFoto img{
+   height: auto;
+ 	max-width: 50%;
+ padding: 0px; 
+	
+}
+
+.col{
+	font: Georgia, Serif;
+}
+
+/**
+.vl{
+	border-left:1px solid black;
+	height: auto;
+	margin-top: 0;
+	box-shadow: 0 20px 20px -20px black;
+  margin: -50px auto 10px; 
+}**/

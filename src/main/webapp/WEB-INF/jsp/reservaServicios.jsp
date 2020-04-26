@@ -82,13 +82,12 @@
 						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre
 						del Hotel:
 						<p>${reserva.nombre_hotel}</p>
-						<input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador
-						de Reserva:
-						<p>${reserva.id_reserva}</p>
+						<input type=hidden name=id_reserva value=${reserva.id_reserva}>
 						<input type=hidden name=num_hab value=${reserva.num_hab}>Numero
 						de Habitacion:
 						<p>${reserva.num_hab}</p>
-						<input type=hidden name=fecha_inicio value=${reserva.fecha_inicio}>
+						<input type=hidden name=fecha_inicio value=${reserva.fecha_inicio}>Fecha de inicio:
+						<p>${reserva.fecha_inicio}</p>
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
 						<form action="/gestionar/${reserva.id_reserva}" method="POST">
@@ -126,14 +125,14 @@
 						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre
 						del Hotel:
 						<p>${reserva.nombre_hotel}</p>
-						<input type=hidden name=id_reserva value=${reserva.id_reserva}>Identificador
-						de Reserva:
-						<p>${reserva.id_reserva}</p>
+						<input type=hidden name=id_reserva value=${reserva.id_reserva}>
 						<input type=hidden name=num_hab value=${reserva.num_hab}>Numero
 						de Habitacion:
 						<p>${reserva.num_hab}</p>
-						<input  id=fecha_inicio name=fecha_inicio
-							value=${reserva.fecha_inicio}> <input type=hidden
+						<input type=hidden  id=fecha_inicio name=fecha_inicio
+							value=${reserva.fecha_inicio}> Fecha de inicio:
+							<p>${reserva.fecha_inicio}</p>
+						<input type=hidden
 							name=fecha_fin value=${reserva.fecha_fin}>
 							
 						

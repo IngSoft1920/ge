@@ -18,6 +18,8 @@ public class ReservaHotel {
 	private String fecha_fin;
 	private int tarifa;
 	private int regimen_comidas;
+	private String cliente;
+	private int anonimo; // anonimo = 1, no anonimo = 0;
 	
 	private List<MostrarServiciosPostReservaBean> servicios;
 	
@@ -33,6 +35,10 @@ public class ReservaHotel {
 		tarifa = 0;
 		servicios.clear();
 		regimen_comidas = 0;
+		nombre_hotel = "";
+		nombre_habitacion = "";
+		cliente = "";
+		anonimo = -1;
 	}
 	
 	/*
@@ -130,5 +136,21 @@ public class ReservaHotel {
 
 	public void setNombre_habitacion(String nombre_habitacion) {
 		this.nombre_habitacion = nombre_habitacion;
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
+	}
+
+	public int getAnonimo() {
+		return anonimo;
+	}
+
+	public void setAnonimo(int anonimo) {
+		this.anonimo = anonimo;
 	}
 }

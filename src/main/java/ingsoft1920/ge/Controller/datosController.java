@@ -175,6 +175,8 @@ public class datosController {
 					sesionBean.setUsuarioID(id);
 					sesionBean.setUsuario(signupBean.getEmail().split("@")[0]);
 					
+					reserva.setPrecio_total(reserva.getPrecio_total()*0.95);
+					
 					resultado = "redirect:metodopago";
 				}
 			} else { //Conexión con el servidor fallida

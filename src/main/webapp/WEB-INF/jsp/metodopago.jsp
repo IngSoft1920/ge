@@ -31,9 +31,15 @@
 	<br>
 	<br>
 	<div class="row">
-		
-		<div class="col" id="col_primer">
-		<a href="efectivo"><button> Continuar con la Reserva </button></a>
+
+
+		<div class="col" id="col_primer">	
+		<h3>Pago en efectivo:</h3>
+		<br><br><br>
+		<form:form action="/efectivo" method="GET" >	
+		<input type="submit" class="btn btn-warning btn-block" id="pagar" value="PAGAR">		
+
+		</form:form>
 		</div>
 		
 		
@@ -80,8 +86,10 @@
               </div>
               
 		  </div>
-		  <br>
-		         <div class="row ">
+
+		  <br>	
+		  		
+		         <div class="row ">	  <br>
                   <input type="submit"  class="btn btn-warning btn-block" value="PAGAR" />
           </div>
 		</form:form>

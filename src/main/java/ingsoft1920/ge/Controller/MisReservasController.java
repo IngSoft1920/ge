@@ -55,6 +55,33 @@ public class MisReservasController {
 		 * regimen : “media_pension”, importe : “750”, fecha_entrada : “2020-07-10”,
 		 * fecha_salida : “2020-07-15”, } ]
 		 */
+		/*
+		[
+		 {
+		  reserva_id : 21,
+		  hotel_id : 1,
+		  hotel_nombre: "New Japón",
+		  tipo_hab_id: 1,
+		  tipo_hab_nombre : “normal”,
+		  regimen : “no_aplica”,
+		  importe : “300”,
+		  fecha_entrada : “2020-02-10”,
+		  fecha_salida : “2020-02-15”,
+		  valoracion: 4.2
+		 },
+		 {
+		  reserva_id : 10,
+		  hotel_id : 14 ,
+		  hotel_nombre: "Viejo Japan",
+		  tipo_hab_id: 2
+		  tipo_hab_nombre : “premium”,
+		  regimen : “media_pension”,
+		  importe : “750”,
+		  fecha_entrada : “2020-07-10”,
+		  fecha_salida : “2020-07-15”,
+		  valoracion: -1.0
+		 }
+		]*/
 
 		/*JsonArray arrayGrande = new JsonArray();
 
@@ -116,7 +143,6 @@ public class MisReservasController {
 	
 	@PostMapping("/misReservas")
 	public String mostarReservasPost(
-
 			@Valid @ModelAttribute("mostarReservasBean") MostarReservasBean mostarReservasBean,
 			Model model) throws Exception {
 		
@@ -130,9 +156,12 @@ public class MisReservasController {
 		return "misReservas";
 	}
 	@PostMapping("/valorar")
-	public String valorarPost(@Valid @ModelAttribute("valoracionId") String valoracionId, Model model) {
+	public String valorarPost(@Valid @ModelAttribute("nota") int nota,
+			@Valid @ModelAttribute("cabecera") String cabecera,
+			@Valid @ModelAttribute("comentario") String comentario,
+			Model model) {
 
-		logger.info("Valoración recibida correctamente." + valoracionId);
+		logger.info("Valoración recibida correctamente." + nota);
 		
 		
 		

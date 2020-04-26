@@ -226,10 +226,10 @@
 	</div>-->
 
 	<div id="cancelar">
-		<span class="close" onclick="toggleCancelar()">&times;</span>
+		<span class="close" onclick="togglePopUpModificar()">&times;</span>
 		<h1>¿Está seguro de que quiere cancelar una reserva?</h1>
-			<button class="SI" type="submit" class="btn" value="SI">SI</button>
-		<button class="NO" onclick="toggleCancelar()">NO</button>
+		<button class="SI" onclick="toggleModificar()">SI</button>
+		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>
 
 	<script>	 
@@ -267,7 +267,10 @@
 		
 		function togglePopUpModificar() {
 			var cancelar = document.getElementById('cancelar');
+			var modificar = document.getElementById('modificar');
+			if(modificar.classList.contains('active')==false){
 			cancelar.classList.toggle('active');
+			}
 		}
 		
 		function toggleModificar() {
@@ -277,6 +280,8 @@
 			historial.classList.remove('active');
 			var modificar = document.getElementById('modificar');
 			modificar.classList.toggle('active');
+			var cancelar = document.getElementById('cancelar');
+			cancelar.classList.remove('active');
 		}
 	</script>
 

@@ -76,11 +76,15 @@
 		</div>
 		
 		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-cutlery"></i> Regimen comidas: </h3> <h2> ${reserva.regimen_comidas} </h2>
+		<h3> <i class="fa fa-cutlery"></i> Precio Habitación: </h3> <h2> ${reserva.tarifa} </h2>
+		</div>	
+		
+		<div class="row" id="row_resumen">	
+		<h3> <i class="fa fa-cutlery"></i> Regimen comidas: </h3> <h2> ${reserva.regimen} </h2>
 		</div>		
 		
 		<div class="row" id="row_resumen">	
-		<h3> <i class="fa fa-cutlery"></i> Precio Habitación: </h3> <h2> ${reserva.tarifa} </h2>
+		<h3> <i class="fa fa-cutlery"></i> Precio total del régimen de comidas: </h3> <h2> ${reserva.precio_regimen_comidas} </h2>
 		</div>		
 		
 		<c:forEach items="${reserva.servicios}" var="servicio">

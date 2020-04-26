@@ -22,6 +22,7 @@ import com.google.gson.JsonParser;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.ReservarMesaBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
+import ingsoft1920.ge.Controller.datosController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 import ingsoft1920.ge.ControllerGE1.VerReservasController;
 import ingsoft1920.ge.ControllerGE1.ServiciosController;
@@ -115,17 +116,24 @@ public class ReservarMesaController {
 	@GetMapping("/enviarReserva")	
 		public ModelAndView serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa) throws Exception{
 				
+		
+		int id_servicio_dho=0;
+		for (int i=0;i<ServiciosController.servicios_id.length;i++) {
+			if(ServiciosController.servicios_nombre.get(i).equals("restaurante")) {
+				id_servicio_dho=ServiciosController.servicios_id[i];
+			}
+		}
 			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 			JsonObject json = new JsonObject();
-			json.addProperty("id_servicio",1 );
+			json.addProperty("id_servicio",id_servicio_dho );
 			json.addProperty("fecha", mesa.getFecha());
 			json.addProperty("hora", mesa.getHora());
-			json.addProperty("cliente_id", 1);
+			json.addProperty("cliente_id", datosController.ALFONSO);
 			json.addProperty("lugar", "Mamma Mia");
 			json.addProperty("num_personas", 1);
 			json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 			json.addProperty("tipoServicio", 2);
-			json.addProperty("hora_salida", "18:50");
+			json.addProperty("hora_salida", (String)null);
 			json.addProperty("restaurante ", "Mamma Mia");
 			
 			

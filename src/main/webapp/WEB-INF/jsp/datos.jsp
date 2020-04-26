@@ -26,7 +26,7 @@
 	
   <div class="alert alert-danger alert-dismissible">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>DESCUENTO</strong> Obten un 5% de descuento registrandote
+    <strong>*¡DESCUENTO!</strong> Registrate y obten un 5% de descuento con nosotros
   </div>
 	
 	
@@ -49,7 +49,10 @@
 		<div class="column">
 			<h2>Registrese en la web</h2>
 			<form:form action="reservaSignup" method="GET" >
-				<input type="submit" value="Sign Up" >
+				<div>
+				<input type="submit" value="Sign Up">
+				*DESCUENTO 
+				</div>
 			</form:form>
 		</div>
 		<div class="column3"></div>

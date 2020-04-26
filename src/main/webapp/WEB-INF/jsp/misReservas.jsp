@@ -31,6 +31,7 @@
 			<div class="vertical-menu">
 				<a href="#" onclick="toggleReserva()">Mis Reservas</a> <a href="#"
 					onclick="toggleHistorial()">Historial</a>
+					<a href="#" onclick="togglePopUpModificar()">Cancelar reserva</a>
 			</div>
 
 
@@ -50,8 +51,8 @@
 							</p>
 							<p class="cambiarReserva" onclick="<c:set var="output" scope="session" value="${reserva.reserva_id}"/>; toggle()" class="btn">Cambiar reserva </p>
 							<!--<form action="/cancelar/${reserva.reserva_id}" method="POST"><input class="cambiarReserva" type="submit" class="btn"
-								value="Cancelar reserva">-->
-							</form>
+								value="Cancelar reserva">
+							</form>-->
 						</div>
 					</c:forEach>
 				</div>
@@ -178,13 +179,25 @@
 					</c:forEach>
 				</div>
 			</div>
+		
+		<div id="modificar">
+		<h1>¿Que reserva desea cancelar?</h1>
+			<c:forEach items="${reservas_pendientes}" var="reserva">
+			<div class="modificar">
+				<p>Reserva en hotel ${reserva.hotel_id} del ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
+				<form action="/cancelar/${reserva.reserva_id}" method="POST"><input class="cambiarReserva" type="submit" class="btn"
+								value="Cancelar reserva">
+			</div>
+			</c:forEach>
 		</div>
 	</div>
+</div>
+	
+
+	
 
 
-
-
-	<div class="popup2" id="noClick">
+	<!--<div class="popup2" id="noClick">
 		<div id="popup">
 			<span class="close" onclick="toggle()">&times;</span>
 			<h1>Cambie la reserva</h1>
@@ -210,21 +223,16 @@
 			<button class="cancelar" onclick="toggleCancelar()" type="submit">Cancelar
 				Reserva</button>
 		</div>
-	</div>
+	</div>-->
 
 	<div id="cancelar">
-		<span class="close" onclick="toggleCancelar()">&times;</span>
-		<h1>¿Está seguro de que quiere cancelar la reserva?</h1>
-		<form:form method="POST" action="/cancelar/${output}"
-			modelAttribute="reservaBean">
-			<button class="SI" type="submit" class="btn" value="SI">SI</button>
-		</form:form>
-		<button class="NO" onclick="toggleCancelar()">NO</button>
+		<span class="close" onclick="togglePopUpModificar()">&times;</span>
+		<h1>¿Está seguro de que quiere cancelar una reserva?</h1>
+		<button class="SI" onclick="toggleModificar()">SI</button>
+		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>
 
-	<script>
-	 var name1 = "<c:out value='${pageScope.name1}' />"
-	 
+	<script>	 
 		function toggle(){
 			var blur = document.getElementById('blur');
 			blur.classList.toggle('active');
@@ -241,9 +249,11 @@
 		
 		function toggleReserva() {
 			var reserva = document.getElementById('misreservas');
-			reserva.classList.toggle	('active');
+			reserva.classList.toggle('active');
 			var historial = document.getElementById('historial');
 			historial.classList.remove('active');
+			var modificar = document.getElementById('modificar');
+			modificar.classList.remove('active');
 		}
 		
 		function toggleHistorial() {
@@ -251,14 +261,28 @@
 			reserva.classList.remove('active');
 			var historial = document.getElementById('historial');
 			historial.classList.toggle('active');
+			var modificar = document.getElementById('modificar');
+			modificar.classList.remove('active');
 		}
 		
-		function changeName1(newName) {
-		      name1 = newName;
-		      return true;
-		    }
-	
+		function togglePopUpModificar() {
+			var cancelar = document.getElementById('cancelar');
+			var modificar = document.getElementById('modificar');
+			if(modificar.classList.contains('active')==false){
+			cancelar.classList.toggle('active');
+			}
+		}
 		
+		function toggleModificar() {
+			var reserva = document.getElementById('misreservas');
+			reserva.classList.remove('active');
+			var historial = document.getElementById('historial');
+			historial.classList.remove('active');
+			var modificar = document.getElementById('modificar');
+			modificar.classList.toggle('active');
+			var cancelar = document.getElementById('cancelar');
+			cancelar.classList.remove('active');
+		}
 	</script>
 
 </body>

@@ -1,15 +1,13 @@
 package ingsoft1920.ge.Controller;
 
 import java.lang.reflect.Type;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,24 +17,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
-import Objetillos.Reserva;
-import Objetillos.ReservaGE2;
-import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.MisReservasBean;
 import ingsoft1920.ge.Beans.MostarReservasBean;
-import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.ReservaBean;
-import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MisReservasController {
@@ -52,6 +40,8 @@ public class MisReservasController {
 	ReservaBean reserva;
 
 	List<ReservaBean> reservas;
+	
+	//List<ReservaGE2> reservas = new LinkedList<>();
 	
 	MostarReservasBean mostarReservasBean = new MostarReservasBean();
 
@@ -93,8 +83,6 @@ public class MisReservasController {
 
 		HttpClient serverReservas = new HttpClient( HttpClient.urlCM +"reserva/cliente/" + sesionBean.getUsuarioID(), "GET");
 
-
-
 		JsonObject json = new JsonObject();
 		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean 
 
@@ -103,25 +91,25 @@ public class MisReservasController {
 		if (serverReservas.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverReservas.getResponseBody(); 
 		}
-
-		JsonArray obj = (JsonArray) JsonParser.parseString(response);	
 		
-		List<ReservaGE2> reservas= new LinkedList<>();
-		for (int i=0;i<obj.size();i++) {
-			reservas.add(new ReservaGE2(obj.get(i).getAsJsonObject().get("reserva_id").getAsInt(), 
-					obj.get(i).getAsJsonObject().get("hotel_id").getAsInt(),
-					obj.get(i).getAsJsonObject().get("tipo_hab_id").getAsInt(),
-					obj.get(i).getAsJsonObject().get("importe").getAsInt(),
-					obj.get(i).getAsJsonObject().get("regimen").getAsString(),
-					obj.get(i).getAsJsonObject().get("fecha_entrada").getAsString(),
-					obj.get(i).getAsJsonObject().get("fecha_salida").getAsString()));
-		}
-
+		Type tipo = new TypeToken<List<ReservaBean>>(){}.getType();
+		reservas = new Gson().fromJson(response, tipo);
 		
-
-		//return new ModelAndView("misReservas","Listareserva", reservas);
-			model.addAttribute("Listareserva", reservas);
-			model.addAttribute("sesionBean", sesionBean);
+		String now = java.time.LocalDate.now().toString();
+		List<ReservaBean> reservas_pendientes = 
+				reservas.stream().filter
+				(reserva -> reserva.getFecha_salida().compareTo(now) >= 0)
+				.collect(Collectors.toList());
+		
+		List<ReservaBean> reservas_finalizadas = 
+				reservas.stream().filter
+				(reserva -> reserva.getFecha_salida().compareTo(now) < 0)
+				.collect(Collectors.toList());
+		
+		model.addAttribute("reservas_pendientes", reservas_pendientes);
+		model.addAttribute("reservas_finalizadas", reservas_finalizadas);
+		
+		model.addAttribute("sesionBean", sesionBean);
 
 		return "misReservas";
 	}
@@ -145,6 +133,9 @@ public class MisReservasController {
 	public String valorarPost(@Valid @ModelAttribute("valoracionId") String valoracionId, Model model) {
 
 		logger.info("Valoración recibida correctamente." + valoracionId);
+		
+		
+		
 		return "redirect:misReservas";
 	}
 	
@@ -163,7 +154,6 @@ public class MisReservasController {
 
 	return "redirect:/misReservas";
 	}
-	
 
 
 }

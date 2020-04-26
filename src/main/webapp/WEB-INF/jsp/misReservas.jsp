@@ -33,7 +33,7 @@
 
 			<div class="toggle">
 				<div id="misreservas">
-					<c:forEach items="${Listareserva}" var="reserva">
+					<c:forEach items="${reservas_pendientes}" var="reserva">
 						<div class="reserva">
 							<p class="hotel">
 								Hotel ${reserva.hotel_id} <span class="fecha">De
@@ -55,7 +55,7 @@
 				</div>
 
 				<div id="historial">
-					<c:forEach items="${Listareserva}" var="reserva">
+					<c:forEach items="${reservas_finalizadas}" var="reserva">
 
 						<div class="historial">
 							<span>Hotel ${reserva.hotel_id}</span>

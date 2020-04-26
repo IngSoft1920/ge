@@ -1,11 +1,5 @@
 package ingsoft1920.ge.Controller;
 
-import java.lang.reflect.Type;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,18 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 
-import Objetillos.ReservaGE2;
-import ingsoft1920.ge.Beans.BusquedaBean;
-import ingsoft1920.ge.Beans.HabitacionBean;
-import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.LoginBean;
 import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.ReservaHotel;

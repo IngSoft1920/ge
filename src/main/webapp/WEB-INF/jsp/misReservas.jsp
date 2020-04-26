@@ -7,11 +7,14 @@
 
 <html>
 <head>
-<title>Home Page</title>
+<title>Mis Reservas</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/misReservas.css"
 	media="screen" />
+	<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet">
 
 </head>
 <body>
@@ -78,9 +81,100 @@
 										for="radio5">&#9733</label>
 
 									<button type="submit" class="botonClasificacion">Enviar</button>
+									<br>
 
 								</form>
+								
 							</div>
+							
+							
+							<div class="container" id="botonValoracion">
+							<br>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#valoracion" id="escribirValoracion"><i class="fa fa-pencils"></i>Valoracion</button>
+							</div>					
+								
+								
+								
+								
+								
+								<div class="modal" id="valoracion">
+															
+								<form method="POST" action="valorar" name="valoracionId">
+								
+								<div class="modal-dialog">
+    								<div class="modal-content">
+    								      <div class="modal-header">
+        										<h4 class="modal-title">Valoracion</h4>
+        										
+        										<button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
+     										</div>
+    					<div class="modal-body" id="body_del_modal">
+    					<hr>			
+    						<form>		
+       						<div class="form-group" id="puntuar_uno_cinco">
+       						
+       						
+       							Puntuanos:
+       							<br>
+                        			<input id="radio1" type="radio" name="caras" value="1"> 
+									<label for="radio1">&#9786</label>
+																	
+									<input id="radio2" type="radio" name="caras" value="2">
+									<label for="radio2">&#9786</label> 	
+									
+																		
+								<input id="radio3" type="radio" name="caras" value="3"/> 
+								<label for="radio3">&#9786</label>	
+								
+								
+								<input id="radio4" type="radio" name="caras" value="4"> 
+								<label for="radio4">&#9786</label> 										
+									
+                        		<input id="radio5" type="radio" name="caras" value="5">
+									<label for="radio5">&#9786</label> 									
+								
+										
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                         <div class="form-group">
+            				<label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Cabecera:</label>
+            				<div class="col-sm-10">
+    						<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Asunto de mi valoracion...">
+          					</div>
+          				</div>            
+                        
+                        
+                        
+                        <div class="form-group">
+            			<label for="message-text" class="col-sm-2 col-form-label">Mensaje:</label>
+            			<div class="col-sm-10">
+            			<textarea class="form-control" id="message-text" rows="10" placeholder="Mi valoracion ... "></textarea>
+            			</div>
+         				 </div>
+                        
+                        
+                        </form>
+                        
+ 
+                        <hr>
+                        
+      					</div>     
+      								<div class="modal-footer">
+      								
+        								<button type="submit" class="btn btn-danger" data-dismiss="modal" id="enviarValoracion">Enviar</button>
+      								</div>    								
+    								
+    								</div>
+    								</div>									
+
+								</form>
+								
+								</div>	
+						
 						</div>
 					</c:forEach>
 				</div>

@@ -364,4 +364,89 @@ figure img{
 	
 }
 
+.modal-header h4{
+	color:black;
+}
+
+#puntuar_uno_cinco{
+	color:black;
+}
+
+textarea { 
+   resize:none; 
+}
+
+
+#puntuar_uno_cinco label:hover, label:hover ~ label {
+	color: white;
+}
+
+#puntuar_uno_cinco input[type="radio"]:checked ~ label {
+	color: white;
+}
+
+.form-group{
+	color: black;
+	font: italic bold 100px Georgia, Serif;
+	font-size: 20px;	
+}
+
+.modal-header h4{
+	color: black;
+	font: italic bold 100px Georgia, Serif;
+	font-size: 30px;	
+	
+}
+
+.modal-body{	
+	background-color: #b8b078;
+	 border:none;
+}
+.modal-header{	
+	background-color: #b8b078;
+	   border:none;
+}
+
+hr{
+   border:none;
+  height: 20px;
+	height: 50px;
+	margin-top: 0;
+	border-bottom: 1px solid white;
+	box-shadow: 0 20px 20px -20px white;
+  margin: -50px auto 10px; 
+	
+}
+.modal-footer{	
+	background-color: #b8b078;
+	 border:none;
+}
+
+#enviarValoracion{
+	background-color: white;
+	color:black;
+	font: italic bold 100px Georgia, Serif;
+	border:none;
+	font-size:20px;
+	
+}
+#botonValoracion{
+}
+
+#escribirValoracion{
+		background-color: #b8b078;
+	color: white;
+	padding: 8px;
+	border: 2px solid black;
+	margin-right: 5px;
+	cursor: pointer;
+	opacity: 0.8;
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size:14px;s
+}
+#close{
+	color:white;
+}
 

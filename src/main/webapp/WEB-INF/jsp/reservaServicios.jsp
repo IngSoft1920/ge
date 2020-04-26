@@ -136,9 +136,9 @@
 							value=${reserva.fecha_inicio}> <input type=hidden
 							name=fecha_fin value=${reserva.fecha_fin}>
 
-						<%-- <form action="completarCheckin" method="POST"
-							onsubmit="return comprobarFecha()"> --%>
-					  <form action="/checkin/${reserva.id_reserva}" method="POST">  
+						<form action="completarCheckin" method="POST"
+							onsubmit="return comprobarFecha()">
+							<%--  <form action="/checkin/${reserva.id_reserva}" method="POST">   --%>
 							<input type="submit" value="Check In">
 						</form>
 					</div>
@@ -165,18 +165,26 @@
 
 <!-- Comprueba que la fecha no sea futura -->
 <script>
-	var hoy = new Date();
-	var dd = hoy.getDate();
-	var mm = hoy.getMonth() + 1;
-	var yyyy = hoy.getFullYear();
-	var fecha = $('#fecha_inicio');
-
 	function comprobarFecha() {
-		var date = fecha.val();
-		if (Date.parse(date)) {
-			if (date > hoy) {
-				alert('No se puede hacer check in e una reserva que no sea para hoy');
-			}
+		var hoy = new Date();
+
+		var fechainicial = document.getElementById("fecha_inicio").value;
+
+		//fecha actual
+		var dd = hoy.getDate();
+		var mm = hoy.getMonth() + 1;
+		if (dd < 10) {
+			dd = '0' + dd;
+		}
+		if (mm < 10) {
+			mm = '0' + mm;
+		}
+		var yyyy = hoy.getFullYear();
+		fecha_actual = yyyy + '-' + mm + '-' + dd;
+
+		if (fechainicial > fecha_actual) {
+			alert('No se puede hacer check in de una reserva que no sea para hoy');
+			event.preventDefault();
 		}
 	}
 </script>

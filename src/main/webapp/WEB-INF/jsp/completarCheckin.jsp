@@ -82,20 +82,18 @@ label {
 
 
 	<div>
-	
+
 		<label>Tarjeta de crédito <input type="text" id="tarjeta"
 			name="tarjeta" /></label> <br> <br> <br>
-			
-		<%-- <c:forEach var="reserva" items="${reservas}"> --%>
-		
-		<!-- endpoint de prueba a reserva numero 1 -->
-			<form action="/checkin/1" method="post"> 
+
+		 <c:forEach var="reserva" items="${reservas}">
+
+			<!-- endpoint de prueba a reserva numero 1 -->
+			<form action="/checkin/${reserva.id_reserva}" method="POST">
 				<input type="submit" value="Siguiente">
 			</form>
-			
-		<%-- </c:forEach> --%>
 
-
+	<</c:forEach>
 	</div>
 
 

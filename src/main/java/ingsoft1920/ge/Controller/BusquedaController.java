@@ -44,6 +44,10 @@ public class BusquedaController {
 	List<String> ciudades;
 	List<HotelBean> hoteles;
 	
+	// Array auxiliar que guarda los precios inventados del régimen de comida (por dias y personas)
+	double[] precios = new double[] {0, 15, 30, 34};
+	String[] regimen = new String[] {"Sólo alojamiento", "Media pensión", "Pensión completa", "Todo incluido"};
+	
 	BusquedaBean busquedaBean = new BusquedaBean();
 	@Autowired
 	SesionBean sesionBean;
@@ -306,7 +310,12 @@ public class BusquedaController {
 		this.reserva.setFecha_fin(reserva.getFecha_fin());
 		this.reserva.setTarifa(reserva.getTarifa());
 		this.reserva.setRegimen_comidas(reserva.getRegimen_comidas());
-		this.reserva.setPrecio_total(reserva.getTarifa());
+		
+		// Añade el precio del régimen de comidas pasándolo de precio por dia a precio total
+		this.reserva.setPrecio_regimen_comidas(busquedaBean.getNumeroDias()*precios[reserva.getRegimen_comidas()-1]);
+		this.reserva.setRegimen(regimen[reserva.getRegimen_comidas()-1]);
+		
+		this.reserva.setPrecio_total(reserva.getTarifa() + this.reserva.getPrecio_regimen_comidas());
 		
 		return "redirect:serviciosExtras";
 		

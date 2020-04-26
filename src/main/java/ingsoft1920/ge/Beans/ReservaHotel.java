@@ -23,6 +23,7 @@ public class ReservaHotel {
 	private int tarifa;
 	private double precio_total;
 	
+	private String regimen;
 	private int regimen_comidas;
 	private double precio_regimen_comidas;
 	
@@ -45,6 +46,7 @@ public class ReservaHotel {
 		cliente = "";
 		anonimo = -1;
 		precio_total = 0.0;
+		precio_regimen_comidas = 0.0;
 	}
 	
 	/*
@@ -166,5 +168,21 @@ public class ReservaHotel {
 
 	public void setPrecio_total(double precio_total) {
 		this.precio_total = precio_total;
+	}
+
+	public double getPrecio_regimen_comidas() {
+		return precio_regimen_comidas;
+	}
+
+	public void setPrecio_regimen_comidas(double precio_regimen_comidas) {
+		this.precio_regimen_comidas = precio_regimen_comidas;
+	}
+
+	public String getRegimen() {
+		return regimen;
+	}
+
+	public void setRegimen(String regimen) {
+		this.regimen = regimen;
 	}
 }

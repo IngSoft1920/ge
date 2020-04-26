@@ -59,7 +59,7 @@ public class IncidenciasController {
 		//json.addProperty("nombre_hotel", "hotel_prueba");
 		json.addProperty("fecha", formatoFecha.format(fechaActual));
 		json.addProperty("hora", formatoHora.format(fechaActual));
-		json.addProperty("lugar", "H49");// habitacion de prueba, de momento solo se pueden enviar habitaciones
+		json.addProperty("lugar", VerReservasController.reservilla.getNum_hab());
 
 		client.setRequestBody(json.toString());
 

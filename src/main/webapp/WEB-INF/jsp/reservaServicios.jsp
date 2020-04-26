@@ -125,7 +125,7 @@ function fact(){
 
 	<div class="row">
 		<c:forEach var="reserva" items="${reservas}">
-			<c:if test="${reserva.estado=='reserva'}">
+			<c:if test="${reserva.estado=='reserva' || reserva.estado=='check out'}">
 				<div class="col-xl-4 col-md-6 col-sm-12">
 					<div class="card">
 						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre

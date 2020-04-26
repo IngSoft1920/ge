@@ -237,27 +237,25 @@
 	
 	
 		<div class="container">
-		<div class="row justify-content-center pb-3 ">
-            <h3>Servicios reservados</h3>
-                    </div>
-
-
-			       <div class="grid-container">
-			
-			 <c:forEach var="reservas" items="${muchas_cosas.servicos_reservados}" varStatus="loop">
-			 
-			        <div class="card">
-			          
-			         <b name=tipoServicio value="${reservas}"> Servicio Reservado: ${reservas}</b>
-			         <p>Fecha de reserva: ${muchas_cosas.fechas_reservadas[loop.count - 1]}</p> 
-			          
-			      </div>
-			</c:forEach>
-			      
-			      </div>
+			<div class="row justify-content-center pb-3 ">
+	            <h3>Servicios reservados</h3>
+	                    </div>
+	
+	
+			<div class="row">
+				<c:forEach var="reservas" items="${muchas_cosas.servicos_reservados}" varStatus="loop">
+					<div class="col-xl-4 col-md-6 ml-xs-3">
+						<div class="card">
+							<b name=tipoServicio value="${reservas}"> Servicio Reservado: ${reservas}</b>
+				         	<p>Fecha de reserva: ${muchas_cosas.fechas_reservadas[loop.count - 1]}</p> 
+				         </div>
+				    </div>
+				</c:forEach>
+			</div>
+		</div>
       
       
-	</div>
+	
 	
 	<!--  Parte de reservas realizadas -->
 	

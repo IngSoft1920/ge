@@ -1,26 +1,81 @@
 
 * {
 	box-sizing: border-box;
+	font-size: font-size:1vw; 
 }
 
-.center{
-	margin:120;
+
+.body{
+	background-color: #b8b078;
+}
+
+.box{
+	position: relative;
+	left:0.1%;
+	top: 30%;
+	margin-bottom:25%;
+}
+
+.boxline {
+	outline-style: double;
+	padding: 2%;
+  	border: 1px solid black;
+  	outline-width: 3px;
+}
+
+.sombraText {
+  text-shadow: 2px 2px 5px black;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.text{
+	display: inline;
+	font-family: courier;
+	color: #0a0e27;
+ 	text-align: left;
+  	font: italic bold 100px Georgia, Serif;
+  	font-size: 1em;
+	margin: 2%;
 }
 
 .cabeza{
+	position: relative;
 	color: #0a0e27;
- 	text-align: center;
+	margin: 1%;
   	font: italic bold 100px Georgia, Serif;
 	font-size: 100px; 
-	margin:50px
 }
 
-.contenido{
-	color: #0a0e27;
- 	text-align: center;
-  	font: italic bold 100px Georgia, Serif;
-	font-size: 25px; 
-	margin: 12px;
+button:hover {
+  color: black;
 }
 
 .espacio2{
@@ -28,19 +83,23 @@
 }
 
 #container_boton i{
-	text-align: center;
-	 color: white; 
+	text-align: left;
+	color: white; 
 }
 
 #container_boton input[type=submit]{
+	position:relative;
 	margin: 10px;
 	background-color: blue;
 	opacity: 0.8;
 	border-radius: 35px 35px 35px 35px;
 	box-shadow: 2.5px 5px;	
 	width: 40%;	
+	left: 5%;
 	border: none;
 	color:white;	
 }
+
+
 
 

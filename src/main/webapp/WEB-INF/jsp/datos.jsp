@@ -153,7 +153,7 @@
 		<i class="fa fa-shopping-cart"></i>		
 		<form:form action="reservaConfirm" method="POST" >
 
-				<input type="submit" value="Confirmar reserva para usuario logeado" >
+				<input type="submit" value="Confirmar reserva" >
 		</form:form>
 		</div>
 		

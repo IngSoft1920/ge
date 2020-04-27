@@ -139,10 +139,10 @@ public class BusquedaController {
 		if (serverCiudades.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverCiudades.getResponseBody();
 		}
-		
+		/*
 		if (response.length() <= 1)
 			response = arrayGrande.toString();
-
+		*/
 		Type tipo = new TypeToken<List<HotelBean>>(){}.getType();
 		hoteles = new Gson().fromJson(response, tipo);
 
@@ -164,7 +164,7 @@ public class BusquedaController {
 	public String buscarPost(@Valid @ModelAttribute("busquedaBean") BusquedaBean busquedaBean,
 			Model model) throws Exception{
 
-		//if (busquedaBean.checkCamposValidos()) {
+		if (busquedaBean.checkCamposValidos()) {
 
 			/* Será interesante para el futuro
 			List<HotelBean> list = hotelesDisponibles.getHoteles().stream()
@@ -244,10 +244,10 @@ public class BusquedaController {
 			if (server.getResponseCode() == 200) {
 				response = server.getResponseBody();
 			}
-			
+			/*
 			if (response.length() == 2)
 				response = jarr.toString();
-
+			*/
 
 			System.out.println(jarr.toString());
 			
@@ -300,7 +300,7 @@ public class BusquedaController {
 				model.addAttribute("hoteles", hoteles);
 				model.addAttribute("reserva", reserva);
 			}
-		//}
+		}
 		this.busquedaBean.setFechaInicio(busquedaBean.getFechaInicio());
 		this.busquedaBean.setFechaFin(busquedaBean.getFechaFin());
 
@@ -327,7 +327,7 @@ public class BusquedaController {
 		this.reserva.setRegimen_comidas(reserva.getRegimen_comidas());
 		
 		// Añade el precio del régimen de comidas pasándolo de precio por dia a precio total
-		this.reserva.setPrecio_regimen_comidas(busquedaBean.getNumeroDias()*precios[reserva.getRegimen_comidas()-1]);
+		this.reserva.setPrecio_regimen_comidas(precios[reserva.getRegimen_comidas()-1]);
 		this.reserva.setRegimen(regimen[reserva.getRegimen_comidas()-1]);
 		
 		this.reserva.setPrecio_total(reserva.getTarifa() + this.reserva.getPrecio_regimen_comidas());

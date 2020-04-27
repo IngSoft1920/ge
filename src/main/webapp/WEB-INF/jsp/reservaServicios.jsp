@@ -142,7 +142,7 @@ function fact(){
 							name=fecha_fin value=${reserva.fecha_fin}>
 							
 						
-						<c:if test="${reserva.fecha_inicio=='2020-04-26'}">
+						<c:if test="${reserva.fecha_inicio=='2020-04-27'}">
 						<%-- <form action="completarCheckin" method="POST"
 							onsubmit="return comprobarFecha()">--%>
 							 <form action="/checkin/${reserva.id_reserva}" method="POST">   

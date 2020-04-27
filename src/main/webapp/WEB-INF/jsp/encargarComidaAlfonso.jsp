@@ -48,7 +48,7 @@
         	</div>     
         </head>
         
-        <form action="/enviarComanda" method="get">
+        <form action="/enviarComanda" method="post">
         <div class="container p-3">
             
             <div class="row p-3">

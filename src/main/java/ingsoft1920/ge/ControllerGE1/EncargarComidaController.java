@@ -26,6 +26,7 @@ import com.google.gson.JsonParser;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.EncargarComidaBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
+import ingsoft1920.ge.Controller.datosController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 
@@ -98,27 +99,27 @@ public class EncargarComidaController {
 		//return m;
 		return new ModelAndView("encargarComidaAlfonso","todo", map);
 	}
-	@GetMapping("/enviarComanda")
+	/*@GetMapping("/enviarComanda")
 	public static String enviarComanda(@Valid@ModelAttribute("encargarComidaBean") EncargarComidaBean comanda) {
 		System.out.print(comanda.toString());
 	
 		return "index";
-	}
+	}*/
 	
 	@PostMapping("/enviarComanda")
 	public String enviarPedidoFNB(@Valid@ModelAttribute("encargarComidaBean") EncargarComidaBean comanda) throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/nuevoServicio", "POST");
 		JsonObject json= new JsonObject();
-		json.addProperty("servicio_id",sesion.getUsuarioID());
-		//json.addProperty("reserva_id",reservas.getId_reserva());
+		json.addProperty("servicio_id",datosController.ALFONSO);
+		json.addProperty("reserva_id",VerReservasController.reservilla.getId_reserva());
 		json.addProperty("fecha_hora","2020-03-15T20:15:00");
 		json.addProperty("num_clientes",0);
 		json.addProperty("tipoUbicacion",2);
 		json.addProperty("ubicacion","Mamma Mia");
 		
 		int[] habitaciones_id= new int[4]; 
-		habitaciones_id[0]=reservas.getNum_hab();
+		habitaciones_id[0]=VerReservasController.reservilla.getNum_hab();
 		int p=0;
 		int tamanoI=0;
 		for(int i=0;i<comanda.getNum_items().length;i++)
@@ -166,7 +167,7 @@ public class EncargarComidaController {
 			  resp=client.getResponseBody();
 			  }
 		System.out.println("CODIGO RESP " + respCode);
-		return"servicios";
+		return"index";
 	}
 	
 	

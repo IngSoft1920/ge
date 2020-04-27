@@ -55,7 +55,7 @@ public class ServiciosController {
 
 		//enviar nombre del hotel
 		JsonObject json = new JsonObject();
-		json.addProperty("nombre_Hotel", /*VerReservasController.reservilla.getNombre_hotel()*/"Prueba");//habria que cogerlo de VerReservasBean, ¿como?
+		json.addProperty("nombre_Hotel", VerReservasController.reservilla.getNombre_hotel());//habria que cogerlo de VerReservasBean, ¿como?
 		
 		client.setRequestBody(json.toString());
 
@@ -159,8 +159,8 @@ public class ServiciosController {
 		
 		JsonObject json = new JsonObject();
 		 //coger id_usuario de la sesionBean
-		json.addProperty("id_estancia", /*VerReservasController.reservilla.getId_reserva()*/8);
-		json.addProperty("id_cliente", /*datosController.ALFONSO*/4);
+		json.addProperty("id_estancia", VerReservasController.reservilla.getId_reserva());
+		json.addProperty("id_cliente", datosController.ALFONSO);
 		
 		client.setRequestBody(json.toString());
 
@@ -215,10 +215,10 @@ public class ServiciosController {
 		json.addProperty("id_servicio", id_servicio_dho);//se puede mandar el servicio en vez del id??
 		json.addProperty("fecha", servicos.getFecha());
 		json.addProperty("hora", servicos.getHoras());
-		json.addProperty("cliente_id", /*datosController.ALFONSO*/4);
+		json.addProperty("cliente_id", datosController.ALFONSO);
 		json.addProperty("lugar", "donde sea");
 		json.addProperty("num_personas", servicos.getNumPersonas());
-		json.addProperty("id_reserva", /*VerReservasController.reservilla.getId_reserva()*/8);
+		json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 		json.addProperty("tipoServicio", 1);
 		json.addProperty("hora_salida", (String)null);
 		//IMPORTANTE:falta el nombre del restaurante al reservar una mesa

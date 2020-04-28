@@ -46,8 +46,8 @@
 									target="_blank" class="factura">Ver factura</a>
 							</p>
 							<p class="habitacion">
-								Habitación: ${reserva.tipo_hab_nombre} <span class="tarifa">Tarifa:${reserva.importe}</span>
-								<span class="regimen">Régimen:${reserva.regimen}</span>
+								Habitaciï¿½n: ${reserva.tipo_hab_nombre} <span class="tarifa">Tarifa:${reserva.importe}</span>
+								<span class="regimen">Rï¿½gimen:${reserva.regimen}</span>
 							</p>
 							<p class="cambiarReserva"
 								onclick="<c:set var="output" scope="session" value="${reserva.reserva_id}"/>; toggle()"
@@ -68,9 +68,8 @@
 								target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-							<span>Habitación: ${reserva.tipo_hab_nombre}</span>
-							
-							
+							<span>Habitaciï¿½n: ${reserva.tipo_hab_nombre}</span>
+							<!--  
 							<div class="clasificacion">
 								<form method="POST" action="estrellas" name="estrellas">
 
@@ -91,7 +90,7 @@
 								</form>
 
 							</div>
-
+							-->
 
 							<div class="container" id="botonValoracion">
 								<br>
@@ -116,7 +115,7 @@
 										<div class="modal-body" id="body_del_modal">
 											<hr>
 
-											<form:form method="POST" action="funciona">
+											<form:form method="POST" action="valorar">
 												<input type="hidden" name="hotel_id"
 													value="${reserva.hotel_id}">
 
@@ -124,23 +123,21 @@
 												
 									
 												<div class="form-group" id="puntuar_uno_cinco">
-													<div class="clasificacion2">
-
-
-													Puntuanos: 													
+													
+													
+													<input id="valorvaloracion" type="hidden" name="nota" value="0">
+													Puntuanos: 
 													<br>
-													<div class="clasificacion alinear">
-													<input id="radio1" type="radio" name="estrellas" value="1">
-													<label for="radio1">&#9786</label> 
-													<input id="radio2" type="radio" name="estrellas" value="2"> 
-													<label for="radio2">&#9786</label> 
-													<input id="radio3" type="radio" name="estrellas" value="3"> 
-													<label for="radio3">&#9786</label>
-													<input id="radio4" type="radio" name="estrellas" value="4">
-													<label for="radio4">&#9786</label>
-													<input id="radio5" type="radio" name="estrellas" value="5"> 
-													<label for="radio5">&#9786</label>
-													</div>
+													<input id="radio5" type="radio" > 
+													<label for="radio5"  onclick="valorar(this,'1');">&#9786</label>
+													<input id="radio4" type="radio" >
+													<label for="radio4" onclick="valorar(this,'2');">&#9786</label> 
+													<input id="radio3" type="radio" > 
+													<label for="radio3" onclick="valorar(this,'3');">&#9786</label> 
+													<input id="radio2" type="radio" > 
+													<label for="radio2" onclick="valorar(this,'4');">&#9786</label> 
+													<input id="radio1" type="radio" >
+													<label for="radio1" onclick="valorar(this,'5');">&#9786</label>
 
 												</div>
 												</div>
@@ -181,7 +178,7 @@
 			</div>
 		
 		<div id="modificar">
-		<h1>¿Que reserva desea cancelar?</h1>
+		<h1>ï¿½Que reserva desea cancelar?</h1>
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 			<div class="modificar">
 				<p>Reserva en hotel ${reserva.hotel_id} del ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
@@ -213,7 +210,7 @@
 				</div>
 
 				<div>
-					<label for="tipoComida">Seleccione el tipo pensión deseada:
+					<label for="tipoComida">Seleccione el tipo pensiï¿½n deseada:
 					</label> <select id="dropdown">
 						<option value="Completa">Completa</option>
 						<option value="Media">Media</option>
@@ -229,12 +226,19 @@
 
 	<div id="cancelar">
 		<span class="close" onclick="togglePopUpModificar()">&times;</span>
-		<h1>¿Está seguro de que quiere cancelar una reserva?</h1>
+		<h1>ï¿½Estï¿½ seguro de que quiere cancelar una reserva?</h1>
 		<button class="SI" onclick="toggleModificar()">SI</button>
 		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>
 
 	<script>	 
+	
+		function valorar(elem, v) {
+			elem.style.color = 'gold';
+			var valor = document.getElementById('valorvaloracion');
+			valor.value = v;
+		}
+		
 		function toggle(){
 			var blur = document.getElementById('blur');
 			blur.classList.toggle('active');

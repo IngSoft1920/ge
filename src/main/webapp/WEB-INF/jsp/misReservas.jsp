@@ -115,6 +115,7 @@
 										<div class="modal-body" id="body_del_modal">
 											<hr>
 
+											<div class="form-group">
 											<form:form method="POST" action="valorar">
 												<input type="hidden" name="hotel_id"
 													value="${reserva.hotel_id}">
@@ -123,11 +124,12 @@
 												
 									
 												<div class="form-group" id="puntuar_uno_cinco">
-													
-													
+												
 													<input id="valorvaloracion" type="hidden" name="nota" value="0">
+													
+													
 													Puntuanos: 
-													<br>
+													<br><div class="clasificacion">
 													<input id="radio5" type="radio" > 
 													<label for="radio5"  onclick="valorar(this,'1');">&#9786</label>
 													<input id="radio4" type="radio" >
@@ -139,6 +141,7 @@
 													<input id="radio1" type="radio" >
 													<label for="radio1" onclick="valorar(this,'5');">&#9786</label>
 
+												</div>
 												</div>
 												</div>
 									
@@ -167,6 +170,7 @@
 														 id="enviarValoracion" value="Enviar">
 												</div>
 											</form:form>
+											</div>
 										</div>
 									</div>
 								</div>

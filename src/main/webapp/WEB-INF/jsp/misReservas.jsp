@@ -69,6 +69,7 @@
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
 							<span>Habitación: ${reserva.tipo_hab_nombre}</span>
+							<!--  
 							<div class="clasificacion">
 								<form method="POST" action="estrellas" name="estrellas">
 
@@ -88,7 +89,7 @@
 								</form>
 
 							</div>
-
+							-->
 
 							<div class="container" id="botonValoracion">
 								<br>
@@ -114,24 +115,27 @@
 										<div class="modal-body" id="body_del_modal">
 											<hr>
 
-											<form:form method="POST" action="funciona">
+											<form:form method="POST" action="valorar">
 												<input type="hidden" name="hotel_id"
 													value="${reserva.hotel_id}">
 
 												<div class="form-group" id="puntuar_uno_cinco">
-
-
-													Puntuanos: <br> <input id="radio1" type="radio"
-														name="nota" value="5"> <label for="radio1">&#9786</label>
-													<input id="radio2" type="radio" name="nota" value="4">
-													<label for="radio2">&#9786</label> <input id="radio3"
-														type="radio" name="nota" value="3"> <label
-														for="radio3">&#9786</label> <input id="radio4"
-														type="radio" name="nota" value="2"> <label
-														for="radio4">&#9786</label> <input id="radio5"
-														type="radio" name="nota" value="1"><label
-														for="radio5">&#9786</label>
-
+													
+													
+													<input id="valorvaloracion" type="hidden" name="nota" value="0">
+													Puntuanos: 
+													<br>
+													<input id="radio5" type="radio" > 
+													<label for="radio5"  onclick="valorar(this,'1');">&#9786</label>
+													<input id="radio4" type="radio" >
+													<label for="radio4" onclick="valorar(this,'2');">&#9786</label> 
+													<input id="radio3" type="radio" > 
+													<label for="radio3" onclick="valorar(this,'3');">&#9786</label> 
+													<input id="radio2" type="radio" > 
+													<label for="radio2" onclick="valorar(this,'4');">&#9786</label> 
+													<input id="radio1" type="radio" >
+													<label for="radio1" onclick="valorar(this,'5');">&#9786</label>
+													<br>
 
 												</div>
 
@@ -222,6 +226,13 @@
 	</div>
 
 	<script>	 
+	
+		function valorar(elem, v) {
+			elem.style.color = 'gold';
+			var valor = document.getElementById('valorvaloracion');
+			valor.value = v;
+		}
+		
 		function toggle(){
 			var blur = document.getElementById('blur');
 			blur.classList.toggle('active');

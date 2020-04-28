@@ -244,10 +244,10 @@ public class BusquedaController {
 			if (server.getResponseCode() == 200) {
 				response = server.getResponseBody();
 			}
-			/*
+			
 			if (response.length() == 2)
 				response = jarr.toString();
-			*/
+			
 
 			System.out.println(jarr.toString());
 			
@@ -268,8 +268,6 @@ public class BusquedaController {
 						hotel.getNombre().compareTo(busquedaBean.getHotel()) == 0)
 						.collect(Collectors.toList());
 			}
-			
-			
 			
 			if (!disponibles.isEmpty()) {
 				JsonArray habitaciones = new Gson().fromJson(response, JsonArray.class);

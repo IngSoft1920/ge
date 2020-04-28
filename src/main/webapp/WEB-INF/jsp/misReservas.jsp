@@ -185,8 +185,10 @@
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 			<div class="modificar">
 				<p>Reserva en hotel ${reserva.hotel_id} del ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-				<form action="/cancelar/${reserva.reserva_id}" method="POST"><input class="cambiarReserva" type="submit" class="btn"
+				<form action="/cancelar/${reserva.reserva_id}" method="POST">
+				<input class="cambiarReserva" type="submit" class="btn"
 								value="Cancelar reserva">
+				</form>
 			</div>
 			</c:forEach>
 		</div>
@@ -269,7 +271,7 @@
 			var cancelar = document.getElementById('cancelar');
 			var modificar = document.getElementById('modificar');
 			if(modificar.classList.contains('active')==false){
-			cancelar.classList.toggle('active');
+				cancelar.classList.toggle('active');
 			}
 		}
 		

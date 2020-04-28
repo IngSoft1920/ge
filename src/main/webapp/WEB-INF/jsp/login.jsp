@@ -5,15 +5,28 @@
 
 <html>
 <head>
+
 <title>LogIn</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="/css/login.css"
-	media="screen" />
+
+<link rel="stylesheet" type="text/css" href="/css/login.css" media="screen" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<style>
+
+body{
+	background-color:#b8b078
+}
+</style>
+
 </head>
 
 
 
-<body style="background-color:#b8b078">
+<body class="body box">
 
 	<div>
 		<!-- Podemos acceder a tipos basicos (String, int...) mediante esta etiqueta -->
@@ -21,28 +34,33 @@
 		<h1>${mensajeError}</h1>
 	</div>
 	
-	
-	<div class="center">
 	<form method="POST" action="${loginBean.method}" modelAttribute="loginBean">
-		<div class="cabeza">
-			<legend>LOG IN</legend>
-		</div>
-		
-		<div class="contenido">
-			<label>Correo electronico</label>
-			<input type="email" name="email" path="email" /> 
-		</div>	
+	
+			<div class="cabeza">
+			<div class ="text sombraText">
+			<div>
+			LOG IN
+			</div>
+			</div>
+			</div>
 			
-		<div class="contenido">
-			<label for="password">Contrasena</label>
-			<input type="password" id="password" name="password" path="password" />
-			<button class="btn btn-primary" type="button"
-				onclick="mostrarContrasena('password')">Mostrar</button>
-		</div>
 		
-		<div class="container" id="container_boton">
-		<input type="submit" value="Entrar">
-		</div>
+			<div class ="text sombraText">
+			<div class="boxline">
+			<div>
+			<input type="email" name="email" path="email" placeholder="Introduce tu correo electrónico..."/> 
+			</div>
+			
+			<div>
+			<input type="password" id="password" name="password" path="password" placeholder="Introduce tu contraseña..."/>
+			<button class="btn btn-primary" type="button" onclick="mostrarContrasena('password')">Mostrar</button>
+			</div>
+		
+			<div class="container" id="container_boton">
+			<input type="submit" value="Entrar">
+			</div>
+			</div>
+			</div>
 	</form>
 
 

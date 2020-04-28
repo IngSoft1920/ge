@@ -244,10 +244,10 @@ public class BusquedaController {
 			if (server.getResponseCode() == 200) {
 				response = server.getResponseBody();
 			}
-			
+			/*
 			if (response.length() == 2)
 				response = jarr.toString();
-			
+			*/
 
 			System.out.println(jarr.toString());
 			

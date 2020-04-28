@@ -5,10 +5,10 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 
-<html>
+<html lang="en">
 <head>
 <title>Mis Reservas</title>
-<meta charset="utf-8">
+<meta http-equiv=”Content-Type” content=”text/html; charset=ISO-8859-1″ />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/misReservas.css"
 	media="screen" />
@@ -46,8 +46,8 @@
 									target="_blank" class="factura">Ver factura</a>
 							</p>
 							<p class="habitacion">
-								Habitaci�n: ${reserva.tipo_hab_nombre} <span class="tarifa">Tarifa:${reserva.importe}</span>
-								<span class="regimen">R�gimen:${reserva.regimen}</span>
+								Habitaci&oacuten: ${reserva.tipo_hab_nombre} <span class="tarifa">Tarifa:${reserva.importe}</span>
+								<span class="regimen">R&eacutegimen:${reserva.regimen}</span>
 							</p>
 							<p class="cambiarReserva"
 								onclick="<c:set var="output" scope="session" value="${reserva.reserva_id}"/>; toggle()"
@@ -68,7 +68,7 @@
 								target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-							<span>Habitaci�n: ${reserva.tipo_hab_nombre}</span>
+							<span>Habitaci&oacuten: ${reserva.tipo_hab_nombre}</span>
 							<!--  
 							<div class="clasificacion">
 								<form method="POST" action="estrellas" name="estrellas">
@@ -96,7 +96,7 @@
 								<br>
 								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#valoracion" id="escribirValoracion">
 								<i class="fa fa-pencils"></i>
-								Valoracion
+								Valoraci&oacuten
 								</button>
 							</div>
 
@@ -107,7 +107,7 @@
 									<div class="modal-content">
 
 										<div class="modal-header">
-											<h4 class="modal-title">Valoracion</h4>
+											<h4 class="modal-title">Valoraci&oacuten</h4>
 
 											<button type="button" class="close" data-dismiss="modal"
 												id="close">&times;</button>
@@ -178,7 +178,7 @@
 			</div>
 		
 		<div id="modificar">
-		<h1>�Que reserva desea cancelar?</h1>
+		<h1>&#191Qu&eacute reserva desea cancelar?</h1>
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 			<div class="modificar">
 				<p>Reserva en hotel ${reserva.hotel_id} del ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
@@ -210,7 +210,7 @@
 				</div>
 
 				<div>
-					<label for="tipoComida">Seleccione el tipo pensi�n deseada:
+					<label for="tipoComida">Seleccione el tipo pensiï¿½n deseada:
 					</label> <select id="dropdown">
 						<option value="Completa">Completa</option>
 						<option value="Media">Media</option>
@@ -226,7 +226,7 @@
 
 	<div id="cancelar">
 		<span class="close" onclick="togglePopUpModificar()">&times;</span>
-		<h1>�Est� seguro de que quiere cancelar una reserva?</h1>
+		<h1>&#191Est&aacutes seguro de que quiere cancelar una reserva?</h1>
 		<button class="SI" onclick="toggleModificar()">SI</button>
 		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>

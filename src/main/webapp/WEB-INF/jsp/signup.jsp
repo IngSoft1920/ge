@@ -17,6 +17,12 @@
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+<style>
+body {
+	background-color:#b8b078
+}
+</style>
+
 </head>
 
 
@@ -37,55 +43,46 @@
 			<div class ="text sombraText">
 			<div class="boxline">
 			<div>
-			<label>Nombre</label> 
-			<input type="text" name="nombre"path="nombre" /> 
+			<input type="text" name="nombre" path="nombre" placeholder="Introduce tu nombre..."/> 
 			</div>
 		
 			<div>
-			<label>Apellidos</label> 
-			<input type="text" name="apellidos" path="apellidos" />
+			<input type="text" name="apellidos" path="apellidos" placeholder="Introduce tu apellido..."/>
 			</div>
 			
 
 			<div>
-			<label>DNI (sin letra)</label> 
-			<input type="text" name="DNI"path="DNI"/> 
+			<input type="text" name="DNI"path="DNI" placeholder="Introduce tu DNI sin letra..."/> 
 			</div>
 			
 			
 			<div>
-			<label>Email</label> 
-			<input type="email" name="email" path="email" />
+			<input type="email" name="email" path="email" placeholder="Introduce tu correo electrónico.."/>
 			</div>
 			
 			
 			<div>
-			<label>Telefono</label>
-			<input type="text" name="telefono" path="telefono" /> 
+			<input type="text" name="telefono" path="telefono" placeholder="Introduce un telefono..."/> 
+			</div>
+			
+			
+			<div> 
+			<input type="text" name="nacionalidad" path="nacionalidad" placeholder="Introduce tu nacionalidad..."/>
 			</div>
 			
 			
 			<div>
-			<label>Nacionalidad</label> 
-			<input type="text" name="nacionalidad" path="nacionalidad" />
+			<input type="password" id="password" name="password" path="password" placeholder="Introduce tu contraseña..."/>
+			<button class="btn btn-primary boton" type="button" onclick="mostrarContrasena('password')">Mostrar</button>
 			</div>
 			
 			
 			<div>
-			<label for="password">Password</label>
-			<input type="password" id="password" name="password" path="password" />
-			<button class="btn btn-primary" type="button" onclick="mostrarContrasena('password')">Mostrar</button>
+			<input type="password" id="verificacionPassword" name="verificacionPassword" path="verificacionPassword" placeholder="Repite tu contraseña..."/>
+			<button class="btn btn-primary boton" type="button" onclick="mostrarContrasena('verificacionPassword')">Mostrar</button>
 			</div>
 			
 			
-			<div>
-			<label for="verificacioPassword">Repite Password</label>
-			<input type="password" id="verificacionPassword" name="verificacionPassword" path="verificacionPassword" />
-			<button class="btn btn-primary" type="button" onclick="mostrarContrasena('verificacionPassword')">Mostrar</button>
-			</div>
-			
-			
-			<div class="container" id="container_boton">
 			<input type="submit" value="Registrar">
 			</div>
 			</div>

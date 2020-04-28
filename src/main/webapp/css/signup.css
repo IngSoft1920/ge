@@ -4,9 +4,8 @@
 	font-size: font-size:1vw; 
 }
 
-
-.body{
-	background-color: #b8b078;
+[class*="col-"] {
+  width: 100%;
 }
 
 .box{
@@ -18,6 +17,7 @@
 
 .boxline {
 	outline-style: double;
+	margin:5%;
 	padding: 2%;
   	border: 1px solid black;
   	outline-width: 3px;
@@ -28,32 +28,73 @@
 }
 
 input[type=text], select {
-  width: 100%;
+  width: 40%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border: 2px solid black;
   border-radius: 4px;
   box-sizing: border-box;
+  transition: width 0.4s ease-in-out;
+}
+input[type=text]:focus {
+	width: 100%;
 }
 
 input[type=email], select {
-  width: 100%;
+  width: 40%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 2px solid black;
+  box-sizing: border-box;
   border-radius: 4px;
   box-sizing: border-box;
+  transition: width 0.4s ease-in-out;
 }
+
+input[type=email]:focus {
+	width: 100%;
+}
+
 input[type=password], select {
-  width: 100%;
+  width: 40%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 2px solid black;
+  box-sizing: border-box;
   border-radius: 4px;
   box-sizing: border-box;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=password]:focus {
+	width: 100%;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: blue;
+  border-width: 3px;
+  border-color: white;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.boton{
+  background-color: blue;
+  border-width: 3px;
+  border-color: white;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+	
 }
 
 .text{
@@ -67,38 +108,17 @@ input[type=password], select {
 }
 
 .cabeza{
+	left: 7%;
+	top: 3%;
 	position: relative;
 	color: #0a0e27;
 	margin: 1%;
   	font: italic bold 100px Georgia, Serif;
-	font-size: 100px; 
+	font-size: 2em; 
 }
 
-button:hover {
-  color: black;
-}
 
-.espacio2{
-	margin-top: 51px;	
-}
 
-#container_boton i{
-	text-align: left;
-	color: white; 
-}
-
-#container_boton input[type=submit]{
-	position:relative;
-	margin: 10px;
-	background-color: blue;
-	opacity: 0.8;
-	border-radius: 35px 35px 35px 35px;
-	box-shadow: 2.5px 5px;	
-	width: 40%;	
-	left: 5%;
-	border: none;
-	color:white;	
-}
 
 
 

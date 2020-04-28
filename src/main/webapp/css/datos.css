@@ -83,8 +83,6 @@
 }
 
 #ocultar2.active {
-	position: absolute;
-	top: -500px;
 	visibility: hidden;
 }
 

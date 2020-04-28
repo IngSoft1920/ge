@@ -32,14 +32,12 @@ body{
 	<div class="blanco"></div>
 	
 	
-		
 	<div id="ocultar">
 	<div class="alert alert-danger alert-dismissible">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<strong>*¡DESCUENTO!</strong> Registrate y obten un 5% de descuento
 		con nosotros
 	</div>
-
 
 		<h3>Escoga una de las siguientes opciones para confirmar su
 			reserva</h3>
@@ -178,14 +176,14 @@ body{
 
 	<br>
 	<div class="container" id="container_boton">
-		<div id="ocultar2">
+		<!-- <div id="ocultar2"> -->
 		<i class="fa fa-shopping-cart"></i>
 		<form:form action="reservaConfirm" method="POST">
 
 			<input type="submit" value="Confirmar reserva">
 		</form:form>
 	</div>
-	</div>
+	<!-- </div> -->
 
 
 </body>
@@ -198,11 +196,14 @@ window.onload = function() {
 		ocultar.classList.toggle('active');
 };
 
+
+/*
 window.onload = function() {
 	if(${sesionBean.usuarioID} <= 0)
 		var ocultar2 = document.getElementById('ocultar2');
 		ocultar2.classList.toggle('active');
 };
+*/
 
 
 

@@ -140,6 +140,28 @@
 			type="reset" value="Borrar"> --%>
 
 	</div>
+	
+	   <!-- Parte de servicios reservados -->
+	
+	
+		<div class="container">
+			<div class="row justify-content-center pb-3 ">
+	            <h3>Incidencias enviadas</h3>
+	                    </div>
+	
+	
+			<div class="row">
+				<c:forEach var="incidencias_realizadas" items="${incidencias_realizadas}">
+					<div class="col-xl-4 col-md-6 ml-xs-3">
+						<div class="card">
+							<b name=incidencia_nombre value=${incidencias_realizadas.incidencia_nombre}> Incidencia: ${incidencias_realizadas.incidencia_nombre}</b>
+				         	<p>Fecha de reserva: ${incidencias_realizadas.fecha}</p>
+				         	<p>Hora de reserva: ${incidencias_realizadas.hora}</p> 
+				         </div>
+				    </div>
+				</c:forEach>
+			</div>
+		</div>
 
 
 	<!-- necesario para el script -->

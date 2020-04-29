@@ -14,7 +14,7 @@ public class ReservaBean {
 	private String regimen;
 	private String fecha_entrada;
 	private String fecha_salida;
-	private double valoracion;
+	private int valoracion;
 
 	public int getReserva_id() {
 		return reserva_id;
@@ -88,11 +88,11 @@ public class ReservaBean {
 		this.tipo_hab_nombre = tipo_hab_nombre;
 	}
 
-	public double getValoracion() {
+	public int getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(double valoracion) {
+	public void setValoracion(int valoracion) {
 		this.valoracion = valoracion;
 	}
 

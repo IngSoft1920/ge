@@ -103,17 +103,17 @@
 														<input id="valorvaloracion" type="hidden" name="nota"
 															value="0"> Puntuanos: <br>
 														<div class="center_horizontal">
-															<p class="clasificacion" style="font-size:30px">
+															<p class="clasificacion" style="font-size: 30px">
 																<input id="radio5" type="radio"> <label
-																	for="radio5" onclick="valorar('5');">&#9786</label>
-																<input id="radio4" type="radio"> <label
-																	for="radio4" onclick="valorar('4');">&#9786</label>
-																<input id="radio3" type="radio"> <label
-																	for="radio3" onclick="valorar('3');">&#9786</label>
-																<input id="radio2" type="radio"> <label
-																	for="radio2" onclick="valorar('2');">&#9786</label>
-																<input id="radio1" type="radio"> <label
-																	for="radio1" onclick="valorar('1');">&#9786</label>
+																	for="radio5" onclick="valorar('5');">&#9786</label> <input
+																	id="radio4" type="radio"> <label for="radio4"
+																	onclick="valorar('4');">&#9786</label> <input
+																	id="radio3" type="radio"> <label for="radio3"
+																	onclick="valorar('3');">&#9786</label> <input
+																	id="radio2" type="radio"> <label for="radio2"
+																	onclick="valorar('2');">&#9786</label> <input
+																	id="radio1" type="radio"> <label for="radio1"
+																	onclick="valorar('1');">&#9786</label>
 															</p>
 														</div>
 													</div>
@@ -139,8 +139,9 @@
 												</div>
 												<hr>
 												<div class="modal-footer">
-													<input type="submit" disabled="disabled" class="btn btn-danger"
-														id="enviarValoracion" value="Enviar">
+													<input type="submit" disabled="disabled"
+														class="btn btn-danger" id="enviarValoracion"
+														value="Enviar">
 												</div>
 											</form:form>
 										</div>
@@ -200,7 +201,7 @@
 		<span class="close" onclick="toggleCancelar()">&times;</span>
 		<h1>¿Seguro que desea Cancelar la reserva?</h1>
 		<h1 style="font-size: 10px">Cada vez que cancela una reserva
-			muere un cachorrito #savethepuppy</h1>
+			muere un cachorrito #savethepuppies</h1>
 		<br>
 		<div class="center_horizontal">
 			<input type="button" class="no_cancelar_reserva"

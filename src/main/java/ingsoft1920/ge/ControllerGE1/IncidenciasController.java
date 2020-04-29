@@ -128,13 +128,14 @@ public class IncidenciasController {
 		
 		
 		Map<String,List<String>> map= new HashMap<>();
-		map.put("incidencia_nombre", incidencias);
+		map.put("nombre", incidencias);
 		map.put("fechas", fechas);
 		map.put("horas", horas);
 		//System.out.println(reservas);
 		//System.out.println(fechas);
         //System.out.println((JsonObject) JsonParser.parseString(resp)); //both reservas & fechas
         
+		
 		return new ModelAndView("incidencias", "incidencias_realizadas", map);
 	}
 

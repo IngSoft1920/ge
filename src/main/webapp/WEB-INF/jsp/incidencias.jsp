@@ -63,6 +63,17 @@
 				grid-column-start: 1;
 				grid-column-end: 5;
 			}
+			.card {
+	    		color: #b8b070;
+			    background-color: #333;
+			    opacity: 90%;
+			    border: 2px solid rgba(0, 0, 0, 0.8);
+			    padding: 30px;
+			    width: 280px;
+			    margin-top:20px;
+			    margin-left: 50px;
+    			margin-right: 50px;
+	    }
 			
 </style>
 
@@ -151,12 +162,12 @@
 	
 	
 			<div class="row">
-				<c:forEach var="incidencias_realizadas" items="${incidencias_realizadas}">
+				<c:forEach var="incidencias" items="${incidencias_realizadas.nombre}" varStatus="loop">
 					<div class="col-xl-4 col-md-6 ml-xs-3">
 						<div class="card">
-							<b name=incidencia_nombre value=${incidencias_realizadas.incidencia_nombre}> Incidencia: ${incidencias_realizadas.incidencia_nombre}</b>
-				         	<p>Fecha de reserva: ${incidencias_realizadas.fecha}</p>
-				         	<p>Hora de reserva: ${incidencias_realizadas.hora}</p> 
+							<b name=incidencia_nombre value="${incidencias}"> Incidencia: ${incidencias}</b>
+				         	<p>Fecha de envío: ${incidencias_realizadas.fechas.get(loop.count-1)}</p>
+				         	<!-- Estaría bien poner la hora pero no lo he conseguido todavía -->
 				         </div>
 				    </div>
 				</c:forEach>

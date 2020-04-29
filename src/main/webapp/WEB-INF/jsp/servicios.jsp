@@ -257,7 +257,7 @@
       
 	
 	
-	<!--  Parte de reservas realizadas -->
+
 	
 	
         

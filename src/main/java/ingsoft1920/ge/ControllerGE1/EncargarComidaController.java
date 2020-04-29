@@ -3,9 +3,13 @@ package ingsoft1920.ge.ControllerGE1;
 
 import java.util.HashMap;
 
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.validation.Valid;
 
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -111,9 +116,13 @@ public class EncargarComidaController {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/nuevoServicio", "POST");
 		JsonObject json= new JsonObject();
+		 LocalDate hoy = LocalDate.now();
+	     LocalTime ahora = LocalTime.now();
+	     LocalDateTime fecha = LocalDateTime.of(hoy, ahora);
+		System.out.print("\n"+fecha+"\n");
 		json.addProperty("servicio_id",datosController.ALFONSO);
 		json.addProperty("reserva_id",VerReservasController.reservilla.getId_reserva());
-		json.addProperty("fecha_hora","2020-03-15T20:15:00");
+		json.addProperty("fecha_hora",fecha+"");
 		json.addProperty("num_clientes",0);
 		json.addProperty("tipoUbicacion",2);
 		json.addProperty("ubicacion","Mamma Mia");
@@ -136,6 +145,10 @@ public class EncargarComidaController {
 				p++;
 			}
 		}
+		/*for(int i=0;i<tamanoI;i++) {
+			System.out.print("\n"+pedidoitems[i]);
+		}*/
+		
 		int p2=0;
 		int tamanoP=0;
 		for(int i=0;i<comanda.getNum_platos().length;i++)
@@ -151,12 +164,23 @@ public class EncargarComidaController {
 				p2++;
 			}
 		}
+		/*for(int i=0;i<tamanoP;i++) {
+			System.out.print("\n"+pedidoplatos[i]);
+		}*/
+		JsonArray pedplatos= new JsonArray();
+		JsonArray peditems=new JsonArray();
+		for(int i=0;i<tamanoP;i++) {
+			pedplatos.add(pedidoplatos[i]);
+		}
+		for(int i=0;i<tamanoI;i++) {
+			peditems.add(pedidoitems[i]);
+		}
+		JsonArray hab_id= new JsonArray();
+		hab_id.add(habitaciones_id[0]);
 		
-		
-		json.addProperty("habitaciones_id",habitaciones_id.toString());
-		json.addProperty("platos", pedidoplatos.toString());
-		json.addProperty("items",pedidoitems.toString());
-		
+		json.add("habitaciones_id",hab_id);
+		json.add("platos", pedplatos);
+		json.add("items",peditems);
 		
 		client.setRequestBody(json.toString());
 		

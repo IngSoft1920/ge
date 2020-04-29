@@ -86,8 +86,8 @@ public class ServiciosController {
 		}
 		servicios_id=ides;
 		ReservarMesaController.horasDisponibles();
-		servicios_reservados=this.recibirServiciosReservados();
-		//fechas_reservadas=this.recibirServiciosReservados().get("fechas");
+		servicios_reservados=this.recibirServiciosReservados().get("reservas");
+		fechas_reservadas=this.recibirServiciosReservados().get("fechas");
 		
 		Map<String,List<String>> map= new HashMap<>();
 		map.put("servicios", serviciosList);
@@ -111,7 +111,7 @@ public class ServiciosController {
 		renewServicios = map.get("servicios");
 		renewRestaurantes = map.get("restaurantes");
 		renewServiciosReservados = map.get("servicos_reservados");
-		//renewFechasReservadas= map.get("fechas_reservadas");
+		renewFechasReservadas= map.get("fechas_reservadas");
 		renewHorasRestaurantes= map.get("horasRestaurantes");
 		renewHorasServicios= map.get("horasServicios");
 		//////
@@ -153,7 +153,7 @@ public class ServiciosController {
 
 
 	//recibir servicios reservados por un cliente
-	public static  List<String> recibirServiciosReservados() throws Exception {
+	public static  Map<String,List<String>> recibirServiciosReservados() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
 		
@@ -193,7 +193,7 @@ public class ServiciosController {
 		//System.out.println(fechas);
         //System.out.println((JsonObject) JsonParser.parseString(resp)); //both reservas & fechas
         
-		return reservas;
+		return map;
 	}
 
 
@@ -260,6 +260,7 @@ public class ServiciosController {
 		return new ModelAndView("servicios","muchas_cosas", map);
 
 	}
+	
 
 
 }

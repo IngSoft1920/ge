@@ -34,14 +34,14 @@ public class VerReservasController {
 	public  ModelAndView reservasEnviar() throws Exception {
 		
 		String idString = String.valueOf(datosController.ALFONSO);
-		idString = "4"; //hardcode para probar factura
+		//idString = "4"; //hardcode para probar factura
 		pathFactura = "http://piedrafita.ls.fi.upm.es:7001/download/f/" + idString;
 
 		receivedJSON.put("datosReserva", "Datos de su reserva");
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
 		JsonObject json= new JsonObject();
-		json.addProperty("id_cliente", 4);
+		json.addProperty("id_cliente", datosController.ALFONSO);
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();

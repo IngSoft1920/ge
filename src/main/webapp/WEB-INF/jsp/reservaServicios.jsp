@@ -142,13 +142,13 @@
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
 
-						<c:if test="${reserva.fecha_inicio=='2020-05-10'}">
+						<c:if test="${reserva.fecha_inicio=='2020-05-05'}">
 
 							<button id="checkin">Check in</button>
 							<br>
 
 							<form id="completar" action="/checkin/${reserva.id_reserva}" method="post">
-								<label>Observaciï¿½n</label> <input type="text" name="name"
+								<label>Observación</label> <input type="text" name="name"
 									placeholder="..." /></br> </br>
 									 <input type="submit" value="Siguiente">
 							</form>

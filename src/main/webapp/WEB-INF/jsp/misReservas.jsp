@@ -31,6 +31,8 @@
 			<div class="vertical-menu">
 				<a href="#" onclick="toggleReserva()">Mis Reservas</a> <a href="#"
 					onclick="toggleHistorial()">Historial</a> 
+					<a href="#"
+					onclick="togglePopUpModificar()">Cancelar Reserva</a> 
 			</div>
 
 
@@ -145,10 +147,9 @@
 					</c:forEach>
 				</div>
 			</div>
-		</div>
 
 		<div id="modificar">
-			<h1>ï¿½Quï¿½ reserva desea cancelar?</h1>
+			<h1>¿Qué reserva desea cancelar?</h1>
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 				<div class="modificar">
 					<p>Reserva en hotel ${reserva.hotel_id} del
@@ -160,7 +161,8 @@
 				</div>
 			</c:forEach>
 		</div>
-	</div>
+		</div>
+		</div>
 
 	<div class="popup2" id="noClick">
 		<div id="popup">
@@ -191,23 +193,10 @@
 	</div>
 
 	<div id="cancelar">
-		<span class="close" onclick="toggleCancelar()">&times;</span>
-		<h1>ï¿½Seguro que desea Cancelar la reserva?</h1>
-		<h1 style="font-size: 10px">Cada vez que cancela una reserva
-			muere un cachorrito #savethepuppies</h1>
-		<br>
-		<div class="center_horizontal">
-			<input type="button" class="no_cancelar_reserva"
-				onclick="toggleCancelar()" value="Atrï¿½s">
-		</div>
-		<br> <br> <br>
-		<form action="/cancelar" method="POST">
-			<input type="hidden" id="reserva_a_cancelar" name="reserva_id">
-			<div class="center_horizontal">
-				<input class="cancelar_reserva" type="submit" class="btn"
-					value="Cancelar reserva">
-			</div>
-		</form>
+		<span class="close" onclick="togglePopUpModificar()">&times;</span>
+		<h1>¿Está seguro de que quiere cancelar una reserva?</h1>
+		<button class="SI" onclick="toggleModificar()">SI</button>
+		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>
 
 	<script>	 

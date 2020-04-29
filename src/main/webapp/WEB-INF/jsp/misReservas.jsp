@@ -149,7 +149,7 @@
 			</div>
 
 		<div id="modificar">
-			<h1>�Qu� reserva desea cancelar?</h1>
+			<h1>&iquestQue reserva desea cancelar?</h1>
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 				<div class="modificar">
 					<p>Reserva en hotel ${reserva.hotel_id} del
@@ -194,7 +194,7 @@
 
 	<div id="cancelar">
 		<span class="close" onclick="togglePopUpModificar()">&times;</span>
-		<h1>�Est� seguro de que quiere cancelar una reserva?</h1>
+		<h1>&iquestEsta seguro de que quiere cancelar una reserva?</h1>
 		<button class="SI" onclick="toggleModificar()">SI</button>
 		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>

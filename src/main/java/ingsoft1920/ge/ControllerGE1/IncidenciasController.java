@@ -20,6 +20,7 @@ import com.google.gson.JsonObject;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
+import ingsoft1920.ge.Controller.datosController;
 import ingsoft1920.ge.ControllerGE1.VerReservasController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -53,13 +54,14 @@ public class IncidenciasController {
 		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
 
 		JsonObject json = new JsonObject();
+		json.addProperty("id_cliente", datosController.ALFONSO);
 		json.addProperty("asunto", Incidencia.getAsunto());
 		json.addProperty("descripcion", mensaje_enviado);
 		json.addProperty("nombre_hotel", VerReservasController.reservilla.getNombre_hotel());
 		//json.addProperty("nombre_hotel", "hotel_prueba");
 		json.addProperty("fecha", formatoFecha.format(fechaActual));
 		json.addProperty("hora", formatoHora.format(fechaActual));
-		json.addProperty("lugar", "H49");// habitacion de prueba, de momento solo se pueden enviar habitaciones
+		json.addProperty("lugar", VerReservasController.reservilla.getNum_hab());
 
 		client.setRequestBody(json.toString());
 
@@ -72,7 +74,7 @@ public class IncidenciasController {
 		return "procesarIncidencias";
 	}
 
-	// CODIGO DE PRUEBA ABAJO no borrar
+	// CODIGO DE PRUEBA ABAJO
 	// @RequestMapping("/procesarIncidencias")
 	// public String index(@ModelAttribute("Incidencia") IncidenciasBean Incidencia,
 	// HttpServletRequest request) {

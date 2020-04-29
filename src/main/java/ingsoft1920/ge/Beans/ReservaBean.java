@@ -7,11 +7,14 @@ public class ReservaBean {
 
 	private int reserva_id;
 	private int hotel_id;
-	private String tipo_hab;
+	private String hotel_nombre;
+	private int tipo_hab_id;
+	private String tipo_hab_nombre;
+	private int importe;
 	private String regimen;
-	private double importe;
 	private String fecha_entrada;
 	private String fecha_salida;
+	private int valoracion;
 
 	public int getReserva_id() {
 		return reserva_id;
@@ -29,14 +32,6 @@ public class ReservaBean {
 		this.hotel_id = hotel_id;
 	}
 
-	public String getTipo_hab() {
-		return tipo_hab;
-	}
-
-	public void setTipo_hab(String tipo_hab) {
-		this.tipo_hab = tipo_hab;
-	}
-
 	public String getRegimen() {
 		return regimen;
 	}
@@ -45,11 +40,11 @@ public class ReservaBean {
 		this.regimen = regimen;
 	}
 
-	public double getImporte() {
+	public int getImporte() {
 		return importe;
 	}
 
-	public void setImporte(double importe) {
+	public void setImporte(int importe) {
 		this.importe = importe;
 	}
 
@@ -68,12 +63,45 @@ public class ReservaBean {
 	public void setFecha_salida(String fecha_salida) {
 		this.fecha_salida = fecha_salida;
 	}
+	
+	public String getHotel_nombre() {
+		return hotel_nombre;
+	}
+
+	public void setHotel_nombre(String hotel_nombre) {
+		this.hotel_nombre = hotel_nombre;
+	}
+
+	public int getTipo_hab_id() {
+		return tipo_hab_id;
+	}
+
+	public void setTipo_hab_id(int tipo_hab_id) {
+		this.tipo_hab_id = tipo_hab_id;
+	}
+
+	public String getTipo_hab_nombre() {
+		return tipo_hab_nombre;
+	}
+
+	public void setTipo_hab_nombre(String tipo_hab_nombre) {
+		this.tipo_hab_nombre = tipo_hab_nombre;
+	}
+
+	public int getValoracion() {
+		return valoracion;
+	}
+
+	public void setValoracion(int valoracion) {
+		this.valoracion = valoracion;
+	}
 
 	@Override
 	public String toString() {
-		return "ReservaBean [reserva_id=" + reserva_id + ", hotel_id=" + hotel_id + ", tipo_hab=" + tipo_hab
+		return "ReservaBean [reserva_id=" + reserva_id + ", hotel_id=" + hotel_id + ", tipo_hab_id=" + tipo_hab_id
 				+ ", regimen=" + regimen + ", importe=" + importe + ", fecha_entrada=" + fecha_entrada
 				+ ", fecha_salida=" + fecha_salida + "]";
 	}
+
 
 }

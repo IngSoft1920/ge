@@ -34,6 +34,7 @@ public class ServiciosController {
 	public static int[] servicios_id;
 	public static List<String> servicios_reservados;
 	public static List<String> fechas_reservadas;
+	public static String palabra_restaurante;
 
 	
 	public static List<String> renewServicios;
@@ -72,11 +73,11 @@ public class ServiciosController {
 		
 		List<String> serviciosList= new LinkedList<>();
 		
-		
 		for(int i=0;i<nombres.size();i++) {
-			serviciosList.add(nombres.get(i).getAsString());	
+			serviciosList.add(nombres.get(i).getAsString());
 		}
 		servicios_nombre=serviciosList;
+		
 		//igual pero con los identificadores de los servicios
 		JsonArray ids= obj.get("servicios_disponibles_id").getAsJsonArray();
 		int[] ides= new int[ids.size()];
@@ -85,8 +86,8 @@ public class ServiciosController {
 		}
 		servicios_id=ides;
 		ReservarMesaController.horasDisponibles();
-		servicios_reservados=this.recibirServiciosReservados();
-		//fechas_reservadas=this.recibirServiciosReservados().get("fechas");
+		servicios_reservados=this.recibirServiciosReservados().get("reservas");
+		fechas_reservadas=this.recibirServiciosReservados().get("fechas");
 		
 		Map<String,List<String>> map= new HashMap<>();
 		map.put("servicios", serviciosList);
@@ -110,7 +111,7 @@ public class ServiciosController {
 		renewServicios = map.get("servicios");
 		renewRestaurantes = map.get("restaurantes");
 		renewServiciosReservados = map.get("servicos_reservados");
-		//renewFechasReservadas= map.get("fechas_reservadas");
+		renewFechasReservadas= map.get("fechas_reservadas");
 		renewHorasRestaurantes= map.get("horasRestaurantes");
 		renewHorasServicios= map.get("horasServicios");
 		//////
@@ -152,14 +153,14 @@ public class ServiciosController {
 
 
 	//recibir servicios reservados por un cliente
-	public static  List<String> recibirServiciosReservados() throws Exception {
+	public static  Map<String,List<String>> recibirServiciosReservados() throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosReservados", "POST");
 		
 		JsonObject json = new JsonObject();
 		 //coger id_usuario de la sesionBean
 		json.addProperty("id_estancia", VerReservasController.reservilla.getId_reserva());
-		json.addProperty("id_cliente", 1);
+		json.addProperty("id_cliente", datosController.ALFONSO);
 		
 		client.setRequestBody(json.toString());
 
@@ -192,7 +193,7 @@ public class ServiciosController {
 		//System.out.println(fechas);
         //System.out.println((JsonObject) JsonParser.parseString(resp)); //both reservas & fechas
         
-		return reservas;
+		return map;
 	}
 
 
@@ -203,15 +204,15 @@ public class ServiciosController {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 
 		//Para averiguar el identificador del servicio liamos todo esto
-		/*int id_servicio_dho=0;
+		int id_servicio_dho=0;
 		for (int i=0;i<servicios_id.length;i++) {
-			if(servicios_nombre[i].equals(servicios.getTipoServicio())) {
+			if(servicios_nombre.get(i).equals(servicos.getTipoServicio())) {
 				id_servicio_dho=servicios_id[i];
 			}
-		}*/
-		System.out.print("------------------>"+servicos.getTipoServicio());
+		}
+		System.out.print("------------------>"+"\n"+servicos.getTipoServicio()+"\n"+id_servicio_dho+"\n"+servicos.getFecha()+"\n"+servicos.getHoras());
 		JsonObject json = new JsonObject();
-		json.addProperty("id_servicio",1 );//se puede mandar el servicio en vez del id??
+		json.addProperty("id_servicio", id_servicio_dho);//se puede mandar el servicio en vez del id??
 		json.addProperty("fecha", servicos.getFecha());
 		json.addProperty("hora", servicos.getHoras());
 		json.addProperty("cliente_id", datosController.ALFONSO);
@@ -219,7 +220,7 @@ public class ServiciosController {
 		json.addProperty("num_personas", servicos.getNumPersonas());
 		json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 		json.addProperty("tipoServicio", 1);
-		json.addProperty("hora_salida", "18:50");
+		json.addProperty("hora_salida", (String)null);
 		//IMPORTANTE:falta el nombre del restaurante al reservar una mesa
 
 		client.setRequestBody(json.toString());
@@ -234,10 +235,10 @@ public class ServiciosController {
 
 		map.put("servicios", renewServicios);
 		map.put("restaurantes", renewRestaurantes);
-		map.put("servicos_reservados", recibirServiciosReservados());
+		map.put("servicos_reservados", recibirServiciosReservados().get("reservas"));
 		map.put("horasRestaurantes", renewHorasRestaurantes);
 		map.put("horasServicios",renewHorasServicios);
-		map.put("fechas_reservadas",renewFechasReservadas);
+		map.put("fechas_reservadas",recibirServiciosReservados().get("fechas"));
 
 
 		return new ModelAndView("servicios","muchas_cosas",map);
@@ -249,16 +250,17 @@ public class ServiciosController {
 
 		map.put("servicios", renewServicios);
 		map.put("restaurantes", renewRestaurantes);
-		map.put("servicos_reservados", renewServiciosReservados);
+		map.put("servicos_reservados", recibirServiciosReservados().get("reservas"));
 		map.put("horasRestaurantes", renewHorasRestaurantes);
 		map.put("horasServicios",renewHorasServicios);
-		map.put("fechas_reservadas",renewFechasReservadas);
+		map.put("fechas_reservadas",recibirServiciosReservados().get("fechas"));
 
 		
 		System.out.print(reserva_servicios.toString()); //reservar servicios bean
 		return new ModelAndView("servicios","muchas_cosas", map);
 
 	}
+	
 
 
 }

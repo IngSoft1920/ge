@@ -87,13 +87,19 @@ public class LoginController {
 			if (server.getResponseCode() == 200) {//Conectado con el servidor
 				response = server.getResponseBody();
 				objetoJson = new Gson().fromJson(response, JsonObject.class);
+				
+				if (objetoJson.get("id") == null) {
+					model.addAttribute("loginBean", loginBean);
+					model.addAttribute("mensajeError", objetoJson.get("error").getAsString());
+					return "login";
+				}
 				int id = objetoJson.get("id").getAsInt();
 				
 				datosController.setALFONSO(id);
 				
 				if (id == -1) { //Usuario no registrado. Mandamos de vuelta a la página de login
 					model.addAttribute("loginBean", loginBean);
-					model.addAttribute("mensajeError","El usuario no existe");
+					model.addAttribute("mensajeError","No se ha podido iniciar sesión");
 					resultado = "login";
 				} else { //Usuario existente y login exitoso
 					loginBean.setId(id);
@@ -108,7 +114,7 @@ public class LoginController {
 			} 
 		} else { //Datos mal introducidos al hacer el login 
 			model.addAttribute("loginBean", loginBean);
-			model.addAttribute("mensajeError", "Datos incorrectos");
+			model.addAttribute("mensajeError", "En el campo del usuario se debe introducir un correo electrónico válido");
 
 			resultado = "login";
 		}

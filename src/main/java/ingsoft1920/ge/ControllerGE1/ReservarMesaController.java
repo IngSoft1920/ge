@@ -101,9 +101,10 @@ public class ReservarMesaController {
 
 		map.put("servicios", ServiciosController.renewServicios);
 		map.put("restaurantes", ServiciosController.renewRestaurantes);
-		map.put("servicos_reservados", ServiciosController.renewServiciosReservados);
+		map.put("servicos_reservados", ServiciosController.recibirServiciosReservados().get("reservas"));
 		map.put("horasRestaurantes", ServiciosController.renewHorasRestaurantes);
 		map.put("horasServicios",ServiciosController.renewHorasServicios);
+		map.put("fechas_reservadas",ServiciosController.recibirServiciosReservados().get("fechas"));
 		
 		
 		
@@ -150,6 +151,7 @@ public class ReservarMesaController {
 			map.put("servicios", ServiciosController.renewServicios);
 			map.put("restaurantes", ServiciosController.renewRestaurantes);
 			map.put("servicos_reservados", ServiciosController.recibirServiciosReservados().get("reservas"));
+			map.put("fechas_reservadas",ServiciosController.recibirServiciosReservados().get("fechas"));
 			map.put("horasRestaurantes", ServiciosController.renewHorasRestaurantes);
 			map.put("horasServicios",ServiciosController.renewHorasServicios);
 			

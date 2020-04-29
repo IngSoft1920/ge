@@ -238,7 +238,7 @@ public class ServiciosController {
 		map.put("servicos_reservados", recibirServiciosReservados().get("reservas"));
 		map.put("horasRestaurantes", renewHorasRestaurantes);
 		map.put("horasServicios",renewHorasServicios);
-		map.put("fechas_reservadas",renewFechasReservadas);
+		map.put("fechas_reservadas",recibirServiciosReservados().get("fechas"));
 
 
 		return new ModelAndView("servicios","muchas_cosas",map);
@@ -250,10 +250,10 @@ public class ServiciosController {
 
 		map.put("servicios", renewServicios);
 		map.put("restaurantes", renewRestaurantes);
-		map.put("servicos_reservados", renewServiciosReservados);
+		map.put("servicos_reservados", recibirServiciosReservados().get("reservas"));
 		map.put("horasRestaurantes", renewHorasRestaurantes);
 		map.put("horasServicios",renewHorasServicios);
-		map.put("fechas_reservadas",renewFechasReservadas);
+		map.put("fechas_reservadas",recibirServiciosReservados().get("fechas"));
 
 		
 		System.out.print(reserva_servicios.toString()); //reservar servicios bean

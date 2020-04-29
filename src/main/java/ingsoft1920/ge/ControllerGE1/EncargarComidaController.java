@@ -123,9 +123,9 @@ public class EncargarComidaController {
 		json.addProperty("servicio_id",datosController.ALFONSO);
 		json.addProperty("reserva_id",VerReservasController.reservilla.getId_reserva());
 		json.addProperty("fecha_hora",fecha+"");
-		json.addProperty("num_clientes",0);
+		json.addProperty("num_clientes",1);
 		json.addProperty("tipoUbicacion",2);
-		json.addProperty("ubicacion","Mamma Mia");
+		json.addProperty("ubicacion",VerReservasController.reservilla.getNum_hab()+"");
 		
 		int[] habitaciones_id= new int[4]; 
 		habitaciones_id[0]=VerReservasController.reservilla.getNum_hab();
@@ -176,7 +176,7 @@ public class EncargarComidaController {
 			peditems.add(pedidoitems[i]);
 		}
 		JsonArray hab_id= new JsonArray();
-		hab_id.add(habitaciones_id[0]);
+		//hab_id.add(habitaciones_id[0]);
 		
 		json.add("habitaciones_id",hab_id);
 		json.add("platos", pedplatos);

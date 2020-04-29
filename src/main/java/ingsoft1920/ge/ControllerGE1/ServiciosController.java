@@ -235,7 +235,7 @@ public class ServiciosController {
 
 		map.put("servicios", renewServicios);
 		map.put("restaurantes", renewRestaurantes);
-		map.put("servicos_reservados", recibirServiciosReservados());
+		map.put("servicos_reservados", recibirServiciosReservados().get("reservas"));
 		map.put("horasRestaurantes", renewHorasRestaurantes);
 		map.put("horasServicios",renewHorasServicios);
 		map.put("fechas_reservadas",renewFechasReservadas);

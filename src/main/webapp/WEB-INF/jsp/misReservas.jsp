@@ -62,14 +62,14 @@
 								target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-							<span>Habitaci�n: ${reserva.tipo_hab_nombre}</span>
+							<span>Habitaci&oacuten: ${reserva.tipo_hab_nombre}</span>
 
 							<div class="container" id="botonValoracion">
 								<br>
 								<button type="button" class="btn btn-primary"
 									data-toggle="modal" data-target="#valoracion"
 									id="escribirValoracion">
-									<i class="fa fa-pencils"></i> Valoraci�n
+									<i class="fa fa-pencils"></i> Valoraci&oacuten
 								</button>
 							</div>
 

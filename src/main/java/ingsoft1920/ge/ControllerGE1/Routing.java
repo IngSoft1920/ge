@@ -58,6 +58,8 @@ public class Routing {
 		return "servicios";
 	}
 	
+	
+	/*
 	@GetMapping("/incidencias")
 	public String incidencias(Model model) {
 		
@@ -66,7 +68,7 @@ public class Routing {
 
 		return "incidencias";
 	}
-	
+	*/
 
 	
 //	@GetMapping("/recibirPlatos")

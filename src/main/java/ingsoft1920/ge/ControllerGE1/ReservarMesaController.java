@@ -125,7 +125,7 @@ public class ReservarMesaController {
 		}
 			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 			JsonObject json = new JsonObject();
-			json.addProperty("id_servicio",id_servicio_dho );
+			json.addProperty("id_servicio",id_servicio_dho);
 			json.addProperty("fecha", mesa.getFecha());
 			json.addProperty("hora", mesa.getHora());
 			json.addProperty("cliente_id", datosController.ALFONSO);
@@ -156,4 +156,15 @@ public class ReservarMesaController {
 			
 			return new ModelAndView("servicios","muchas_cosas",map);
 		}
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+		
 }

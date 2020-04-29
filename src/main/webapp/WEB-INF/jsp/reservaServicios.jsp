@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="ingsoft1920.ge.Controller.*"%>
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 <%@ page import="ingsoft1920.ge.ControllerGE1.*"%>

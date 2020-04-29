@@ -20,6 +20,7 @@ import com.google.gson.JsonObject;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.BeansGE1.IncidenciasBean;
 import ingsoft1920.ge.BeansGE1.VerReservasBean;
+import ingsoft1920.ge.Controller.datosController;
 import ingsoft1920.ge.ControllerGE1.VerReservasController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
@@ -53,6 +54,7 @@ public class IncidenciasController {
 		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7001/informarIncidencia", "POST");
 
 		JsonObject json = new JsonObject();
+		json.addProperty("id_cliente", datosController.ALFONSO);
 		json.addProperty("asunto", Incidencia.getAsunto());
 		json.addProperty("descripcion", mensaje_enviado);
 		json.addProperty("nombre_hotel", VerReservasController.reservilla.getNombre_hotel());

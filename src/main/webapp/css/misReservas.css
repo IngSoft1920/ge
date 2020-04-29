@@ -159,6 +159,10 @@ a:active {
 	display:inline;
 }
 
+.clasificar{
+	dir:rtl;
+}
+
 .botonClasificacion {	
 	background-color: #b8b078;
 	color: white;
@@ -391,6 +395,7 @@ textarea {
 }
 
 .form-group{
+	background-color: #b8b078;
 	color: black;
 	font: italic bold 100px Georgia, Serif;
 	font-size: 20px;	

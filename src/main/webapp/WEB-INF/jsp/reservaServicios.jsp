@@ -126,7 +126,7 @@
 	<div class="row">
 		<c:forEach var="reserva" items="${reservas}">
 			<c:if
-				test="${reserva.estado=='reserva' || reserva.estado=='check out'}">
+				test="${reserva.estado=='reserva'}">
 				<div class="col-xl-4 col-md-6 col-sm-12">
 					<div class="card">
 						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre
@@ -142,7 +142,7 @@
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
 
-						<c:if test="${reserva.fecha_inicio=='2020-05-05'}">
+						<c:if test="${reserva.fecha_inicio=='2020-04-30'}">
 
 							<button id="checkin">Check in</button>
 							<br>

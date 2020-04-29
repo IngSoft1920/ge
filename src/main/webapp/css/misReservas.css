@@ -180,13 +180,9 @@ input[type="radio"] {
 	display: none;
 }
 
-label {
-	color: black;
-}
-
 .clasificacion {
-	direction: rtl;
-	unicode-bidi: bidi-override;
+  direction: rtl;
+  unicode-bidi: bidi-override;
 }
 
 .clasificacion2 {
@@ -269,11 +265,11 @@ label {
 }
 
 label:hover, label:hover ~ label {
-	color: red;
+	color: gold;
 }
 
 input[type="radio"]:checked ~ label {
-	color: red;
+	color: gold;
 }
 
 

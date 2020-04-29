@@ -151,8 +151,16 @@ a:active {
 	margin-top:-10px;
 }
 
+.alinear{
+	align:left;
+}
+
 .mismaLinea {
 	display:inline;
+}
+
+.clasificar{
+	dir:rtl;
 }
 
 .botonClasificacion {	
@@ -178,6 +186,11 @@ label {
 
 .clasificacion {
 	direction: rtl;
+	unicode-bidi: bidi-override;
+}
+
+.clasificacion2 {
+	direction: ltr;
 	unicode-bidi: bidi-override;
 }
 
@@ -381,11 +394,8 @@ textarea {
 	color: white;
 }
 
-#puntuar_uno_cinco input[type="radio"]:checked ~ label {
-	color: white;
-}
-
 .form-group{
+	background-color: #b8b078;
 	color: black;
 	font: italic bold 100px Georgia, Serif;
 	font-size: 20px;	

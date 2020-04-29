@@ -33,7 +33,7 @@
 	<div class="row">
 
 
-		<div class="col" id="col_primer">	
+		<div class="col-md" id="col_primer">	
 		<h3>Pago en efectivo:</h3>
 		<br><br><br>
 		<form:form action="/efectivo" method="GET" >	
@@ -43,14 +43,14 @@
 		</div>
 		
 		
-		<div class="col" id="col_segundo">
+		<div class="col-md" id="col_segundo">
 		<h3>Pago con tarjeta:</h3>
 		<br><br>
    
 		
 		<form:form action="tarjeta" method="GET">
 		  <div class="form-row">
-		    <div class="col">
+		    <div class="col-md">
 		      <input type="text" class="form-control" placeholder="Nombre">
 		    </div>
 		    <div class="col">
@@ -59,7 +59,7 @@
 		  </div>
 		   <br>
 		  <div class="form-row">
-		  	<div class="col">
+		  	<div class="col-md">
                   <input type="text" class="form-control" placeholder="Numero tarjeta" />
            	</div>
            	
@@ -82,7 +82,7 @@
               
               <div class="col-md-3 col-sm-3 col-xs-3" id="tarjetaFoto">
               <br>
-                  <img src="/imagenes/tarjetaCredito.jpg" class="img-rounded" />
+                  <img src="/imagenes/tarjetaCredito.jpg" class="img-rounded d-none d-lg-block" />
               </div>
               
 		  </div>

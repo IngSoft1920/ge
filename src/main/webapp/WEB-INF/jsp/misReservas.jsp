@@ -5,10 +5,10 @@
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 
-<html>
+<html lang="en">
 <head>
 <title>Mis Reservas</title>
-<meta charset="utf-8">
+<meta http-equiv=â€Content-Typeâ€ content=â€text/html; charset=ISO-8859-1â€³ />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/css/misReservas.css"
 	media="screen" />
@@ -46,8 +46,8 @@
 									target="_blank" class="factura">Ver factura</a>
 							</p>
 							<p class="habitacion">
-								Habitación: ${reserva.tipo_hab_nombre} <span class="tarifa">Tarifa:${reserva.importe}</span>
-								<span class="regimen">Régimen:${reserva.regimen}</span>
+								Habitaci&oacuten: ${reserva.tipo_hab_nombre} <span class="tarifa">Tarifa:${reserva.importe}</span>
+								<span class="regimen">R&eacutegimen:${reserva.regimen}</span>
 							</p>
 							<p class="cambiarReserva"
 								onclick="<c:set var="output" scope="session" value="${reserva.reserva_id}"/>; toggle()"
@@ -68,19 +68,21 @@
 								target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-							<span>Habitación: ${reserva.tipo_hab_nombre}</span>
+							<span>Habitaci&oacuten: ${reserva.tipo_hab_nombre}</span>
+							<!--  
 							<div class="clasificacion">
 								<form method="POST" action="estrellas" name="estrellas">
 
 									<input id="radio1" type="radio" name="estrellas" value="5">
-									<label for="radio1">&#9733</label> <input id="radio2"
-										type="radio" name="estrellas" value="4"> <label
-										for="radio2">&#9733</label> <input id="radio3" type="radio"
-										name="estrellas" value="3"> <label for="radio3">&#9733</label>
+									<label for="radio1">&#9733</label> 
+									<input id="radio2" type="radio" name="estrellas" value="4"> 
+									<label for="radio2">&#9733</label> 
+									<input id="radio3" type="radio" name="estrellas" value="3"> 
+									<label for="radio3">&#9733</label>
 									<input id="radio4" type="radio" name="estrellas" value="2">
-									<label for="radio4">&#9733</label> <input id="radio5"
-										type="radio" name="estrellas" value="1"> <label
-										for="radio5">&#9733</label>
+									<label for="radio4">&#9733</label>
+									<input id="radio5" type="radio" name="estrellas" value="1"> 
+									<label for="radio5">&#9733</label>
 
 									<button type="submit" class="botonClasificacion">Enviar</button>
 									<br>
@@ -88,14 +90,13 @@
 								</form>
 
 							</div>
-
+							-->
 
 							<div class="container" id="botonValoracion">
 								<br>
-								<button type="button" class="btn btn-primary"
-									data-toggle="modal" data-target="#valoracion"
-									id="escribirValoracion">
-									<i class="fa fa-pencils"></i>Valoracion
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#valoracion" id="escribirValoracion">
+								<i class="fa fa-pencils"></i>
+								Valoraci&oacuten
 								</button>
 							</div>
 
@@ -106,7 +107,7 @@
 									<div class="modal-content">
 
 										<div class="modal-header">
-											<h4 class="modal-title">Valoracion</h4>
+											<h4 class="modal-title">Valoraci&oacuten</h4>
 
 											<button type="button" class="close" data-dismiss="modal"
 												id="close">&times;</button>
@@ -114,28 +115,38 @@
 										<div class="modal-body" id="body_del_modal">
 											<hr>
 
-											<form:form method="POST" action="funciona">
+											<div class="form-group">
+											<form:form method="POST" action="valorar">
 												<input type="hidden" name="hotel_id"
 													value="${reserva.hotel_id}">
 
+
+												
+									
 												<div class="form-group" id="puntuar_uno_cinco">
-
-
-													Puntuanos: <br> <input id="radio1" type="radio"
-														name="nota" value="5"> <label for="radio1">&#9786</label>
-													<input id="radio2" type="radio" name="nota" value="4">
-													<label for="radio2">&#9786</label> <input id="radio3"
-														type="radio" name="nota" value="3"> <label
-														for="radio3">&#9786</label> <input id="radio4"
-														type="radio" name="nota" value="2"> <label
-														for="radio4">&#9786</label> <input id="radio5"
-														type="radio" name="nota" value="1"><label
-														for="radio5">&#9786</label>
-
+												
+													<input id="valorvaloracion" type="hidden" name="nota" value="0">
+													
+													
+													Puntuanos: 
+													<br><div class="clasificacion">
+													<input id="radio5" type="radio" > 
+													<label for="radio5"  onclick="valorar(this,'1');">&#9786</label>
+													<input id="radio4" type="radio" >
+													<label for="radio4" onclick="valorar(this,'2');">&#9786</label> 
+													<input id="radio3" type="radio" > 
+													<label for="radio3" onclick="valorar(this,'3');">&#9786</label> 
+													<input id="radio2" type="radio" > 
+													<label for="radio2" onclick="valorar(this,'4');">&#9786</label> 
+													<input id="radio1" type="radio" >
+													<label for="radio1" onclick="valorar(this,'5');">&#9786</label>
 
 												</div>
+												</div>
+												</div>
+									
 
-												<div class="form-group">
+												<div class="form-group"> <br>
 													<label for="exampleFormControlInput1"
 														class="col-sm-2 col-form-label">Cabecera:</label>
 													<div class="col-sm-10">
@@ -159,6 +170,7 @@
 														 id="enviarValoracion" value="Enviar">
 												</div>
 											</form:form>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -170,12 +182,14 @@
 			</div>
 		
 		<div id="modificar">
-		<h1>¿Que reserva desea cancelar?</h1>
+		<h1>&#191Qu&eacute reserva desea cancelar?</h1>
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 			<div class="modificar">
 				<p>Reserva en hotel ${reserva.hotel_id} del ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-				<form action="/cancelar/${reserva.reserva_id}" method="POST"><input class="cambiarReserva" type="submit" class="btn"
+				<form action="/cancelar/${reserva.reserva_id}" method="POST">
+				<input class="cambiarReserva" type="submit" class="btn"
 								value="Cancelar reserva">
+				</form>
 			</div>
 			</c:forEach>
 		</div>
@@ -200,7 +214,7 @@
 				</div>
 
 				<div>
-					<label for="tipoComida">Seleccione el tipo pensión deseada:
+					<label for="tipoComida">Seleccione el tipo pensiÃ¯Â¿Â½n deseada:
 					</label> <select id="dropdown">
 						<option value="Completa">Completa</option>
 						<option value="Media">Media</option>
@@ -216,12 +230,19 @@
 
 	<div id="cancelar">
 		<span class="close" onclick="togglePopUpModificar()">&times;</span>
-		<h1>¿Está seguro de que quiere cancelar una reserva?</h1>
+		<h1>&#191Est&aacutes seguro de que quiere cancelar una reserva?</h1>
 		<button class="SI" onclick="toggleModificar()">SI</button>
 		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>
 
 	<script>	 
+	
+		function valorar(elem, v) {
+			elem.style.color = 'gold';
+			var valor = document.getElementById('valorvaloracion');
+			valor.value = v;
+		}
+		
 		function toggle(){
 			var blur = document.getElementById('blur');
 			blur.classList.toggle('active');
@@ -258,7 +279,7 @@
 			var cancelar = document.getElementById('cancelar');
 			var modificar = document.getElementById('modificar');
 			if(modificar.classList.contains('active')==false){
-			cancelar.classList.toggle('active');
+				cancelar.classList.toggle('active');
 			}
 		}
 		

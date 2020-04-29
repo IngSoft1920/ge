@@ -29,7 +29,7 @@ import ingsoft1920.ge.HttpClient.HttpClient;
 public class VerReservasController {
 	public static JSONObject receivedJSON = new JSONObject();
 	public static Reserva reservilla;
-	public static String idString;
+	public static String pathFactura;
 
 	@Autowired
 	SesionBean sesion;
@@ -38,8 +38,9 @@ public class VerReservasController {
 	@GetMapping("/recibirReservas")
 	public  ModelAndView reservasEnviar() throws Exception {
 		
-		idString = String.valueOf(datosController.ALFONSO);
-		idString = "1"; //hardcode para probar factura
+		String idString = String.valueOf(datosController.ALFONSO);
+		idString = "4"; //hardcode para probar factura
+		pathFactura = "http://piedrafita.ls.fi.upm.es:7001/download/f/" + idString;
 
 		receivedJSON.put("datosReserva", "Datos de su reserva");
 

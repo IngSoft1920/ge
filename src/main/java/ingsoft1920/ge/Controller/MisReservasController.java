@@ -194,18 +194,34 @@ public class MisReservasController {
 	
 	@PostMapping("/cancelar/{id}")
 	public String cancelarReserva(@PathVariable("id") int id) throws Exception {
-		
-	HttpClient serverReservas = new HttpClient( HttpClient.urlCM + "reserva/eliminar/" + id, "POST");
-	int codigoRespuesta = serverReservas.getResponseCode();
-	if(codigoRespuesta==200)	
-	{
-		serverReservas.getResponseBody();
+
+		HttpClient serverReservas = new HttpClient( HttpClient.urlCM + "reserva/eliminar/" + id, "POST");
+		int codigoRespuesta = serverReservas.getResponseCode();
+		if(codigoRespuesta==200)	
+		{
+			serverReservas.getResponseBody();
+		}
+		logger.info("Valoración recibida correctamente." + id);
+
+
+
+		return "redirect:/misReservas";
 	}
-	logger.info("Valoración recibida correctamente." + id);
+	
+	@PostMapping("/cancelar")
+	public String cancelarReserva2(@Valid @ModelAttribute("reserva_id") String reserva_id) throws Exception {
+
+		HttpClient serverReservas = new HttpClient( HttpClient.urlCM + "reserva/eliminar/" + reserva_id, "POST");
+		int codigoRespuesta = serverReservas.getResponseCode();
+		if(codigoRespuesta==200)	
+		{
+			//serverReservas.getResponseBody();
+		}
+		logger.info("Cancelando la reserva " + reserva_id);
 
 
 
-	return "redirect:/misReservas";
+		return "redirect:/misReservas";
 	}
 
 

@@ -32,7 +32,7 @@
 				<a href="#" onclick="toggleReserva()">Mis Reservas</a> <a href="#"
 					onclick="toggleHistorial()">Historial</a> 
 					<a href="#"
-					onclick="togglePopUpModificar()">Cancelar Reserva</a> 
+					onclick="togglePopUpModificar()">Cambiar Reserva</a> 
 			</div>
 
 
@@ -149,7 +149,7 @@
 			</div>
 
 		<div id="modificar">
-			<h1>¿Qué reserva desea cancelar?</h1>
+			<h1>ï¿½Quï¿½ reserva desea cancelar?</h1>
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 				<div class="modificar">
 					<p>Reserva en hotel ${reserva.hotel_id} del
@@ -194,7 +194,7 @@
 
 	<div id="cancelar">
 		<span class="close" onclick="togglePopUpModificar()">&times;</span>
-		<h1>¿Está seguro de que quiere cancelar una reserva?</h1>
+		<h1>ï¿½Estï¿½ seguro de que quiere cancelar una reserva?</h1>
 		<button class="SI" onclick="toggleModificar()">SI</button>
 		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>

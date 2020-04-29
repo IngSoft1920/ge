@@ -5,52 +5,102 @@
 
 <html>
 <head>
+
 <title>Signup</title>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" type="text/css" href="/css/signup.css" media="screen" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<style>
+body {
+	background-color:#b8b078
+}
+</style>
+
 </head>
-<body
-	style="text-align: center; background-color: #A6A3A2; font-size: 2vw;">
-	<div>
-		<br>
-	</div>
-	<form method="POST" action="${signup.method}"
-		modelAttribute="signupBean">
-		<fieldset>
-		<br>
-			<legend>REGISTRO</legend>
-			<br>
-			<p style="font-size: 30px; color: red; font-family: 'Courier New'">${mensajeError}</p>
-			<br> <label>Nombre</label> <input type="text" name="nombre"
-				path="nombre" /> <br> <br> <label>Apellidos</label> <input
-				type="text" name="apellidos" path="apellidos" /> <br> <br>
-			<label>DNI (sin letra)</label> <input type="text" name="DNI"
-				path="DNI" /> <br> <br> <label>Email</label> <input
-				type="email" name="email" path="email" /> <br> <br> <label>Telefono</label>
-			<input type="text" name="telefono" path="telefono" /> <br> <br>
-			<label>Nacionalidad</label> <input type="text" name="nacionalidad"
-				path="nacionalidad" /> <br> <br> <label for="password">Password</label>
-			<input type="password" id="password" name="password" path="password" />
-			<button class="btn btn-primary" type="button"
-				onclick="mostrarContrasena('password')">Mostrar</button>
-			<br> <br> <label for="verificacioPassword">Repite
-				Password</label> <input type="password" id="verificacionPassword"
-				name="verificacionPassword" path="verificacionPassword" />
-			<button class="btn btn-primary" type="button"
-				onclick="mostrarContrasena('verificacionPassword')">Mostrar</button>
-			<br> <br> <input type="submit" value="Registrar">
-		</fieldset>
+
+
+
+<body class="body box">
+	
+	<form method="POST" action="${signup.method}" modelAttribute="signupBean">
+	
+			
+			<div class="cabeza">
+			<div class ="text sombraText">
+			<div>
+			<legend>SIGN UP</legend>
+			</div>
+			</div>
+			</div>
+			
+			<div class ="text sombraText">
+			<div class="boxline">
+			<div>
+			<input type="text" name="nombre" path="nombre" placeholder="Introduce tu nombre..."/> 
+			</div>
+		
+			<div>
+			<input type="text" name="apellidos" path="apellidos" placeholder="Introduce tu apellido..."/>
+			</div>
+			
+
+			<div>
+			<input type="text" name="DNI"path="DNI" placeholder="Introduce tu DNI sin letra..."/> 
+			</div>
+			
+			
+			<div>
+			<input type="email" name="email" path="email" placeholder="Introduce tu correo electrónico.."/>
+			</div>
+			
+			
+			<div>
+			<input type="text" name="telefono" path="telefono" placeholder="Introduce un telefono..."/> 
+			</div>
+			
+			
+			<div> 
+			<input type="text" name="nacionalidad" path="nacionalidad" placeholder="Introduce tu nacionalidad..."/>
+			</div>
+			
+			
+			<div>
+			<input type="password" id="password" name="password" path="password" placeholder="Introduce tu contraseña..."/>
+			<button class="btn btn-primary boton" type="button" onclick="mostrarContrasena('password')">Mostrar</button>
+			</div>
+			
+			
+			<div>
+			<input type="password" id="verificacionPassword" name="verificacionPassword" path="verificacionPassword" placeholder="Repite tu contraseña..."/>
+			<button class="btn btn-primary boton" type="button" onclick="mostrarContrasena('verificacionPassword')">Mostrar</button>
+			</div>
+			
+			
+			<input type="submit" value="Registrar">
+			</div>
+			</div>
+
 	</form>
+	</div>
+	
 
 	<script>
-		function mostrarContrasena(x){
+		function mostrarContrasena(x) {
 			var tipo = document.getElementById(x);
-			if(tipo.type == "password"){
+			if (tipo.type == "password") {
 				tipo.type = "text";
-			}else{
+			} else {
 				tipo.type = "password";
 			}
 		}
-	  </script>
+	</script>
 
 </body>
 </html>

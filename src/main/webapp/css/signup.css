@@ -1,0 +1,125 @@
+
+* {
+	box-sizing: border-box;
+	font-size: font-size:1vw; 
+}
+
+[class*="col-"] {
+  width: 100%;
+}
+
+.box{
+	position: relative;
+	left:0.1%;
+	top: 30%;
+	margin-bottom:25%;
+}
+
+.boxline {
+	outline-style: double;
+	margin:5%;
+	padding: 2%;
+  	border: 1px solid black;
+  	outline-width: 3px;
+}
+
+.sombraText {
+  text-shadow: 2px 2px 5px black;
+}
+
+input[type=text], select {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: width 0.4s ease-in-out;
+}
+input[type=text]:focus {
+	width: 100%;
+}
+
+input[type=email], select {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid black;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=email]:focus {
+	width: 100%;
+}
+
+input[type=password], select {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid black;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=password]:focus {
+	width: 100%;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: blue;
+  border-width: 3px;
+  border-color: white;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.boton{
+  background-color: blue;
+  border-width: 3px;
+  border-color: white;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+	
+}
+
+.text{
+	display: inline;
+	font-family: courier;
+	color: #0a0e27;
+ 	text-align: left;
+  	font: italic bold 100px Georgia, Serif;
+  	font-size: 1em;
+	margin: 2%;
+}
+
+.cabeza{
+	left: 7%;
+	top: 3%;
+	position: relative;
+	color: #0a0e27;
+	margin: 1%;
+  	font: italic bold 100px Georgia, Serif;
+	font-size: 2em; 
+}
+
+
+
+
+
+
+

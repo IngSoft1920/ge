@@ -22,40 +22,59 @@
 
 
 <body> 
-	<div class="blanco"></div>
-	<div id="ocultar">
-
+	
+	<div class="container_fluid">
+	<div class="container_fluid" id="blanco"></div>
+	
+<div id="ocultar">
+	
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>*¡DESCUENTO!</strong> Registrate y obten un 5% de descuento con nosotros
+  </div>
+		
+<div class="container_fluid" id="container_arriba">
 	<h3>Escoga una de las siguientes opciones para confirmar su
 		reserva</h3>
+		<br>
 
 	<div class="row">
-		<div class="column">
+		<div class="col-md" id="column">
 			<h2>Introduzca su correo:</h2>
 			<form:form method="POST" action="reservaAnonima" autocomplete="off">
 				<label for="email">Email:</label> 
 				<input type="text" id="email"
 					name="email">
 				<input type="submit" value="Confirmar" >
-			</form:form>
+			</form:form>		
+		<br>
 		</div>
-		<div class="column2"></div>
-		<div class="column">
-			<h2>Registrese en la web</h2>
+		
+		<div class="column2 d-none d-lg-block"></div>
+		<div class="col-md" id="column">
+			<h2>Registrese en la web:</h2>
 			<form:form action="reservaSignup" method="GET" >
-				<input type="submit" value="Sign Up" >
+				<div>
+				<input type="submit" value="Sign Up">
+				<label>*DESCUENTO </label>
+				</div>
 			</form:form>
+			<br>
 		</div>
-		<div class="column3"></div>
-		<div class="column">
-			<h2>Inicie sesión</h2>
+		<div class="column3 d-none d-lg-block"></div>
+		<div class="col-md" id="column">
+			<h2>Inicie sesion:</h2>
 			<form:form action="reservaLogin" method="GET" >
 				<input type="submit" value="Log In" >
 			</form:form>
 				
 		</div>
+		<br>
+		
+	</div>
 	</div>
 	
-	<div class="espacio2"> </div>
+	<div class="container_fluid" id="espacio2"> </div>
 		</div>
 	
 		
@@ -143,12 +162,12 @@
 		<i class="fa fa-shopping-cart"></i>		
 		<form:form action="reservaConfirm" method="POST" >
 
-				<input type="submit" value="Confirmar reserva para usuario logeado" >
+				<input type="submit" value="Confirmar reserva" >
 		</form:form>
 		</div>
 		
 	<br> <br>
-
+</div>
 </body>
 <script>
 
@@ -161,3 +180,4 @@ window.onload = function() {
 
 </script>
 </html>
+

@@ -5,6 +5,8 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page import= "ingsoft1920.ge.Controller.datosController" %>
+	
 <!DOCTYPE html>
 <html lang="en">
 <header>
@@ -80,20 +82,19 @@ label {
 		<h3>Rellene los datos que faltan</h3>
 	</div>
 
-
+	 <%
+	int id= datosController.ALFONSO;
+   %>
 	<div>
 
 		<label>Tarjeta de crédito <input type="text" id="tarjeta"
 			name="tarjeta" /></label> <br> <br> <br>
 
-		 <c:forEach var="reserva" items="${reservas}">
-
 			<!-- endpoint de prueba a reserva numero 1 -->
-			<form action="/checkin/${reserva.id_reserva}" method="POST">
+			<form action="/checkin/<%=id%>" method="POST">
 				<input type="submit" value="Siguiente">
 			</form>
 
-	<</c:forEach>
 	</div>
 
 

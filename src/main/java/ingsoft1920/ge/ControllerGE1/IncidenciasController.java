@@ -79,12 +79,12 @@ public class IncidenciasController {
 		if (respCode == 200) {
 			client.getResponseBody();
 		}
-
+		model.addAttribute("sesionBean", sesion);
 		return "procesarIncidencias";
 	}
 	
 	@GetMapping("/incidencias")
-	public static ModelAndView recibirIncidencias(Model model) throws Exception{
+	public ModelAndView recibirIncidencias(Model model) throws Exception{
 		
 		
 		IncidenciasBean Incidencia = new IncidenciasBean(); //crear bean de incidencias
@@ -135,7 +135,7 @@ public class IncidenciasController {
 		//System.out.println(fechas);
         //System.out.println((JsonObject) JsonParser.parseString(resp)); //both reservas & fechas
         
-		
+		model.addAttribute("sesionBean", sesion);
 		return new ModelAndView("incidencias", "incidencias_realizadas", map);
 	}
 

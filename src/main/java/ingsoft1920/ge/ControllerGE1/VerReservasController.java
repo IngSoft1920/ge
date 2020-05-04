@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,17 +32,17 @@ public class VerReservasController {
 
 
 	@GetMapping("/recibirReservas")
-	public  ModelAndView reservasEnviar() throws Exception {
+	public  ModelAndView reservasEnviar(Model model) throws Exception {
 		
 		String idString = String.valueOf(datosController.ALFONSO);
-		idString = "4"; //hardcode para probar factura
+		//idString = "4"; //hardcode para probar factura
 		pathFactura = "http://piedrafita.ls.fi.upm.es:7001/download/f/" + idString;
 
 		receivedJSON.put("datosReserva", "Datos de su reserva");
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
 		JsonObject json= new JsonObject();
-		json.addProperty("id_cliente", 4);
+		json.addProperty("id_cliente", datosController.ALFONSO);
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
@@ -78,13 +79,13 @@ public class VerReservasController {
 					estado.get(i).getAsString()));
 		}
 
-
+		model.addAttribute("sesionBean", sesion);
 		return new ModelAndView("reservaServicios","reservas", reservas);
 
 	}
 
 	@PostMapping("/gestionar/{id}")
-	public String enviarComanda(@PathVariable("id") int id) throws Exception {
+	public String enviarComanda(@PathVariable("id") int id,Model model) throws Exception {
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
 		JsonObject json= new JsonObject();
@@ -131,14 +132,16 @@ public class VerReservasController {
 		Reserva res= new Reserva(numeros_reservas.get(cont).getAsInt(),numeros_habitaciones.get(cont).getAsInt(),inicio_fechas.get(cont).getAsString(),final_fechas.get(cont).getAsString(),nombre_hoteles.get(cont).getAsString(),estado.get(cont).getAsString());
 		reservilla=res;
 		System.out.print(res.toString());
+		model.addAttribute("sesionBean", sesion);
 		return "index";
 
 	}
 
 	//rellenar datos que faltan y enviar( el envio a falta de que dho pueda recibir nuevos datos)
 	@PostMapping("/completarCheckin")
-	public String completar() {
-
+	public String completar(Model model) {
+		
+		model.addAttribute("sesionBean", sesion);
 		return "completarCheckin";
 	}
 

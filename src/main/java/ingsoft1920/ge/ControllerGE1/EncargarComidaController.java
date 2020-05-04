@@ -73,7 +73,7 @@ public class EncargarComidaController {
 	
 
 	@GetMapping("/recibirPlatos")
-	public static ModelAndView recibirItems() throws Exception {
+	public ModelAndView recibirItems(Model model) throws Exception {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/itemsRest", "POST");
 		JsonObject json= new JsonObject();
 		json.addProperty("rest_nom","Mamma Mia");
@@ -102,6 +102,7 @@ public class EncargarComidaController {
 		map.put("platos", platos);
 		
 		//return m;
+		model.addAttribute("sesionBean", sesion);
 		return new ModelAndView("encargarComidaAlfonso","todo", map);
 	}
 	/*@GetMapping("/enviarComanda")
@@ -112,7 +113,7 @@ public class EncargarComidaController {
 	}*/
 	
 	@PostMapping("/enviarComanda")
-	public String enviarPedidoFNB(@Valid@ModelAttribute("encargarComidaBean") EncargarComidaBean comanda) throws Exception {
+	public String enviarPedidoFNB(@Valid@ModelAttribute("encargarComidaBean") EncargarComidaBean comanda,Model model) throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7003/nuevoServicio", "POST");
 		JsonObject json= new JsonObject();
@@ -191,6 +192,7 @@ public class EncargarComidaController {
 			  resp=client.getResponseBody();
 			  }
 		System.out.println("CODIGO RESP " + respCode);
+		model.addAttribute("sesionBean", sesion);
 		return"index";
 	}
 	

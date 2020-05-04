@@ -31,6 +31,8 @@
 			<div class="vertical-menu">
 				<a href="#" onclick="toggleReserva()">Mis Reservas</a> <a href="#"
 					onclick="toggleHistorial()">Historial</a> 
+					<a href="#"
+					onclick="togglePopUpModificar()">Cambiar Reserva</a> 
 			</div>
 
 
@@ -49,13 +51,6 @@
 									class="tarifa">Tarifa:${reserva.importe}</span> <span
 									class="regimen">R&eacutegimen:${reserva.regimen}</span>
 							</p>
-							<p class="cambiarReserva"
-								onclick="<c:set var="output" scope="session" value="${reserva.reserva_id}"/>; toggle(${reserva.reserva_id})"
-								class="btn">Cambiar reserva</p>
-
-							<!--<form action="/cancelar/${reserva.reserva_id}" method="POST"><input class="cambiarReserva" type="submit" class="btn"
-								value="Cancelar reserva">
-							</form>-->
 						</div>
 					</c:forEach>
 				</div>
@@ -69,14 +64,14 @@
 								target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-							<span>Habitación: ${reserva.tipo_hab_nombre}</span>
+							<span>Habitaci&oacuten: ${reserva.tipo_hab_nombre}</span>
 
 							<div class="container" id="botonValoracion">
 								<br>
 								<button type="button" class="btn btn-primary"
 									data-toggle="modal" data-target="#valoracion"
 									id="escribirValoracion">
-									<i class="fa fa-pencils"></i> Valoración
+									<i class="fa fa-pencils"></i> Valoraci&oacuten
 								</button>
 							</div>
 
@@ -86,7 +81,7 @@
 									<div class="modal-content">
 
 										<div class="modal-header">
-											<h4 class="modal-title">Valoración</h4>
+											<h4 class="modal-title">Valoraci&oacuten</h4>
 
 											<button type="button" class="close" data-dismiss="modal"
 												id="close">&times;</button>
@@ -152,10 +147,9 @@
 					</c:forEach>
 				</div>
 			</div>
-		</div>
 
 		<div id="modificar">
-			<h1>¿Qué reserva desea cancelar?</h1>
+			<h1>&iquestQue reserva desea cancelar?</h1>
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 				<div class="modificar">
 					<p>Reserva en hotel ${reserva.hotel_id} del
@@ -167,7 +161,8 @@
 				</div>
 			</c:forEach>
 		</div>
-	</div>
+		</div>
+		</div>
 
 	<div class="popup2" id="noClick">
 		<div id="popup">
@@ -183,7 +178,7 @@
 				</div>
 
 				<div>
-					<label for="tipoComida">Seleccione el tipo pensión deseada:
+					<label for="tipoComida">Seleccione el tipo pensiï¿½n deseada:
 					</label> <select id="dropdown">
 						<option value="Completa">Completa</option>
 						<option value="Media">Media</option>
@@ -198,23 +193,10 @@
 	</div>
 
 	<div id="cancelar">
-		<span class="close" onclick="toggleCancelar()">&times;</span>
-		<h1>¿Seguro que desea Cancelar la reserva?</h1>
-		<h1 style="font-size: 10px">Cada vez que cancela una reserva
-			muere un cachorrito #savethepuppies</h1>
-		<br>
-		<div class="center_horizontal">
-			<input type="button" class="no_cancelar_reserva"
-				onclick="toggleCancelar()" value="Atrás">
-		</div>
-		<br> <br> <br>
-		<form action="/cancelar" method="POST">
-			<input type="hidden" id="reserva_a_cancelar" name="reserva_id">
-			<div class="center_horizontal">
-				<input class="cancelar_reserva" type="submit" class="btn"
-					value="Cancelar reserva">
-			</div>
-		</form>
+		<span class="close" onclick="togglePopUpModificar()">&times;</span>
+		<h1>&iquestEsta seguro de que quiere cancelar una reserva?</h1>
+		<button class="SI" onclick="toggleModificar()">SI</button>
+		<button class="NO" onclick="togglePopUpModificar()">NO</button>
 	</div>
 
 	<script>	 

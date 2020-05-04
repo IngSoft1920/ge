@@ -159,12 +159,14 @@
 		
 
 		<br>
+		<div id="ocultar2">
 		<div class="container" id="container_boton">
 		<i class="fa fa-shopping-cart"></i>		
 		<form:form action="reservaConfirm" method="POST" >
 
 				<input type="submit" value="Confirmar reserva" >
 		</form:form>
+		</div>
 		</div>
 		
 	<br> <br>
@@ -177,6 +179,8 @@ window.onload = function() {
 	if(${sesionBean.usuarioID} != -1)
 		var ocultar = document.getElementById('ocultar');
 		ocultar.classList.toggle('active');
+		var ocultar2 = document.getElementById('ocultar2');
+		ocultar2.classList.toggle('active');
 	};
 
 </script>

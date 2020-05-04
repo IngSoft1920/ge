@@ -44,12 +44,14 @@ public class ServiciosController {
 	public static List<String> renewHorasRestaurantes;
 	public static List<String> renewHorasServicios;
 
+	@Autowired
+	SesionBean sesion;
 	
 	final static Logger logger = LogManager.getLogger(ServiciosController.class.getName());
 	//recibir servicios
   
 	@GetMapping("/recibirServicios")
-	public  ModelAndView recibirServicios() throws Exception {
+	public  ModelAndView recibirServicios(Model model) throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/serviciosDisponibles", "POST");
 
@@ -115,7 +117,7 @@ public class ServiciosController {
 		renewHorasRestaurantes= map.get("horasRestaurantes");
 		renewHorasServicios= map.get("horasServicios");
 		//////
-		
+		model.addAttribute("sesionBean", sesion);
 		return new ModelAndView("servicios","muchas_cosas", map);
 	}
 
@@ -199,7 +201,7 @@ public class ServiciosController {
 
 	//reservar servicios
 	@GetMapping("/enviarServicios")
-	public ModelAndView reservarServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos) throws Exception{
+	public ModelAndView reservarServicios(@Valid @ModelAttribute("serviciosBean") ServiciosBean servicos,Model model) throws Exception{
 
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 
@@ -240,12 +242,12 @@ public class ServiciosController {
 		map.put("horasServicios",renewHorasServicios);
 		map.put("fechas_reservadas",recibirServiciosReservados().get("fechas"));
 
-
+		model.addAttribute("sesionBean", sesion);
 		return new ModelAndView("servicios","muchas_cosas",map);
 	}
 	
 	
-	public ModelAndView pruebaReservaBean(@Valid@ModelAttribute("ServiciosBean") ServiciosBean reserva_servicios) throws Exception{
+	public ModelAndView pruebaReservaBean(@Valid@ModelAttribute("ServiciosBean") ServiciosBean reserva_servicios,Model model) throws Exception{
 		Map<String,List<String>> map= new HashMap<>();
 
 		map.put("servicios", renewServicios);
@@ -255,7 +257,7 @@ public class ServiciosController {
 		map.put("horasServicios",renewHorasServicios);
 		map.put("fechas_reservadas",recibirServiciosReservados().get("fechas"));
 
-		
+		model.addAttribute("sesionBean", sesion);
 		System.out.print(reserva_servicios.toString()); //reservar servicios bean
 		return new ModelAndView("servicios","muchas_cosas", map);
 

@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +32,7 @@ public class CheckInController {
 
 	// enviar check-in
 	@PostMapping("/checkin/{id}")
-	public ModelAndView checkinEnviar(@PathVariable("id") int id) throws Exception {
+	public ModelAndView checkinEnviar(@PathVariable("id") int id,Model model) throws Exception {
 		id_reserva = id;
 
 		/*// HttpClient client= new
@@ -78,11 +79,12 @@ public class CheckInController {
 		if (responseCode == 200) {
 			response = clien.getResponseBody();
 		}
+		model.addAttribute("sesionBean", sesion);
 		return new ModelAndView("index");
 	}
 
 	@PostMapping("/confirmarCheckin")
-	public String enviarDatosCheckIn(@Valid @ModelAttribute("checkInBean") CheckInBean checkin) throws Exception {
+	public String enviarDatosCheckIn(@Valid @ModelAttribute("checkInBean") CheckInBean checkin,Model model) throws Exception {
 		System.out.print(checkin.toString());
 		HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7001/enviardatosCambiadosmasCheckIn",
 				"POST");
@@ -110,6 +112,7 @@ public class CheckInController {
 		if (respCode == 200) {
 			resp = client.getResponseBody();
 		}
+		model.addAttribute("sesionBean", sesion);
 		return "index";
 
 	}

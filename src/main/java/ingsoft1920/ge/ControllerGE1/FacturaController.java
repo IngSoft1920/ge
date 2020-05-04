@@ -9,7 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.google.gson.JsonObject;
+
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.Controller.datosController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 
 
@@ -47,6 +51,22 @@ public class FacturaController {
 
 	public static void fillJson(String value) {
 		receivedJSON.put("facturaPdf", value);
+	}
+	@GetMapping("/factura")
+	public String factura() throws Exception {
+		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/download/f/"+datosController.ALFONSO, "GET");
+		/*JsonObject json = new JsonObject();
+		json.addProperty("reserva_id",VerReservasController.reservilla.getId_reserva());
+		client.setRequestBody(json.toString());*/
+		int respCode = client.getResponseCode();
+		System.out.println(respCode+"\n");
+		String res="";
+		if(respCode==200)
+		{
+			 res=client.getResponseBody();
+		}
+		return res;
+		
 	}
 
 

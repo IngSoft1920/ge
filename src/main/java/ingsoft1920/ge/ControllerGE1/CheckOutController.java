@@ -47,7 +47,7 @@ public class CheckOutController {
 	
 	//enviar check-out
 	@PostMapping("/checkout/{id}")
-	public  ModelAndView checkoutEnviar(@PathVariable("id") int id ) throws Exception {
+	public  ModelAndView checkoutEnviar(@PathVariable("id") int id ,Model model) throws Exception {
 		
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/confirmarCheckout", "POST");
 		JsonObject json = new JsonObject();
@@ -100,7 +100,7 @@ public class CheckOutController {
 			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),estado.get(i).getAsString()));
 		}
 		
-		
+		model.addAttribute("sesionBean", sesion);
 		return new ModelAndView("reservaServicios","reservas", reservas);
 	}
 	

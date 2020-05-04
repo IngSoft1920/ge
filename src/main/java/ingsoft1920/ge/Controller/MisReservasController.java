@@ -1,15 +1,13 @@
 package ingsoft1920.ge.Controller;
 
 import java.lang.reflect.Type;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,24 +17,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
-import Objetillos.Reserva;
-import Objetillos.ReservaGE2;
-import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.MisReservasBean;
 import ingsoft1920.ge.Beans.MostarReservasBean;
-import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.ReservaBean;
-import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MisReservasController {
@@ -53,10 +41,12 @@ public class MisReservasController {
 
 	List<ReservaBean> reservas;
 	
+	//List<ReservaGE2> reservas = new LinkedList<>();
+	
 	MostarReservasBean mostarReservasBean = new MostarReservasBean();
 
 	@GetMapping("/misReservas")
-	public ModelAndView mostrarReservasGet() throws Exception {
+	public String mostrarReservasGet(Model model) throws Exception {
 
 		/*
 		 * [ { reserva_id : 21, hotel_id : 1 , tipo_hab : “normal”, regimen :
@@ -65,6 +55,33 @@ public class MisReservasController {
 		 * regimen : “media_pension”, importe : “750”, fecha_entrada : “2020-07-10”,
 		 * fecha_salida : “2020-07-15”, } ]
 		 */
+		/*
+		[
+		 {
+		  reserva_id : 21,
+		  hotel_id : 1,
+		  hotel_nombre: "New Japón",
+		  tipo_hab_id: 1,
+		  tipo_hab_nombre : “normal”,
+		  regimen : “no_aplica”,
+		  importe : “300”,
+		  fecha_entrada : “2020-02-10”,
+		  fecha_salida : “2020-02-15”,
+		  valoracion: 4.2
+		 },
+		 {
+		  reserva_id : 10,
+		  hotel_id : 14 ,
+		  hotel_nombre: "Viejo Japan",
+		  tipo_hab_id: 2
+		  tipo_hab_nombre : “premium”,
+		  regimen : “media_pension”,
+		  importe : “750”,
+		  fecha_entrada : “2020-07-10”,
+		  fecha_salida : “2020-07-15”,
+		  valoracion: -1.0
+		 }
+		]*/
 
 		/*JsonArray arrayGrande = new JsonArray();
 
@@ -93,39 +110,35 @@ public class MisReservasController {
 
 		HttpClient serverReservas = new HttpClient( HttpClient.urlCM +"reserva/cliente/" + sesionBean.getUsuarioID(), "GET");
 
-
-
-		JsonObject json = new JsonObject();
-		json.addProperty("id_usuario", sesionBean.getUsuarioID()); // coger id_usuario de SesionBean 
-
-
-		String response ="";
+		String response = "";
 		if (serverReservas.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverReservas.getResponseBody(); 
 		}
-
-		JsonArray obj = (JsonArray) JsonParser.parseString(response);	
 		
-		List<ReservaGE2> reservas= new LinkedList<>();
-		for (int i=0;i<obj.size();i++) {
-			reservas.add(new ReservaGE2(obj.get(i).getAsJsonObject().get("reserva_id").getAsInt(), 
-					obj.get(i).getAsJsonObject().get("hotel_id").getAsInt(),
-					obj.get(i).getAsJsonObject().get("tipo_hab_id").getAsInt(),
-					obj.get(i).getAsJsonObject().get("importe").getAsInt(),
-					obj.get(i).getAsJsonObject().get("regimen").getAsString(),
-					obj.get(i).getAsJsonObject().get("fecha_entrada").getAsString(),
-					obj.get(i).getAsJsonObject().get("fecha_salida").getAsString()));
-		}
-
+		Type tipo = new TypeToken<List<ReservaBean>>(){}.getType();
+		reservas = new Gson().fromJson(response, tipo);
 		
+		String now = java.time.LocalDate.now().toString();
+		List<ReservaBean> reservas_pendientes = 
+				reservas.stream().filter
+				(reserva -> reserva.getFecha_salida().compareTo(now) >= 0)
+				.collect(Collectors.toList());
+		
+		List<ReservaBean> reservas_finalizadas = 
+				reservas.stream().filter
+				(reserva -> reserva.getFecha_salida().compareTo(now) < 0)
+				.collect(Collectors.toList());
+		
+		model.addAttribute("reservas_pendientes", reservas_pendientes);
+		model.addAttribute("reservas_finalizadas", reservas_finalizadas);
+		
+		model.addAttribute("sesionBean", sesionBean);
 
-		return new ModelAndView("misReservas","Listareserva", reservas);
-
+		return "misReservas";
 	}
 	
 	@PostMapping("/misReservas")
 	public String mostarReservasPost(
-
 			@Valid @ModelAttribute("mostarReservasBean") MostarReservasBean mostarReservasBean,
 			Model model) throws Exception {
 		
@@ -138,27 +151,77 @@ public class MisReservasController {
 		
 		return "misReservas";
 	}
+	
 	@PostMapping("/valorar")
-	public String valorarPost(@Valid @ModelAttribute("valoracionId") String valoracionId, Model model) {
-
-		logger.info("Valoración recibida correctamente." + valoracionId);
+	public String funciona(@Valid @ModelAttribute("hotel_id") int hotel_id, 
+			@Valid @ModelAttribute("cabecera") String cabecera,
+			@Valid @ModelAttribute("comentario") String comentario, 
+			@Valid @ModelAttribute("nota") String nota,
+			Model model) throws Exception {
+		/*
+		{
+		  "cliente_id" :1,
+		  "hotel_id" : 2,
+		  "cabecera" : “Muy bueno”,
+		  "cuerpo" : “Maravilloso…”,
+		  "nota" : 5
+		}
+		*/
+		
+		JsonObject val = new JsonObject();
+		val.addProperty("cliente_id", sesionBean.getUsuarioID());
+		val.addProperty("hotel_id", hotel_id);
+		val.addProperty("comentario", comentario);
+		val.addProperty("cabecera", cabecera);
+		val.addProperty("nota", Integer.parseInt(nota));
+		//String response = "";
+		HttpClient server = new HttpClient( HttpClient.urlCM + "valoracion", "POST");
+		server.setRequestBody(val.toString());
+		if (server.getResponseCode() == 200) {
+			//response = server.getResponseBody();
+		}		
+		
+		return "redirect:misReservas";
+	}
+	
+	@PostMapping("/estrellas")
+	public String funciona(@Valid @ModelAttribute("estrellas") int estrellas, 
+			Model model) throws Exception {
+		System.out.print(estrellas);
+		
 		return "redirect:misReservas";
 	}
 	
 	@PostMapping("/cancelar/{id}")
 	public String cancelarReserva(@PathVariable("id") int id) throws Exception {
-		
-	HttpClient serverReservas = new HttpClient( HttpClient.urlCM + "reserva/eliminar/" + id, "POST");
-	int codigoRespuesta = serverReservas.getResponseCode();
-	if(codigoRespuesta==200)	
-	{
-		serverReservas.getResponseBody();
+
+		HttpClient serverReservas = new HttpClient( HttpClient.urlCM + "reserva/eliminar/" + id, "POST");
+		int codigoRespuesta = serverReservas.getResponseCode();
+		if(codigoRespuesta==200)	
+		{
+			serverReservas.getResponseBody();
+		}
+		logger.info("Valoración recibida correctamente." + id);
+
+
+
+		return "redirect:/misReservas";
 	}
-	logger.info("Valoración recibida correctamente." + id);
+	
+	@PostMapping("/cancelar")
+	public String cancelarReserva2(@Valid @ModelAttribute("reserva_id") String reserva_id) throws Exception {
+
+		HttpClient serverReservas = new HttpClient( HttpClient.urlCM + "reserva/eliminar/" + reserva_id, "POST");
+		int codigoRespuesta = serverReservas.getResponseCode();
+		if(codigoRespuesta==200)	
+		{
+			//serverReservas.getResponseBody();
+		}
+		logger.info("Cancelando la reserva " + reserva_id);
 
 
 
-	return "redirect:/misReservas";
+		return "redirect:/misReservas";
 	}
 
 

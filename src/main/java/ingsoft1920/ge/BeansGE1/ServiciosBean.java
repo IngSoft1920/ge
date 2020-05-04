@@ -37,7 +37,7 @@ public class ServiciosBean {
 	public void setNumPersonas(int numPersonas) {
 		this.numPersonas = numPersonas;
 	}
-	public ServiciosBean(String tipoServicio, String fecha, String horas, int numPersonas) {
+	public ServiciosBean(String tipoServicio, String fecha, String hora, int numPersonas) {
 		super();
 		this.tipoServicio = tipoServicio;
 		this.fecha = fecha;

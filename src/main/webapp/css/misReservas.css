@@ -409,6 +409,7 @@ figure img{
 	color:black;
 }
 
+
 #puntuar_uno_cinco{
 	color:black;
 }
@@ -538,4 +539,11 @@ hr{
 
 .textarea {
 	width:100%;
+}
+
+
+.tripadvisor {
+	background-color:white;
+	margin-top:100px;
+	border-radius:6px;
 }

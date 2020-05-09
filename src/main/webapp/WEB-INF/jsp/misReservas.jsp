@@ -160,8 +160,17 @@
 											</form:form>
 										</div>
 									</div>
+									<div class="tripadvisor">
+										<img style ="width:250px;height:100px;margin-left:25%"src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tripadvisor_Logo_circle-green_vertical-lockup_registered_RGB.svg/1200px-Tripadvisor_Logo_circle-green_vertical-lockup_registered_RGB.svg.png">
+										<h5 style="color:green">Slangus64</h5>
+										<h2 style="color:green">Fin de semana de relax</h2>
+										<p style="color:green">Fin de semana con celebración de cumpleaños, el hotel excelente y la atención del personal muy atenta y correcta. Todo perfecto, el buffet muy completo y de calidad. Repetiría sin duda la experiencia
+									</div>
+									
 								</div>
+								
 							</div>
+							
 						</div>
 					</c:forEach>
 				</div>

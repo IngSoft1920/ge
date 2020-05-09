@@ -117,7 +117,13 @@ input[type=button], input[type=submit], input[type=reset] {
 	font-size: 2em; 
 }
 
+a{
+  color: black; 
+}
 
+.reserva{
+  margin: 1%;
+}
 
 
 

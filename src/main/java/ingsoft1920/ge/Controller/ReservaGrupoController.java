@@ -61,10 +61,15 @@ public class ReservaGrupoController {
 			 
 			List<HotelGE2> hoteles= new LinkedList<>(); 
 			for (int i=0;i<obj.size();i++) {
-				hoteles.add(new HotelGE2(obj.get(i).getAsJsonObject().get("id").getAsInt(),  
-						obj.get(i).getAsJsonObject().get("nombre").getAsString(), 
+				hoteles.add(new HotelGE2(obj.get(i).getAsJsonObject().get("id").getAsInt(),
+						obj.get(i).getAsJsonObject().get("nombre").getAsString(),
+						obj.get(i).getAsJsonObject().get("descripcion").getAsString(), 
+						obj.get(i).getAsJsonObject().get("estrellas").getAsInt(), 
+						obj.get(i).getAsJsonObject().get("continente").getAsString(), 
+						obj.get(i).getAsJsonObject().get("pais").getAsString(),
 						obj.get(i).getAsJsonObject().get("ciudad").getAsString()));
-			} 
+				} 
+			
 			return new ModelAndView("reservaGrupo","ListaHotel", hoteles); 
 	}
 

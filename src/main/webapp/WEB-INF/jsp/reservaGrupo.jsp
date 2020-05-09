@@ -69,25 +69,36 @@
 			<input type="text" name="nombreGrupo" path="nombreGrupo" placeholder="Introduce el nombre del grupo..."/> 
 			</div>
 			
-			<div>
-			<input type="text" id="tipoGrupo" name="tipoGrupo" path="tipoGrupo" placeholder="Introduce el tipo de grupo..."/>
-            </div>
+
+			<select id="tipoGrupo">
+  			<option value="empresarial">Empresarial</option>
+  			<option value="boda">Boda o bautizo</option>
+			<option value="equipo deportivo">Equipo deportivo</option>
+			<option value="fin de curso">Viaje de fin de curso</option> 
+			<option value="otro">Otro</option>  
+			</select>
             
             <div>
-            <input type="email" id="email" name="email" path="email" placeholder="Introduce el correo electronico del representante..."/>
+            <input type="text" id="email" name="email" path="email" placeholder="Introduce el correo electronico del representante..."/>
             </div>
 			
 			<div>
 			<select name="hotel">
-								<option value="">Hotel</option>
-								<c:forEach items="${ListaHotel}" var="hotel">
-									<option value="${hotel.nombre}">${hotel.nombre} en ${hotel.ciudad}</option>
-								</c:forEach>
-							</select>
+				<option value="">Hotel</option>
+					<c:forEach items="${ListaHotel}" var="hotel">
+						<option value="${hotel.nombre}">${hotel.nombre} en ${hotel.ciudad} con ${hotel.estrellas} estrellas</option>
+					</c:forEach>
+			</select>
 			</div>
+
+			<div>
+				<label for="numeroHabitaciones"> Reserva hasta 30 habitaciones</label>
+				<input type="number" id="numeroHabitaciones" name="numeroHabitaciones" path="numeroHabitaciones" min="5" max="20"/>
+			</div>
+
 			
-			<div class="container" id="container_boton">
-			<input type="submit" value="Enviar reserva de grupo">
+			<div class="container reserva" id="container_boton">
+			<a href="/metodopago"> Enviar reserva de grupo </a>
 			</div>
 			</div>
 			</div>

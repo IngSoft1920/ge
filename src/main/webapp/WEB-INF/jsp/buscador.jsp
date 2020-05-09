@@ -148,9 +148,9 @@
 
 			<div class="col-md">
 				<div class="container" id="garantizado">
-					<div class="spinner-grow text-light"></div>
-					
+					<div>
 					<a href="/reservaGrupo" id="grupo">Reservas en grupo</a>
+					</div>
 				</div>
 			</div>
 			<br> <br> <br> <br> <br> <br> <br>

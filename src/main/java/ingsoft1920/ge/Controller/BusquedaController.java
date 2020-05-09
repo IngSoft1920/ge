@@ -27,6 +27,8 @@ import ingsoft1920.ge.Beans.BusquedaBean;
 import ingsoft1920.ge.Beans.HabitacionBean;
 import ingsoft1920.ge.Beans.HotelBean;
 import ingsoft1920.ge.Beans.HotelesDisponiblesBean;
+import ingsoft1920.ge.Beans.LoginBean;
+import ingsoft1920.ge.Beans.ReservaGrupoBean;
 import ingsoft1920.ge.Beans.ReservaHotel;
 import ingsoft1920.ge.Beans.SesionBean;
 import ingsoft1920.ge.HttpClient.HttpClient;
@@ -333,5 +335,5 @@ public class BusquedaController {
 		
 		return "redirect:serviciosExtras";
 		
-	}	
+	}
 }

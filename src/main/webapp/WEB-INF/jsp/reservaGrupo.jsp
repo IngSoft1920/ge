@@ -76,7 +76,16 @@
             <div>
             <input type="email" id="email" name="email" path="email" placeholder="Introduce el correo electronico del representante..."/>
             </div>
-		
+			
+			<div>
+			<select name="hotel">
+								<option value="">Hotel</option>
+								<c:forEach items="${ListaHotel}" var="hotel">
+									<option value="${hotel.nombre}">${hotel.nombre} en ${hotel.ciudad}</option>
+								</c:forEach>
+							</select>
+			</div>
+			
 			<div class="container" id="container_boton">
 			<input type="submit" value="Enviar reserva de grupo">
 			</div>

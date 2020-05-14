@@ -131,7 +131,7 @@ public class ReservarMesaController {
 			json.addProperty("fecha", mesa.getFecha());
 			json.addProperty("hora", mesa.getHora());
 			json.addProperty("cliente_id", datosController.ALFONSO);
-			json.addProperty("lugar", "Mamma Mia");
+			json.addProperty("lugar", "Restaurante");
 			json.addProperty("num_personas", 1);
 			json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 			json.addProperty("tipoServicio", 2);

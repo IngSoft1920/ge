@@ -206,10 +206,12 @@ public class ServiciosController {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 
 		//Para averiguar el identificador del servicio liamos todo esto
+		int nombre_id=0;
 		int id_servicio_dho=0;
 		for (int i=0;i<servicios_id.length;i++) {
 			if(servicios_nombre.get(i).equals(servicos.getTipoServicio())) {
 				id_servicio_dho=servicios_id[i];
+				nombre_id=i;
 			}
 		}
 		System.out.print("------------------>"+"\n"+servicos.getTipoServicio()+"\n"+id_servicio_dho+"\n"+servicos.getFecha()+"\n"+servicos.getHoras());
@@ -218,7 +220,7 @@ public class ServiciosController {
 		json.addProperty("fecha", servicos.getFecha());
 		json.addProperty("hora", servicos.getHoras());
 		json.addProperty("cliente_id", datosController.ALFONSO);
-		json.addProperty("lugar", "donde sea");
+		json.addProperty("lugar", servicios_nombre.get(nombre_id));
 		json.addProperty("num_personas", servicos.getNumPersonas());
 		json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 		json.addProperty("tipoServicio", 1);

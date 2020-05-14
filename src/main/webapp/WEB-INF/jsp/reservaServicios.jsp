@@ -68,7 +68,15 @@
 </div>
 </head>
 
-
+<%
+	Date fechaActual = new Date();
+DateFormat formatoFecha = new SimpleDateFormat("dd");
+int dia = Integer.parseInt(formatoFecha.format(fechaActual)) - 2;
+DateFormat fecha = new SimpleDateFormat("yyyy-MM-" + dia);
+String fecha_dos_dias_menos = fecha.format(fechaActual);
+request.setAttribute("fecha_js", fecha_dos_dias_menos);
+//System.out.println("FECHA " + fecha_dos_dias_menos);
+%>
 
 <div class="container">
 	<div class="row pl-3">
@@ -142,7 +150,8 @@
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
 						<c:set var="today" value="<%=new java.util.Date()%>" />
-						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}" var="fecha_limite"/>
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
+							var="fecha_limite" />
 						</p>
 
 						</p>

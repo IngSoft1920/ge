@@ -164,8 +164,14 @@
 										<img style ="width:250px;height:100px;margin-left:25%"src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tripadvisor_Logo_circle-green_vertical-lockup_registered_RGB.svg/1200px-Tripadvisor_Logo_circle-green_vertical-lockup_registered_RGB.svg.png">
 										<h5 style="color:green">Slangus64</h5>
 										<h2 style="color:green">Fin de semana de relax</h2>
-										<p style="color:green">Fin de semana con celebración de cumpleaños, el hotel excelente y la atención del personal muy atenta y correcta. Todo perfecto, el buffet muy completo y de calidad. Repetiría sin duda la experiencia
-									</div>
+										<p style="color:green">Fin de semana con celebración de cumpleaños, el hotel excelente y la atención del personal muy atenta y correcta. Todo perfecto, el buffet muy completo y de calidad. Repetiría sin duda la experiencia<p>
+								   <!-- <h5 style="color:green">Bartek</h5>
+										<h2 style="color:green">Buen Hotel para ir de Negocios</h2>
+										<p style="color:green">Tiene todos los servicios que una ejecutivo necesita para trabajar, hacer deporte y descansar. las vistas son excelentes y la localización es magnífica<p>
+										<h5 style="color:green">Ocelote</h5>
+										<h2 style="color:green">Fantastic staff communications!</h2>
+										<p style="color:green">Covid 19 seriously impacted on our much hoped for week break at this new hotel. Contacted staff numerous times and replies were always courteous and friendly even in times when I was rather persistent with them.Nothing was too much bother for the staff at this hotel. So sad to miss out now, but when this world crisis is over, we'll be booking our stay again<p>
+									--></div>
 									
 								</div>
 								

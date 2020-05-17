@@ -544,6 +544,15 @@ hr{
 
 .tripadvisor {
 	background-color:white;
-	margin-top:100px;
+	margin-top:10px;
 	border-radius:6px;
+  	float: right;
+}
+
+.modal-content {
+	float:left;
+}
+
+.container-valoracion {
+	overflow:hidden;
 }

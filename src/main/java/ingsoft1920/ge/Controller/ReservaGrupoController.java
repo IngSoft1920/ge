@@ -33,8 +33,10 @@ import ingsoft1920.ge.Beans.MisReservasBean;
 import ingsoft1920.ge.Beans.MostarReservasBean;
 import ingsoft1920.ge.Beans.MostrarServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.ReservaBean;
+import ingsoft1920.ge.Beans.ReservaGrupoBean;
 import ingsoft1920.ge.Beans.ServiciosPostReservaBean;
 import ingsoft1920.ge.Beans.SesionBean;
+import ingsoft1920.ge.ControllerGE1.VerReservasController;
 import ingsoft1920.ge.HttpClient.HttpClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,9 +47,10 @@ public class ReservaGrupoController {
 	@Autowired
 	SesionBean sesionBean;
 
-	
 	List<ReservaBean> hoteles;
 
+	@Autowired 
+	ReservaGrupoBean reservaGrupo = new ReservaGrupoBean();
 	
 	@GetMapping("/reservaGrupo")	
 	public ModelAndView reservaGrupoGet(Model model) throws Exception {
@@ -73,17 +76,33 @@ public class ReservaGrupoController {
 			return new ModelAndView("reservaGrupo","ListaHotel", hoteles); 
 	}
 
-	/*@PostMapping("/reservaGrupo")
-	public String reservaGrupoPost(@Valid @ModelAttribute("reserva") 
-			MostrarServiciosPostReservaBean servicio,
-			Model model) throws Exception {
+	@PostMapping("/reservaGrupo")
+	public String reservaGrupoPost(@Valid @ModelAttribute("reservaGrupo") ReservaGrupoBean reservaGrupo, Model model) throws Exception {
 		
-		reserva.getServicios().add(servicio);
+			String body = "";
+			HttpClient server2 = new HttpClient(HttpClient.urlDHO + "reservaGrupo", "POST");
+			
+			JsonObject json = new JsonObject();
+			json.addProperty("nombre", reservaGrupo.getNombre());
+			json.addProperty("tipo", reservaGrupo.getTipo());
+			json.addProperty("email", reservaGrupo.getEmail());
+			json.addProperty("hotel_id", reservaGrupo.getHotel_id());
+			json.addProperty("numero_habitaciones", reservaGrupo.getNumero_habitaciones());
+			json.addProperty("numero_personas", reservaGrupo.getNumero_personas());
+			json.addProperty("fecha_entrada", reservaGrupo.getFecha_entrada());
+			json.addProperty("fecha_salida", reservaGrupo.getFecha_salida());
+
+			System.out.println(json);
+			
+			server2.setRequestBody(json.toString());
+			
+			if (server2.getResponseCode() == 200) {// Si encuentra el servidor body =
+				server2.getResponseBody(); 
+			}
+			
 		
-		reserva.setPrecio_total(reserva.getPrecio_total() + servicio.getPrecio());
-		
-		model.addAttribute("sesionBean", sesionBean);
-		return "serviciosExtras";
-	}*/
+			model.addAttribute("sesionBean", sesionBean);
+			return "redirect:";
+	}
 
 }

@@ -52,7 +52,7 @@
 		<h1>${mensajeError}</h1>
 	</div>
 	
-	<form method="POST" action="${reservaGrupoBean.method}" modelAttribute="reservaGrupoBean">
+	<form:form method="POST" action="reservaGrupo" modelAttribute="reservaGrupoBean">
 	
 			<div class="cabeza">
 			<div class ="text sombraText">
@@ -66,43 +66,63 @@
 			<div class ="text sombraText">
 			<div class="boxline">
 			<div>
-			<input type="text" name="nombreGrupo" path="nombreGrupo" placeholder="Introduce el nombre del grupo..."/> 
+			<input type="text" name="nombre" path="nombre" placeholder="Introduce el nombre del grupo..."/>
+
 			</div>
 			
 
-			<select id="tipoGrupo">
-  			<option value="empresarial">Empresarial</option>
-  			<option value="boda">Boda o bautizo</option>
-			<option value="equipo deportivo">Equipo deportivo</option>
-			<option value="fin de curso">Viaje de fin de curso</option> 
-			<option value="otro">Otro</option>  
-			</select>
+			<div>
+				<label for="tipo"> </label>
+				<input type="text" id="tipo" name="tipo" path="tipo" placeholder="Motivo de la reserva en grupo..."/>
+			</div>
             
             <div>
             <input type="text" id="email" name="email" path="email" placeholder="Introduce el correo electronico del representante..."/>
             </div>
 			
 			<div>
-			<select name="hotel">
+			<select name="hotel_id" path="hotel_id">
 				<option value="">Hotel</option>
 					<c:forEach items="${ListaHotel}" var="hotel">
-						<option value="${hotel.nombre}">${hotel.nombre} en ${hotel.ciudad} con ${hotel.estrellas} estrellas</option>
+						<option value="${hotel.id}">${hotel.nombre} en ${hotel.ciudad} con ${hotel.estrellas} estrellas</option>
 					</c:forEach>
 			</select>
 			</div>
 
+		
+			<form>
+				<input type="text" name="fecha_entrada" path="fecha_entrada"
+					placeholder="Entrada" onfocus="(this.type='date')"
+					onblur="(this.type='text')" required>
+			</form>
+		
+
+			<form>
+				<input type="text" name="fecha_salida" path="fecha_salida"
+					placeholder="Salida" onfocus="(this.type='date')"
+					onblur="(this.type='text')" required>
+			</form>
+			
+			
+			
+
 			<div>
 				<label for="numeroHabitaciones"> Reserva hasta 30 habitaciones</label>
-				<input type="number" id="numeroHabitaciones" name="numeroHabitaciones" path="numeroHabitaciones" min="5" max="20"/>
+				<input type="number" id="numeroHabitaciones" name="numero_habitaciones" path="numero_habitaciones" min="5" max="30"/>
+			</div>
+
+			<div>
+				<label for="numeroHabitaciones"> Numero de personas</label>
+				<input type="number" id="numeroPersonas" name="numero_personas" path="numero_personas" min="5" max="60"/>
 			</div>
 
 			
 			<div class="container reserva" id="container_boton">
-			<a href="/metodopago"> Enviar reserva de grupo </a>
+			<input type="submit"></button>
 			</div>
 			</div>
 			</div>
-	</form>
+	</form:form>
 
 
 	<script>

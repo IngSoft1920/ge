@@ -2,6 +2,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page import="ingsoft1920.ge.Controller.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import = "java.io.*,java.util.*, javax.servlet.*" %>
+<%@ page import = "javax.servlet.*,java.text.*" %>
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 <%@ page import="ingsoft1920.ge.ControllerGE1.*"%>
@@ -68,15 +70,7 @@
 </div>
 </head>
 
-<%
-	Date fechaActual = new Date();
-DateFormat formatoFecha = new SimpleDateFormat("dd");
-int dia = Integer.parseInt(formatoFecha.format(fechaActual)) - 2;
-DateFormat fecha = new SimpleDateFormat("yyyy-MM-" + dia);
-String fecha_dos_dias_menos = fecha.format(fechaActual);
-request.setAttribute("fecha_js", fecha_dos_dias_menos);
-//System.out.println("FECHA " + fecha_dos_dias_menos);
-%>
+
 
 <div class="container">
 	<div class="row pl-3">
@@ -146,15 +140,22 @@ request.setAttribute("fecha_js", fecha_dos_dias_menos);
 						<p>${reserva.num_hab}</p>
 						<input type=hidden id=fecha_inicio name=fecha_inicio
 							value=${reserva.fecha_inicio}> Fecha de inicio:
-						<p>${reserva.fecha_inicio}</p>
+						<p >${reserva.fecha_inicio}</p>
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
+
+<input type=hidden id=fecha_precheckin name=fecha_precheckin
+							value=${reserva.fecha_precheckin}> Fecha de pre:
+						<p >${reserva.fecha_precheckin}</p>
+						
+						
 						<c:set var="today" value="<%=new java.util.Date()%>" />
 						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
 							var="fecha_limite" />
 						</p>
-
+					
 						</p>
+						
 						<%-- <c:if test="${reserva.fecha_inicio=='2020-05-12'}"> --%>
 						<c:if test="${reserva.fecha_inicio == fecha_limite}">
 							<button id="checkin">Check in</button>

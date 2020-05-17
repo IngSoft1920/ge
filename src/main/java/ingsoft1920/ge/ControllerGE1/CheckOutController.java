@@ -96,8 +96,11 @@ public class CheckOutController {
 		JsonArray nombre_hoteles= obj.get("nombre_hotel_Lista").getAsJsonArray();
 		JsonArray estado= obj.get("estado").getAsJsonArray();
 		List<Reserva> reservas= new LinkedList<>();
+		
+
+		
 		for (int i=0;i<nombre_hoteles.size();i++) {
-			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),estado.get(i).getAsString()));
+			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),estado.get(i).getAsString(),""));
 		}
 		
 		model.addAttribute("sesionBean", sesion);

@@ -62,12 +62,11 @@ public class Reserva {
 		this.estado = estado;
 	}
 	
-	public String getPrecheckin() {
-		return fecha_precheckin;
-	}
-	public void setPrecheckin(String fecha_precheckin) {
-		this.fecha_precheckin = fecha_precheckin;
-	}
-	
+	public String getFecha_precheckin() {
+        return fecha_precheckin;
+    }
+    public void setFecha_precheckin(String fecha_precheckin) {
+        this.fecha_precheckin = fecha_precheckin;
+    }
 	
 }

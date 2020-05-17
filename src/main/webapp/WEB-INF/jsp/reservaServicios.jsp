@@ -102,10 +102,13 @@
 							<input type="submit" value="Check Out">
 						</form>
 
+
+						
+						<c:set var="idClie" value="<%=ingsoft1920.ge.ControllerGE1.VerReservasController.idString%>"/>
 						<form action="">
 							<button>
-								<a
-									href="<%=ingsoft1920.ge.ControllerGE1.VerReservasController.pathFactura%>">Factura
+								<a id="factur"
+									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${idClie}/${reserva.id_reserva}">Factura							
 								</a>
 							</button>
 						</form>
@@ -148,6 +151,8 @@
 							value=${reserva.fecha_precheckin}> Fecha de pre:
 						<p >${reserva.fecha_precheckin}</p>
 						
+
+						<p >${reserva.estado}</p>
 						
 						<c:set var="today" value="<%=new java.util.Date()%>" />
 						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
@@ -155,6 +160,19 @@
 						</p>
 					
 						</p>
+						
+						
+						<c:if test="${fecha_limite == reserva.fecha_precheckin}">
+							<button id="checkin">Pre Check in</button>
+							<br>
+
+							<form id="completar" action="/checkin/${reserva.id_reserva}"
+								method="post">
+								</br> </br>
+									 <input type="submit" value="Siguiente">
+							</form>
+
+						</c:if>
 						
 						<%-- <c:if test="${reserva.fecha_inicio=='2020-05-12'}"> --%>
 						<c:if test="${reserva.fecha_inicio == fecha_limite}">

@@ -30,6 +30,7 @@ public class VerReservasController {
 	public static JSONObject receivedJSON = new JSONObject();
 	public static Reserva reservilla;
 	public static String pathFactura;
+	public static String idString;
 
 	@Autowired
 	SesionBean sesion;
@@ -37,9 +38,9 @@ public class VerReservasController {
 
 	@GetMapping("/recibirReservas")
 	public  ModelAndView reservasEnviar(Model model) throws Exception {
-		String idString = String.valueOf(datosController.ALFONSO);
+	    idString = String.valueOf(datosController.ALFONSO);
 		//idString = "4"; //hardcode para probar factura
-		pathFactura = "http://piedrafita.ls.fi.upm.es:7001/download/f/" + idString;
+		//pathFactura = "http://piedrafita.ls.fi.upm.es:7001/download/f/" + idString;
 
 		receivedJSON.put("datosReserva", "Datos de su reserva");
 
@@ -84,11 +85,14 @@ public class VerReservasController {
 		    int lastTwo = Integer.parseInt(lastTwoDigits); //int con el dia
 			int lastTwoInt = lastTwo - 2; //int con el dia restado
 		    String lasTwoString = String.valueOf(lastTwoInt); //string con el dia restado
+		    if (lastTwoInt<10) {
+		    	lasTwoString = "0" +lasTwoString;
+		    }
 		    String stringRecortado = input.substring(0, input.length() - 2);
 		    String fechaFinal = stringRecortado + lasTwoString;
 
 		    fechaPreCheckin.add(fechaFinal);
-		    //System.out.println(fechaPreCheckin);
+		    System.out.println(fechaPreCheckin);
 
 		}
 		

@@ -6,8 +6,9 @@
 <meta charset="ISO-8859-1">
 <style>
 .card {
-	background-color: #B0C4DE;
-	opacity: 60%;
+	color:#b8b070;
+	background-color: #333;
+	opacity: 90%;
 	border: 1px solid rgba(0, 0, 0, 0.8);
 	padding: 30px;
 	margin: auto;

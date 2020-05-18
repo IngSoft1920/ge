@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -95,18 +96,19 @@ public class ReservarMesaController {
 		}
 	
 	
-	public static ModelAndView enviarComanda(@Valid@ModelAttribute("ReservarMesaBean") ReservarMesaBean reserva_mesa) throws Exception{
+	public ModelAndView enviarComanda(@Valid@ModelAttribute("ReservarMesaBean") ReservarMesaBean reserva_mesa,Model model) throws Exception{
 	
 		Map<String,List<String>> map= new HashMap<>();
 
 		map.put("servicios", ServiciosController.renewServicios);
 		map.put("restaurantes", ServiciosController.renewRestaurantes);
-		map.put("servicos_reservados", ServiciosController.renewServiciosReservados);
+		map.put("servicos_reservados", ServiciosController.recibirServiciosReservados().get("reservas"));
 		map.put("horasRestaurantes", ServiciosController.renewHorasRestaurantes);
 		map.put("horasServicios",ServiciosController.renewHorasServicios);
+		map.put("fechas_reservadas",ServiciosController.recibirServiciosReservados().get("fechas"));
 		
 		
-		
+		model.addAttribute("sesionBean", sesion);
 		System.out.print(reserva_mesa.toString()); //reservar mesa bean
 		return new ModelAndView("servicios","muchas_cosas", map);
 			
@@ -114,7 +116,7 @@ public class ReservarMesaController {
 
 	//reservar servicios a DHO
 	@GetMapping("/enviarReserva")	
-		public ModelAndView serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa) throws Exception{
+		public ModelAndView serviciosReservados(@Valid @ModelAttribute("reservarMesaBean") ReservarMesaBean mesa,Model model) throws Exception{
 				
 		
 		int id_servicio_dho=0;
@@ -125,11 +127,11 @@ public class ReservarMesaController {
 		}
 			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/recibirServicio", "POST");
 			JsonObject json = new JsonObject();
-			json.addProperty("id_servicio",id_servicio_dho );
+			json.addProperty("id_servicio",id_servicio_dho);
 			json.addProperty("fecha", mesa.getFecha());
 			json.addProperty("hora", mesa.getHora());
 			json.addProperty("cliente_id", datosController.ALFONSO);
-			json.addProperty("lugar", "Mamma Mia");
+			json.addProperty("lugar", "Restaurante");
 			json.addProperty("num_personas", 1);
 			json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 			json.addProperty("tipoServicio", 2);
@@ -149,11 +151,23 @@ public class ReservarMesaController {
 
 			map.put("servicios", ServiciosController.renewServicios);
 			map.put("restaurantes", ServiciosController.renewRestaurantes);
-			map.put("servicos_reservados", ServiciosController.recibirServiciosReservados());
+			map.put("servicos_reservados", ServiciosController.recibirServiciosReservados().get("reservas"));
+			map.put("fechas_reservadas",ServiciosController.recibirServiciosReservados().get("fechas"));
 			map.put("horasRestaurantes", ServiciosController.renewHorasRestaurantes);
 			map.put("horasServicios",ServiciosController.renewHorasServicios);
 			
-			
+			model.addAttribute("sesionBean", sesion);
 			return new ModelAndView("servicios","muchas_cosas",map);
 		}
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+		
 }

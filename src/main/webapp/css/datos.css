@@ -113,6 +113,9 @@
 }
 
 #ocultar2.active {
+	visibility: visible;
+}
+#ocultar2 {
 	visibility: hidden;
 }
 

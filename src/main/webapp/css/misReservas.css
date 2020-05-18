@@ -409,6 +409,7 @@ figure img{
 	color:black;
 }
 
+
 #puntuar_uno_cinco{
 	color:black;
 }
@@ -515,3 +516,43 @@ hr{
 	padding:5px;
 }
 
+#motivo_reserva {
+	position:fixed;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width : 600px;
+	padding : 50px;
+	box-shadow: 0 5px 30px rgba(0,0,0,.30);
+	background: #fff;
+	visibility: hidden;
+	opacity:0;
+	transition: 0.5s;
+}
+
+#motivo_reserva.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.textarea {
+	width:100%;
+}
+
+
+.tripadvisor {
+	background-color:white;
+	margin-top:10px;
+	border-radius:6px;
+  	float: right;
+}
+
+.modal-content {
+	float:left;
+}
+
+.container-valoracion {
+	overflow:hidden;
+}

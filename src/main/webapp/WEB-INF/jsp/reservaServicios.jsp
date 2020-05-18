@@ -1,9 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="ingsoft1920.ge.Controller.*"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 <%@ page import="ingsoft1920.ge.ControllerGE1.*"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +68,15 @@
 </div>
 </head>
 
-
+<%
+	Date fechaActual = new Date();
+DateFormat formatoFecha = new SimpleDateFormat("dd");
+int dia = Integer.parseInt(formatoFecha.format(fechaActual)) - 2;
+DateFormat fecha = new SimpleDateFormat("yyyy-MM-" + dia);
+String fecha_dos_dias_menos = fecha.format(fechaActual);
+request.setAttribute("fecha_js", fecha_dos_dias_menos);
+//System.out.println("FECHA " + fecha_dos_dias_menos);
+%>
 
 <div class="container">
 	<div class="row pl-3">
@@ -121,11 +130,11 @@
 		<h3>Reservas pendientes</h3>
 	</div>
 
-
+	<fmt:parseDate value="${found.submitDate}" pattern="yyyy-MM-dd"
+		var="submitDate" />
 	<div class="row">
 		<c:forEach var="reserva" items="${reservas}">
-			<c:if
-				test="${reserva.estado=='reserva' || reserva.estado=='check out'}">
+			<c:if test="${reserva.estado=='reserva'}">
 				<div class="col-xl-4 col-md-6 col-sm-12">
 					<div class="card">
 						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre
@@ -140,16 +149,21 @@
 						<p>${reserva.fecha_inicio}</p>
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
+						<c:set var="today" value="<%=new java.util.Date()%>" />
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
+							var="fecha_limite" />
+						</p>
 
-						<c:if test="${reserva.fecha_inicio=='2020-05-10'}">
-
+						</p>
+						<%-- <c:if test="${reserva.fecha_inicio=='2020-05-12'}"> --%>
+						<c:if test="${reserva.fecha_inicio == fecha_limite}">
 							<button id="checkin">Check in</button>
 							<br>
 
-							<form id="completar" action="/checkin/${reserva.id_reserva}" method="post">
-								<label>Observaciï¿½n</label> <input type="text" name="name"
-									placeholder="..." /></br> </br>
-									 <input type="submit" value="Siguiente">
+							<form id="completar" action="/checkin/${reserva.id_reserva}"
+								method="post">
+								<label>Observación</label> <input type="text" name="name"
+									placeholder="..." /></br> </br> <input type="submit" value="Siguiente">
 							</form>
 
 						</c:if>

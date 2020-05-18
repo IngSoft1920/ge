@@ -44,19 +44,33 @@
 									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}"
 									target="_blank" class="factura">Ver factura</a>
 							</p>
-							<p class="habitacion">
+							<span class="habitacion">
 								Habitaci&oacuten: ${reserva.tipo_hab_nombre} <span
 									class="tarifa">Tarifa:${reserva.importe}</span> <span
 									class="regimen">R&eacutegimen:${reserva.regimen}</span>
-							</p>
-							<p class="cambiarReserva"
-								onclick="<c:set var="output" scope="session" value="${reserva.reserva_id}"/>; toggle(${reserva.reserva_id})"
-								class="btn">Cambiar reserva</p>
-
-							<!--<form action="/cancelar/${reserva.reserva_id}" method="POST"><input class="cambiarReserva" type="submit" class="btn"
-								value="Cancelar reserva">
-							</form>-->
+							</span>
+							<button class="factura" onclick="togglePopUpMotivo()">Cancelar Reserva</button>
 						</div>
+						
+						<div id="motivo_reserva">
+							<span class="close" onclick="togglePopUpMotivo()">&times;</span>
+							<h1>¿Cual es la razón de la cancelacion?</h1>
+							<textarea class="textarea" rows="5"></textarea>
+							<button class="cancelar" onclick="togglePopUpCancelar()">Cancelar Reserva</button>
+							
+						</div>
+						
+						<div id="cancelar">
+							<span class="close" onclick="togglePopUpCancelar()">&times;</span>
+							<h1>&iquestEsta seguro de que quiere cancelar la reserva?</h1>
+							<span>
+							<form action="/cancelar/${reserva.reserva_id}" method="POST">
+							<input class="NO" type="submit" class="btn"
+								value="Cancelar reserva">
+							</form>
+							<button class="NO" onclick="togglePopUpCancelar()">NO</button></span>
+						</div>
+						
 					</c:forEach>
 				</div>
 
@@ -69,24 +83,24 @@
 								target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
-							<span>Habitación: ${reserva.tipo_hab_nombre}</span>
+							<span>Habitaci&oacuten: ${reserva.tipo_hab_nombre}</span>
 
 							<div class="container" id="botonValoracion">
 								<br>
 								<button type="button" class="btn btn-primary"
 									data-toggle="modal" data-target="#valoracion"
 									id="escribirValoracion">
-									<i class="fa fa-pencils"></i> Valoración
+									<i class="fa fa-pencils"></i> Valoraci&oacuten
 								</button>
 							</div>
 
 							<div class="modal" id="valoracion">
-
+								<div class="container-valoracion">
 								<div class="modal-dialog">
 									<div class="modal-content">
 
 										<div class="modal-header">
-											<h4 class="modal-title">Valoración</h4>
+											<h4 class="modal-title">Valoraci&oacuten</h4>
 
 											<button type="button" class="close" data-dismiss="modal"
 												id="close">&times;</button>
@@ -103,17 +117,17 @@
 														<input id="valorvaloracion" type="hidden" name="nota"
 															value="0"> Puntuanos: <br>
 														<div class="center_horizontal">
-															<p class="clasificacion" style="font-size:30px">
+															<p class="clasificacion" style="font-size: 30px">
 																<input id="radio5" type="radio"> <label
-																	for="radio5" onclick="valorar('5');">&#9786</label>
-																<input id="radio4" type="radio"> <label
-																	for="radio4" onclick="valorar('4');">&#9786</label>
-																<input id="radio3" type="radio"> <label
-																	for="radio3" onclick="valorar('3');">&#9786</label>
-																<input id="radio2" type="radio"> <label
-																	for="radio2" onclick="valorar('2');">&#9786</label>
-																<input id="radio1" type="radio"> <label
-																	for="radio1" onclick="valorar('1');">&#9786</label>
+																	for="radio5" onclick="valorar('5');">&#9786</label> <input
+																	id="radio4" type="radio"> <label for="radio4"
+																	onclick="valorar('4');">&#9786</label> <input
+																	id="radio3" type="radio"> <label for="radio3"
+																	onclick="valorar('3');">&#9786</label> <input
+																	id="radio2" type="radio"> <label for="radio2"
+																	onclick="valorar('2');">&#9786</label> <input
+																	id="radio1" type="radio"> <label for="radio1"
+																	onclick="valorar('1');">&#9786</label>
 															</p>
 														</div>
 													</div>
@@ -139,34 +153,61 @@
 												</div>
 												<hr>
 												<div class="modal-footer">
-													<input type="submit" disabled="disabled" class="btn btn-danger"
-														id="enviarValoracion" value="Enviar">
+													<input type="submit" disabled="disabled"
+														class="btn btn-danger" id="enviarValoracion"
+														value="Enviar">
 												</div>
 											</form:form>
 										</div>
 									</div>
+									<div class="tripadvisor">
+										<hr style="color:green">
+										<img style ="width:250px;height:100px;margin-left:25%"src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tripadvisor_Logo_circle-green_vertical-lockup_registered_RGB.svg/1200px-Tripadvisor_Logo_circle-green_vertical-lockup_registered_RGB.svg.png">
+										<h5 style="color:green">Jorge</h5>
+										<hr style="color:green">
+										<h2 style="color:green">Fin de semana de relax</h2>
+										<p style="color:green">Fin de semana con celebración de cumpleaños, el hotel excelente y la atención del personal muy atenta y correcta. Todo perfecto, el buffet muy completo y de calidad. Repetiría sin duda la experiencia<p>
+										<hr style="color:green">
+								   		<h5 style="color:green">Juan</h5>
+										<h2 style="color:green">Buen Hotel para ir de Negocios</h2>
+										<p style="color:green">Tiene todos los servicios que una ejecutivo necesita para trabajar, hacer deporte y descansar. las vistas son excelentes y la localización es magnífica<p>
+										<h5 style="color:green">Carlos</h5>
+										<h2 style="color:green">Fantastic staff communications!</h2>
+										<p style="color:green">Covid 19 seriously impacted on our much hoped for week break at this new hotel. Contacted staff numerous times and replies were always courteous and friendly even in times when I was rather persistent with them.Nothing was too much bother for the staff at this hotel. So sad to miss out now, but when this world crisis is over, we'll be booking our stay again<p>
+									</div>
+									
 								</div>
+								
+							</div>
 							</div>
 						</div>
 					</c:forEach>
 				</div>
 			</div>
-		</div>
 
-		<div id="modificar">
-			<h1>¿Qué reserva desea cancelar?</h1>
+		<!--  <div id="modificar">
+			<h1>&iquestQue reserva desea cancelar?</h1>
 			<c:forEach items="${reservas_pendientes}" var="reserva">
 				<div class="modificar">
 					<p>Reserva en hotel ${reserva.hotel_id} del
 						${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
+										<button class="SI" onclick="togglePopUpModificar()">SI</button>
+
+				</div>
+				<div id="cancelar">
+					<span class="close" onclick="togglePopUpModificar()">&times;</span>
+					<h1>&iquestEsta seguro de que quiere cancelar una reserva?</h1>
 					<form action="/cancelar/${reserva.reserva_id}" method="POST">
 						<input class="cambiarReserva" type="submit" class="btn"
 							value="Cancelar reserva">
 					</form>
+					<button class="NO" onclick="togglePopUpModificar()">NO</button>
 				</div>
+				
 			</c:forEach>
+		</div>-->
 		</div>
-	</div>
+		</div>
 
 	<div class="popup2" id="noClick">
 		<div id="popup">
@@ -182,7 +223,7 @@
 				</div>
 
 				<div>
-					<label for="tipoComida">Seleccione el tipo pensión deseada:
+					<label for="tipoComida">Seleccione el tipo pensiï¿½n deseada:
 					</label> <select id="dropdown">
 						<option value="Completa">Completa</option>
 						<option value="Media">Media</option>
@@ -194,26 +235,6 @@
 			<input type="hidden" id="id_reserva_cancelar">
 			<button class="enviarCambio" onclick="toggleCancelar()" type="submit">Mas opciones</button>
 		</div>
-	</div>
-
-	<div id="cancelar">
-		<span class="close" onclick="toggleCancelar()">&times;</span>
-		<h1>¿Seguro que desea Cancelar la reserva?</h1>
-		<h1 style="font-size: 10px">Cada vez que cancela una reserva
-			muere un cachorrito #savethepuppy</h1>
-		<br>
-		<div class="center_horizontal">
-			<input type="button" class="no_cancelar_reserva"
-				onclick="toggleCancelar()" value="Atrás">
-		</div>
-		<br> <br> <br>
-		<form action="/cancelar" method="POST">
-			<input type="hidden" id="reserva_a_cancelar" name="reserva_id">
-			<div class="center_horizontal">
-				<input class="cancelar_reserva" type="submit" class="btn"
-					value="Cancelar reserva">
-			</div>
-		</form>
 	</div>
 
 	<script>	 
@@ -263,14 +284,16 @@
 			modificar.classList.remove('active');
 		}
 		
-		function togglePopUpModificar(reserva_id) {
+		function togglePopUpMotivo() {
+			var motivo = document.getElementById('motivo_reserva');
+			motivo.classList.toggle('active');
+		}
+		
+		function togglePopUpCancelar() {
 			var cancelar = document.getElementById('cancelar');
 			cancelar.classList.toggle('active');
-			if(cancelar.classList.contains('active')==true){
-				var reserva_a_cancelar = document.getElementById('reserva_a_cancelar');
-				reserva_a_cancelar.value = reserva_id;
-			}
 		}
+		
 		
 		function toggleModificar() {
 			var reserva = document.getElementById('misreservas');

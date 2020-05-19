@@ -295,15 +295,34 @@
 
 				<div class="modal-body" id="body_del_modal">
 					<div id="cancelarBoton">
-						<form action="/cancelar/${reserva.reserva_id}" method="POST">
-							<input class="cambiarReserva" type="submit" class="btn"
-								value="Cancelar reserva">
-						</form>
+					<button class="btn btn-light" onclick="togglePopUpMotivo()"data-dismiss="modal">Cancelar
+								Reserva</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<div id="motivo_reserva">
+		<span class="close" onclick="togglePopUpMotivo()">&times;</span>
+		<h1>¿Cual es la razón de la cancelacion?</h1>
+		<textarea class="textarea" rows="5"></textarea>
+		<button class="cancelar" onclick="togglePopUpCancelar()">Cancelar
+			Reserva</button>
+
+	</div>
+
+	<div id="cancelar2">
+		<span class="close" onclick="togglePopUpCancelar()">&times;</span>
+		<h1>&iquestEsta seguro de que quiere cancelar la reserva?</h1>
+		<span>
+			<form action="/cancelar/${reserva.reserva_id}" method="POST">
+				<input class="NO" type="submit" class="btn" value="Cancelar reserva">
+			</form>
+			<button class="NO" onclick="togglePopUpCancelar()">NO</button>
+		</span>
+	</div>
+
 
 
 	<div class="modal" id="cambioFecha">
@@ -325,20 +344,18 @@
 				<div class="modal-body" id="body_del_modal">
 
 					<form:form method="POST" action="/cambiarFecha">
-						
+
 						<div class="containe_fluid">
 							<div class="row" id="inputs">
 
 								<div class="col">
-									<input type="text" name="fechaInicio"
-										placeholder="Entrada" onfocus="(this.type='date')"
-										onblur="(this.type='text')" />
+									<input type="text" name="fechaInicio" placeholder="Entrada"
+										onfocus="(this.type='date')" onblur="(this.type='text')" />
 								</div>
 
 								<div class="col">
-									<input type="text" name="fechaFin"
-										placeholder="Salida" onfocus="(this.type='date')"
-										onblur="(this.type='text')" />
+									<input type="text" name="fechaFin" placeholder="Salida"
+										onfocus="(this.type='date')" onblur="(this.type='text')" />
 								</div>
 
 							</div>
@@ -346,8 +363,8 @@
 
 							<div class="row" id="botonCambiar">
 
-								<input type="submit" class="btn btn-danger"
-									id="cambiarFecha" value="Cambiar">
+								<input type="submit" class="btn btn-danger" id="cambiarFecha"
+									value="Cambiar">
 							</div>
 
 						</div>
@@ -440,16 +457,16 @@
 								<div class="col">
 									<select name="numeroPersonas">
 										<option value="0">Personas:</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10">10</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
 									</select>
 									<%--
 									<form:select name="numeroPersonas" path="numeroPersonas">
@@ -522,8 +539,8 @@
 								</div>
 
 								<div class="col" id="botonCambiarRow">
-									<input type="submit" class="btn btn-danger"
-										id="cambiarFecha" value="Cambiar">
+									<input type="submit" class="btn btn-danger" id="cambiarFecha"
+										value="Cambiar">
 								</div>
 
 							</div>
@@ -563,29 +580,42 @@
 							<div class="row" id="inputs">
 
 								<div class="col">
-									<select name="comidas" >
+									<select name="comidas">
 										<option value="1">+0, sólo alojamiento</option>
 										<option value="2">+15, alojamiento y desayuno</option>
 										<option value="3">+30, pensión completa</option>
 										<option value="3">+45, todo incluido</option>
 									</select>
 
-								<div class="col" id="botonCambiarRow">
-									<input type="submit" class="btn btn-danger"
-										id="cambiarFecha" value="Cambiar">
+									<div class="col" id="botonCambiarRow">
+										<input type="submit" class="btn btn-danger" id="cambiarFecha"
+											value="Cambiar">
+									</div>
+
 								</div>
+								<br>
+
 
 							</div>
-							<br>
-
-
-						</div>
 					</form:form>
 				</div>
 			</div>
 		</div>
 	</div>
+<script>
+function togglePopUpMotivo() {
+	var motivo = document.getElementById('motivo_reserva');
+	motivo.classList.toggle('active');
+	var cancelar = document.getElementById('cancelar');
+	cancelar.classList.remove('active');
+}
 
+function togglePopUpCancelar() {
+	var cancelar = document.getElementById('cancelar2');
+	cancelar.classList.toggle('active');
+	
+}
+</script>
 
 </body>
 </html>

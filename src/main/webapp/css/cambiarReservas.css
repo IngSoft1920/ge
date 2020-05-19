@@ -162,5 +162,85 @@ select {
 	
 }
 
+#motivo_reserva {
+	position:fixed;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width : 600px;
+	padding : 50px;
+	box-shadow: 0 5px 30px rgba(0,0,0,.30);
+	background: #fff;
+	visibility: hidden;
+	opacity:0;
+	transition: 0.5s;
+}
+
+#motivo_reserva.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#cancelar2 {
+	position:fixed;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width : 400px;
+	padding : 50px;
+	box-shadow: 0 5px 30px rgba(0,0,0,.30);
+	background: #fff;
+	visibility: hidden;
+	opacity:0;
+	transition: 0.5s;
+}
+
+#cancelar2.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.cancelar {
+	background-color: red;
+	color: #fff;
+	padding: 12px 20px;
+	border: none;
+	cursor: pointer;
+	position: relative;
+  	left: 53%;
+  	transform: translate(-66%, 10%);
+	margin-bottom: 10px;
+	opacity: 0.8;
+}
+
+.SI {
+	float:left;
+	background-color:#b8b078;
+	width: 130px;
+}
+
+.NO {
+	float:right;
+	background-color:#b8b078;
+	width: 130px;
+}	
 
 

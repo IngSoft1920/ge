@@ -48,8 +48,6 @@
 								${reserva.tipo_hab_nombre} <span class="tarifa">Tarifa:${reserva.importe}</span>
 								<span class="regimen">R&eacutegimen:${reserva.regimen}</span>
 							</span>
-							<button class="factura" onclick="togglePopUpMotivo()">Cancelar
-								Reserva</button>
 							<a href="cambiarReservas/${reserva.reserva_id}">
 								<button class="factura">Cambiar Reserva</button>
 							</a>

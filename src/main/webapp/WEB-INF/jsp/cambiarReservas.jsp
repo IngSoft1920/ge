@@ -267,7 +267,7 @@
 							data-target="#cancelar">Mas opciones</button>
 					</div>
 					<div class="col-sm-offset-*" id="columna_abajao_botones">
-						<form:form action="guardarDatos" method="POST">
+						<form:form action="/misReservas" method="GET">
 							<input type="submit" value="Guardar">
 						</form:form>
 					</div>
@@ -324,20 +324,19 @@
 
 				<div class="modal-body" id="body_del_modal">
 
-					<form:form method="POST" action="cambiarReserva">
-						<input type="hidden" name="hotel_id" value="${reserva.hotel_id}">
-
+					<form:form method="POST" action="/cambiarFecha">
+						
 						<div class="containe_fluid">
 							<div class="row" id="inputs">
 
 								<div class="col">
-									<input type="text" name="fechaInicio" path="fechaInicio"
+									<input type="text" name="fechaInicio"
 										placeholder="Entrada" onfocus="(this.type='date')"
 										onblur="(this.type='text')" />
 								</div>
 
 								<div class="col">
-									<input type="text" name="fechaFin" path="fechaFin"
+									<input type="text" name="fechaFin"
 										placeholder="Salida" onfocus="(this.type='date')"
 										onblur="(this.type='text')" />
 								</div>
@@ -347,7 +346,7 @@
 
 							<div class="row" id="botonCambiar">
 
-								<input type="submit" disabled="disabled" class="btn btn-danger"
+								<input type="submit" class="btn btn-danger"
 									id="cambiarFecha" value="Cambiar">
 							</div>
 
@@ -509,32 +508,21 @@
 
 				<div class="modal-body" id="body_del_modal">
 
-					<form:form method="POST" action="cambiarReserva">
-						<input type="hidden" name="hotel_id" value="${reserva.hotel_id}">
-
+					<form:form method="POST" action="/cambiarHabitacionTipo">
 						<div class="containe_fluid">
 							<div class="row" id="inputs">
 
 								<div class="col">
-									<select name="habitaciones">
-										<option value="1">premiun</option>
-										<option value="2">normal</option>
+									<select name="habitacionTipo">
+										<c:forEach items="${tipoHabitacion}" var="habitacion">
+											<option value="${habitacion.tipo_hab_id}">${habitacion.nombre}</option>
+										</c:forEach>
 									</select>
-									<%--
-									<form:select name="comidas" path="habitacion">
-									
-									<c:forEach items="${hotel.habitaciones}" var="habitacion">
-										<option value="${habitacion.nombre}">${habitacion.nombre}</option>
-									</c:forEach>
-									
-									</form:select>
-									
-									--%>
 
 								</div>
 
 								<div class="col" id="botonCambiarRow">
-									<input type="submit" disabled="disabled" class="btn btn-danger"
+									<input type="submit" class="btn btn-danger"
 										id="cambiarFecha" value="Cambiar">
 								</div>
 
@@ -568,29 +556,22 @@
 
 				<div class="modal-body" id="body_del_modal">
 
-					<form:form method="POST" action="cambiarReserva">
+					<form:form method="POST" action="/cambiarRegimen">
 						<input type="hidden" name="hotel_id" value="${reserva.hotel_id}">
 
 						<div class="containe_fluid">
 							<div class="row" id="inputs">
 
 								<div class="col">
-									<select name="comida">
-										<option value="1">+0 regimen</option>
-										<option value="2">+15 pension</option>
-									</select>
-									<%--
-									<form:select name="comidas" path="regimen_comidas">
+									<select name="comidas" >
 										<option value="1">+0, sólo alojamiento</option>
 										<option value="2">+15, alojamiento y desayuno</option>
 										<option value="3">+30, pensión completa</option>
-										<option value="3">+45, todo incluído</option>
-									</form:select>
-									--%>
-								</div>
+										<option value="3">+45, todo incluido</option>
+									</select>
 
 								<div class="col" id="botonCambiarRow">
-									<input type="submit" disabled="disabled" class="btn btn-danger"
+									<input type="submit" class="btn btn-danger"
 										id="cambiarFecha" value="Cambiar">
 								</div>
 

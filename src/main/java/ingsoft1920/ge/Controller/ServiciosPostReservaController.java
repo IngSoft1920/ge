@@ -89,11 +89,11 @@ public class ServiciosPostReservaController {
 		HttpClient serverdho = new HttpClient(HttpClient.urlDHO + "serviciosDisponibles", "POST");
 
 		JsonObject ids = new JsonObject();
-		json.addProperty("nombre_Hotel", reserva.getNombre_hotel()); 
-
+		
+		ids.addProperty("nombre_Hotel", reserva.getNombre_hotel()); 
+		serverdho.setRequestBody(ids.toString());
 		if (serverdho.getResponseCode() == 200) {// Si encuentra el servidor
 			response = serverdho.getResponseBody();
-			System.out.println(response);
 			
 			ids = new Gson().fromJson(response, JsonObject.class);
 			ArrayList<Integer> id = 

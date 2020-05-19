@@ -64,7 +64,7 @@ public class MetodoPagoController {
 		return "redirect:misReservas";
 	}
 	
-	public void reservaServicios (int cliente_id) throws Exception {
+	public void reservaServicios (int cliente_id, int reserva_id) throws Exception {
 		
 		/*
 		 * Formato de servicios
@@ -86,8 +86,14 @@ public class MetodoPagoController {
 			json_reserva.addProperty("lugar", s.getTipoServicio());
 			json_reserva.addProperty("id_servicioHotel", s.getId());
 			json_reserva.addProperty("fecha", s.getFecha());
-			json_reserva.addProperty("hora", s.getHora());
+			json_reserva.addProperty("hora", 12);
 			json_reserva.addProperty("cliente_id", cliente_id);
+			json_reserva.addProperty("id_reserva", reserva_id);
+			json_reserva.addProperty("num_personas", s.getNumPersonas());
+			int tipo_servicio = 1;
+			if (s.getTipoServicio().compareToIgnoreCase("restaurante")==0)
+				tipo_servicio = 2;
+			json_reserva.addProperty("tipo_servicio", tipo_servicio);
 
 			server.setRequestBody(json_reserva.toString());
 			server.getResponseCode();
@@ -126,16 +132,16 @@ public class MetodoPagoController {
 		
 		
 		
-		//String response = "";
+		String response = "";
 		HttpClient server = new HttpClient(HttpClient.urlCM + "reserva", "POST");
 		server.setRequestBody(json_reserva.toString());
 		if (server.getResponseCode() == 200) {
-			//response = server.getResponseBody();
-			server.getResponseBody();
+			response = server.getResponseBody();
 		}
-		//JsonObject reserva_id = new Gson().fromJson(response, JsonObject.class);
+		JsonObject reserva_id = new Gson().fromJson(response, JsonObject.class);
 		
-		reservaServicios(sesionBean.getUsuarioID());
+		
+		reservaServicios(sesionBean.getUsuarioID(), reserva_id.get("id").getAsInt());
 		
 		reserva.resetReserva();
 	}
@@ -176,7 +182,7 @@ public class MetodoPagoController {
 		}
 		JsonObject reserva_cliente = new Gson().fromJson(response, JsonObject.class);
 		
-		reservaServicios(reserva_cliente.get("cliente_id").getAsInt());
+		reservaServicios(reserva_cliente.get("cliente_id").getAsInt(), reserva_cliente.get("id_reserva").getAsInt());
 		int alfonso = reserva_cliente.get("cliente_id").getAsInt();
 		System.out.println(alfonso);
 		reserva.resetReserva();

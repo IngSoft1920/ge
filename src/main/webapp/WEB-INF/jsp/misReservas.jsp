@@ -44,14 +44,17 @@
 									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}"
 									target="_blank" class="factura">Ver factura</a>
 							</p>
-							<span class="habitacion">
-								Habitaci&oacuten: ${reserva.tipo_hab_nombre} <span
-									class="tarifa">Tarifa:${reserva.importe}</span> <span
-									class="regimen">R&eacutegimen:${reserva.regimen}</span>
+							<span class="habitacion"> Habitaci&oacuten:
+								${reserva.tipo_hab_nombre} <span class="tarifa">Tarifa:${reserva.importe}</span>
+								<span class="regimen">R&eacutegimen:${reserva.regimen}</span>
 							</span>
-							<button class="factura" onclick="togglePopUpMotivo()">Cancelar Reserva</button>
+							<button class="factura" onclick="togglePopUpMotivo()">Cancelar
+								Reserva</button>
+							<a href="cambiarReservas/${reserva.reserva_id}">
+								<button class="factura">Cambiar Reserva</button>
+							</a>
 						</div>
-						
+
 						<div id="motivo_reserva">
 							<span class="close" onclick="togglePopUpMotivo()">&times;</span>
 							<h1>¿Cual es la razón de la cancelacion?</h1>

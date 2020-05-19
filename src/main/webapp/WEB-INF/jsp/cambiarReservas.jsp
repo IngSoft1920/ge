@@ -53,7 +53,7 @@
 
 			<div class="row" id="encabecadohotel">
 				<h3>Hotel:</h3>
-				<h2>${reserva.nombre_hotel}</h2>
+				<h2>${reserva.hotel_nombre}</h2>
 			</div>
 
 			<br>
@@ -62,8 +62,8 @@
 				<div class="col-sm-8">
 					<h3>Fecha de estancia:</h3>
 					<h2>
-						<i class="fa fa-calendar"></i> ${reserva.fecha_inicio}-
-						${reserva.fecha_fin}
+						<i class="fa fa-calendar"></i> ${reserva.fecha_entrada}-
+						${reserva.fecha_salida}
 					</h2>
 				</div>
 
@@ -85,7 +85,7 @@
 				<div class="col-sm-8">
 					<h3>Tipo de habitacion:</h3>
 					<h2>
-						<i class="fa fa-key"></i> ${reserva.nombre_habitacion}
+						<i class="fa fa-key"></i> ${reserva.tipo_hab_nombre}
 					</h2>
 				</div>
 				<div class="col-sm-4">
@@ -134,7 +134,7 @@
 				<div class="col-sm">
 					<h3>Precio total del régimen de comidas:</h3>
 					<h2>
-						<i class="fa fa-money"></i>${reserva.precio_regimen_comidas}</h2>
+						<i class="fa fa-money"></i>${reserva.regimen}</h2>
 				</div>
 			</div>
 
@@ -146,7 +146,7 @@
 				<div class="col-sm">
 					<h3>Precio Habitación:</h3>
 					<h2>
-						<i class="fa fa-money"></i> ${reserva.tarifa}
+						<i class="fa fa-money"></i> ${reserva.importe}
 					</h2>
 				</div>
 			</div>
@@ -158,7 +158,7 @@
 
 
 
-			<c:forEach items="${reserva.servicios}" var="servicio"> 
+			<c:forEach items="${servicios}" var="servicio">
 
 
 
@@ -168,9 +168,9 @@
 						<i class="fa fa-glass"></i>${servicio.tipoServicio}</h2>
 				</div>
 
-			<br>
-			<hr>
-			<br>
+				<br>
+				<hr>
+				<br>
 
 
 				<div class="row" id="row_resumen">
@@ -184,14 +184,14 @@
 						<br>
 						<div class="row" id="botonCambio">
 							<button type="button" class="btn btn-light" data-toggle="modal"
-							data-target="#cambioNumeroServicio">Cambiar</button>
+								data-target="#cambioNumeroServicio">Cambiar</button>
 						</div>
 					</div>
 				</div>
 
-			<br>
-			<hr>
-			<br>
+				<br>
+				<hr>
+				<br>
 
 
 				<div class="row" id="row_resumen">
@@ -205,15 +205,15 @@
 						<br>
 						<div class="row" id="botonCambio">
 							<button type="button" class="btn btn-light" data-toggle="modal"
-							data-target="#cambioFechaServicio">Cambiar</button>
+								data-target="#cambioFechaServicio">Cambiar</button>
 						</div>
 					</div>
 				</div>
 
 
-			<br>
-			<hr>
-			<br>
+				<br>
+				<hr>
+				<br>
 
 				<div class="row" id="row_resumen">
 					<div class="col-sm-8">
@@ -226,14 +226,14 @@
 						<br>
 						<div class="row" id="botonCambio">
 							<button type="button" class="btn btn-light" data-toggle="modal"
-							data-target="#cambioHora">Cambiar</button>
+								data-target="#cambioHora">Cambiar</button>
 						</div>
 					</div>
 				</div>
 
-			<br>
-			<hr>
-			<br>
+				<br>
+				<hr>
+				<br>
 
 				<div class="row" id="row_resumen">
 					<div class="col-sm">
@@ -243,36 +243,36 @@
 					</div>
 				</div>
 
-			<br>
-			<hr>
-			<br>
+				<br>
+				<hr>
+				<br>
 
 
-			</c:forEach> 
+			</c:forEach>
 
 			<div class="row" id="row_resumen">
 				<div class="col-sm">
 					<h3>Tarifa Total:</h3>
 					<h2>
-						<i class="fa fa-credit-card"></i> ${reserva.precio_total}
+						<i class="fa fa-credit-card"></i> ${reserva.importe}
 					</h2>
 				</div>
 			</div>
 
 			<br> <br>
-				<div class="container_fluid" id="container_boton">
+			<div class="container_fluid" id="container_boton">
 				<div class="row">
-				<div class="col-sm" id="columna_abajao_botones">
-				<button type="button" class="btn btn-light" data-toggle="modal"
+					<div class="col-sm" id="columna_abajao_botones">
+						<button type="button" class="btn btn-light" data-toggle="modal"
 							data-target="#cancelar">Mas opciones</button>
-				</div>
-				<div class="col-sm-offset-*" id="columna_abajao_botones">
-					<form:form action="guardarDatos" method="POST">
-						<input type="submit" value="Guardar">
-					</form:form>
 					</div>
+					<div class="col-sm-offset-*" id="columna_abajao_botones">
+						<form:form action="guardarDatos" method="POST">
+							<input type="submit" value="Guardar">
+						</form:form>
 					</div>
 				</div>
+			</div>
 
 			<br> <br>
 		</div>
@@ -281,7 +281,7 @@
 
 
 	</div>
-	
+
 	<div class="modal" id="cancelar">
 
 		<div class="modal-dialog">
@@ -294,17 +294,17 @@
 				</div>
 
 				<div class="modal-body" id="body_del_modal">
-				<div id="cancelarBoton">
-					<form action="/cancelar/${reserva.reserva_id}" method="POST">
-						<input class="cambiarReserva" type="submit" class="btn"
-							value="Cancelar reserva">					
-					</form>
+					<div id="cancelarBoton">
+						<form action="/cancelar/${reserva.reserva_id}" method="POST">
+							<input class="cambiarReserva" type="submit" class="btn"
+								value="Cancelar reserva">
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 
 	<div class="modal" id="cambioFecha">
 
@@ -367,7 +367,7 @@
 
 				<div class="modal-header">
 					<h4 class="modal-title">
-						Cambia la fecha del servicio 
+						Cambia la fecha del servicio
 						<hr>
 					</h4>
 

@@ -84,16 +84,16 @@ public class MetodoPagoController {
 			
 			JsonObject json_reserva = new JsonObject();
 			json_reserva.addProperty("lugar", s.getTipoServicio());
-			json_reserva.addProperty("id_servicioHotel", s.getId());
+			json_reserva.addProperty("id_servicio", s.getId());
 			json_reserva.addProperty("fecha", s.getFecha());
-			json_reserva.addProperty("hora", 12);
+			json_reserva.addProperty("hora", "12:00");
 			json_reserva.addProperty("cliente_id", cliente_id);
 			json_reserva.addProperty("id_reserva", reserva_id);
 			json_reserva.addProperty("num_personas", s.getNumPersonas());
 			int tipo_servicio = 1;
 			if (s.getTipoServicio().compareToIgnoreCase("restaurante")==0)
 				tipo_servicio = 2;
-			json_reserva.addProperty("tipo_servicio", tipo_servicio);
+			json_reserva.addProperty("tipoServicio", tipo_servicio);
 
 			server.setRequestBody(json_reserva.toString());
 			server.getResponseCode();
@@ -126,7 +126,7 @@ public class MetodoPagoController {
 		json_reserva.addProperty("fecha_entrada", reserva.getFecha_inicio());
 		json_reserva.addProperty("fecha_salida", reserva.getFecha_fin());
 		json_reserva.addProperty("importe", reserva.getTarifa());
-		json_reserva.addProperty("regimen", "no_aplica");
+		json_reserva.addProperty("regimen", reserva.regimen());
 		json_reserva.addProperty("numero_acompanantes", 1);
 		json_reserva.addProperty("metodo_pago", reserva.getPagado());
 		

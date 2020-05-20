@@ -41,7 +41,7 @@
 							<p class="hotel">
 								Hotel ${reserva.hotel_nombre} <span class="fecha">De
 									${reserva.fecha_entrada} a ${reserva.fecha_salida} </span> <a
-									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}"
+									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}/${reserva.reserva_id}"
 									target="_blank" class="factura">Ver factura</a>
 							</p>
 							<span class="habitacion"> Habitaci&oacuten:
@@ -80,7 +80,7 @@
 
 						<div class="historial">
 							<span>Hotel ${reserva.hotel_nombre}</span> <a
-								href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}"
+								href="http://piedrafita.ls.fi.upm.es:7001/download/f/${sesionBean.usuarioID}/${reserva.reserva_id}"
 								target="_blank" class="factura">Ver factura</a>
 
 							<p>De ${reserva.fecha_entrada} a ${reserva.fecha_salida}</p>
@@ -91,7 +91,7 @@
 								<button type="button" class="btn btn-primary"
 									data-toggle="modal" data-target="#valoracion"
 									id="escribirValoracion">
-									<i class="fa fa-pencils"></i> Valoraci&oacuten
+									<i class="fa fa-pencils"></i> Valoracion
 								</button>
 							</div>
 

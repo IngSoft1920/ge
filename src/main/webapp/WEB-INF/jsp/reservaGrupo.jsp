@@ -92,14 +92,14 @@
 		
 			<form>
 				<input type="text" name="fecha_entrada" path="fecha_entrada"
-					placeholder="Entrada" onfocus="(this.type='date')"
+					placeholder="Fecha de entrada..." onfocus="(this.type='date')"
 					onblur="(this.type='text')" required>
 			</form>
 		
 
 			<form>
 				<input type="text" name="fecha_salida" path="fecha_salida"
-					placeholder="Salida" onfocus="(this.type='date')"
+					placeholder="Fecha de salida..." onfocus="(this.type='date')"
 					onblur="(this.type='text')" required>
 			</form>
 			

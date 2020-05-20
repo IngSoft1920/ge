@@ -90,7 +90,7 @@ public class ReservaGrupoController {
 			json.addProperty("numero_habitaciones", reservaGrupo.getNumero_habitaciones());
 			json.addProperty("numero_personas", reservaGrupo.getNumero_personas());
 			json.addProperty("fecha_entrada", reservaGrupo.getFecha_entrada());
-			json.addProperty("fecha_salida", reservaGrupo.getFecha_salida());
+			json.addProperty("fecha_salida", "2020-05-25");
 
 			System.out.println(json);
 			

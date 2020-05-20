@@ -151,7 +151,7 @@
 						</p>
 						
 						
-						<c:if test="${fecha_limite == reserva.fecha_precheckin}">
+						<c:if test="${fecha_limite == reserva.fecha_precheckin || reserva.fecha_inicio == fecha_limite}">
 							<button id="checkin">Pre Check in</button>
 							<br>
 

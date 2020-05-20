@@ -142,7 +142,6 @@
 						<p >${reserva.fecha_inicio}</p>
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
-						<p >${reserva.estado}</p>
 						
 						<c:set var="today" value="<%=new java.util.Date()%>" />
 						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
@@ -158,23 +157,13 @@
 
 							<form id="completar" action="/precheckinge/${reserva.id_reserva}"
 								method="post">
-								</br> </br>
-									 <input type="submit" value="Siguiente">
+									<label>Observación</label> <input type="text" name="name"
+									placeholder="..." /></br> </br> 
+									 <input type="submit" value="Confirmar">
 							</form>
 
 						</c:if>
 						
-												<c:if test="${reserva.fecha_inicio == fecha_limite}">
-							<button id="checkin">Check in</button>
-							<br>
-
-							<form id="completar" action="/checkin/${reserva.id_reserva}"
-								method="post">
-								<label>Observación</label> <input type="text" name="name"
-									placeholder="..." /></br> </br> <input type="submit" value="Siguiente">
-							</form>
-
-						</c:if>
 					</div>
 				</div>
 			</c:if>
@@ -197,7 +186,6 @@
 
 
 
-						<p >${reserva.estado}</p>
 						
 						<c:set var="today" value="<%=new java.util.Date()%>" />
 						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"

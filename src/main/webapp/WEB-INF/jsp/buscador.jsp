@@ -141,19 +141,19 @@
 	GARANTIZADO</b>
 			</pre>
 					</div>
+					
+					
 				</div>
 			</div>
 
 			<br>
 
-			<div class="grupo">
 			<div class="col-md">
 				<div class="container">
 					<button id="reservaEnGrupo">
 					<a href="/reservaGrupo" id="grupo">Reservas en grupo</a>
 					</button>
 				</div>
-			</div>
 			</div>
 			<br> <br> <br> <br> <br> <br> <br>
 		</div>

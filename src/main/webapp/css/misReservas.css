@@ -319,13 +319,13 @@ input[type="radio"]:checked ~ label {
   cursor: pointer;
 }	
 
-figure{
+#distinto {
    overflow:hidden;
    margin:0;
    margin-top:-251px;
 }
 
-figure img{
+#distinto img{
    display:block;
    width:100%;
    margin:-11.875% 0;
@@ -542,12 +542,13 @@ hr{
 }
 
 
-.tripadvisor {
+#tripadvisor {
 	background-color:white;
 	margin-top:10px;
 	border-radius:6px;
   	float: right;
 }
+
 
 .modal-content {
 	float:left;
@@ -556,3 +557,6 @@ hr{
 .container-valoracion {
 	overflow:hidden;
 }
+
+
+

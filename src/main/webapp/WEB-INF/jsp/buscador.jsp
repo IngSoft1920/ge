@@ -148,10 +148,10 @@
 
 			<div class="grupo">
 			<div class="col-md">
-				<div class="container" id="garantizado">
-					<div>
+				<div class="container">
+					<button id="reservaEnGrupo">
 					<a href="/reservaGrupo" id="grupo">Reservas en grupo</a>
-					</div>
+					</button>
 				</div>
 			</div>
 			</div>

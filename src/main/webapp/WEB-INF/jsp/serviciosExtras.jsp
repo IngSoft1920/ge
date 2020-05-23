@@ -94,7 +94,7 @@
 						<div class="col-md btn" id="centrarTodo">
 						<br>
 							<input type="text" name="fecha" placeholder="Fecha"
-								onfocus="(this.type='date')" onblur="(this.type='text')" />
+								onfocus="(this.type='date')" onblur="(this.type='text')"max=${reserva.fecha_fin} min=${reserva.fecha_inicio} />
 						</div>
 						<br><br><br><br><br>
 						

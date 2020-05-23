@@ -67,7 +67,7 @@ public class ReservaGrupoBean {
 		return fecha_salida;
 	}
 
-	public void setFecha_fin(String fecha_salida) {
+	public void setFecha_salida(String fecha_salida) {
 		this.fecha_salida = fecha_salida;
 	}
 

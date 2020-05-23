@@ -79,8 +79,8 @@ public class ReservaGrupoController {
 	@PostMapping("/reservaGrupo")
 	public String reservaGrupoPost(@Valid @ModelAttribute("reservaGrupo") ReservaGrupoBean reservaGrupo, Model model) throws Exception {
 		
-			String body = "";
 			HttpClient server2 = new HttpClient(HttpClient.urlDHO + "reservaGrupo", "POST");
+			
 			
 			JsonObject json = new JsonObject();
 			json.addProperty("nombre", reservaGrupo.getNombre());
@@ -90,9 +90,8 @@ public class ReservaGrupoController {
 			json.addProperty("numero_habitaciones", reservaGrupo.getNumero_habitaciones());
 			json.addProperty("numero_personas", reservaGrupo.getNumero_personas());
 			json.addProperty("fecha_entrada", reservaGrupo.getFecha_entrada());
-			json.addProperty("fecha_salida", "2020-05-25");
+			json.addProperty("fecha_salida", reservaGrupo.getFecha_salida());
 
-			System.out.println(json);
 			
 			server2.setRequestBody(json.toString());
 			

@@ -66,22 +66,22 @@
 			<div class ="text sombraText">
 			<div class="boxline">
 			<div>
-			<input type="text" name="nombre" path="nombre" placeholder="Introduce el nombre del grupo..."/>
+			<input type="text" name="nombre" path="nombre" placeholder="Introduce el nombre del grupo..." required/>
 
 			</div>
 			
 
 			<div>
 				<label for="tipo"> </label>
-				<input type="text" id="tipo" name="tipo" path="tipo" placeholder="Motivo de la reserva en grupo..."/>
+				<input type="text" id="tipo" name="tipo" path="tipo" placeholder="Motivo de la reserva en grupo..." required/>
 			</div>
             
             <div>
-            <input type="text" id="email" name="email" path="email" placeholder="Introduce el correo electronico del representante..."/>
+            <input type="text" id="email" name="email" path="email" placeholder="Introduce el correo electronico del representante..." required/>
             </div>
 			
 			<div>
-			<select name="hotel_id" path="hotel_id">
+			<select name="hotel_id" path="hotel_id" required>
 				<option value="">Hotel</option>
 					<c:forEach items="${ListaHotel}" var="hotel">
 						<option value="${hotel.id}">${hotel.nombre} en ${hotel.ciudad} con ${hotel.estrellas} estrellas</option>
@@ -89,20 +89,16 @@
 			</select>
 			</div>
 
-		
-			<form>
+			<div>
 				<input type="text" name="fecha_entrada" path="fecha_entrada"
 					placeholder="Fecha de entrada..." onfocus="(this.type='date')"
 					onblur="(this.type='text')" required>
-			</form>
-		
-
-			<form>
+		</div>
+		<div>
 				<input type="text" name="fecha_salida" path="fecha_salida"
 					placeholder="Fecha de salida..." onfocus="(this.type='date')"
 					onblur="(this.type='text')" required>
-			</form>
-			
+			</div>
 			
 			
 

@@ -113,6 +113,7 @@ public class ServiciosPostReservaController {
 			}
 		}
 		
+		model.addAttribute("reserva", reserva);
 		model.addAttribute("servicios", servicios);
 		model.addAttribute("serviciosReservados", serviciosReservados);
 		model.addAttribute("sesionBean", sesionBean);

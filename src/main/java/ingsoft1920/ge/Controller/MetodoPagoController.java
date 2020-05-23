@@ -1,5 +1,7 @@
 package ingsoft1920.ge.Controller;
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,7 @@ public class MetodoPagoController {
 	@GetMapping("/metodopago")
 	public String metodopago(Model model) {
 		
-		
+		model.addAttribute("sesionBean", sesionBean);
 		return "metodopago";
 	}
 	
@@ -130,17 +132,21 @@ public class MetodoPagoController {
 		json_reserva.addProperty("numero_acompanantes", 1);
 		json_reserva.addProperty("metodo_pago", reserva.getPagado());
 		
-		
+		System.out.println(reserva);
 		
 		String response = "";
 		HttpClient server = new HttpClient(HttpClient.urlCM + "reserva", "POST");
 		server.setRequestBody(json_reserva.toString());
 		if (server.getResponseCode() == 200) {
+			System.out.println("hola");
 			response = server.getResponseBody();
 		}
+		TimeUnit.SECONDS.sleep(1);
 		JsonObject reserva_id = new Gson().fromJson(response, JsonObject.class);
 		
-		
+		System.out.println(sesionBean.getUsuarioID());
+		System.out.println(reserva_id);
+
 		reservaServicios(sesionBean.getUsuarioID(), reserva_id.get("id").getAsInt());
 		
 		reserva.resetReserva();

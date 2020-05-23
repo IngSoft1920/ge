@@ -3,6 +3,10 @@ package ingsoft1920.ge.ControllerGE1;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
+
+import org.apache.tomcat.util.json.JSONParser;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +30,7 @@ public class VerReservasController {
 	public static JSONObject receivedJSON = new JSONObject();
 	public static Reserva reservilla;
 	public static String pathFactura;
+	public static String idString;
 
 	@Autowired
 	SesionBean sesion;
@@ -33,10 +38,9 @@ public class VerReservasController {
 
 	@GetMapping("/recibirReservas")
 	public  ModelAndView reservasEnviar(Model model) throws Exception {
-		
-		String idString = String.valueOf(datosController.ALFONSO);
+	    idString = String.valueOf(datosController.ALFONSO);
 		//idString = "4"; //hardcode para probar factura
-		pathFactura = "http://piedrafita.ls.fi.upm.es:7001/download/f/" + idString;
+		//pathFactura = "http://piedrafita.ls.fi.upm.es:7001/download/f/" + idString;
 
 		receivedJSON.put("datosReserva", "Datos de su reserva");
 
@@ -71,13 +75,38 @@ public class VerReservasController {
 		//nombre hotel
 		JsonArray nombre_hoteles= obj.get("nombre_hotel_Lista").getAsJsonArray();
 		JsonArray estado= obj.get("estado").getAsJsonArray();
+		
+		//Array con fechas de reservas - 2 (precheckin)
+		JsonArray fechaPreCheckin = new JsonArray();
+		for (int i=0;i<nombre_hoteles.size();i++) {
+			String input= inicio_fechas.get(i).getAsString(); //fecha en string
+			System.out.println(input);
+		    String lastTwoDigits = input.substring(input.length() - 2); //string con el dia
+		    int lastTwo = Integer.parseInt(lastTwoDigits); //int con el dia
+			int lastTwoInt = lastTwo - 2; //int con el dia restado
+		    String lasTwoString = String.valueOf(lastTwoInt); //string con el dia restado
+		    if (lastTwoInt<10) {
+		    	lasTwoString = "0" +lasTwoString;
+		    }
+		    String stringRecortado = input.substring(0, input.length() - 2);
+		    String fechaFinal = stringRecortado + lasTwoString;
+
+		    fechaPreCheckin.add(fechaFinal);
+		    System.out.println(fechaPreCheckin);
+
+		}
+		
 		List<Reserva> reservas= new LinkedList<>();
 		for (int i=0;i<nombre_hoteles.size();i++) {
 			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),
 					numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),
 					final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),
-					estado.get(i).getAsString()));
+					estado.get(i).getAsString(),fechaPreCheckin.get(i).getAsString()));
+			System.out.println(reservas.toString());
 		}
+
+		
+	    //System.out.println( reservas.get(0));
 
 		model.addAttribute("sesionBean", sesion);
 		return new ModelAndView("reservaServicios","reservas", reservas);
@@ -90,7 +119,7 @@ public class VerReservasController {
 		HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/reservas","POST");
 		JsonObject json= new JsonObject();
 		json.addProperty("id_cliente", datosController.ALFONSO);
-
+		
 		client.setRequestBody(json.toString());
 
 		int respCode = client.getResponseCode();
@@ -129,7 +158,9 @@ public class VerReservasController {
 			}
 
 		}
-		Reserva res= new Reserva(numeros_reservas.get(cont).getAsInt(),numeros_habitaciones.get(cont).getAsInt(),inicio_fechas.get(cont).getAsString(),final_fechas.get(cont).getAsString(),nombre_hoteles.get(cont).getAsString(),estado.get(cont).getAsString());
+		
+
+		Reserva res= new Reserva(numeros_reservas.get(cont).getAsInt(),numeros_habitaciones.get(cont).getAsInt(),inicio_fechas.get(cont).getAsString(),final_fechas.get(cont).getAsString(),nombre_hoteles.get(cont).getAsString(),estado.get(cont).getAsString(),"");
 		reservilla=res;
 		System.out.print(res.toString());
 		model.addAttribute("sesionBean", sesion);

@@ -2,6 +2,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page import="ingsoft1920.ge.Controller.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import = "java.io.*,java.util.*, javax.servlet.*" %>
+<%@ page import = "javax.servlet.*,java.text.*" %>
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 <%@ page import="ingsoft1920.ge.ControllerGE1.*"%>
@@ -68,15 +70,7 @@
 </div>
 </head>
 
-<%
-	Date fechaActual = new Date();
-DateFormat formatoFecha = new SimpleDateFormat("dd");
-int dia = Integer.parseInt(formatoFecha.format(fechaActual)) - 2;
-DateFormat fecha = new SimpleDateFormat("yyyy-MM-" + dia);
-String fecha_dos_dias_menos = fecha.format(fechaActual);
-request.setAttribute("fecha_js", fecha_dos_dias_menos);
-//System.out.println("FECHA " + fecha_dos_dias_menos);
-%>
+
 
 <div class="container">
 	<div class="row pl-3">
@@ -107,11 +101,12 @@ request.setAttribute("fecha_js", fecha_dos_dias_menos);
 						<form action="/checkout/${reserva.id_reserva}" method="POST">
 							<input type="submit" value="Check Out">
 						</form>
-
+			
+						<c:set var="idClie" value="<%=ingsoft1920.ge.ControllerGE1.VerReservasController.idString%>"/>
 						<form action="">
 							<button>
-								<a
-									href="<%=ingsoft1920.ge.ControllerGE1.VerReservasController.pathFactura%>">Factura
+								<a id="factur"
+									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${idClie}/${reserva.id_reserva}">Factura							
 								</a>
 							</button>
 						</form>
@@ -141,20 +136,66 @@ request.setAttribute("fecha_js", fecha_dos_dias_menos);
 						del Hotel:
 						<p>${reserva.nombre_hotel}</p>
 						<input type=hidden name=id_reserva value=${reserva.id_reserva}>
+						
+						<input type=hidden id=fecha_inicio name=fecha_inicio
+							value=${reserva.fecha_inicio}> Fecha de inicio:
+						<p >${reserva.fecha_inicio}</p>
+						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
+
+						
+						<c:set var="today" value="<%=new java.util.Date()%>" />
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
+							var="fecha_limite" />
+						</p>
+					
+						</p>
+						
+						
+						<c:if test="${fecha_limite == reserva.fecha_precheckin || reserva.fecha_inicio == fecha_limite}">
+							<button id="checkin">Pre Check in</button>
+							<br>
+
+							<form id="completar" action="/precheckinge/${reserva.id_reserva}"
+								method="post">
+									<label>Observación</label> <input type="text" name="name"
+									placeholder="..." /></br> </br> 
+									 <input type="submit" value="Confirmar">
+							</form>
+
+						</c:if>
+						
+					</div>
+				</div>
+			</c:if>
+		</c:forEach>
+		<c:forEach var="reserva" items="${reservas}">
+			<c:if test="${reserva.estado=='precheck in'}">
+				<div class="col-xl-4 col-md-6 col-sm-12">
+					<div class="card">
+						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre
+						del Hotel:
+						<p>${reserva.nombre_hotel}</p>
+						<input type=hidden name=id_reserva value=${reserva.id_reserva}>
 						<input type=hidden name=num_hab value=${reserva.num_hab}>Numero
 						de Habitacion:
 						<p>${reserva.num_hab}</p>
 						<input type=hidden id=fecha_inicio name=fecha_inicio
 							value=${reserva.fecha_inicio}> Fecha de inicio:
-						<p>${reserva.fecha_inicio}</p>
+						<p >${reserva.fecha_inicio}</p>
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
+
+
+						
 						<c:set var="today" value="<%=new java.util.Date()%>" />
 						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
 							var="fecha_limite" />
 						</p>
-
+					
 						</p>
+						
+						
+						
 						<%-- <c:if test="${reserva.fecha_inicio=='2020-05-12'}"> --%>
 						<c:if test="${reserva.fecha_inicio == fecha_limite}">
 							<button id="checkin">Check in</button>

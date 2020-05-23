@@ -203,8 +203,7 @@
 
 							<form id="completar" action="/checkin/${reserva.id_reserva}"
 								method="post">
-								<label>Observación</label> <input type="text" name="name"
-									placeholder="..." /></br> </br> <input type="submit" value="Siguiente">
+							</br> </br> <input type="submit" value="Siguiente">
 							</form>
 
 						</c:if>

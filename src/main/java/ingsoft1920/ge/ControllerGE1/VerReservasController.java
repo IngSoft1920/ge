@@ -96,12 +96,30 @@ public class VerReservasController {
 
 		}
 		
+		JsonArray fechaPre= new JsonArray();
+		for (int i=0;i<nombre_hoteles.size();i++) {
+			String input= inicio_fechas.get(i).getAsString(); //fecha en string
+			System.out.println(input);
+		    String lastTwoDigits = input.substring(input.length() - 2); //string con el dia
+		    int lastTwo = Integer.parseInt(lastTwoDigits); //int con el dia
+			int lastTwoInt = lastTwo - 1; //int con el dia restado
+		    String lasTwoString = String.valueOf(lastTwoInt); //string con el dia restado
+		    if (lastTwoInt<10) {
+		    	lasTwoString = "0" +lasTwoString;
+		    }
+		    String stringRecortado = input.substring(0, input.length() - 2);
+		    String fechaFinal = stringRecortado + lasTwoString;
+
+		    fechaPre.add(fechaFinal);
+
+		}
+		
 		List<Reserva> reservas= new LinkedList<>();
 		for (int i=0;i<nombre_hoteles.size();i++) {
 			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),
 					numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),
 					final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),
-					estado.get(i).getAsString(),fechaPreCheckin.get(i).getAsString()));
+					estado.get(i).getAsString(),fechaPreCheckin.get(i).getAsString(),fechaPre.get(i).getAsString()));
 			System.out.println(reservas.toString());
 		}
 
@@ -160,7 +178,7 @@ public class VerReservasController {
 		}
 		
 
-		Reserva res= new Reserva(numeros_reservas.get(cont).getAsInt(),numeros_habitaciones.get(cont).getAsInt(),inicio_fechas.get(cont).getAsString(),final_fechas.get(cont).getAsString(),nombre_hoteles.get(cont).getAsString(),estado.get(cont).getAsString(),"");
+		Reserva res= new Reserva(numeros_reservas.get(cont).getAsInt(),numeros_habitaciones.get(cont).getAsInt(),inicio_fechas.get(cont).getAsString(),final_fechas.get(cont).getAsString(),nombre_hoteles.get(cont).getAsString(),estado.get(cont).getAsString(),"","");
 		reservilla=res;
 		System.out.print(res.toString());
 		model.addAttribute("sesionBean", sesion);

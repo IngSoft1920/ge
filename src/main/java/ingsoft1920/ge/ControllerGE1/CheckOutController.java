@@ -100,7 +100,7 @@ public class CheckOutController {
 
 		
 		for (int i=0;i<nombre_hoteles.size();i++) {
-			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),estado.get(i).getAsString(),""));
+			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),estado.get(i).getAsString(),"",""));
 		}
 		
 		model.addAttribute("sesionBean", sesion);

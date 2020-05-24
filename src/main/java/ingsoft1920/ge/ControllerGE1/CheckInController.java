@@ -188,7 +188,7 @@ public class CheckInController {
 			reservas.add(new Reserva(numeros_reservas.get(i).getAsInt(),
 					numeros_habitaciones.get(i).getAsInt(),inicio_fechas.get(i).getAsString(),
 					final_fechas.get(i).getAsString(),nombre_hoteles.get(i).getAsString(),
-					estado.get(i).getAsString(),fechaPreCheckin.get(i).getAsString()));
+					estado.get(i).getAsString(),fechaPreCheckin.get(i).getAsString(),""));
 			System.out.println(reservas.toString());
 		}
 

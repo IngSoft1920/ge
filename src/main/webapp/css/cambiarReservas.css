@@ -1,0 +1,246 @@
+
+#blanco {
+	position: relative;
+	margin-top: 100px;
+}
+
+
+#encabecadohotel{
+	background-color: #b8b078;
+	color: white;
+	 border-style: double;
+  border-color: white;	
+  border-width: 10px;
+    text-transform: uppercase;    
+	font-family: Georgia;
+	text-align:center;
+}
+
+#encabecadohotel h2{
+	color: white;
+    text-transform: uppercase;    
+	font-family: Georgia;
+	text-align:center;
+}
+
+#row_resumen{
+	font-family: Georgia;
+	color:#b8b078;	
+}
+
+#row_resumen h3{
+	font-size: 25px;	
+}
+
+#row_resumen h2{
+	font-size: 20px;	
+}
+
+#row_resumen i{
+	color: black;	
+}
+
+hr{
+	border: none;
+	height: 80px;
+	margin-top: 0;
+	border-bottom: 1px solid #b8b078;
+	box-shadow: 0 20px 20px -20px #b8b078;
+	margin: -50px auto 10px;
+	
+}
+
+#botonCambio button{
+	
+	font-family: Georgia;
+	color:#b8b078;	
+		 border-style: double;
+  border-color: #b8b078;	
+  border-width: 4px;
+}
+
+
+
+.modal-header h4{
+	color: black;
+	font: italic bold 100px Georgia, Serif;
+	font-size: 20px;		
+}
+
+.modal-body{	
+	 border:none;
+}
+.modal-header{	
+	   border:none;
+}
+
+.modal-title hr{
+	border: none;
+	border-bottom: 1px solid black;
+	box-shadow: 0 20px 20px -20px black;
+	
+}
+
+
+input[type=text]{	
+	font-family: Georgia;
+	border-radius: 35px 35px 35px 35px;
+	background-color: #b8b078;	
+	opacity:0.9;
+}
+
+input[type=date]:focus {
+	background-color: #87CEFA;
+	border-radius: 35px 35px 35px 35px;
+}
+
+select {
+	font-family: Georgia;
+	width:100%;
+	margin: 10px 20px;
+	border-radius: 35px 35px 35px 35px;
+	background-color: #b8b078;	
+	font-size: 15px;	
+	color: white;
+}
+
+
+#botonCambiar input[type=submit]{
+	font-family: Georgia;
+	background-color: #b8b078;
+	color: black;
+  border-color: white;	
+  border-width: 4px;
+	border-radius: 35px 35px 35px 35px;
+    align:center;
+    margin-left: 40%;
+    opacity:0.8;
+}
+
+#botonCambiarRow input[type=submit]{
+	font-family: Georgia;
+	background-color: #b8b078;
+	color: black;
+  border-color: white;	
+  border-width: 4px;
+	border-radius: 35px 35px 35px 35px;
+    align:center;
+    opacity:0.8;
+}
+
+
+#columna_abajao_botones button{
+	font-family: Georgia;
+	background-color: #b8b078;
+	color: white;
+	
+}
+
+#columna_abajao_botones input[type=submit]{
+	font-family: Georgia;
+	background-color: #b8b078;
+	color: white;
+	border:none;
+	font-size: 15px;
+	width: 100px;
+	height: 100px;
+	border: 5px;
+	border-color: white;
+	border-radius: 50%;	
+	
+}
+
+#cancelarBoton input[type=submit]{
+	
+		font-family: Georgia;
+	background-color: #b8b078;
+	color: white;
+	border:none;
+	font-size: 15px;
+	border: 5px;
+	border-color: white;
+	
+}
+
+#motivo_reserva {
+	position:fixed;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width : 600px;
+	padding : 50px;
+	box-shadow: 0 5px 30px rgba(0,0,0,.30);
+	background: #fff;
+	visibility: hidden;
+	opacity:0;
+	transition: 0.5s;
+}
+
+#motivo_reserva.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#cancelar2 {
+	position:fixed;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width : 400px;
+	padding : 50px;
+	box-shadow: 0 5px 30px rgba(0,0,0,.30);
+	background: #fff;
+	visibility: hidden;
+	opacity:0;
+	transition: 0.5s;
+}
+
+#cancelar2.active{
+	visibility: visible;
+	opacity:1;
+	transition: 0.5s;
+	top:50%;
+}
+
+.cancelar {
+	background-color: red;
+	color: #fff;
+	padding: 12px 20px;
+	border: none;
+	cursor: pointer;
+	position: relative;
+  	left: 53%;
+  	transform: translate(-66%, 10%);
+	margin-bottom: 10px;
+	opacity: 0.8;
+}
+
+.SI {
+	float:left;
+	background-color:#b8b078;
+	width: 130px;
+}
+
+.NO {
+	float:right;
+	background-color:#b8b078;
+	width: 130px;
+}	
+
+

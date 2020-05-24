@@ -3,6 +3,7 @@ package ingsoft1920.ge.ControllerGE1;
 
 import java.util.HashMap;
 
+
 import java.util.LinkedList;
 
 import java.util.List;
@@ -131,8 +132,8 @@ public class ReservarMesaController {
 			json.addProperty("fecha", mesa.getFecha());
 			json.addProperty("hora", mesa.getHora());
 			json.addProperty("cliente_id", datosController.ALFONSO);
-			json.addProperty("lugar", "Mamma Mia");
-			json.addProperty("num_personas", 1);
+			json.addProperty("lugar", "Restaurante");
+			json.addProperty("num_personas", mesa.getNumPersonas());
 			json.addProperty("id_reserva", VerReservasController.reservilla.getId_reserva());
 			json.addProperty("tipoServicio", 2);
 			json.addProperty("hora_salida", (String)null);

@@ -220,6 +220,34 @@ font-weight:bold;
 	
 }
 
+a{
+	text-align: right;
+	color: white;
+}
+
+
+#reservaEnGrupo{
+	text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #b8b078;
+    border-radius: 6px;
+    border: 2px solid black;
+    float :right;
+    text-align: center;
+  }
+  
+#reservaEnGrupo  a{
+  color: black;
+  text-decoration: none;
+ }
+
+#reservaEnGrupo:hover{
+    color: black;
+    background-color: #ffffff;  
+}
+
 
  /*
  

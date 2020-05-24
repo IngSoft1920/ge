@@ -141,6 +141,18 @@
 	GARANTIZADO</b>
 			</pre>
 					</div>
+					
+					
+				</div>
+			</div>
+
+			<br>
+
+			<div class="col-md">
+				<div class="container">
+					<button id="reservaEnGrupo">
+					<a href="/reservaGrupo" id="grupo">Reservas en grupo</a>
+					</button>
 				</div>
 			</div>
 			<br> <br> <br> <br> <br> <br> <br>
@@ -268,7 +280,7 @@
 														<option value="1">+0, sólo alojamiento</option>
 														<option value="2">+15, alojamiento y desayuno</option>
 														<option value="3">+30, pensión completa</option>
-														<option value="3">+45, todo incluído</option>
+														<option value="3">+45, todo incluido</option>
 													</form:select>
 												</div>
 											</div>

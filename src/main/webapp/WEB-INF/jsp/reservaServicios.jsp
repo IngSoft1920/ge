@@ -1,10 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page import="ingsoft1920.ge.Controller.*"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import = "java.io.*,java.util.*, javax.servlet.*" %>
+<%@ page import = "javax.servlet.*,java.text.*" %>
 
 <jsp:include page="cabecera.jsp"></jsp:include>
 <%@ page import="ingsoft1920.ge.ControllerGE1.*"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,11 +101,12 @@
 						<form action="/checkout/${reserva.id_reserva}" method="POST">
 							<input type="submit" value="Check Out">
 						</form>
-
+			
+						<c:set var="idClie" value="<%=ingsoft1920.ge.ControllerGE1.VerReservasController.idString%>"/>
 						<form action="">
 							<button>
-								<a
-									href="<%=ingsoft1920.ge.ControllerGE1.VerReservasController.pathFactura%>">Factura
+								<a id="factur"
+									href="http://piedrafita.ls.fi.upm.es:7001/download/f/${idClie}/${reserva.id_reserva}">Factura							
 								</a>
 							</button>
 						</form>
@@ -122,11 +125,51 @@
 		<h3>Reservas pendientes</h3>
 	</div>
 
-
+	<fmt:parseDate value="${found.submitDate}" pattern="yyyy-MM-dd"
+		var="submitDate" />
 	<div class="row">
 		<c:forEach var="reserva" items="${reservas}">
-			<c:if
-				test="${reserva.estado=='reserva'}">
+			<c:if test="${reserva.estado=='reserva'}">
+				<div class="col-xl-4 col-md-6 col-sm-12">
+					<div class="card">
+						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre
+						del Hotel:
+						<p>${reserva.nombre_hotel}</p>
+						<input type=hidden name=id_reserva value=${reserva.id_reserva}>
+						
+						<input type=hidden id=fecha_inicio name=fecha_inicio
+							value=${reserva.fecha_inicio}> Fecha de inicio:
+						<p >${reserva.fecha_inicio}</p>
+						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
+
+						
+						<c:set var="today" value="<%=new java.util.Date()%>" />
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
+							var="fecha_limite" />
+						</p>
+					
+						</p>
+						
+						
+						<c:if test="${fecha_limite == reserva.fecha_precheckin || reserva.fecha_inicio == fecha_limite || reserva.fecha_pre == fecha_limite}">
+							<button id="checkin">Pre Check in</button>
+							<br>
+
+							<form id="completar" action="/precheckinge/${reserva.id_reserva}"
+								method="post">
+									<label>Observación</label> <input type="text" name="name"
+									placeholder="..." /></br> </br> 
+									 <input type="submit" value="Confirmar">
+							</form>
+
+						</c:if>
+						
+					</div>
+				</div>
+			</c:if>
+		</c:forEach>
+		<c:forEach var="reserva" items="${reservas}">
+			<c:if test="${reserva.estado=='precheck in'}">
 				<div class="col-xl-4 col-md-6 col-sm-12">
 					<div class="card">
 						<input type=hidden name=nombre_hotel value=${reserva.nombre_hotel}>Nombre
@@ -138,19 +181,29 @@
 						<p>${reserva.num_hab}</p>
 						<input type=hidden id=fecha_inicio name=fecha_inicio
 							value=${reserva.fecha_inicio}> Fecha de inicio:
-						<p>${reserva.fecha_inicio}</p>
+						<p >${reserva.fecha_inicio}</p>
 						<input type=hidden name=fecha_fin value=${reserva.fecha_fin}>
 
 
-						<c:if test="${reserva.fecha_inicio=='2020-04-30'}">
 
+						
+						<c:set var="today" value="<%=new java.util.Date()%>" />
+						<fmt:formatDate pattern="yyyy-MM-dd" value="${today}"
+							var="fecha_limite" />
+						</p>
+					
+						</p>
+						
+						
+						
+						<%-- <c:if test="${reserva.fecha_inicio=='2020-05-12'}"> --%>
+						<c:if test="${reserva.fecha_inicio == fecha_limite}">
 							<button id="checkin">Check in</button>
 							<br>
 
-							<form id="completar" action="/checkin/${reserva.id_reserva}" method="post">
-								<label>Observación</label> <input type="text" name="name"
-									placeholder="..." /></br> </br>
-									 <input type="submit" value="Siguiente">
+							<form id="completar" action="/checkin/${reserva.id_reserva}"
+								method="post">
+							</br> </br> <input type="submit" value="Siguiente">
 							</form>
 
 						</c:if>

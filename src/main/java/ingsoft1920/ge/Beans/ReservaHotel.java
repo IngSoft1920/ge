@@ -57,9 +57,9 @@ public class ReservaHotel {
 		case 1:
 			return "no_aplica";
 		case 2:
-			return "media_pensión";
+			return "media_pension";
 		case 3:
-			return "pensión_completa";
+			return "pension_completa";
 		case 4: 
 			return "todo_incluido";
 		default:

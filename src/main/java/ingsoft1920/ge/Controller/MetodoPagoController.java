@@ -1,5 +1,7 @@
 package ingsoft1920.ge.Controller;
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,7 @@ public class MetodoPagoController {
 	@GetMapping("/metodopago")
 	public String metodopago(Model model) {
 		
-		
+		model.addAttribute("sesionBean", sesionBean);
 		return "metodopago";
 	}
 	
@@ -64,7 +66,7 @@ public class MetodoPagoController {
 		return "redirect:misReservas";
 	}
 	
-	public void reservaServicios (int cliente_id) throws Exception {
+	public void reservaServicios (int cliente_id, int reserva_id) throws Exception {
 		
 		/*
 		 * Formato de servicios
@@ -84,10 +86,16 @@ public class MetodoPagoController {
 			
 			JsonObject json_reserva = new JsonObject();
 			json_reserva.addProperty("lugar", s.getTipoServicio());
-			json_reserva.addProperty("id_servicioHotel", s.getId());
+			json_reserva.addProperty("id_servicio", s.getId());
 			json_reserva.addProperty("fecha", s.getFecha());
-			json_reserva.addProperty("hora", s.getHora());
+			json_reserva.addProperty("hora", "12:00");
 			json_reserva.addProperty("cliente_id", cliente_id);
+			json_reserva.addProperty("id_reserva", reserva_id);
+			json_reserva.addProperty("num_personas", s.getNumPersonas());
+			int tipo_servicio = 1;
+			if (s.getTipoServicio().compareToIgnoreCase("restaurante")==0)
+				tipo_servicio = 2;
+			json_reserva.addProperty("tipoServicio", tipo_servicio);
 
 			server.setRequestBody(json_reserva.toString());
 			server.getResponseCode();
@@ -120,22 +128,26 @@ public class MetodoPagoController {
 		json_reserva.addProperty("fecha_entrada", reserva.getFecha_inicio());
 		json_reserva.addProperty("fecha_salida", reserva.getFecha_fin());
 		json_reserva.addProperty("importe", reserva.getTarifa());
-		json_reserva.addProperty("regimen", "no_aplica");
+		json_reserva.addProperty("regimen", reserva.regimen());
 		json_reserva.addProperty("numero_acompanantes", 1);
 		json_reserva.addProperty("metodo_pago", reserva.getPagado());
 		
+		System.out.println(reserva);
 		
-		
-		//String response = "";
+		String response = "";
 		HttpClient server = new HttpClient(HttpClient.urlCM + "reserva", "POST");
 		server.setRequestBody(json_reserva.toString());
 		if (server.getResponseCode() == 200) {
-			//response = server.getResponseBody();
-			server.getResponseBody();
+			System.out.println("hola");
+			response = server.getResponseBody();
 		}
-		//JsonObject reserva_id = new Gson().fromJson(response, JsonObject.class);
+		TimeUnit.SECONDS.sleep(1);
+		JsonObject reserva_id = new Gson().fromJson(response, JsonObject.class);
 		
-		reservaServicios(sesionBean.getUsuarioID());
+		System.out.println(sesionBean.getUsuarioID());
+		System.out.println(reserva_id);
+
+		reservaServicios(sesionBean.getUsuarioID(), reserva_id.get("id").getAsInt());
 		
 		reserva.resetReserva();
 	}
@@ -176,7 +188,7 @@ public class MetodoPagoController {
 		}
 		JsonObject reserva_cliente = new Gson().fromJson(response, JsonObject.class);
 		
-		reservaServicios(reserva_cliente.get("cliente_id").getAsInt());
+		reservaServicios(reserva_cliente.get("cliente_id").getAsInt(), reserva_cliente.get("id_reserva").getAsInt());
 		int alfonso = reserva_cliente.get("cliente_id").getAsInt();
 		System.out.println(alfonso);
 		reserva.resetReserva();

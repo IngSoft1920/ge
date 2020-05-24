@@ -7,14 +7,17 @@ public class Reserva {
 	private String fecha_fin;
 	private String nombre_hotel;
 	private String estado;
+	private String fecha_precheckin;
+	private String fecha_pre;
+
 	
 	@Override
 	public String toString() {
 		return "Reserva [id_reserva=" + id_reserva + ", num_hab=" + num_hab + ", fecha_inicio=" + fecha_inicio
-				+ ", fecha_fin=" + fecha_fin + ", nombre_hotel=" + nombre_hotel + ", estado=" + estado + "]";
+				+ ", fecha_fin=" + fecha_fin + ", nombre_hotel=" + nombre_hotel + ", estado=" + estado + ", fecha_precheckin=" + fecha_precheckin + ", fecha_pre=" + fecha_pre +"]";
 	}
 	public Reserva(int id_reserva, int num_hab, String fecha_inicio, String fecha_fin, String nombre_hotel,
-			String estado) {
+			String estado, String fecha_precheckin, String fecha_pre) {
 		super();
 		this.id_reserva = id_reserva;
 		this.num_hab = num_hab;
@@ -22,6 +25,8 @@ public class Reserva {
 		this.fecha_fin = fecha_fin;
 		this.nombre_hotel = nombre_hotel;
 		this.estado = estado;
+		this.fecha_precheckin = fecha_precheckin;
+		this.fecha_pre=fecha_pre;
 	}
 	public int getId_reserva() {
 		return id_reserva;
@@ -60,6 +65,17 @@ public class Reserva {
 		this.estado = estado;
 	}
 	
+	public String getFecha_precheckin() {
+        return fecha_precheckin;
+    }
+    public void setFecha_precheckin(String fecha_precheckin) {
+        this.fecha_precheckin = fecha_precheckin;
+    }
 	
-	
+	public String getFecha_pre() {
+        return fecha_pre;
+    }
+    public void setFecha_pre(String fecha_pre) {
+        this.fecha_pre = fecha_pre;
+    }
 }
